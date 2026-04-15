@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Android Developer — Elite Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080810;
+    --bg2: #0d0d1a;
+    --surface: rgba(255,255,255,0.03);
+    --surface2: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.15);
+    --text: #f0f0f8;
+    --muted: #7070a0;
+    --accent: #6C63FF;
+    --accent2: #FF6584;
+    --accent3: #43E8D8;
+    --gold: #FFD166;
+    --glow: rgba(108,99,255,0.4);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* NOISE TEXTURE */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.5;
+  }
+
+  /* PROGRESS BAR */
+  #progress {
+    position: fixed; top: 0; left: 0; height: 2px; z-index: 1000;
+    background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+    width: 0%; transition: width 0.1s linear;
+    box-shadow: 0 0 12px var(--accent);
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+    padding: 18px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(8,8,16,0.7);
+    backdrop-filter: blur(24px);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 15px; letter-spacing: 0.05em;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .nav-logo-badge {
+    width: 34px; height: 34px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 800; color: white;
+    box-shadow: 0 0 20px var(--glow);
+  }
+  .nav-links { display: flex; gap: 4px; }
+  .nav-link {
+    padding: 8px 16px; border-radius: 8px; border: none;
+    background: transparent; color: var(--muted);
+    font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 400;
+    cursor: pointer; transition: all 0.2s; letter-spacing: 0.01em;
+  }
+  .nav-link:hover { color: var(--text); background: var(--surface2); }
+  .nav-link.active { color: var(--accent3); }
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px; cursor: pointer;
+    padding: 8px; background: none; border: none;
+  }
+  .hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--text); border-radius: 2px; transition: all 0.3s;
+  }
+  .mobile-menu {
+    display: none; position: fixed; top: 65px; left: 0; right: 0;
+    background: rgba(8,8,16,0.97); backdrop-filter: blur(24px);
+    border-bottom: 1px solid var(--border); z-index: 899; padding: 12px 0;
+  }
+  .mobile-menu.open { display: block; }
+  .mobile-link {
+    display: block; width: 100%; padding: 14px 40px;
+    background: none; border: none; color: var(--muted);
+    font-family: 'DM Sans', sans-serif; font-size: 15px;
+    text-align: left; cursor: pointer; transition: all 0.2s;
+  }
+  .mobile-link:hover, .mobile-link.active { color: var(--accent3); background: var(--surface); }
+
+  /* SECTIONS */
+  section { position: relative; z-index: 2; }
+
+  /* CURSOR GLOW */
+  #cursor-glow {
+    position: fixed; width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(108,99,255,0.08) 0%, transparent 70%);
+    pointer-events: none; z-index: 0; transform: translate(-50%,-50%);
+    transition: left 0.1s, top 0.1s;
+  }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    padding: 120px 40px 80px;
+    overflow: hidden;
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(108,99,255,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(108,99,255,0.06) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 80%);
+  }
+  .hero-orb1 {
+    position: absolute; width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(108,99,255,0.15) 0%, transparent 70%);
+    top: -100px; left: -200px; filter: blur(60px); animation: float1 8s ease-in-out infinite;
+  }
+  .hero-orb2 {
+    position: absolute; width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,101,132,0.1) 0%, transparent 70%);
+    bottom: -100px; right: -100px; filter: blur(60px); animation: float2 10s ease-in-out infinite;
+  }
+  @keyframes float1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(40px,-30px)} }
+  @keyframes float2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-30px,40px)} }
+
+  .hero-content { position: relative; z-index: 3; max-width: 900px; margin: 0 auto; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 18px; border-radius: 100px;
+    border: 1px solid rgba(67,232,216,0.3);
+    background: rgba(67,232,216,0.06);
+    margin-bottom: 32px;
+  }
+  .hero-badge-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent3); box-shadow: 0 0 8px var(--accent3);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(0.85)} }
+  .hero-badge span { font-size: 12px; font-weight: 500; color: var(--accent3); letter-spacing: 0.12em; }
+  .hero-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(42px, 7vw, 90px);
+    font-weight: 800;
+    line-height: 1.0;
+    margin-bottom: 28px;
+    letter-spacing: -0.03em;
+  }
+  .hero-title .line1 { display: block; color: var(--text); }
+  .hero-title .line2 {
+    display: block;
+    background: linear-gradient(120deg, var(--accent), var(--accent2) 50%, var(--accent3));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200%; animation: gradMove 6s ease infinite;
+  }
+  @keyframes gradMove { 0%,100%{background-position:0%} 50%{background-position:100%} }
+  .hero-desc {
+    font-size: clamp(15px, 2vw, 20px);
+    color: var(--muted); line-height: 1.8; margin-bottom: 44px;
+    max-width: 620px; font-weight: 300;
+  }
+  .hero-desc strong { color: var(--text); font-weight: 500; }
+  .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 52px; }
+  .btn-primary {
+    padding: 14px 32px; border-radius: 12px; font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 500; cursor: pointer; border: none;
+    background: linear-gradient(135deg, var(--accent), #9B5CF6);
+    color: white; box-shadow: 0 0 30px rgba(108,99,255,0.35);
+    transition: all 0.3s; display: flex; align-items: center; gap: 8px;
+    text-decoration: none;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(108,99,255,0.5); }
+  .btn-outline {
+    padding: 14px 32px; border-radius: 12px; font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 500; cursor: pointer;
+    background: transparent; color: var(--text);
+    border: 1px solid var(--border2); transition: all 0.3s;
+    display: flex; align-items: center; gap: 8px; text-decoration: none;
+  }
+  .btn-outline:hover { background: var(--surface2); border-color: var(--accent); color: var(--accent3); }
+  .tech-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+  .tech-tag {
+    padding: 7px 16px; border-radius: 8px;
+    background: var(--surface); border: 1px solid var(--border);
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 400;
+    color: var(--muted); transition: all 0.2s; cursor: default;
+  }
+  .tech-tag:hover { color: var(--accent3); border-color: rgba(67,232,216,0.4); background: rgba(67,232,216,0.04); }
+  .scroll-hint {
+    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: var(--muted); font-size: 11px; letter-spacing: 0.12em; z-index: 3;
+    animation: bounce 2s ease-in-out infinite;
+  }
+  @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+  .scroll-arrow { width: 20px; height: 20px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); }
+
+  /* SECTION HEADER */
+  .section-wrap { max-width: 1200px; margin: 0 auto; padding: 100px 40px; }
+  .section-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-bottom: 20px;
+  }
+  .section-label-line { width: 30px; height: 2px; background: var(--accent); border-radius: 2px; }
+  .section-label span { font-size: 12px; font-weight: 500; letter-spacing: 0.15em; color: var(--accent); }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 800; letter-spacing: -0.03em;
+    color: var(--text); line-height: 1.1; margin-bottom: 16px;
+  }
+  .section-sub { font-size: 17px; color: var(--muted); font-weight: 300; max-width: 480px; line-height: 1.7; }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .about-text p { color: var(--muted); font-size: 16px; line-height: 1.9; font-weight: 300; margin-bottom: 18px; }
+  .about-text p strong { color: var(--text); font-weight: 500; }
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .stat-card {
+    padding: 28px 24px; border-radius: 16px;
+    background: var(--surface); border: 1px solid var(--border);
+    text-align: center; transition: all 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .stat-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .stat-card:hover { border-color: var(--border2); transform: translateY(-4px); }
+  .stat-card:hover::before { opacity: 0.04; }
+  .stat-icon {
+    width: 42px; height: 42px; border-radius: 10px; margin: 0 auto 12px;
+    background: linear-gradient(135deg, var(--accent), #9B5CF6);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .stat-icon svg { width: 20px; height: 20px; fill: none; stroke: white; stroke-width: 2; stroke-linecap: round; }
+  .stat-val {
+    font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800;
+    background: linear-gradient(135deg, var(--accent), var(--accent3));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; margin-bottom: 6px; position: relative;
+  }
+  .stat-lbl { font-size: 12px; color: var(--muted); letter-spacing: 0.05em; position: relative; }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .skill-card {
+    padding: 28px 24px; border-radius: 16px;
+    background: var(--surface); border: 1px solid var(--border);
+    transition: all 0.3s; position: relative; overflow: hidden;
+    cursor: default;
+  }
+  .skill-card::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent3));
+    transform: scaleX(0); transition: transform 0.3s; transform-origin: left;
+  }
+  .skill-card:hover { border-color: rgba(108,99,255,0.3); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+  .skill-card:hover::after { transform: scaleX(1); }
+  .skill-icon-wrap {
+    width: 48px; height: 48px; border-radius: 12px; margin-bottom: 16px;
+    background: linear-gradient(135deg, var(--accent), #9B5CF6);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .skill-icon-wrap svg { width: 22px; height: 22px; fill: none; stroke: white; stroke-width: 2; stroke-linecap: round; }
+  .skill-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px; margin-bottom: 6px; }
+  .skill-desc { font-size: 13px; color: var(--muted); font-weight: 300; margin-bottom: 18px; line-height: 1.6; }
+  .skill-bar-wrap { margin-top: auto; }
+  .skill-bar-top { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+  .skill-bar-top span:last-child { font-family: 'JetBrains Mono', monospace; color: var(--accent3); }
+  .skill-bar { height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
+  .skill-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg, var(--accent), var(--accent3)); transition: width 1.5s cubic-bezier(0.16,1,0.3,1); width: 0%; }
+
+  /* PROJECTS */
+  .project-card {
+    border-radius: 24px; border: 1px solid var(--border);
+    background: var(--surface); overflow: hidden;
+    transition: all 0.4s; margin-bottom: 32px;
+    position: relative;
+  }
+  .project-card:hover { border-color: rgba(108,99,255,0.3); box-shadow: 0 30px 80px rgba(0,0,0,0.5); }
+  .project-inner { padding: 40px; }
+  .project-header { margin-bottom: 28px; }
+  .project-num {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--accent); letter-spacing: 0.15em; margin-bottom: 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .project-num::before { content: ''; width: 20px; height: 1px; background: var(--accent); }
+  .project-title {
+    font-family: 'Syne', sans-serif; font-size: clamp(20px, 3vw, 30px);
+    font-weight: 800; letter-spacing: -0.02em; margin-bottom: 14px;
+    color: var(--text); line-height: 1.2;
+  }
+  .project-desc { font-size: 15px; color: var(--muted); line-height: 1.85; font-weight: 300; max-width: 720px; }
+  .project-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .project-tag {
+    padding: 5px 12px; border-radius: 6px;
+    background: rgba(108,99,255,0.08); border: 1px solid rgba(108,99,255,0.2);
+    font-size: 12px; color: var(--accent); font-family: 'JetBrains Mono', monospace;
+  }
+  .project-body {
+    display: grid; grid-template-columns: auto 1fr; gap: 32px;
+    padding: 0 40px 40px; align-items: start;
+  }
+  /* SCREENSHOTS */
+  .screenshots-scroll {
+    display: flex; gap: 12px; overflow-x: auto;
+    padding-bottom: 8px; width: 260px; flex-shrink: 0;
+    scrollbar-width: thin; scrollbar-color: var(--border) transparent;
+  }
+  .screenshots-scroll::-webkit-scrollbar { height: 4px; }
+  .screenshots-scroll::-webkit-scrollbar-track { background: transparent; }
+  .screenshots-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  .phone-frame {
+    flex-shrink: 0; width: 80px; border-radius: 14px;
+    background: #12121f; border: 1.5px solid var(--border2);
+    overflow: hidden; cursor: pointer; transition: all 0.3s;
+    position: relative;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  }
+  .phone-frame:hover { transform: scale(1.05) translateY(-3px); border-color: var(--accent); box-shadow: 0 16px 40px rgba(108,99,255,0.3); }
+  .phone-screen { aspect-ratio: 9/18; overflow: hidden; position: relative; }
+  .phone-screen img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .phone-notch { height: 10px; background: #0a0a14; display: flex; align-items: center; justify-content: center; }
+  .phone-notch::after { content: ''; width: 20px; height: 4px; background: #1a1a2e; border-radius: 2px; }
+  .phone-overlay {
+    position: absolute; inset: 0; background: rgba(108,99,255,0.15);
+    opacity: 0; transition: opacity 0.2s; display: flex; align-items: center; justify-content: center;
+  }
+  .phone-frame:hover .phone-overlay { opacity: 1; }
+  .phone-overlay-icon { color: white; font-size: 18px; }
+  /* PROJECT DETAILS */
+  .project-details { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .detail-box { }
+  .detail-title {
+    font-size: 11px; letter-spacing: 0.12em; color: var(--muted); font-weight: 500;
+    margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+  }
+  .detail-title::before { content: ''; width: 14px; height: 1px; background: var(--muted); }
+  .detail-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .detail-list li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 14px; color: var(--muted); font-weight: 300; line-height: 1.5;
+  }
+  .detail-list li::before {
+    content: ''; width: 5px; height: 5px; border-radius: 50%;
+    background: var(--accent3); flex-shrink: 0; margin-top: 6px;
+    box-shadow: 0 0 6px var(--accent3);
+  }
+  .project-metrics {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+    padding: 24px 40px 40px;
+  }
+  .metric-box {
+    padding: 16px; border-radius: 12px;
+    background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+    text-align: center;
+  }
+  .metric-val {
+    font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700;
+    background: linear-gradient(135deg, var(--accent3), var(--accent));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; margin-bottom: 4px;
+  }
+  .metric-key { font-size: 10px; color: var(--muted); letter-spacing: 0.1em; }
+
+  /* IMPACT */
+  .impact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .impact-card {
+    padding: 32px 24px; border-radius: 20px; text-align: center;
+    background: var(--surface); border: 1px solid var(--border);
+    transition: all 0.3s; position: relative; overflow: hidden;
+  }
+  .impact-card:hover { transform: translateY(-6px); border-color: rgba(255,209,102,0.3); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+  .impact-icon {
+    width: 56px; height: 56px; border-radius: 14px; margin: 0 auto 18px;
+    background: linear-gradient(135deg, #FFD166, #FF6584);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .impact-icon svg { width: 26px; height: 26px; fill: none; stroke: white; stroke-width: 2; stroke-linecap: round; }
+  .impact-year { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 8px; }
+  .impact-title { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+  .impact-desc { font-size: 13px; color: var(--muted); font-weight: 300; line-height: 1.6; }
+
+  /* TESTIMONIALS */
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .testimonial-card {
+    padding: 32px; border-radius: 20px;
+    background: var(--surface); border: 1px solid var(--border);
+    transition: all 0.3s; position: relative; overflow: hidden;
+  }
+  .testimonial-card::before {
+    content: '"'; position: absolute; top: 20px; right: 24px;
+    font-family: 'Syne', sans-serif; font-size: 80px; font-weight: 800;
+    color: var(--accent); opacity: 0.1; line-height: 1;
+  }
+  .testimonial-card:hover { transform: translateY(-4px); border-color: rgba(108,99,255,0.3); }
+  .stars { display: flex; gap: 3px; margin-bottom: 18px; }
+  .star { color: var(--gold); font-size: 14px; }
+  .t-text { font-size: 15px; color: var(--muted); line-height: 1.8; font-weight: 300; margin-bottom: 24px; font-style: italic; }
+  .t-author { display: flex; align-items: center; gap: 14px; }
+  .t-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 14px; color: white; flex-shrink: 0;
+  }
+  .t-name { font-weight: 600; font-size: 15px; }
+  .t-role { font-size: 13px; color: var(--muted); }
+
+  /* CONTACT */
+  #contact { text-align: center; }
+  .contact-inner { max-width: 680px; margin: 0 auto; }
+  .contact-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 60px; }
+  .contact-link {
+    padding: 14px 28px; border-radius: 12px; font-size: 15px; font-weight: 500;
+    cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+  .contact-link.primary {
+    background: linear-gradient(135deg, var(--accent), #9B5CF6); color: white;
+    box-shadow: 0 0 30px rgba(108,99,255,0.35); border: none;
+  }
+  .contact-link.primary:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(108,99,255,0.5); }
+  .contact-link.secondary { background: var(--surface); border: 1px solid var(--border2); color: var(--text); }
+  .contact-link.secondary:hover { background: var(--surface2); border-color: var(--accent); }
+  .footer { color: var(--muted); font-size: 13px; padding-bottom: 40px; }
+
+  /* MODAL */
+  #modal {
+    display: none; position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,0.92); backdrop-filter: blur(20px);
+    align-items: center; justify-content: center; padding: 20px;
+  }
+  #modal.open { display: flex; }
+  .modal-content { position: relative; max-width: 380px; width: 100%; }
+  .modal-close {
+    position: absolute; top: -44px; right: 0; background: none; border: none;
+    color: white; font-size: 28px; cursor: pointer; opacity: 0.7; transition: opacity 0.2s; line-height: 1;
+  }
+  .modal-close:hover { opacity: 1; }
+  .modal-zoom-controls {
+    position: absolute; top: -44px; left: 0; display: flex; gap: 8px;
+  }
+  .zoom-btn {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+    color: white; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .zoom-btn:hover { background: rgba(255,255,255,0.15); }
+  .zoom-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+  .modal-phone {
+    border-radius: 28px; overflow: hidden;
+    border: 2px solid rgba(255,255,255,0.15);
+    background: #0a0a14; box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+    cursor: grab;
+  }
+  .modal-phone:active { cursor: grabbing; }
+  .modal-screen { overflow: hidden; user-select: none; }
+  .modal-screen img { width: 100%; height: auto; display: block; transform-origin: center; transition: transform 0.2s; }
+  .modal-hint { text-align: center; color: rgba(255,255,255,0.3); font-size: 12px; margin-top: 14px; }
+  .zoom-pct { text-align: center; color: rgba(255,255,255,0.5); font-family: 'JetBrains Mono', monospace; font-size: 12px; margin-top: 8px; }
+
+  /* DIVIDER */
+  .divider { width: 60px; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent3)); border-radius: 2px; margin: 24px 0; }
+
+  /* ANIMATIONS */
+  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .fade-up-delay-1 { transition-delay: 0.1s; }
+  .fade-up-delay-2 { transition-delay: 0.2s; }
+  .fade-up-delay-3 { transition-delay: 0.3s; }
+
+  /* SVG ICONS inline */
+  .ico { display: inline-block; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    .impact-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .project-body { grid-template-columns: 1fr; }
+    .screenshots-scroll { width: 100%; }
+    .project-details { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .section-wrap { padding: 70px 20px; }
+    .hero-title { font-size: 38px; }
+    #hero { padding: 100px 20px 80px; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .impact-grid { grid-template-columns: 1fr 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .project-inner, .project-body, .project-metrics { padding-left: 20px; padding-right: 20px; }
+    .project-metrics { grid-template-columns: repeat(3, 1fr); }
+    .project-details { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .contact-links { flex-direction: column; align-items: center; }
+    .contact-link { width: 100%; max-width: 320px; justify-content: center; }
+  }
+  @media (max-width: 480px) {
+    .impact-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<div id="cursor-glow"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo" onclick="scrollTo('hero');return false;">
+    <div class="nav-logo-badge">AD</div>
+    Android Developer
+  </a>
+  <div class="nav-links" id="navLinks">
+    <button class="nav-link active" onclick="scrollTo('hero')">Home</button>
+    <button class="nav-link" onclick="scrollTo('about')">About</button>
+    <button class="nav-link" onclick="scrollTo('skills')">Skills</button>
+    <button class="nav-link" onclick="scrollTo('projects')">Projects</button>
+    <button class="nav-link" onclick="scrollTo('impact')">Impact</button>
+    <button class="nav-link" onclick="scrollTo('testimonials')">Testimonials</button>
+    <button class="nav-link" onclick="scrollTo('contact')">Contact</button>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-link" onclick="scrollTo('hero');closeMenu()">Home</button>
+  <button class="mobile-link" onclick="scrollTo('about');closeMenu()">About</button>
+  <button class="mobile-link" onclick="scrollTo('skills');closeMenu()">Skills</button>
+  <button class="mobile-link" onclick="scrollTo('projects');closeMenu()">Projects</button>
+  <button class="mobile-link" onclick="scrollTo('impact');closeMenu()">Impact</button>
+  <button class="mobile-link" onclick="scrollTo('testimonials');closeMenu()">Testimonials</button>
+  <button class="mobile-link" onclick="scrollTo('contact');closeMenu()">Contact</button>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb1"></div>
+  <div class="hero-orb2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      <span>AVAILABLE FOR HIRE</span>
+    </div>
+    <h1 class="hero-title">
+      <span class="line1">Elite Android</span>
+      <span class="line2">Engineer</span>
+    </h1>
+    <p class="hero-desc">
+      Transforming ideas into <strong>production-ready apps</strong> with exceptional performance,
+      scalable architecture, and <strong>delightful user experiences</strong>.
+    </p>
+    <div class="hero-cta">
+      <button class="btn-primary" onclick="scrollTo('projects')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        View Projects
+      </button>
+      <button class="btn-outline" onclick="scrollTo('contact')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Get In Touch
+      </button>
+    </div>
+    <div class="tech-tags">
+      <span class="tech-tag">Kotlin</span>
+      <span class="tech-tag">Jetpack Compose</span>
+      <span class="tech-tag">Coroutines</span>
+      <span class="tech-tag">Hilt</span>
+      <span class="tech-tag">Room</span>
+      <span class="tech-tag">Retrofit</span>
+      <span class="tech-tag">Flow</span>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>SCROLL</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-wrap">
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <div class="section-label">
+          <div class="section-label-line"></div>
+          <span>ABOUT ME</span>
+        </div>
+        <h2 class="section-title">Passionate About<br>Creating Impact</h2>
+        <div class="divider"></div>
+        <p>With over <strong>5 years of experience</strong> in Android development, I specialize in crafting high-performance, scalable applications that serve thousands of users worldwide. My expertise spans from modern UI development with <strong>Jetpack Compose</strong> to complex backend integrations and performance optimization.</p>
+        <p>I believe in writing clean, maintainable code and following industry best practices. Every project is an opportunity to push boundaries and deliver exceptional results that exceed expectations. From enterprise-grade multi-country deployments to consumer apps on the Play Store — I build software that matters.</p>
+      </div>
+      <div class="stats-grid fade-up fade-up-delay-2">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24"><polyline points="13 2 13 9 20 9"/><path d="M20 9L13 2 4 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9z"/></svg>
+          </div>
+          <div class="stat-val">5+</div>
+          <div class="stat-lbl">Years Experience</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <div class="stat-val">25+</div>
+          <div class="stat-lbl">Projects Delivered</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="stat-val">10k+</div>
+          <div class="stat-lbl">Total Users Reached</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="stat-val">99%</div>
+          <div class="stat-lbl">Client Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-wrap">
+    <div class="section-label fade-up">
+      <div class="section-label-line" style="background:var(--accent3)"></div>
+      <span style="color:var(--accent3)">EXPERTISE</span>
+    </div>
+    <h2 class="section-title fade-up">Technical Excellence</h2>
+    <p class="section-sub fade-up">Mastery across the entire Android development stack with production-proven expertise.</p>
+    <br><br>
+    <div class="skills-grid">
+      <div class="skill-card fade-up">
+        <div class="skill-icon-wrap"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <div class="skill-name">Kotlin</div>
+        <div class="skill-desc">Expert in Kotlin with 5+ years building production apps</div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-top"><span>Proficiency</span><span>98%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="98"></div></div>
+        </div>
+      </div>
+      <div class="skill-card fade-up fade-up-delay-1">
+        <div class="skill-icon-wrap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
+        <div class="skill-name">Jetpack Compose</div>
+        <div class="skill-desc">Building modern declarative UIs with fluid animations</div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-top"><span>Proficiency</span><span>95%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
+        </div>
+      </div>
+      <div class="skill-card fade-up fade-up-delay-2">
+        <div class="skill-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <div class="skill-name">MVVM/MVI Architecture</div>
+        <div class="skill-desc">Scalable, testable, and maintainable app architectures</div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-top"><span>Proficiency</span><span>96%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="96"></div></div>
+        </div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-icon-wrap"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></div>
+        <div class="skill-name">Performance Optimization</div>
+        <div class="skill-desc">Memory & battery optimization for blazing-fast apps</div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-top"><span>Proficiency</span><span>94%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="94"></div></div>
+        </div>
+      </div>
+      <div class="skill-card fade-up fade-up-delay-1">
+        <div class="skill-icon-wrap"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+        <div class="skill-name">Room / Coroutines / Flow</div>
+        <div class="skill-desc">Async data management and reactive programming</div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-top"><span>Proficiency</span><span>97%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="97"></div></div>
+        </div>
+      </div>
+      <div class="skill-card fade-up fade-up-delay-2">
+        <div class="skill-icon-wrap"><svg viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></div>
+        <div class="skill-name">CI/CD & Testing</div>
+        <div class="skill-desc">Automated testing pipelines & continuous deployment</div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-top"><span>Proficiency</span><span>93%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="93"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-wrap">
+    <div class="section-label fade-up">
+      <div class="section-label-line"></div>
+      <span>PORTFOLIO</span>
+    </div>
+    <h2 class="section-title fade-up">Featured Projects</h2>
+    <p class="section-sub fade-up">Production apps serving thousands of users with exceptional performance and UX.</p>
+    <br><br>
+
+    <!-- PROJECT 1: Postify -->
+    <div class="project-card fade-up">
+      <div class="project-inner">
+        <div class="project-header">
+          <div class="project-num">FEATURED PROJECT 01</div>
+          <h3 class="project-title">Postify — AI-Powered LinkedIn Growth App</h3>
+          <p class="project-desc">Postify is an AI-powered LinkedIn growth platform that helps professionals stand out, grow faster, and turn visibility into real opportunities. It combines profile optimization, AI content creation, smart scheduling, and performance analytics into one seamless workflow—removing the guesswork from LinkedIn success. Users can upload their resume to instantly generate an ATS-optimized LinkedIn profile, while the AI engine creates high-quality posts, captions, and outreach messages aligned with LinkedIn best practices. Built-in analytics help track growth and refine strategy over time. Designed for scalability, performance, and exceptional UX, Postify is a product-grade solution—not just another content tool.</p>
+          <div class="project-tech">
+            <span class="project-tag">Kotlin</span><span class="project-tag">AI integration</span><span class="project-tag">API & data handling</span><span class="project-tag">Hilt</span><span class="project-tag">Firebase</span><span class="project-tag">Product-focused development</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-body">
+        <div>
+          <div class="detail-title">APP SCREENS</div>
+          <div class="screenshots-scroll">
+            <div class="phone-frame" onclick="openModal(this)">
+              <div class="phone-notch"></div>
+              <div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679932/Hotpot_0_l2w3og.png" alt="Postify Dashboard" loading="lazy"></div>
+              <div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div>
+            </div>
+            <div class="phone-frame" onclick="openModal(this)">
+              <div class="phone-notch"></div>
+              <div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679926/Hotpot_1_hliuyc.png" alt="Postify Analytics" loading="lazy"></div>
+              <div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div>
+            </div>
+            <div class="phone-frame" onclick="openModal(this)">
+              <div class="phone-notch"></div>
+              <div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679929/Hotpot_2_zcimit.png" alt="Postify Transactions" loading="lazy"></div>
+              <div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div>
+            </div>
+            <div class="phone-frame" onclick="openModal(this)">
+              <div class="phone-notch"></div>
+              <div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679928/8_z2rbq7.png" alt="Postify Reports" loading="lazy"></div>
+              <div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div>
+            </div>
+            <div class="phone-frame" onclick="openModal(this)">
+              <div class="phone-notch"></div>
+              <div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679925/Hotpot_4_nkpqqk.png" alt="Postify Settings" loading="lazy"></div>
+              <div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div>
+            </div>
+            <div class="phone-frame" onclick="openModal(this)">
+              <div class="phone-notch"></div>
+              <div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679920/5_xbxjma.png" alt="Postify Screen 6" loading="lazy"></div>
+              <div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div>
+            </div>
+            <div class="phone-frame" onclick="openModal(this)">
+              <div class="phone-notch"></div>
+              <div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679923/6_ht6hlq.png" alt="Postify Screen 7" loading="lazy"></div>
+              <div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div>
+            </div>
+            <div class="phone-frame" onclick="openModal(this)">
+              <div class="phone-notch"></div>
+              <div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679923/7_vqplt3.png" alt="Postify Screen 8" loading="lazy"></div>
+              <div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="project-details">
+          <div class="detail-box">
+            <div class="detail-title">KEY FEATURES</div>
+            <ul class="detail-list">
+              <li>ATS-optimized LinkedIn profile from resume</li>
+              <li>AI-generated posts & outreach messages</li>
+              <li>Content scheduling & planning</li>
+              <li>Engagement & growth analytics</li>
+            </ul>
+          </div>
+          <div class="detail-box">
+            <div class="detail-title">HIGHLIGHTS</div>
+            <ul class="detail-list">
+              <li>All-in-one LinkedIn growth solution</li>
+              <li>Saves time with AI automation</li>
+              <li>Clean UI & smooth user experience</li>
+              <li>Built for scalability</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="project-metrics">
+        <div class="metric-box"><div class="metric-val">99%</div><div class="metric-key">STABILITY</div></div>
+        <div class="metric-box"><div class="metric-val">High</div><div class="metric-key">PRECISION</div></div>
+        <div class="metric-box"><div class="metric-val">Highly Rated</div><div class="metric-key">EXPERIENCE</div></div>
+      </div>
+    </div>
+
+    <!-- PROJECT 2: Unilever -->
+    <div class="project-card fade-up">
+      <div class="project-inner">
+        <div class="project-header">
+          <div class="project-num">FEATURED PROJECT 02</div>
+          <h3 class="project-title">Unilever Enterprise Suite: Powering 4-Country Operations</h3>
+          <p class="project-desc">Engineered mission-critical Android applications trusted by Unilever across Pakistan, Bangladesh, Thailand, and the Philippines—handling millions in daily transactions. Built an enterprise-grade, multi-app ecosystem that revolutionized Unilever's supply chain operations. From warehouse floors to customer doorsteps, these apps orchestrate seamless logistics across international markets.</p>
+          <div class="project-tech">
+            <span class="project-tag">Kotlin</span><span class="project-tag">AI integration</span><span class="project-tag">API & data handling</span><span class="project-tag">Hilt</span><span class="project-tag">Firebase</span><span class="project-tag">Product-focused development</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-body">
+        <div>
+          <div class="detail-title">APP SCREENS</div>
+          <div class="screenshots-scroll">
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904710/Hotpot_0_fssx5j.png" alt="Unilever Dashboard" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904704/Hotpot_1_ufomg1.png" alt="Unilever Analytics" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904759/Hotpot_2_gntmqe.png" alt="Unilever Transactions" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904833/5_jjwioy.png" alt="Unilever Reports" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904793/10_neocup.png" alt="Unilever Screen 5" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904865/Hotpot_4_as9gxj.png" alt="Unilever Screen 6" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904902/16_ketwjw.png" alt="Unilever Screen 7" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904979/15_jyzu19.png" alt="Unilever Screen 8" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904897/14_fkypvd.png" alt="Unilever Screen 9" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904810/13_mgxjyg.png" alt="Unilever Screen 10" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+          </div>
+        </div>
+        <div class="project-details">
+          <div class="detail-box">
+            <div class="detail-title">KEY FEATURES</div>
+            <ul class="detail-list">
+              <li>Multi-Country Operations</li>
+              <li>Complete Enterprise Suite</li>
+              <li>Offline-First Architecture</li>
+              <li>Enterprise Security</li>
+            </ul>
+          </div>
+          <div class="detail-box">
+            <div class="detail-title">HIGHLIGHTS</div>
+            <ul class="detail-list">
+              <li>Multi-Module Architecture with 15+ Flavors</li>
+              <li>99.5% Crash-Free Rate</li>
+              <li>Weekly Multi-Country Releases</li>
+              <li>70% Faster Deployments</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="project-metrics">
+        <div class="metric-box"><div class="metric-val">4 Countries</div><div class="metric-key">DEPLOYED</div></div>
+        <div class="metric-box"><div class="metric-val">99.5%</div><div class="metric-key">CRASH-FREE</div></div>
+        <div class="metric-box"><div class="metric-val">2s Load</div><div class="metric-key">PERFORMANCE</div></div>
+      </div>
+    </div>
+
+    <!-- PROJECT 3: Recipe Expert -->
+    <div class="project-card fade-up">
+      <div class="project-inner">
+        <div class="project-header">
+          <div class="project-num">FEATURED PROJECT 03</div>
+          <h3 class="project-title">Recipe Expert</h3>
+          <p class="project-desc">Recipe Expert is a smart cooking companion for home cooks and food enthusiasts. It offers a rich collection of recipes from multiple cuisines, with ingredient-based search to reduce food waste. Users get personalized recommendations, step-by-step instructions, and can upload or share their own recipes. Explore global cuisines and helpful cooking tips. Check the live app on Google Play Store: <a href="https://play.google.com/store/apps/details?id=com.hamzadev.recipeexpert" target="_blank" rel="noopener noreferrer" style="color:var(--accent3);text-decoration:none;border-bottom:1px solid rgba(67,232,216,0.4)">View on Play Store</a>.</p>
+          <div class="project-tech">
+            <span class="project-tag">Kotlin</span><span class="project-tag">ML Kit</span><span class="project-tag">WorkManager</span><span class="project-tag">Retrofit</span><span class="project-tag">Firebase</span><span class="project-tag">Kotlin Coroutines</span><span class="project-tag">Hilt</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-body">
+        <div>
+          <div class="detail-title">APP SCREENS</div>
+          <div class="screenshots-scroll">
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766245356/1_tpfh4s.jpg" alt="Recipe Expert 1" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766245355/2_eyktwm.jpg" alt="Recipe Expert 2" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766245356/4_tzwvfd.jpg" alt="Recipe Expert 3" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766245355/2_eyktwm.jpg" alt="Recipe Expert 4" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+          </div>
+        </div>
+        <div class="project-details">
+          <div class="detail-box">
+            <div class="detail-title">KEY FEATURES</div>
+            <ul class="detail-list">
+              <li>Recipe Discovery</li>
+              <li>Personalized Experience</li>
+              <li>Step-by-Step Guidance</li>
+              <li>Community Features</li>
+            </ul>
+          </div>
+          <div class="detail-box">
+            <div class="detail-title">HIGHLIGHTS</div>
+            <ul class="detail-list">
+              <li>Kotlin & Android Jetpack</li>
+              <li>Firebase Backend</li>
+              <li>Machine Learning Integration</li>
+              <li>Advanced Search Algorithm</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="project-metrics">
+        <div class="metric-box"><div class="metric-val">1000+</div><div class="metric-key">RECIPES</div></div>
+        <div class="metric-box"><div class="metric-val">4.2★</div><div class="metric-key">RATING</div></div>
+        <div class="metric-box"><div class="metric-val">Google Play</div><div class="metric-key">FEATURED</div></div>
+      </div>
+    </div>
+
+    <!-- PROJECT 4: Shop Tracking -->
+    <div class="project-card fade-up">
+      <div class="project-inner">
+        <div class="project-header">
+          <div class="project-num">FEATURED PROJECT 04</div>
+          <h3 class="project-title">Shop Tracking</h3>
+          <p class="project-desc">The Shop Tracking App is a comprehensive solution designed to monitor and analyze the progress of distributors and shops effectively. The app allows administrators to track distributor activities, including shop visits, task completion, and overall performance. It also provides insights into shop-specific metrics, ensuring better visibility into operations and progress. With real-time tracking and detailed analytics, the app helps optimize distributor workflows and ensures shops are managed efficiently. The intuitive interface and robust features make it an essential tool for businesses looking to streamline their tracking and performance evaluation processes.</p>
+          <div class="project-tech">
+            <span class="project-tag">Android Development</span><span class="project-tag">Smart Geolocation & Mapping</span><span class="project-tag">Dynamic Data Visualization</span><span class="project-tag">Cloud-Powered Backend</span><span class="project-tag">RESTful API Integration</span><span class="project-tag">Material Design UI/UX</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-body">
+        <div>
+          <div class="detail-title">APP SCREENS</div>
+          <div class="screenshots-scroll">
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766299435/image1_evyhi2.jpg" alt="Shop Tracking 1" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766299426/image2_cmfvzz.jpg" alt="Shop Tracking 2" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766299427/image3_y1q0t8.jpg" alt="Shop Tracking 3" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766299429/image4_bladvs.jpg" alt="Shop Tracking 4" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766299428/image5_attcbm.jpg" alt="Shop Tracking 5" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766299428/feedback_cg3uqe.jpg" alt="Shop Tracking Feedback" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+          </div>
+        </div>
+        <div class="project-details">
+          <div class="detail-box">
+            <div class="detail-title">KEY FEATURES</div>
+            <ul class="detail-list">
+              <li>Live Distributor Tracking</li>
+              <li>Shop Management System</li>
+              <li>Smart Shop Hub</li>
+              <li>Task & Activity Monitoring</li>
+            </ul>
+          </div>
+          <div class="detail-box">
+            <div class="detail-title">HIGHLIGHTS</div>
+            <ul class="detail-list">
+              <li>Real-time Synchronization</li>
+              <li>Zero-Friction Experience</li>
+              <li>Works Anywhere, Anytime</li>
+              <li>Smart Auto-Sync</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="project-metrics">
+        <div class="metric-box"><div class="metric-val">5000+</div><div class="metric-key">SHOP VISITS TRACKED</div></div>
+        <div class="metric-box"><div class="metric-val">40%</div><div class="metric-key">TIME SAVINGS</div></div>
+        <div class="metric-box"><div class="metric-val">99.8%</div><div class="metric-key">PERFORMANCE</div></div>
+      </div>
+    </div>
+
+    <!-- PROJECT 5: RetailAudit -->
+    <div class="project-card fade-up">
+      <div class="project-inner">
+        <div class="project-header">
+          <div class="project-num">FEATURED PROJECT 05</div>
+          <h3 class="project-title">RetailAudit & MarkitSurvey — B2B Field Apps</h3>
+          <p class="project-desc">Developed two connected Android applications for field teams conducting store audits and market surveys. Challenge: Field teams needed to collect data offline and sync when internet was available. Manual data entry was consuming 15 hours weekly. Solution: Built offline-first apps with local SQLite databases, automatic sync, and JSON API integration that streamlined data flow across three different apps. Results: Reduced manual data entry by 15 hours per week, saved 200+ hours annually on database management, and enabled seamless offline-to-online data sync. Client: Markematics Digital (Jan 2024 – Dec 2024).</p>
+          <div class="project-tech">
+            <span class="project-tag">Kotlin</span><span class="project-tag">Retrofit</span><span class="project-tag">Node.js</span><span class="project-tag">Offline-First Architecture</span><span class="project-tag">Data Synchronization</span><span class="project-tag">Database Optimization</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-body">
+        <div>
+          <div class="detail-title">APP SCREENS</div>
+          <div class="screenshots-scroll">
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314769/Hotpot_0_ifzlid.png" alt="RetailAudit 1" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314783/Hotpot_1_lohei7.png" alt="RetailAudit 2" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_2_otsuph.png" alt="RetailAudit 3" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314789/Hotpot_3_jkpu6m.png" alt="RetailAudit 4" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_4_j2whmh.png" alt="RetailAudit 5" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314770/Hotpot_5_haecbc.png" alt="RetailAudit 6" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314786/Hotpot_7_ufvib0.png" alt="RetailAudit 7" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314774/Hotpot_8_lcvlaq.png" alt="RetailAudit 8" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314779/Hotpot_9_gf9kmm.png" alt="RetailAudit 9" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314783/Hotpot_10_o4jvyr.png" alt="RetailAudit 10" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_6_v5kdw9.png" alt="RetailAudit 11" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314784/Hotpot_12_ekralz.png" alt="RetailAudit 12" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314787/Hotpot_14_ajoiu0.png" alt="RetailAudit 13" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+          </div>
+        </div>
+        <div class="project-details">
+          <div class="detail-box">
+            <div class="detail-title">KEY FEATURES</div>
+            <ul class="detail-list">
+              <li>Complete Offline Functionality</li>
+              <li>Automatic Background Sync</li>
+              <li>Local SQLite Database</li>
+              <li>Real-Time API Synchronization</li>
+            </ul>
+          </div>
+          <div class="detail-box">
+            <div class="detail-title">HIGHLIGHTS</div>
+            <ul class="detail-list">
+              <li>Data Integrity Guaranteed</li>
+              <li>Cross-App Data Flow</li>
+              <li>Multi-Device Support</li>
+              <li>Smart Auto-Sync</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="project-metrics">
+        <div class="metric-box"><div class="metric-val">1000+</div><div class="metric-key">DAILY SYNCS</div></div>
+        <div class="metric-box"><div class="metric-val">99%</div><div class="metric-key">ACCURACY</div></div>
+        <div class="metric-box"><div class="metric-val">900hrs</div><div class="metric-key">SAVED</div></div>
+      </div>
+    </div>
+
+    <!-- PROJECT 6: Laugh & Rhyme -->
+    <div class="project-card fade-up">
+      <div class="project-inner">
+        <div class="project-header">
+          <div class="project-num">FEATURED PROJECT 06</div>
+          <h3 class="project-title">Laugh & Rhyme</h3>
+          <p class="project-desc">Laugh & Rhyme brings a world of fun and creativity to your fingertips with a wide collection of jokes, riddles, and poetry in both English and Urdu. Enjoy daily humor, challenge yourself with engaging riddles, and explore user-generated content. With AI-powered features, personalize your experience and share your own creations in this interactive entertainment app.</p>
+          <div class="project-tech">
+            <span class="project-tag">Kotlin</span><span class="project-tag">Compose</span><span class="project-tag">JSON</span><span class="project-tag">Hilt</span><span class="project-tag">Room</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-body">
+        <div>
+          <div class="detail-title">APP SCREENS</div>
+          <div class="screenshots-scroll">
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766295807/image1_wag1eg.png" alt="Laugh Rhyme 1" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766295807/image2_u1t5jb.png" alt="Laugh Rhyme 2" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766295807/image3_wsncz2.png" alt="Laugh Rhyme 3" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766295806/image5_ulrmll.png" alt="Laugh Rhyme 4" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+            <div class="phone-frame" onclick="openModal(this)"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766295806/image4_sugwwe.png" alt="Laugh Rhyme 5" loading="lazy"></div><div class="phone-overlay"><span class="phone-overlay-icon">⤢</span></div></div>
+          </div>
+        </div>
+        <div class="project-details">
+          <div class="detail-box">
+            <div class="detail-title">KEY FEATURES</div>
+            <ul class="detail-list">
+              <li>Bilingual Support (English & Urdu)</li>
+              <li>AI-Powered Personalization</li>
+              <li>Extensive Content Library</li>
+              <li>Social Sharing & Bookmarking</li>
+            </ul>
+          </div>
+          <div class="detail-box">
+            <div class="detail-title">HIGHLIGHTS</div>
+            <ul class="detail-list">
+              <li>Java & Android SDK</li>
+              <li>Offline-first architecture</li>
+              <li>Material Design 3</li>
+              <li>JSON Data Parsing</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="project-metrics">
+        <div class="metric-box"><div class="metric-val">1000+</div><div class="metric-key">ENTRIES</div></div>
+        <div class="metric-box"><div class="metric-val">99%</div><div class="metric-key">STABLE</div></div>
+        <div class="metric-box"><div class="metric-val">Highly Rated</div><div class="metric-key">DELIGHT</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section id="impact">
+  <div class="section-wrap">
+    <div class="section-label fade-up">
+      <div class="section-label-line" style="background:var(--gold)"></div>
+      <span style="color:var(--gold)">ACHIEVEMENTS</span>
+    </div>
+    <h2 class="section-title fade-up">Industry Impact</h2>
+    <p class="section-sub fade-up">Recognition and achievements in the Android development community.</p>
+    <br><br>
+    <div class="impact-grid">
+      <div class="impact-card fade-up">
+        <div class="impact-icon"><svg viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></div>
+        <div class="impact-year">2026</div>
+        <div class="impact-title">Android UI Performance</div>
+        <div class="impact-desc">Jetpack Compose Performance Optimization</div>
+      </div>
+      <div class="impact-card fade-up fade-up-delay-1">
+        <div class="impact-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <div class="impact-year">2025</div>
+        <div class="impact-title">Deployed in multiple countries</div>
+        <div class="impact-desc">(Pakistan, Bangladesh, Thailand, Philippines)</div>
+      </div>
+      <div class="impact-card fade-up fade-up-delay-2">
+        <div class="impact-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div class="impact-year">2026</div>
+        <div class="impact-title">Top 1% Developer</div>
+        <div class="impact-desc">Android dev community</div>
+      </div>
+      <div class="impact-card fade-up fade-up-delay-3">
+        <div class="impact-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="impact-year">2020–2026</div>
+        <div class="impact-title">5+ Years Experience</div>
+        <div class="impact-desc">Building production apps</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-wrap">
+    <div class="section-label fade-up">
+      <div class="section-label-line" style="background:var(--accent2)"></div>
+      <span style="color:var(--accent2)">TESTIMONIALS</span>
+    </div>
+    <h2 class="section-title fade-up">Client Success Stories</h2>
+    <p class="section-sub fade-up">Trusted by companies worldwide to deliver exceptional results.</p>
+    <br><br>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-up">
+        <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="t-text">Delivered a high-quality Android application with clean architecture and efficient performance. Communication and reliability throughout the project were outstanding.</p>
+        <div class="t-author">
+          <div class="t-avatar">AZ</div>
+          <div><div class="t-name">Ali Zohair</div><div class="t-role">Project Lead</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up fade-up-delay-1">
+        <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="t-text">Demonstrated exceptional problem-solving skills and attention to detail. The app was intuitive, smooth, and met all project requirements on time.</p>
+        <div class="t-author">
+          <div class="t-avatar">MS</div>
+          <div><div class="t-name">Muhammad Saleh</div><div class="t-role">Product Manager</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up fade-up-delay-2">
+        <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="t-text">Professional, knowledgeable, and reliable. Delivered a scalable Android solution with optimized UI and robust features, making collaboration seamless.</p>
+        <div class="t-author">
+          <div class="t-avatar">FZ</div>
+          <div><div class="t-name">Fahad Zafar</div><div class="t-role">Tech Consultant</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-wrap">
+    <div class="contact-inner fade-up">
+      <div class="section-label" style="justify-content:center">
+        <div class="section-label-line"></div>
+        <span>CONTACT</span>
+        <div class="section-label-line"></div>
+      </div>
+      <h2 class="section-title" style="text-align:center">Let's Build Something<br>Exceptional</h2>
+      <p class="section-sub" style="margin:16px auto 44px;text-align:center;max-width:460px">Available for consulting, technical leadership roles, and ambitious Android projects.</p>
+      <div class="contact-links">
+        <a href="mailto:droidgenius778@gmail.com" class="contact-link primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email Me
+        </a>
+        <a href="https://github.com/zameer-sahil" target="_blank" rel="noopener noreferrer" class="contact-link secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/zameer-hussain-286250252" target="_blank" rel="noopener noreferrer" class="contact-link secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+      </div>
+      <div class="footer">© 2025 Elite Android Developer. Crafted with precision and passion.</div>
+    </div>
+  </div>
+</section>
+
+<!-- IMAGE MODAL -->
+<div id="modal" onclick="closeModal(event)">
+  <div class="modal-content">
+    <div class="modal-zoom-controls">
+      <button class="zoom-btn" id="zoomIn" onclick="event.stopPropagation();zoomChange(0.5)" title="Zoom In">+</button>
+      <button class="zoom-btn" id="zoomOut" onclick="event.stopPropagation();zoomChange(-0.5)" title="Zoom Out">−</button>
+      <button class="zoom-btn" id="zoomReset" onclick="event.stopPropagation();zoomReset()" title="Reset">⊡</button>
+    </div>
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-phone" onclick="event.stopPropagation()">
+      <div class="phone-notch" style="height:14px;background:#0a0a14;display:flex;align-items:center;justify-content:center">
+        <div style="width:30px;height:5px;background:#1a1a2e;border-radius:3px"></div>
+      </div>
+      <div class="modal-screen" id="modalScreen" onmousedown="dragStart(event)" onmousemove="dragMove(event)" onmouseup="dragEnd()" onmouseleave="dragEnd()" ontouchstart="touchStart(event)" ontouchmove="touchMove(event)" ontouchend="touchEnd()">
+        <img id="modalImg" src="" alt="" draggable="false">
+      </div>
+    </div>
+    <div class="zoom-pct" id="zoomPct">100%</div>
+    <div class="modal-hint">Scroll to zoom · Drag to pan · Pinch on mobile</div>
+  </div>
+</div>
+
+<script>
+  // CURSOR GLOW
+  const glow = document.getElementById('cursor-glow');
+  document.addEventListener('mousemove', e => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+  });
+
+  // PROGRESS BAR
+  window.addEventListener('scroll', () => {
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    document.getElementById('progress').style.width = (window.scrollY / total * 100) + '%';
+    updateNav();
+  });
+
+  // SMOOTH SCROLL
+  function scrollTo(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // HAMBURGER
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMenu() { mobileMenu.classList.remove('open'); }
+
+  // ACTIVE NAV
+  function updateNav() {
+    const ids = ['hero','about','skills','projects','impact','testimonials','contact'];
+    const links = document.querySelectorAll('.nav-link');
+    const mlinks = document.querySelectorAll('.mobile-link');
+    let active = 'hero';
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= 120) active = id;
+      }
+    });
+    links.forEach((l, i) => l.classList.toggle('active', ids[i] === active));
+    mlinks.forEach((l, i) => l.classList.toggle('active', ids[i] === active));
+  }
+
+  // INTERSECTION OBSERVER for fade-up
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // SKILL BARS animation
+  const skillObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.skill-fill').forEach(bar => {
+          bar.style.width = bar.dataset.width + '%';
+        });
+        skillObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.skill-card').forEach(card => skillObserver.observe(card));
+
+  // MODAL
+  let modalScale = 1;
+  let modalPos = { x: 0, y: 0 };
+  let isDragging = false;
+  let dragStartPos = { x: 0, y: 0 };
+  let lastTouchDist = null;
+
+  function openModal(frame) {
+    const img = frame.querySelector('img');
+    if (!img) return;
+    document.getElementById('modalImg').src = img.src;
+    document.getElementById('modalImg').alt = img.alt;
+    modalScale = 1;
+    modalPos = { x: 0, y: 0 };
+    applyTransform();
+    document.getElementById('modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(e) {
+    if (!e || e.target === document.getElementById('modal')) {
+      document.getElementById('modal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+  function applyTransform() {
+    const img = document.getElementById('modalImg');
+    img.style.transform = `scale(${modalScale}) translate(${modalPos.x/modalScale}px, ${modalPos.y/modalScale}px)`;
+    document.getElementById('zoomPct').textContent = Math.round(modalScale * 100) + '%';
+    document.getElementById('zoomIn').disabled = modalScale >= 4;
+    document.getElementById('zoomOut').disabled = modalScale <= 1;
+    document.getElementById('zoomReset').disabled = modalScale === 1;
+  }
+  function zoomChange(delta) {
+    modalScale = Math.max(1, Math.min(4, modalScale + delta));
+    if (modalScale === 1) modalPos = { x: 0, y: 0 };
+    applyTransform();
+  }
+  function zoomReset() { modalScale = 1; modalPos = { x: 0, y: 0 }; applyTransform(); }
+  document.getElementById('modalScreen').addEventListener('wheel', e => {
+    e.preventDefault();
+    zoomChange(e.deltaY > 0 ? -0.3 : 0.3);
+  });
+  function dragStart(e) {
+    if (modalScale <= 1) return;
+    isDragging = true;
+    dragStartPos = { x: e.clientX - modalPos.x, y: e.clientY - modalPos.y };
+  }
+  function dragMove(e) {
+    if (!isDragging) return;
+    modalPos = { x: e.clientX - dragStartPos.x, y: e.clientY - dragStartPos.y };
+    applyTransform();
+  }
+  function dragEnd() { isDragging = false; }
+  function touchStart(e) {
+    if (e.touches.length === 2) lastTouchDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+    else if (e.touches.length === 1 && modalScale > 1) {
+      isDragging = true;
+      dragStartPos = { x: e.touches[0].clientX - modalPos.x, y: e.touches[0].clientY - modalPos.y };
+    }
+  }
+  function touchMove(e) {
+    e.preventDefault();
+    if (e.touches.length === 2 && lastTouchDist) {
+      const dist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+      modalScale = Math.max(1, Math.min(4, modalScale * (dist / lastTouchDist)));
+      lastTouchDist = dist;
+      if (modalScale === 1) modalPos = { x: 0, y: 0 };
+      applyTransform();
+    } else if (e.touches.length === 1 && isDragging) {
+      modalPos = { x: e.touches[0].clientX - dragStartPos.x, y: e.touches[0].clientY - dragStartPos.y };
+      applyTransform();
+    }
+  }
+  function touchEnd() { isDragging = false; if (event.touches.length < 2) lastTouchDist = null; }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
