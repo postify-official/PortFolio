@@ -3,14 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zameer Hussain — Android Engineer</title>
+<title>Zameer Hussain — Android Engineer (AI-Integrated Apps)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-/* ═══════════════════════════════════════════════
-   DESIGN TOKENS
-═══════════════════════════════════════════════ */
 :root {
   --void:     #06080f;
   --base:     #090d18;
@@ -52,19 +49,16 @@ body{
   overflow-x:hidden;cursor:none;
 }
 
-/* scrollbar */
 ::-webkit-scrollbar{width:2px}
 ::-webkit-scrollbar-track{background:var(--base)}
 ::-webkit-scrollbar-thumb{background:var(--cyan)}
 
-/* progress */
 #prog{
   position:fixed;top:0;left:0;height:2px;z-index:9000;width:0%;
   background:linear-gradient(90deg,var(--cyan),var(--lime));
   box-shadow:0 0 14px var(--cyan);transition:width .05s linear;
 }
 
-/* cursor */
 #cur{
   position:fixed;z-index:99999;pointer-events:none;
   width:7px;height:7px;border-radius:50%;background:var(--cyan);
@@ -82,14 +76,12 @@ body{
 body:has(a:hover) #cur,body:has(button:hover) #cur{width:18px;height:18px;background:var(--lime);box-shadow:0 0 18px var(--lime)}
 body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:54px;height:54px;border-color:rgba(198,255,0,.22)}
 
-/* grain */
 body::after{
   content:'';position:fixed;inset:0;z-index:99997;pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
   opacity:.5;mix-blend-mode:overlay;
 }
 
-/* grid bg */
 .grid-bg{
   position:fixed;inset:0;z-index:0;pointer-events:none;
   background-image:
@@ -99,7 +91,6 @@ body::after{
   mask-image:radial-gradient(ellipse 65% 65% at 50% 40%,black 25%,transparent 100%);
 }
 
-/* ambient */
 .ambient{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .amb{position:absolute;border-radius:50%;filter:blur(130px)}
 .amb-1{width:800px;height:800px;background:var(--cyan);top:-15%;left:-12%;opacity:.055;animation:af 28s ease-in-out infinite}
@@ -107,9 +98,6 @@ body::after{
 .amb-3{width:400px;height:400px;background:#a855f7;top:35%;left:48%;opacity:.03;animation:af 18s ease-in-out infinite;animation-delay:-4s}
 @keyframes af{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(50px,-40px) scale(1.07)}66%{transform:translate(-30px,35px) scale(.95)}}
 
-/* ═══════════════════════════════════════════════
-   NAV
-═══════════════════════════════════════════════ */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:800;
   display:flex;align-items:center;justify-content:space-between;
@@ -138,6 +126,14 @@ nav.scrolled{
 .nav-link:hover{color:var(--text-hi)}
 .nav-link.on{background:rgba(0,229,255,.08);color:var(--cyan)}
 
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-resume{
+  padding:8px 16px;border-radius:100px;
+  background:transparent;border:1px solid var(--bdrw);
+  color:var(--text-mid);font-family:var(--ff-body);font-size:12.5px;font-weight:600;
+  cursor:none;transition:all .3s var(--ease);text-decoration:none;
+}
+.nav-resume:hover{border-color:var(--bdr2);color:var(--cyan)}
 .nav-cta{
   padding:8px 20px;border-radius:100px;
   background:transparent;border:1px solid var(--cyan);
@@ -166,9 +162,6 @@ nav.scrolled{
 }
 .mob-link:hover{color:var(--cyan);background:var(--cyan4)}
 
-/* ═══════════════════════════════════════════════
-   LAYOUT
-═══════════════════════════════════════════════ */
 section{position:relative;z-index:2}
 .wrap{max-width:1240px;margin:0 auto;padding:96px 52px}
 
@@ -185,16 +178,12 @@ section{position:relative;z-index:2}
 }
 .sec-h2 .hi{color:var(--cyan)}
 
-.sec-p{font-size:15.5px;color:var(--text-mid);line-height:1.8;max-width:500px;font-weight:400}
+.sec-p{font-size:15.5px;color:var(--text-mid);line-height:1.8;max-width:560px;font-weight:400}
 
-/* reveal */
 .rev{opacity:0;transform:translateY(32px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
 .rev.d1{transition-delay:.11s}.rev.d2{transition-delay:.22s}.rev.d3{transition-delay:.33s}.rev.d4{transition-delay:.44s}
 .rev.vis{opacity:1;transform:none}
 
-/* ═══════════════════════════════════════════════
-   HERO — fixed layout, balanced columns, tight spacing
-═══════════════════════════════════════════════ */
 #hero{
   min-height:100svh;display:flex;align-items:center;
   padding:72px 52px 52px;overflow:hidden;
@@ -213,13 +202,9 @@ section{position:relative;z-index:2}
   position:relative;z-index:2;
   max-width:1240px;margin:0 auto;width:100%;
   display:grid;
-  /* left column takes full remaining space, right card is fixed-width */
   grid-template-columns:1fr 390px;
   gap:56px;align-items:center;
 }
-
-/* LEFT */
-.hero-left{}
 
 .hero-eyebrow{
   display:inline-flex;align-items:center;gap:9px;
@@ -234,25 +219,27 @@ section{position:relative;z-index:2}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.75)}}
 .eyebrow-txt{font-family:var(--ff-mono);font-size:10.5px;color:rgba(0,229,255,.85);letter-spacing:.14em}
 
-/* headline — stretches the full left column width */
 .hero-h1{
   font-family:var(--ff-display);
-  font-size:clamp(78px,10.8vw,144px);
-  letter-spacing:.025em;line-height:.88;
-  margin-bottom:26px;
-  /* make each word fill the full column width */
-  width:100%;
+  font-size:clamp(64px,9vw,120px);
+  letter-spacing:.025em;line-height:.9;
+  margin-bottom:26px;width:100%;
 }
 .hero-h1 .line{display:block;overflow:hidden}
 .hero-h1 .w{display:inline-block;animation:slideUp 1.1s var(--ease) both}
 .hero-h1 .line:nth-child(1) .w{animation-delay:.05s}
-.hero-h1 .line:nth-child(2) .w{animation-delay:.14s}
-.hero-h1 .line:nth-child(3) .w{animation-delay:.23s;color:var(--cyan)}
+.hero-h1 .line:nth-child(2) .w{animation-delay:.14s;color:var(--cyan)}
 @keyframes slideUp{from{transform:translateY(108%)}to{transform:none}}
+
+.hero-niche{
+  font-family:var(--ff-mono);font-size:13px;color:var(--text-lo);
+  letter-spacing:.02em;margin-bottom:22px;animation:fadeUp .9s .3s var(--ease) both;
+}
+.hero-niche span{color:var(--lime)}
 
 .hero-desc{
   font-size:15.5px;color:var(--text-mid);
-  line-height:1.78;max-width:460px;
+  line-height:1.78;max-width:480px;
   margin-bottom:36px;font-weight:400;
   animation:fadeUp .9s .48s var(--ease) both;
 }
@@ -282,7 +269,6 @@ section{position:relative;z-index:2}
 }
 .btn-outline:hover{border-color:var(--cyan);color:var(--cyan);background:var(--cyan4);transform:translateY(-2px)}
 
-/* RIGHT — stats card */
 .hero-stats-card{
   background:var(--surface);border:1px solid var(--bdr);
   border-radius:22px;padding:26px 24px;
@@ -323,7 +309,6 @@ section{position:relative;z-index:2}
 }
 .tech-chip:hover{color:var(--cyan);border-color:var(--bdr);background:var(--cyan4)}
 
-/* scroll indicator */
 .scroll-ind{
   position:absolute;bottom:24px;left:52px;
   display:flex;align-items:center;gap:12px;
@@ -339,9 +324,6 @@ section{position:relative;z-index:2}
 }
 @keyframes scrollFill{0%{width:0;left:0}50%{width:100%;left:0}100%{width:0;left:100%}}
 
-/* ═══════════════════════════════════════════════
-   MARQUEE
-═══════════════════════════════════════════════ */
 .marquee-strip{
   padding:0;overflow:hidden;position:relative;z-index:2;
   border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);
@@ -359,14 +341,23 @@ section{position:relative;z-index:2}
 .mq-item.accent{color:var(--cyan)}
 .mq-sep{width:3px;height:3px;border-radius:50%;background:var(--bdr2)}
 
-/* ═══════════════════════════════════════════════
-   ABOUT
-═══════════════════════════════════════════════ */
 #about{background:var(--base)}
 .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:80px;align-items:start}
 
 .about-text p{font-size:15.5px;color:var(--text-mid);line-height:1.9;margin-bottom:20px;font-weight:400}
 .about-text p strong{color:var(--text-hi);font-weight:600}
+
+.founder-strip{
+  display:flex;align-items:center;gap:12px;padding:14px 18px;border-radius:var(--rl);
+  border:1px solid var(--bdr);background:var(--cyan4);margin-bottom:24px;
+}
+.founder-strip .fs-icon{
+  width:36px;height:36px;border-radius:9px;background:var(--surface2);border:1px solid var(--bdr);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.founder-strip .fs-icon svg{width:16px;height:16px;stroke:var(--cyan);fill:none;stroke-width:1.8}
+.founder-strip .fs-text{font-size:12.5px;color:var(--text-mid)}
+.founder-strip .fs-text strong{color:var(--text-hi)}
 
 .id-card{
   background:var(--surface);border:1px solid var(--bdr);border-radius:var(--rx);
@@ -401,14 +392,11 @@ section{position:relative;z-index:2}
 .avail-text{font-size:12.5px;color:var(--text-mid)}
 .avail-text strong{color:var(--green);font-weight:600}
 
-/* ═══════════════════════════════════════════════
-   SKILLS
-═══════════════════════════════════════════════ */
 #skills{background:var(--void)}
-.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 
 .skill-card{
-  padding:26px 22px;border-radius:var(--rl);
+  padding:24px 20px;border-radius:var(--rl);
   background:var(--surface);border:1px solid var(--bdrw);
   transition:all .4s var(--ease);cursor:none;position:relative;overflow:hidden;
 }
@@ -420,28 +408,14 @@ section{position:relative;z-index:2}
 .skill-card:hover{border-color:var(--bdr);transform:translateY(-5px);box-shadow:0 22px 52px rgba(0,0,0,.38)}
 .skill-card:hover::after{transform:scaleX(1)}
 
-.skill-icon{
-  width:42px;height:42px;border-radius:10px;
-  background:var(--cyan4);border:1px solid var(--bdr);
-  display:flex;align-items:center;justify-content:center;margin-bottom:14px;
-}
-.skill-icon svg{width:19px;height:19px;stroke:var(--cyan);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.skill-name{font-size:13.5px;font-weight:700;margin-bottom:5px}
-.skill-desc{font-size:11.5px;color:var(--text-lo);line-height:1.6;margin-bottom:16px}
-
-.skill-bar-row{display:flex;justify-content:space-between;margin-bottom:7px}
-.skill-bar-lbl{font-size:10px;color:var(--text-lo)}
-.skill-bar-pct{font-family:var(--ff-mono);font-size:10px;color:var(--cyan)}
-.skill-track{height:2px;background:var(--bdrw);border-radius:2px;overflow:hidden}
-.skill-fill{
-  height:100%;width:0%;border-radius:2px;
-  background:linear-gradient(90deg,var(--cyan),var(--lime));
-  transition:width 1.8s var(--ease);box-shadow:0 0 8px rgba(0,229,255,.35);
+.skill-cat{font-family:var(--ff-mono);font-size:9px;letter-spacing:.2em;color:var(--cyan);text-transform:uppercase;margin-bottom:10px}
+.skill-name{font-size:13.5px;font-weight:700;margin-bottom:8px}
+.skill-list{display:flex;flex-wrap:wrap;gap:5px}
+.skill-list span{
+  padding:3px 8px;border-radius:6px;background:var(--surface2);border:1px solid var(--bdrw);
+  font-family:var(--ff-mono);font-size:9.5px;color:var(--text-mid);
 }
 
-/* ═══════════════════════════════════════════════
-   PROJECTS
-═══════════════════════════════════════════════ */
 #projects{background:var(--base)}
 
 .proj-card{
@@ -452,7 +426,6 @@ section{position:relative;z-index:2}
 }
 .proj-card:hover{border-color:var(--bdr);box-shadow:0 40px 90px rgba(0,0,0,.5)}
 
-/* top line accent on hover */
 .proj-card::before{
   content:'';position:absolute;top:0;left:0;right:0;height:1px;
   background:linear-gradient(90deg,transparent 5%,var(--cyan) 40%,var(--lime) 60%,transparent 95%);
@@ -466,7 +439,7 @@ section{position:relative;z-index:2}
   display:grid;grid-template-columns:1fr 130px;gap:32px;align-items:start;
 }
 
-.proj-index{font-family:var(--ff-mono);font-size:9.5px;color:var(--cyan);letter-spacing:.22em;margin-bottom:11px}
+.proj-index{font-family:var(--ff-mono);font-size:9.5px;color:var(--cyan);letter-spacing:.22em;margin-bottom:11px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .proj-title{
   font-family:var(--ff-display);
   font-size:clamp(22px,2.6vw,36px);
@@ -483,7 +456,25 @@ section{position:relative;z-index:2}
   font-family:var(--ff-mono);font-size:9.5px;color:var(--text-lo);letter-spacing:.04em;
 }
 
-/* metric column */
+.badge-live{
+  display:inline-flex;align-items:center;gap:6px;padding:3px 10px 3px 8px;border-radius:100px;
+  background:rgba(0,255,136,.08);border:1px solid rgba(0,255,136,.25);
+  font-family:var(--ff-mono);font-size:9px;color:var(--green);letter-spacing:.1em;text-decoration:none;
+}
+.badge-live .dot{width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green)}
+.badge-store{
+  display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:100px;
+  background:var(--surface2);border:1px solid var(--bdrw);
+  font-family:var(--ff-mono);font-size:9px;color:var(--text-mid);letter-spacing:.06em;text-decoration:none;
+  transition:all .2s;
+}
+.badge-store:hover{border-color:var(--bdr);color:var(--cyan)}
+.badge-nda{
+  display:inline-flex;align-items:center;padding:3px 10px;border-radius:100px;
+  background:rgba(255,255,255,.03);border:1px solid var(--bdrw);
+  font-family:var(--ff-mono);font-size:9px;color:var(--text-lo);letter-spacing:.08em;
+}
+
 .proj-metrics-col{display:flex;flex-direction:column;gap:8px;padding-top:22px}
 .metric-pill{
   padding:11px 14px;border-radius:11px;
@@ -494,9 +485,9 @@ section{position:relative;z-index:2}
 .metric-val{font-family:var(--ff-display);font-size:20px;color:var(--cyan);line-height:1}
 .metric-key{font-family:var(--ff-mono);font-size:8.5px;color:var(--text-lo);letter-spacing:.15em;text-transform:uppercase;margin-top:3px}
 
-/* screenshots */
 .proj-screens-section{padding:28px 44px 34px;background:var(--surface2)}
-.screens-label{font-family:var(--ff-mono);font-size:9.5px;color:var(--text-lo);letter-spacing:.24em;text-transform:uppercase;margin-bottom:18px}
+.screens-label{font-family:var(--ff-mono);font-size:9.5px;color:var(--text-lo);letter-spacing:.24em;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.screens-label .dummy-flag{color:var(--lime);font-size:8.5px;letter-spacing:.1em;padding:2px 7px;border:1px solid rgba(198,255,0,.3);border-radius:100px}
 
 .screens-dock{
   display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;
@@ -531,30 +522,34 @@ section{position:relative;z-index:2}
 }
 .phone-frame:hover .phone-overlay{opacity:1}
 
-/* detail rows */
-.proj-details-row{
-  padding:24px 44px;display:grid;grid-template-columns:1fr 1fr;
-  gap:28px;border-top:1px solid var(--bdrw);
+/* CASE STUDY GRID: Problem / Role / Tech / Outcome */
+.case-study-grid{
+  padding:26px 44px;display:grid;grid-template-columns:repeat(4,1fr);
+  gap:24px;border-top:1px solid var(--bdrw);
 }
-.det-heading{
+.cs-heading{
   font-family:var(--ff-mono);font-size:9px;
-  letter-spacing:.24em;color:var(--cyan);text-transform:uppercase;
-  margin-bottom:12px;display:flex;align-items:center;gap:8px;
+  letter-spacing:.22em;color:var(--cyan);text-transform:uppercase;
+  margin-bottom:10px;display:flex;align-items:center;gap:8px;
 }
-.det-heading::before{content:'';width:14px;height:1px;background:var(--cyan);opacity:.5}
-.det-list{list-style:none;display:flex;flex-direction:column;gap:8px}
-.det-list li{
-  display:flex;align-items:flex-start;gap:9px;
-  font-size:12.5px;color:var(--text-mid);line-height:1.6;
-}
-.det-list li::before{
-  content:'';width:3.5px;height:3.5px;border-radius:50%;background:var(--cyan);
-  flex-shrink:0;margin-top:6px;box-shadow:0 0 5px rgba(0,229,255,.5);
-}
+.cs-heading::before{content:'';width:14px;height:1px;background:var(--cyan);opacity:.5}
+.cs-block p{font-size:12.5px;color:var(--text-mid);line-height:1.7}
+.cs-block ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.cs-block ul li{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--text-mid);line-height:1.55}
+.cs-block ul li::before{content:'';width:3.5px;height:3.5px;border-radius:50%;background:var(--cyan);flex-shrink:0;margin-top:6px;box-shadow:0 0 5px rgba(0,229,255,.5)}
 
-/* ═══════════════════════════════════════════════
-   IMPACT
-═══════════════════════════════════════════════ */
+/* Compact "other projects" grid */
+.other-projects-label{font-family:var(--ff-mono);font-size:11px;color:var(--text-lo);letter-spacing:.2em;text-transform:uppercase;margin:44px 0 18px}
+.other-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.mini-proj{
+  padding:22px;border-radius:var(--rl);background:var(--surface);border:1px solid var(--bdrw);
+  transition:all .3s var(--ease);
+}
+.mini-proj:hover{border-color:var(--bdr);transform:translateY(-4px)}
+.mini-proj-title{font-size:14.5px;font-weight:700;margin-bottom:6px}
+.mini-proj-desc{font-size:12px;color:var(--text-lo);line-height:1.6;margin-bottom:12px}
+.mini-proj-tags{display:flex;flex-wrap:wrap;gap:5px}
+
 #impact{background:var(--void)}
 .impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 
@@ -576,9 +571,6 @@ section{position:relative;z-index:2}
 .impact-title{font-size:13.5px;font-weight:700;margin-bottom:7px}
 .impact-desc{font-size:11.5px;color:var(--text-lo);line-height:1.6}
 
-/* ═══════════════════════════════════════════════
-   TESTIMONIALS
-═══════════════════════════════════════════════ */
 #testimonials{background:var(--base)}
 .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 
@@ -604,9 +596,6 @@ section{position:relative;z-index:2}
 .testi-name{font-weight:700;font-size:13.5px}
 .testi-role{font-size:11px;color:var(--text-lo);margin-top:2px}
 
-/* ═══════════════════════════════════════════════
-   CONTACT
-═══════════════════════════════════════════════ */
 #contact{background:var(--void)}
 .contact-inner{max-width:780px;margin:0 auto;text-align:center}
 
@@ -651,9 +640,6 @@ section{position:relative;z-index:2}
 
 footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-size:10.5px;color:var(--text-lo);letter-spacing:.08em}
 
-/* ═══════════════════════════════════════════════
-   MODAL
-═══════════════════════════════════════════════ */
 #modal{
   display:none;position:fixed;inset:0;z-index:9000;
   background:rgba(3,4,8,.97);backdrop-filter:blur(38px);
@@ -693,29 +679,29 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
 .modal-screen img:active{cursor:grabbing}
 .modal-hint{margin-top:12px;font-family:var(--ff-mono);font-size:8.5px;color:rgba(0,229,255,.22);text-align:center;letter-spacing:.08em}
 
-/* ═══════════════════════════════════════════════
-   RESPONSIVE
-═══════════════════════════════════════════════ */
 @media(max-width:1060px){
   .hero-inner{grid-template-columns:1fr;gap:48px}
   .about-grid{grid-template-columns:1fr;gap:48px}
   .skills-grid{grid-template-columns:repeat(2,1fr)}
   .impact-grid{grid-template-columns:repeat(2,1fr)}
+  .case-study-grid{grid-template-columns:repeat(2,1fr)}
+  .other-grid{grid-template-columns:repeat(2,1fr)}
   nav{padding:0 28px}
   .wrap{padding:80px 28px}
   #hero{padding:72px 28px 48px}
   .scroll-ind{left:28px}
 }
 @media(max-width:768px){
-  .nav-links,.nav-cta{display:none}
+  .nav-links,.nav-resume,.nav-cta{display:none}
   .ham{display:flex}
-  .skills-grid{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr 1fr}
   .testi-grid{grid-template-columns:1fr}
   .proj-header{grid-template-columns:1fr;gap:20px;padding:24px 22px 20px}
   .proj-metrics-col{flex-direction:row;flex-wrap:wrap;padding-top:0}
   .metric-pill{flex:1;min-width:72px}
   .proj-screens-section{padding:20px 22px 26px}
-  .proj-details-row{grid-template-columns:1fr;padding:18px 22px}
+  .case-study-grid{grid-template-columns:1fr;padding:18px 22px}
+  .other-grid{grid-template-columns:1fr}
   .impact-grid{grid-template-columns:1fr 1fr}
   .cta-box{padding:44px 24px}
   .cta-links{flex-direction:column;align-items:center}
@@ -723,7 +709,7 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
   body{cursor:auto}
   #cur,#cur-ring{display:none}
 }
-@media(max-width:480px){.impact-grid{grid-template-columns:1fr}}
+@media(max-width:480px){.impact-grid{grid-template-columns:1fr}.skills-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -747,22 +733,27 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
   <div class="nav-links" id="navLinks">
     <button class="nav-link on" onclick="goTo('hero')">Home</button>
     <button class="nav-link" onclick="goTo('about')">About</button>
-    <button class="nav-link" onclick="goTo('skills')">Skills</button>
-    <button class="nav-link" onclick="goTo('projects')">Projects</button>
+    <button class="nav-link" onclick="goTo('skills')">Tech Stack</button>
+    <button class="nav-link" onclick="goTo('projects')">Case Studies</button>
     <button class="nav-link" onclick="goTo('impact')">Impact</button>
     <button class="nav-link" onclick="goTo('testimonials')">Reviews</button>
   </div>
-  <a href="mailto:droidgenius778@gmail.com" class="nav-cta">Hire Me</a>
+  <div class="nav-right">
+    <!-- TODO: replace with your real resume PDF link -->
+    <a href="./Zameer_Hussain_Resume.pdf" download class="nav-resume">Resume ↓</a>
+    <a href="mailto:droidgenius778@gmail.com" class="nav-cta">Hire Me</a>
+  </div>
   <button class="ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="mob-menu" id="mobMenu">
   <button class="mob-link" onclick="goTo('hero');closeMob()">Home</button>
   <button class="mob-link" onclick="goTo('about');closeMob()">About</button>
-  <button class="mob-link" onclick="goTo('skills');closeMob()">Skills</button>
-  <button class="mob-link" onclick="goTo('projects');closeMob()">Projects</button>
+  <button class="mob-link" onclick="goTo('skills');closeMob()">Tech Stack</button>
+  <button class="mob-link" onclick="goTo('projects');closeMob()">Case Studies</button>
   <button class="mob-link" onclick="goTo('impact');closeMob()">Impact</button>
   <button class="mob-link" onclick="goTo('testimonials');closeMob()">Reviews</button>
   <button class="mob-link" onclick="goTo('contact');closeMob()">Contact</button>
+  <a href="./Zameer_Hussain_Resume.pdf" download class="mob-link" style="display:block">Download Resume ↓</a>
 </div>
 
 <!-- HERO -->
@@ -775,18 +766,19 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
         <span class="eyebrow-txt">Available for hire</span>
       </div>
       <h1 class="hero-h1">
-        <span class="line"><span class="w">Android</span></span>
-        <span class="line"><span class="w">Engineer</span></span>
-        <span class="line"><span class="w">Kotlin</span></span>
+        <span class="line"><span class="w">Android Engineer</span></span>
+        <span class="line"><span class="w">AI-Integrated Apps</span></span>
       </h1>
+      <div class="hero-niche">Kotlin · Jetpack Compose · <span>2.5+ yrs shipping production apps across 4 countries</span></div>
       <p class="hero-desc">
-        Transforming ideas into <strong>production-ready apps</strong> with exceptional
-        performance, scalable architecture, and <strong>delightful user experiences</strong>.
+        I build <strong>production-ready Android apps</strong> that plug into AI —
+        OpenAI, TTS, and beyond — with scalable architecture and
+        <strong>delightful, fast UX</strong>. Founder of <strong>Znext Sol</strong>, a small Android studio.
       </p>
       <div class="hero-btns">
         <button class="btn-primary" onclick="goTo('projects')">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          View Projects
+          View Case Studies
         </button>
         <button class="btn-outline" onclick="goTo('contact')">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -810,8 +802,8 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
           <span class="tech-chip">Hilt</span>
           <span class="tech-chip">Room</span>
           <span class="tech-chip">Retrofit</span>
-          <span class="tech-chip">Flow</span>
-          <span class="tech-chip">MVVM</span>
+          <span class="tech-chip">Firebase</span>
+          <span class="tech-chip">OpenAI API</span>
         </div>
       </div>
     </div>
@@ -837,10 +829,14 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
           <span class="sec-label-line"></span>
           <span class="sec-label-text">About Me</span>
         </div>
-        <h2 class="sec-h2">Passionate About<br><span class="hi">Creating Impact</span></h2>
+        <h2 class="sec-h2">Android Engineer<br><span class="hi">Specializing in AI Apps</span></h2>
         <br>
-        <p>With <strong>2.5 years of experience</strong> in Android development, I specialize in crafting high-performance, scalable applications. My expertise spans modern UI development with <strong>Jetpack Compose</strong> to complex backend integrations and performance optimization.</p>
-        <p>I believe in writing clean, maintainable code and following industry best practices. Every project is an opportunity to push boundaries and deliver exceptional results — from enterprise-grade multi-country deployments to consumer apps on the Play Store.</p>
+        <div class="founder-strip">
+          <div class="fs-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></div>
+          <div class="fs-text"><strong>Founder, Znext Sol</strong> — a small studio taking on freelance and contract Android work</div>
+        </div>
+        <p>With <strong>2.5 years of experience</strong> in Android development, I specialize in apps that integrate AI — conversational feedback loops, TTS pipelines, and API-driven personalization — on top of <strong>Jetpack Compose</strong> and clean, scalable architecture.</p>
+        <p>My work spans consumer apps I've built and shipped solo (SpeakMate, Postify), enterprise deployments across four countries for Unilever, and offline-first field tools for retail audit teams. I write clean, maintainable, testable code — and I care about what happens after the app ships: performance, cost, and retention.</p>
       </div>
       <div class="rev d2">
         <div class="id-card">
@@ -848,14 +844,15 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
             <div class="id-avatar">ZH</div>
             <div>
               <div class="id-name">Zameer Hussain</div>
-              <div class="id-role">Android Developer</div>
+              <div class="id-role">Android Developer · Founder, Znext Sol</div>
             </div>
           </div>
           <div class="id-rows">
             <div class="id-row"><span class="id-k">Experience</span><span class="id-v">2.5 Years</span></div>
-            <div class="id-row"><span class="id-k">Specialization</span><span class="id-v">Android / Kotlin</span></div>
+            <div class="id-row"><span class="id-k">Specialization</span><span class="id-v">Android / Kotlin / AI</span></div>
             <div class="id-row"><span class="id-k">Deployment</span><span class="id-v">4 Countries</span></div>
             <div class="id-row"><span class="id-k">Apps Shipped</span><span class="id-v">7 Projects</span></div>
+            <div class="id-row"><span class="id-k">Based In</span><span class="id-v">Karachi, PK</span></div>
           </div>
         </div>
         <div class="avail-badge">
@@ -867,85 +864,86 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
   </div>
 </section>
 
-<!-- SKILLS -->
+<!-- TECH STACK -->
 <section id="skills">
   <div class="wrap">
-    <div class="sec-label rev"><span class="sec-label-num">02</span><span class="sec-label-line"></span><span class="sec-label-text">Expertise</span></div>
-    <h2 class="sec-h2 rev">Technical <span class="hi">Excellence</span></h2>
-    <p class="sec-p rev">Mastery across the entire Android development stack with production-proven expertise.</p>
+    <div class="sec-label rev"><span class="sec-label-num">02</span><span class="sec-label-line"></span><span class="sec-label-text">Tech Stack</span></div>
+    <h2 class="sec-h2 rev">Built On A <span class="hi">Solid Stack</span></h2>
+    <p class="sec-p rev">The tools and patterns behind every app below — used in production, not just tutorials.</p>
     <br><br>
     <div class="skills-grid">
       <div class="skill-card rev">
-        <div class="skill-icon"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-        <div class="skill-name">Kotlin</div>
-        <div class="skill-desc">Expert in Kotlin, primary language across all production apps</div>
-        <div class="skill-bar-row"><span class="skill-bar-lbl">Proficiency</span><span class="skill-bar-pct">95%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-w="95"></div></div>
+        <div class="skill-cat">Language</div>
+        <div class="skill-name">Kotlin &amp; Java</div>
+        <div class="skill-list"><span>Kotlin (Expert)</span><span>Coroutines</span><span>Flow</span></div>
       </div>
       <div class="skill-card rev d1">
-        <div class="skill-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
+        <div class="skill-cat">UI</div>
         <div class="skill-name">Jetpack Compose</div>
-        <div class="skill-desc">Building modern declarative UIs with fluid animations</div>
-        <div class="skill-bar-row"><span class="skill-bar-lbl">Proficiency</span><span class="skill-bar-pct">85%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-w="85"></div></div>
+        <div class="skill-list"><span>Compose</span><span>Material 3</span><span>Custom Canvas</span></div>
       </div>
       <div class="skill-card rev d2">
-        <div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-        <div class="skill-name">MVVM / Clean Architecture</div>
-        <div class="skill-desc">Scalable, testable, and maintainable app architectures</div>
-        <div class="skill-bar-row"><span class="skill-bar-lbl">Proficiency</span><span class="skill-bar-pct">92%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-w="92"></div></div>
+        <div class="skill-cat">Architecture</div>
+        <div class="skill-name">MVVM / Clean / Multi-Module</div>
+        <div class="skill-list"><span>MVVM</span><span>Clean Arch</span><span>Multi-Module</span></div>
       </div>
       <div class="skill-card rev">
-        <div class="skill-icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></div>
-        <div class="skill-name">Performance Optimization</div>
-        <div class="skill-desc">Build-time and runtime optimization for production apps</div>
-        <div class="skill-bar-row"><span class="skill-bar-lbl">Proficiency</span><span class="skill-bar-pct">90%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-w="90"></div></div>
+        <div class="skill-cat">DI &amp; Data</div>
+        <div class="skill-name">Hilt, Room, Retrofit</div>
+        <div class="skill-list"><span>Hilt</span><span>Dagger2</span><span>Room</span><span>Retrofit</span></div>
       </div>
       <div class="skill-card rev d1">
-        <div class="skill-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
-        <div class="skill-name">Room / Coroutines / Flow</div>
-        <div class="skill-desc">Async data management and reactive programming</div>
-        <div class="skill-bar-row"><span class="skill-bar-lbl">Proficiency</span><span class="skill-bar-pct">93%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-w="93"></div></div>
+        <div class="skill-cat">Backend / Cloud</div>
+        <div class="skill-name">Firebase Suite</div>
+        <div class="skill-list"><span>Auth</span><span>Firestore</span><span>FCM</span><span>Crashlytics</span></div>
       </div>
       <div class="skill-card rev d2">
-        <div class="skill-icon"><svg viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></div>
-        <div class="skill-name">CI/CD &amp; Testing</div>
-        <div class="skill-desc">JUnit, Espresso, and Gradle build pipeline optimization</div>
-        <div class="skill-bar-row"><span class="skill-bar-lbl">Proficiency</span><span class="skill-bar-pct">85%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-w="85"></div></div>
+        <div class="skill-cat">AI &amp; Media</div>
+        <div class="skill-name">AI-Integrated Apps</div>
+        <div class="skill-list"><span>OpenAI API</span><span>Google WaveNet TTS</span><span>Maps SDK</span></div>
+      </div>
+      <div class="skill-card rev">
+        <div class="skill-cat">Testing</div>
+        <div class="skill-name">Quality &amp; CI</div>
+        <div class="skill-list"><span>JUnit</span><span>Espresso</span><span>Mockito</span></div>
+      </div>
+      <div class="skill-card rev d1">
+        <div class="skill-cat">Monetization &amp; Tools</div>
+        <div class="skill-name">Growth Tooling</div>
+        <div class="skill-list"><span>AdMob</span><span>Play Billing</span><span>Git</span><span>Gradle</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- PROJECTS / CASE STUDIES -->
 <section id="projects">
   <div class="wrap">
-    <div class="sec-label rev"><span class="sec-label-num">03</span><span class="sec-label-line"></span><span class="sec-label-text">Portfolio</span></div>
-    <h2 class="sec-h2 rev">Featured <span class="hi">Projects</span></h2>
-    <p class="sec-p rev">Production apps built and shipped across freelance, agency, and independent work.</p>
+    <div class="sec-label rev"><span class="sec-label-num">03</span><span class="sec-label-line"></span><span class="sec-label-text">Case Studies</span></div>
+    <h2 class="sec-h2 rev">Featured <span class="hi">Case Studies</span></h2>
+    <p class="sec-p rev">A few projects, explained in depth: the problem, my role, the stack, and what shipped.</p>
     <br><br>
 
-    <!-- Project 1 -->
+    <!-- Case Study 1: SpeakMate -->
     <div class="proj-card rev" data-proj="0">
       <div class="proj-header">
         <div>
-          <div class="proj-index">PROJECT 01 / SPEAKMATE</div>
+          <div class="proj-index">CASE STUDY 01 / SPEAKMATE
+            <a href="https://play.google.com/store/apps/details?id=com.speakmate.english" target="_blank" rel="noopener" class="badge-store">▶ Play Store</a>
+            <span class="badge-live"><span class="dot"></span>Live · 177 Countries</span>
+          </div>
           <h3 class="proj-title">SpeakMate — AI English Speaking Practice</h3>
-          <p class="proj-desc">An AI-powered English speaking coach. Users practice real spoken conversations — IELTS prep, job interviews, business English, travel, daily conversation — and get instant AI feedback on grammar, pronunciation, vocabulary, and fluency after every sentence. Supports multiple English accents (American, British, Indian) and tracks fluency progress over time with streaks and achievements. Built the full conversation loop, AI feedback pipeline, and a custom skill-progress chart with gradient fills and proportional bar layout.</p>
-          <div class="proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">OpenAI API</span><span class="proj-tag">Google WaveNet TTS</span><span class="proj-tag">AdMob</span><span class="proj-tag">Firebase Analytics</span><span class="proj-tag">Custom Canvas Views</span></div>
+          <p class="proj-desc">An AI-powered English speaking coach. Users practice real spoken conversations — IELTS prep, job interviews, business English, travel, daily conversation — and get instant AI feedback on grammar, pronunciation, vocabulary, and fluency after every sentence. Supports multiple English accents and tracks fluency progress with streaks and achievements.</p>
+          <div class="proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">OpenAI API</span><span class="proj-tag">Google WaveNet TTS</span><span class="proj-tag">Firebase</span><span class="proj-tag">AdMob</span><span class="proj-tag">Custom Canvas Views</span></div>
         </div>
         <div class="proj-metrics-col">
-          <div class="metric-pill"><div class="metric-val">Live</div><div class="metric-key">Play Store</div></div>
-          <div class="metric-pill"><div class="metric-val">Solo</div><div class="metric-key">Built</div></div>
-          <div class="metric-pill"><div class="metric-val">AI</div><div class="metric-key">Powered</div></div>
+          <div class="metric-pill"><div class="metric-val">20x</div><div class="metric-key">API Cost Cut</div></div>
+          <div class="metric-pill"><div class="metric-val">177</div><div class="metric-key">Countries Live</div></div>
+          <div class="metric-pill"><div class="metric-val">Solo</div><div class="metric-key">Built &amp; Shipped</div></div>
         </div>
       </div>
       <div class="proj-screens-section">
-        <div class="screens-label">App Screens — Tap to preview</div>
+        <div class="screens-label">App Screens</div>
         <div class="screens-dock">
           <div class="phone-frame" onclick="openModal(0,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_01_ulskrt.png" alt="SpeakMate 1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
           <div class="phone-frame" onclick="openModal(0,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dv0tole4k/image/upload/v1782009432/screen_02_djfppq.png" alt="SpeakMate 2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
@@ -955,29 +953,34 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
           <div class="phone-frame" onclick="openModal(0,5)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dv0tole4k/image/upload/v1782009432/screen_06_jia2fn.png" alt="SpeakMate 6" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
         </div>
       </div>
-      <div class="proj-details-row">
-        <div><div class="det-heading">Key Features</div><ul class="det-list"><li>Real-time AI conversation practice</li><li>Instant feedback: grammar, pronunciation, vocabulary, fluency</li><li>Multiple English accents (US / UK / Indian)</li><li>Progress tracking, streaks &amp; achievements</li></ul></div>
-        <div><div class="det-heading">Highlights</div><ul class="det-list"><li>OpenAI API + WaveNet TTS pipeline</li><li>No account required, no audio stored</li><li>Custom skill-progress chart widget</li><li>AdMob monetization integrated</li></ul></div>
+      <div class="case-study-grid">
+        <div class="cs-block"><div class="cs-heading">Problem</div><p>English learners get grammar tools, but not real-time spoken feedback on fluency, pronunciation, and vocabulary in context.</p></div>
+        <div class="cs-block"><div class="cs-heading">My Role</div><p>Solo developer — designed and built the full conversation loop, AI feedback pipeline, and progress-tracking UI end-to-end.</p></div>
+        <div class="cs-block"><div class="cs-heading">Tech Stack</div><ul><li>OpenAI Chat Completions API</li><li>Google WaveNet / Chirp3-HD TTS</li><li>Firebase Analytics &amp; Crashlytics</li><li>AdMob monetization</li></ul></div>
+        <div class="cs-block"><div class="cs-heading">Outcome</div><ul><li>~20x reduction in API cost per session</li><li>Live in 177 countries on Play Store</li><li>Custom skill-progress chart widget shipped</li></ul></div>
       </div>
     </div>
 
-    <!-- Project 2 -->
+    <!-- Case Study 2: Postify -->
     <div class="proj-card rev" data-proj="1">
       <div class="proj-header">
         <div>
-          <div class="proj-index">PROJECT 02 / POSTIFY</div>
+          <div class="proj-index">CASE STUDY 02 / POSTIFY
+            <a href="https://play.google.com/store/apps/details?id=com.postify.app.free&hl=en" target="_blank" rel="noopener" class="badge-store">▶ Play Store</a>
+            <span class="badge-live"><span class="dot"></span>Live</span>
+          </div>
           <h3 class="proj-title">Postify — AI-Powered LinkedIn Growth App</h3>
-          <p class="proj-desc">Postify is an AI-powered LinkedIn growth platform that helps professionals stand out, grow faster, and turn visibility into real opportunities. Combines profile optimization, AI content creation, smart scheduling, and performance analytics. Users upload their resume to instantly generate an ATS-optimized LinkedIn profile, while the AI engine creates high-quality posts and outreach messages. <a href="https://play.google.com/store/apps/details?id=com.postify.app.free&hl=en" target="_blank" rel="noopener">View on Play Store →</a></p>
+          <p class="proj-desc">An AI-powered LinkedIn growth platform that helps professionals stand out and turn visibility into real opportunities. Combines profile optimization, AI content creation, smart scheduling, and performance analytics. Users upload their resume to instantly generate an ATS-optimized LinkedIn profile.</p>
           <div class="proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">AI Integration</span><span class="proj-tag">Hilt</span><span class="proj-tag">Firebase</span><span class="proj-tag">API &amp; Data Handling</span></div>
         </div>
         <div class="proj-metrics-col">
           <div class="metric-pill"><div class="metric-val">Live</div><div class="metric-key">Play Store</div></div>
           <div class="metric-pill"><div class="metric-val">Solo</div><div class="metric-key">Built</div></div>
-          <div class="metric-pill"><div class="metric-val">AI</div><div class="metric-key">Powered</div></div>
+          <div class="metric-pill"><div class="metric-val">AI</div><div class="metric-key">Resume → Profile</div></div>
         </div>
       </div>
       <div class="proj-screens-section">
-        <div class="screens-label">App Screens — Tap to preview</div>
+        <div class="screens-label">App Screens</div>
         <div class="screens-dock">
           <div class="phone-frame" onclick="openModal(1,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679932/Hotpot_0_l2w3og.png" alt="Postify 1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
           <div class="phone-frame" onclick="openModal(1,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679926/Hotpot_1_hliuyc.png" alt="Postify 2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
@@ -985,24 +988,26 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
           <div class="phone-frame" onclick="openModal(1,3)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679928/8_z2rbq7.png" alt="Postify 4" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
           <div class="phone-frame" onclick="openModal(1,4)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679925/Hotpot_4_nkpqqk.png" alt="Postify 5" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
           <div class="phone-frame" onclick="openModal(1,5)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679920/5_xbxjma.png" alt="Postify 6" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(1,6)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679923/6_ht6hlq.png" alt="Postify 7" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(1,7)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679923/7_vqplt3.png" alt="Postify 8" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
         </div>
       </div>
-      <div class="proj-details-row">
-        <div><div class="det-heading">Key Features</div><ul class="det-list"><li>ATS-optimized LinkedIn profile from resume</li><li>AI-generated posts &amp; outreach messages</li><li>Content scheduling &amp; planning</li><li>Engagement &amp; growth analytics</li></ul></div>
-        <div><div class="det-heading">Highlights</div><ul class="det-list"><li>All-in-one LinkedIn growth solution</li><li>Saves time with AI automation</li><li>Clean UI &amp; smooth UX</li><li>Live on Play Store</li></ul></div>
+      <div class="case-study-grid">
+        <div class="cs-block"><div class="cs-heading">Problem</div><p>Job seekers and professionals know LinkedIn matters, but writing ATS-friendly profiles and consistent content is time-consuming.</p></div>
+        <div class="cs-block"><div class="cs-heading">My Role</div><p>Solo developer — built the resume-parsing flow, AI content generation, scheduling, and analytics dashboard.</p></div>
+        <div class="cs-block"><div class="cs-heading">Tech Stack</div><ul><li>Kotlin + Hilt DI</li><li>AI text-generation integration</li><li>Firebase backend</li><li>REST API + JSON parsing</li></ul></div>
+        <div class="cs-block"><div class="cs-heading">Outcome</div><ul><li>Live and functional on Play Store</li><li>One-tap resume → optimized profile</li><li>Content + scheduling in a single flow</li></ul></div>
       </div>
     </div>
 
-    <!-- Project 2 -->
+    <!-- Case Study 3: Unilever Enterprise -->
     <div class="proj-card rev" data-proj="2">
       <div class="proj-header">
         <div>
-          <div class="proj-index">PROJECT 02 / ENTERPRISE</div>
-          <h3 class="proj-title">Unilever Enterprise Suite: 4-Country Operations</h3>
-          <p class="proj-desc">Built Android applications for Unilever deployed across Pakistan, Bangladesh, Thailand, and the Philippines as part of an enterprise-grade, multi-app ecosystem supporting Unilever's supply chain operations — from warehouse floors to customer doorsteps, orchestrating logistics across international markets.</p>
-          <div class="proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">Hilt</span><span class="proj-tag">Firebase</span><span class="proj-tag">Multi-Module</span></div>
+          <div class="proj-index">CASE STUDY 03 / ENTERPRISE
+            <span class="badge-nda">Client work · scope described generically (NDA)</span>
+          </div>
+          <h3 class="proj-title">Enterprise Supply-Chain Suite — 4-Country Deployment</h3>
+          <p class="proj-desc">At Centegy Technologies, built Android applications for a major FMCG client's supply-chain operations, deployed across Pakistan, Bangladesh, Thailand, and the Philippines as part of a multi-app ecosystem — from warehouse floors to customer doorsteps, orchestrating logistics across four international markets.</p>
+          <div class="proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">Java → Kotlin Migration</span><span class="proj-tag">Hilt</span><span class="proj-tag">Firebase</span><span class="proj-tag">Multi-Module</span></div>
         </div>
         <div class="proj-metrics-col">
           <div class="metric-pill"><div class="metric-val">4</div><div class="metric-key">Countries</div></div>
@@ -1011,7 +1016,7 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
         </div>
       </div>
       <div class="proj-screens-section">
-        <div class="screens-label">App Screens — Tap to preview</div>
+        <div class="screens-label">App Screens</div>
         <div class="screens-dock">
           <div class="phone-frame" onclick="openModal(2,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904710/Hotpot_0_fssx5j.png" alt="U1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
           <div class="phone-frame" onclick="openModal(2,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904704/Hotpot_1_ufomg1.png" alt="U2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
@@ -1019,87 +1024,25 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
           <div class="phone-frame" onclick="openModal(2,3)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904833/5_jjwioy.png" alt="U4" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
           <div class="phone-frame" onclick="openModal(2,4)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904793/10_neocup.png" alt="U5" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
           <div class="phone-frame" onclick="openModal(2,5)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904865/Hotpot_4_as9gxj.png" alt="U6" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(2,6)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904902/16_ketwjw.png" alt="U7" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(2,7)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904979/15_jyzu19.png" alt="U8" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(2,8)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904897/14_fkypvd.png" alt="U9" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(2,9)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904810/13_mgxjyg.png" alt="U10" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
         </div>
       </div>
-      <div class="proj-details-row">
-        <div><div class="det-heading">Key Features</div><ul class="det-list"><li>Multi-Country Operations</li><li>Complete Enterprise Suite</li><li>Offline-First Architecture</li><li>Enterprise Security</li></ul></div>
-        <div><div class="det-heading">Highlights</div><ul class="det-list"><li>Multiple Build Flavors</li><li>40% Faster Gradle Builds</li><li>Java-to-Kotlin Migration, 3x Ahead of Schedule</li><li>Multi-Country Release Pipeline</li></ul></div>
+      <div class="case-study-grid">
+        <div class="cs-block"><div class="cs-heading">Problem</div><p>A legacy Java codebase was slowing releases across four countries, with build times and a stalled migration blocking new features.</p></div>
+        <div class="cs-block"><div class="cs-heading">My Role</div><p>Led the Java-to-Kotlin migration and contributed to the multi-module architecture across the app suite.</p></div>
+        <div class="cs-block"><div class="cs-heading">Tech Stack</div><ul><li>Kotlin, Hilt, Multi-Module</li><li>Offline-first data layer</li><li>Multiple build flavors per market</li></ul></div>
+        <div class="cs-block"><div class="cs-heading">Outcome</div><ul><li>40% reduction in Gradle build time</li><li>Migration completed 3x ahead of schedule</li><li>Stable multi-country release pipeline</li></ul></div>
       </div>
     </div>
 
-    <!-- Project 3 -->
+    <!-- Case Study 4: RetailAudit & MarkitSurvey -->
     <div class="proj-card rev" data-proj="3">
       <div class="proj-header">
         <div>
-          <div class="proj-index">PROJECT 03 / CONSUMER APP</div>
-          <h3 class="proj-title">Recipe Expert</h3>
-          <p class="proj-desc">A smart cooking companion for home cooks and food enthusiasts. Offers a rich collection of recipes from multiple cuisines, with ingredient-based search to reduce food waste. Users get personalized recommendations, step-by-step instructions, and can upload or share their own recipes. <a href="https://play.google.com/store/apps/details?id=com.hamzadev.recipeexpert" target="_blank" rel="noopener">View on Play Store →</a></p>
-          <div class="proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">WorkManager</span><span class="proj-tag">Retrofit</span><span class="proj-tag">Firebase</span><span class="proj-tag">Hilt</span></div>
-        </div>
-        <div class="proj-metrics-col">
-          <div class="metric-pill"><div class="metric-val">Live</div><div class="metric-key">Play Store</div></div>
-          <div class="metric-pill"><div class="metric-val">Multi</div><div class="metric-key">Cuisine</div></div>
-          <div class="metric-pill"><div class="metric-val">Hilt</div><div class="metric-key">DI</div></div>
-        </div>
-      </div>
-      <div class="proj-screens-section">
-        <div class="screens-label">App Screens — Tap to preview</div>
-        <div class="screens-dock">
-          <div class="phone-frame" onclick="openModal(3,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766245356/1_tpfh4s.jpg" alt="R1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(3,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766245355/2_eyktwm.jpg" alt="R2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(3,2)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766245356/4_tzwvfd.jpg" alt="R3" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(3,3)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766245355/2_eyktwm.jpg" alt="R4" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-        </div>
-      </div>
-      <div class="proj-details-row">
-        <div><div class="det-heading">Key Features</div><ul class="det-list"><li>Recipe Discovery</li><li>Personalized Experience</li><li>Step-by-Step Guidance</li><li>Community Features</li></ul></div>
-        <div><div class="det-heading">Highlights</div><ul class="det-list"><li>Firebase Backend</li><li>Ingredient-Based Search</li><li>Kotlin &amp; Jetpack</li><li>Clean UI</li></ul></div>
-      </div>
-    </div>
-
-    <!-- Project 4 -->
-    <div class="proj-card rev" data-proj="4">
-      <div class="proj-header">
-        <div>
-          <div class="proj-index">PROJECT 04 / B2B TOOL</div>
-          <h3 class="proj-title">Shop Tracking</h3>
-          <p class="proj-desc">A comprehensive solution designed to monitor and analyze the progress of distributors and shops effectively. Allows administrators to track distributor activities including shop visits, task completion, and overall performance. Provides real-time insights into shop-specific metrics ensuring better visibility into operations.</p>
-          <div class="proj-tags"><span class="proj-tag">Android</span><span class="proj-tag">Geolocation</span><span class="proj-tag">Cloud Backend</span><span class="proj-tag">RESTful API</span><span class="proj-tag">Material Design</span></div>
-        </div>
-        <div class="proj-metrics-col">
-          <div class="metric-pill"><div class="metric-val">Live</div><div class="metric-key">Tracking</div></div>
-          <div class="metric-pill"><div class="metric-val">Real</div><div class="metric-key">-Time Sync</div></div>
-          <div class="metric-pill"><div class="metric-val">B2B</div><div class="metric-key">Tool</div></div>
-        </div>
-      </div>
-      <div class="proj-screens-section">
-        <div class="screens-label">App Screens — Tap to preview</div>
-        <div class="screens-dock">
-          <div class="phone-frame" onclick="openModal(4,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766299435/image1_evyhi2.jpg" alt="S1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(4,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766299426/image2_cmfvzz.jpg" alt="S2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(4,2)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766299427/image3_y1q0t8.jpg" alt="S3" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(4,3)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766299429/image4_bladvs.jpg" alt="S4" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(4,4)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766299428/image5_attcbm.jpg" alt="S5" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(4,5)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766299428/feedback_cg3uqe.jpg" alt="S6" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-        </div>
-      </div>
-      <div class="proj-details-row">
-        <div><div class="det-heading">Key Features</div><ul class="det-list"><li>Live Distributor Tracking</li><li>Shop Management System</li><li>Smart Shop Hub</li><li>Task &amp; Activity Monitoring</li></ul></div>
-        <div><div class="det-heading">Highlights</div><ul class="det-list"><li>Real-time Synchronization</li><li>Zero-Friction Experience</li><li>Works Anywhere, Anytime</li><li>Smart Auto-Sync</li></ul></div>
-      </div>
-    </div>
-
-    <!-- Project 5 -->
-    <div class="proj-card rev" data-proj="5">
-      <div class="proj-header">
-        <div>
-          <div class="proj-index">PROJECT 05 / FIELD APPS</div>
-          <h3 class="proj-title">RetailAudit &amp; MarkitSurvey — B2B Field Apps</h3>
-          <p class="proj-desc">Developed two connected Android applications for field teams conducting store audits and market surveys. Field teams needed to collect data offline and sync when internet was available. Built offline-first apps with local SQLite databases, automatic sync, and JSON API integration to replace manual data entry. Client: Markematics Digital (Jan 2024 – Dec 2024).</p>
+          <div class="proj-index">CASE STUDY 04 / FIELD APPS
+            <span class="badge-nda">Client: Markematics Digital</span>
+          </div>
+          <h3 class="proj-title">RetailAudit &amp; MarkitSurvey — Offline-First Field Apps</h3>
+          <p class="proj-desc">Two connected Android applications for field teams conducting store audits and market surveys. Field teams needed to collect data offline and sync when internet was available. Built offline-first apps with local SQLite databases, automatic sync, and JSON API integration to replace manual data entry.</p>
           <div class="proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">Retrofit</span><span class="proj-tag">Node.js</span><span class="proj-tag">Offline-First</span><span class="proj-tag">Data Sync</span></div>
         </div>
         <div class="proj-metrics-col">
@@ -1109,57 +1052,137 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
         </div>
       </div>
       <div class="proj-screens-section">
-        <div class="screens-label">App Screens — Tap to preview</div>
+        <div class="screens-label">App Screens</div>
         <div class="screens-dock">
-          <div class="phone-frame" onclick="openModal(5,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314769/Hotpot_0_ifzlid.png" alt="Ra1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(5,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314783/Hotpot_1_lohei7.png" alt="Ra2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(5,2)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_2_otsuph.png" alt="Ra3" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(5,3)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314789/Hotpot_3_jkpu6m.png" alt="Ra4" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(5,4)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_4_j2whmh.png" alt="Ra5" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(5,5)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314770/Hotpot_5_haecbc.png" alt="Ra6" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(5,6)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314786/Hotpot_7_ufvib0.png" alt="Ra7" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(5,7)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314774/Hotpot_8_lcvlaq.png" alt="Ra8" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(5,8)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314779/Hotpot_9_gf9kmm.png" alt="Ra9" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(5,9)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314783/Hotpot_10_o4jvyr.png" alt="Ra10" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(5,10)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_6_v5kdw9.png" alt="Ra11" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(5,11)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314784/Hotpot_12_ekralz.png" alt="Ra12" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(5,12)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314787/Hotpot_14_ajoiu0.png" alt="Ra13" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(3,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314769/Hotpot_0_ifzlid.png" alt="Ra1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(3,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314783/Hotpot_1_lohei7.png" alt="Ra2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(3,2)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_2_otsuph.png" alt="Ra3" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(3,3)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314789/Hotpot_3_jkpu6m.png" alt="Ra4" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(3,4)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_4_j2whmh.png" alt="Ra5" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(3,5)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314770/Hotpot_5_haecbc.png" alt="Ra6" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
         </div>
       </div>
-      <div class="proj-details-row">
-        <div><div class="det-heading">Key Features</div><ul class="det-list"><li>Complete Offline Functionality</li><li>Automatic Background Sync</li><li>Local SQLite Database</li><li>Real-Time API Sync</li></ul></div>
-        <div><div class="det-heading">Highlights</div><ul class="det-list"><li>Data Integrity Guaranteed</li><li>Cross-App Data Flow</li><li>Multi-Device Support</li><li>Smart Auto-Sync</li></ul></div>
+      <div class="case-study-grid">
+        <div class="cs-block"><div class="cs-heading">Problem</div><p>Field auditors relied on manual, paper-based data entry with no connectivity in many store locations, causing delays and errors.</p></div>
+        <div class="cs-block"><div class="cs-heading">My Role</div><p>Built both connected apps end-to-end: local data layer, sync engine, and the Node.js-backed API integration.</p></div>
+        <div class="cs-block"><div class="cs-heading">Tech Stack</div><ul><li>Kotlin, Retrofit</li><li>Local SQLite database</li><li>Node.js backend, JSON API</li></ul></div>
+        <div class="cs-block"><div class="cs-heading">Outcome</div><ul><li>Zero data loss with full offline support</li><li>Automatic background sync on reconnect</li><li>1-year continuous client engagement</li></ul></div>
       </div>
     </div>
 
-    <!-- Project 6 -->
-    <div class="proj-card rev" data-proj="6">
+    <!-- Case Study 5: PulsePoint Clinic -->
+    <div class="proj-card rev" data-proj="4">
       <div class="proj-header">
         <div>
-          <div class="proj-index">PROJECT 06 / CONSUMER APP</div>
-          <h3 class="proj-title">Laugh &amp; Rhyme</h3>
-          <p class="proj-desc">Laugh &amp; Rhyme brings a world of fun and creativity to your fingertips with a wide collection of jokes, riddles, and poetry in both English and Urdu. Enjoy daily humor, challenge yourself with engaging riddles, and explore user-generated content. Includes personalization features and the ability to share your own creations.</p>
-          <div class="proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">Compose</span><span class="proj-tag">JSON</span><span class="proj-tag">Hilt</span><span class="proj-tag">Room</span></div>
+          <div class="proj-index">CASE STUDY 05 / HEALTHCARE DEMO
+            <span class="badge-nda">Independent demo build</span>
+          </div>
+          <h3 class="proj-title">PulsePoint Clinic — Healthcare Booking Demo</h3>
+          <p class="proj-desc">A healthcare clinic demo app built to showcase appointment booking, patient records, and doctor scheduling in a single Android experience — used as a template to pitch clinics and small healthcare providers on going digital.</p>
+          <div class="proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">MVVM</span><span class="proj-tag">Firebase</span><span class="proj-tag">Material Design 3</span></div>
         </div>
         <div class="proj-metrics-col">
-          <div class="metric-pill"><div class="metric-val">EN+UR</div><div class="metric-key">Bilingual</div></div>
-          <div class="metric-pill"><div class="metric-val">Live</div><div class="metric-key">Play Store</div></div>
-          <div class="metric-pill"><div class="metric-val">Room</div><div class="metric-key">+ Hilt</div></div>
+          <div class="metric-pill"><div class="metric-val">Demo</div><div class="metric-key">Client Pitch</div></div>
+          <div class="metric-pill"><div class="metric-val">Solo</div><div class="metric-key">Built</div></div>
         </div>
       </div>
       <div class="proj-screens-section">
-        <div class="screens-label">App Screens — Tap to preview</div>
+        <div class="screens-label">App Screens <span class="dummy-flag">placeholder — real screens coming</span></div>
         <div class="screens-dock">
-          <div class="phone-frame" onclick="openModal(6,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766295807/image1_wag1eg.png" alt="L1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(6,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766295807/image2_u1t5jb.png" alt="L2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(6,2)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766295807/image3_wsncz2.png" alt="L3" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(6,3)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766295806/image5_ulrmll.png" alt="L4" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(6,4)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766295806/image4_sugwwe.png" alt="L5" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(4,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://placehold.co/400x866/0e1522/00e5ff?text=PulsePoint+1&font=roboto" alt="PulsePoint 1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(4,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://placehold.co/400x866/0e1522/00e5ff?text=PulsePoint+2&font=roboto" alt="PulsePoint 2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(4,2)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://placehold.co/400x866/0e1522/00e5ff?text=PulsePoint+3&font=roboto" alt="PulsePoint 3" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(4,3)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://placehold.co/400x866/0e1522/00e5ff?text=PulsePoint+4&font=roboto" alt="PulsePoint 4" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
         </div>
       </div>
-      <div class="proj-details-row">
-        <div><div class="det-heading">Key Features</div><ul class="det-list"><li>Bilingual Support (EN &amp; UR)</li><li>Personalization</li><li>Extensive Content Library</li><li>Social Sharing &amp; Bookmarks</li></ul></div>
-        <div><div class="det-heading">Highlights</div><ul class="det-list"><li>Offline-First Architecture</li><li>Material Design 3</li><li>JSON Data Parsing</li><li>Smooth Animations</li></ul></div>
+      <div class="case-study-grid">
+        <div class="cs-block"><div class="cs-heading">Problem</div><p>Small clinics manage bookings and patient info via phone calls and paper — slow, error-prone, and hard to scale.</p></div>
+        <div class="cs-block"><div class="cs-heading">My Role</div><p>Solo developer — designed and built the booking flow, patient records screen, and doctor scheduling UI as a pitch-ready demo.</p></div>
+        <div class="cs-block"><div class="cs-heading">Tech Stack</div><ul><li>Kotlin, MVVM</li><li>Firebase Firestore</li><li>Material Design 3</li></ul></div>
+        <div class="cs-block"><div class="cs-heading">Outcome</div><ul><li>Reusable demo for client pitches</li><li>End-to-end booking flow in a single build</li></ul></div>
+      </div>
+    </div>
+
+    <!-- Case Study 6: AcciControl -->
+    <div class="proj-card rev" data-proj="5">
+      <div class="proj-header">
+        <div>
+          <div class="proj-index">CASE STUDY 06 / FINAL YEAR PROJECT
+            <span class="badge-nda">University project</span>
+          </div>
+          <h3 class="proj-title">AcciControl — GPS &amp; Motion-Based Accident Detection</h3>
+          <p class="proj-desc">Final Year Project: an Android app that uses GPS and the phone's motion sensors (accelerometer/gyroscope) to detect sudden impact patterns consistent with a road accident, then automatically alerts emergency contacts with the vehicle's live location.</p>
+          <div class="proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">Sensor APIs</span><span class="proj-tag">Google Maps SDK</span><span class="proj-tag">Location Services</span></div>
+        </div>
+        <div class="proj-metrics-col">
+          <div class="metric-pill"><div class="metric-val">FYP</div><div class="metric-key">BS Project</div></div>
+          <div class="metric-pill"><div class="metric-val">Solo</div><div class="metric-key">Built</div></div>
+        </div>
+      </div>
+      <div class="proj-screens-section">
+        <div class="screens-label">App Screens <span class="dummy-flag">placeholder — real screens coming</span></div>
+        <div class="screens-dock">
+          <div class="phone-frame" onclick="openModal(5,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://placehold.co/400x866/0e1522/c6ff00?text=AcciControl+1&font=roboto" alt="AcciControl 1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(5,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://placehold.co/400x866/0e1522/c6ff00?text=AcciControl+2&font=roboto" alt="AcciControl 2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(5,2)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://placehold.co/400x866/0e1522/c6ff00?text=AcciControl+3&font=roboto" alt="AcciControl 3" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+        </div>
+      </div>
+      <div class="case-study-grid">
+        <div class="cs-block"><div class="cs-heading">Problem</div><p>Road accident victims often can't call for help themselves — delayed response times cost lives in the critical first minutes.</p></div>
+        <div class="cs-block"><div class="cs-heading">My Role</div><p>Solo developer — built the sensor-fusion detection logic, GPS tracking, and automated emergency-alert flow.</p></div>
+        <div class="cs-block"><div class="cs-heading">Tech Stack</div><ul><li>Accelerometer / gyroscope sensor fusion</li><li>Google Maps SDK, Location Services</li><li>Automated SMS/alert dispatch</li></ul></div>
+        <div class="cs-block"><div class="cs-heading">Outcome</div><ul><li>Completed as Final Year Project</li><li>Working end-to-end detection → alert pipeline</li></ul></div>
+      </div>
+    </div>
+
+    <!-- Znext Sol — own studio -->
+    <div class="proj-card rev" data-proj="6">
+      <div class="proj-header">
+        <div>
+          <div class="proj-index">CASE STUDY 07 / OWN BUSINESS
+            <span class="badge-live"><span class="dot"></span>Founder</span>
+          </div>
+          <h3 class="proj-title">Znext Sol — Android Development Studio</h3>
+          <p class="proj-desc">My own productized Android studio — a website and brand built to acquire freelance and contract clients directly, positioning me as a founder rather than a single freelancer. Handles inbound inquiries, showcases prior work, and outlines service packages for Android and AI-integrated app builds.</p>
+          <div class="proj-tags"><span class="proj-tag">GitHub Pages</span><span class="proj-tag">HTML/CSS/JS</span><span class="proj-tag">Brand &amp; Positioning</span></div>
+        </div>
+        <div class="proj-metrics-col">
+          <div class="metric-pill"><div class="metric-val">Live</div><div class="metric-key">GitHub Pages</div></div>
+          <div class="metric-pill"><div class="metric-val">Solo</div><div class="metric-key">Founder</div></div>
+        </div>
+      </div>
+      <div class="proj-screens-section">
+        <div class="screens-label">Site Screens <span class="dummy-flag">placeholder — real screens coming</span></div>
+        <div class="screens-dock">
+          <div class="phone-frame" onclick="openModal(6,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://placehold.co/400x866/0e1522/00e5ff?text=Znext+Sol+1&font=roboto" alt="Znext Sol 1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(6,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://placehold.co/400x866/0e1522/00e5ff?text=Znext+Sol+2&font=roboto" alt="Znext Sol 2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+        </div>
+      </div>
+      <div class="case-study-grid">
+        <div class="cs-block"><div class="cs-heading">Problem</div><p>Freelance profiles on marketplaces get lost in a sea of similar listings — a branded studio stands out and builds trust faster.</p></div>
+        <div class="cs-block"><div class="cs-heading">My Role</div><p>Founder — designed and built the brand, site, and service offering from scratch.</p></div>
+        <div class="cs-block"><div class="cs-heading">Tech Stack</div><ul><li>Static site, deployed on GitHub Pages</li><li>HTML / CSS / JS</li></ul></div>
+        <div class="cs-block"><div class="cs-heading">Outcome</div><ul><li>Live studio site for direct client acquisition</li><li>Positions me as founder, not solo freelancer</li></ul></div>
+      </div>
+    </div>
+
+    <!-- Other / smaller projects -->
+    <div class="other-projects-label">Other Shipped Apps</div>
+    <div class="other-grid">
+      <div class="mini-proj rev">
+        <div class="mini-proj-title">Recipe Expert</div>
+        <div class="mini-proj-desc">Cooking companion app with ingredient-based recipe search across cuisines. <a href="https://play.google.com/store/apps/details?id=com.hamzadev.recipeexpert" target="_blank" rel="noopener" style="color:var(--cyan)">Play Store →</a></div>
+        <div class="mini-proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">Firebase</span><span class="proj-tag">Hilt</span></div>
+      </div>
+      <div class="mini-proj rev d1">
+        <div class="mini-proj-title">Shop Tracking (B2B)</div>
+        <div class="mini-proj-desc">Distributor and shop performance tracking tool with real-time geolocation sync.</div>
+        <div class="mini-proj-tags"><span class="proj-tag">Geolocation</span><span class="proj-tag">REST API</span></div>
+      </div>
+      <div class="mini-proj rev d2">
+        <div class="mini-proj-title">Laugh &amp; Rhyme</div>
+        <div class="mini-proj-desc">Bilingual (English &amp; Urdu) jokes, riddles, and poetry app with social sharing.</div>
+        <div class="mini-proj-tags"><span class="proj-tag">Compose</span><span class="proj-tag">Room</span></div>
       </div>
     </div>
   </div>
@@ -1170,14 +1193,14 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
   <div class="wrap">
     <div class="sec-label rev"><span class="sec-label-num">04</span><span class="sec-label-line"></span><span class="sec-label-text">Highlights</span></div>
     <h2 class="sec-h2 rev">Career <span class="hi">Highlights</span></h2>
-    <p class="sec-p rev">Milestones from enterprise and independent Android work.</p>
+    <p class="sec-p rev">Milestones from enterprise, independent, and founder work.</p>
     <br><br>
     <div class="impact-grid">
       <div class="impact-card rev">
         <div class="impact-icon-wrap"><svg viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></div>
         <div class="impact-year">2026</div>
-        <div class="impact-title">Independent Shipping</div>
-        <div class="impact-desc">Two apps self-published end-to-end on Play Store</div>
+        <div class="impact-title">Founded Znext Sol</div>
+        <div class="impact-desc">Launched my own Android development studio</div>
       </div>
       <div class="impact-card rev d1">
         <div class="impact-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
@@ -1241,11 +1264,16 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
       <div class="cta-box">
         <div class="cta-glow"></div>
         <h2 class="cta-h2">Let's Build Something<br><span class="hi">Together</span></h2>
-        <p class="cta-p">Available for remote contract work, consulting, and Android development roles.</p>
+        <p class="cta-p">Available for remote contract work, consulting, and Android development roles — via Znext Sol or direct hire.</p>
         <div class="cta-links">
           <a href="mailto:droidgenius778@gmail.com" class="clink clink-main">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             Email Me
+          </a>
+          <!-- TODO: replace with your real resume PDF link -->
+          <a href="./Zameer_Hussain_Resume.pdf" download class="clink clink-sec">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+            Download Resume
           </a>
           <a href="https://github.com/zameer-sahil" target="_blank" rel="noopener noreferrer" class="clink clink-sec">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
@@ -1258,7 +1286,7 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
         </div>
       </div>
     </div>
-    <footer>© 2026 Zameer Hussain · Android Developer · Karachi, Pakistan</footer>
+    <footer>© 2026 Zameer Hussain · Android Developer · Founder, Znext Sol · Karachi, Pakistan</footer>
   </div>
 </section>
 
@@ -1294,19 +1322,16 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
 </div>
 
 <script>
-// CURSOR
 const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
 (function ac(){if(cur){cur.style.left=mx+'px';cur.style.top=my+'px'}rx+=(mx-rx)*.11;ry+=(my-ry)*.11;if(ring){ring.style.left=rx+'px';ring.style.top=ry+'px'}requestAnimationFrame(ac)})();
 
-// MARQUEE
-const items=['Kotlin','2.5 Years','Android Dev','Jetpack Compose','Hilt / DI','Coroutines','MVVM','4 Countries','Enterprise Apps','Play Store','Clean Code','Multi-Module'];
+const items=['Kotlin','2.5 Years','AI-Integrated Apps','Jetpack Compose','Hilt / DI','Coroutines','MVVM','4 Countries','Znext Sol','Play Store','Clean Code','Multi-Module'];
 const mq=document.getElementById('mq1');
 const h=items.map((t,i)=>`<span class="mq-item${i%3===0?' accent':''}">${t}<span class="mq-sep"></span></span>`).join('');
 mq.innerHTML=h+h;
 
-// NAV
 function goTo(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth'})}
 const ham=document.getElementById('ham'),mob=document.getElementById('mobMenu');
 ham.addEventListener('click',()=>{ham.classList.toggle('open');mob.classList.toggle('show')});
@@ -1326,28 +1351,19 @@ window.addEventListener('scroll',()=>{
   updateNav();
 },{passive:true});
 
-// REVEAL
 const ro=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')}),{threshold:.06});
 document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
 
-// SKILL BARS
-const so=new IntersectionObserver(e=>e.forEach(x=>{
-  if(x.isIntersecting){x.target.querySelectorAll('.skill-fill').forEach(f=>f.style.width=f.dataset.w+'%');so.unobserve(x.target)}
-}),{threshold:.3});
-document.querySelectorAll('.skill-card').forEach(c=>so.observe(c));
-
-// PROJECTS
 const PROJECTS=[
   ['https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_01_ulskrt.png','https://res.cloudinary.com/dv0tole4k/image/upload/v1782009432/screen_02_djfppq.png','https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_03_rdijlu.png','https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_04_bq7y5w.png','https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_05_rjzd9f.png','https://res.cloudinary.com/dv0tole4k/image/upload/v1782009432/screen_06_jia2fn.png'],
-  ['https://res.cloudinary.com/dfyphobvp/image/upload/v1766679932/Hotpot_0_l2w3og.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766679926/Hotpot_1_hliuyc.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766679929/Hotpot_2_zcimit.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766679928/8_z2rbq7.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766679925/Hotpot_4_nkpqqk.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766679920/5_xbxjma.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766679923/6_ht6hlq.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766679923/7_vqplt3.png'],
-  ['https://res.cloudinary.com/dfyphobvp/image/upload/v1766904710/Hotpot_0_fssx5j.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904704/Hotpot_1_ufomg1.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904759/Hotpot_2_gntmqe.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904833/5_jjwioy.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904793/10_neocup.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904865/Hotpot_4_as9gxj.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904902/16_ketwjw.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904979/15_jyzu19.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904897/14_fkypvd.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904810/13_mgxjyg.png'],
-  ['https://res.cloudinary.com/dfyphobvp/image/upload/v1766245356/1_tpfh4s.jpg','https://res.cloudinary.com/dfyphobvp/image/upload/v1766245355/2_eyktwm.jpg','https://res.cloudinary.com/dfyphobvp/image/upload/v1766245356/4_tzwvfd.jpg','https://res.cloudinary.com/dfyphobvp/image/upload/v1766245355/2_eyktwm.jpg'],
-  ['https://res.cloudinary.com/dfyphobvp/image/upload/v1766299435/image1_evyhi2.jpg','https://res.cloudinary.com/dfyphobvp/image/upload/v1766299426/image2_cmfvzz.jpg','https://res.cloudinary.com/dfyphobvp/image/upload/v1766299427/image3_y1q0t8.jpg','https://res.cloudinary.com/dfyphobvp/image/upload/v1766299429/image4_bladvs.jpg','https://res.cloudinary.com/dfyphobvp/image/upload/v1766299428/image5_attcbm.jpg','https://res.cloudinary.com/dfyphobvp/image/upload/v1766299428/feedback_cg3uqe.jpg'],
-  ['https://res.cloudinary.com/dfyphobvp/image/upload/v1766314769/Hotpot_0_ifzlid.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766314783/Hotpot_1_lohei7.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_2_otsuph.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766314789/Hotpot_3_jkpu6m.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_4_j2whmh.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766314770/Hotpot_5_haecbc.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766314786/Hotpot_7_ufvib0.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766314774/Hotpot_8_lcvlaq.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766314779/Hotpot_9_gf9kmm.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766314783/Hotpot_10_o4jvyr.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_6_v5kdw9.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766314784/Hotpot_12_ekralz.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766314787/Hotpot_14_ajoiu0.png'],
-  ['https://res.cloudinary.com/dfyphobvp/image/upload/v1766295807/image1_wag1eg.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766295807/image2_u1t5jb.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766295807/image3_wsncz2.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766295806/image5_ulrmll.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766295806/image4_sugwwe.png']
+  ['https://res.cloudinary.com/dfyphobvp/image/upload/v1766679932/Hotpot_0_l2w3og.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766679926/Hotpot_1_hliuyc.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766679929/Hotpot_2_zcimit.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766679928/8_z2rbq7.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766679925/Hotpot_4_nkpqqk.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766679920/5_xbxjma.png'],
+  ['https://res.cloudinary.com/dfyphobvp/image/upload/v1766904710/Hotpot_0_fssx5j.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904704/Hotpot_1_ufomg1.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904759/Hotpot_2_gntmqe.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904833/5_jjwioy.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904793/10_neocup.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904865/Hotpot_4_as9gxj.png'],
+  ['https://res.cloudinary.com/dfyphobvp/image/upload/v1766314769/Hotpot_0_ifzlid.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766314783/Hotpot_1_lohei7.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_2_otsuph.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766314789/Hotpot_3_jkpu6m.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_4_j2whmh.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766314770/Hotpot_5_haecbc.png'],
+  ['https://placehold.co/400x866/0e1522/00e5ff?text=PulsePoint+1&font=roboto','https://placehold.co/400x866/0e1522/00e5ff?text=PulsePoint+2&font=roboto','https://placehold.co/400x866/0e1522/00e5ff?text=PulsePoint+3&font=roboto','https://placehold.co/400x866/0e1522/00e5ff?text=PulsePoint+4&font=roboto'],
+  ['https://placehold.co/400x866/0e1522/c6ff00?text=AcciControl+1&font=roboto','https://placehold.co/400x866/0e1522/c6ff00?text=AcciControl+2&font=roboto','https://placehold.co/400x866/0e1522/c6ff00?text=AcciControl+3&font=roboto'],
+  ['https://placehold.co/400x866/0e1522/00e5ff?text=Znext+Sol+1&font=roboto','https://placehold.co/400x866/0e1522/00e5ff?text=Znext+Sol+2&font=roboto']
 ];
 
-// MODAL
 let curProj=0,curIdx=0,scale=1,pos={x:0,y:0},drag=false,dragFrom={x:0,y:0},lastDist=null;
 function openModal(proj,idx){curProj=proj;curIdx=idx;scale=1;pos={x:0,y:0};loadModalImg();document.getElementById('modal').classList.add('on');document.body.style.overflow='hidden'}
 function loadModalImg(){
