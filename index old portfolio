@@ -24,9 +24,9 @@
   --lime:  #c6ff00;
   --green: #00ff88;
 
-  --text-hi:  #edf2ff;
-  --text-mid: #8fa3bc;
-  --text-lo:  #4f6278;
+  --text-hi:  #ffffff;
+  --text-mid: #c8d3e3;
+  --text-lo:  #a3b2c9;
 
   --bdr:  rgba(0,229,255,0.10);
   --bdr2: rgba(0,229,255,0.22);
@@ -775,9 +775,9 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
         <span class="eyebrow-txt">Available for hire</span>
       </div>
       <h1 class="hero-h1">
-        <span class="line"><span class="w">Elite</span></span>
         <span class="line"><span class="w">Android</span></span>
         <span class="line"><span class="w">Engineer</span></span>
+        <span class="line"><span class="w">Kotlin</span></span>
       </h1>
       <p class="hero-desc">
         Transforming ideas into <strong>production-ready apps</strong> with exceptional
@@ -798,10 +798,10 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
       <div class="hero-stats-card">
         <div class="card-head-label">Career Overview</div>
         <div class="stats-2x2">
-          <div class="stat-cell"><div class="stat-num">3<span>+</span></div><div class="stat-label">Years Experience</div></div>
-          <div class="stat-cell"><div class="stat-num">25<span>+</span></div><div class="stat-label">Projects Delivered</div></div>
+          <div class="stat-cell"><div class="stat-num">2.5<span>yr</span></div><div class="stat-label">Professional Experience</div></div>
+          <div class="stat-cell"><div class="stat-num">7</div><div class="stat-label">Apps Shipped</div></div>
           <div class="stat-cell"><div class="stat-num">4</div><div class="stat-label">Countries Deployed</div></div>
-          <div class="stat-cell"><div class="stat-num">99<span>%</span></div><div class="stat-label">Client Satisfaction</div></div>
+          <div class="stat-cell"><div class="stat-num">40<span>%</span></div><div class="stat-label">Gradle Build Time Cut</div></div>
         </div>
         <div class="tech-chips">
           <span class="tech-chip">Kotlin</span>
@@ -839,7 +839,7 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
         </div>
         <h2 class="sec-h2">Passionate About<br><span class="hi">Creating Impact</span></h2>
         <br>
-        <p>With over <strong>3 years of experience</strong> in Android development, I specialize in crafting high-performance, scalable applications that serve thousands of users worldwide. My expertise spans modern UI development with <strong>Jetpack Compose</strong> to complex backend integrations and performance optimization.</p>
+        <p>With <strong>2.5 years of experience</strong> in Android development, I specialize in crafting high-performance, scalable applications. My expertise spans modern UI development with <strong>Jetpack Compose</strong> to complex backend integrations and performance optimization.</p>
         <p>I believe in writing clean, maintainable code and following industry best practices. Every project is an opportunity to push boundaries and deliver exceptional results — from enterprise-grade multi-country deployments to consumer apps on the Play Store.</p>
       </div>
       <div class="rev d2">
@@ -848,14 +848,14 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
             <div class="id-avatar">ZH</div>
             <div>
               <div class="id-name">Zameer Hussain</div>
-              <div class="id-role">Senior Android Developer</div>
+              <div class="id-role">Android Developer</div>
             </div>
           </div>
           <div class="id-rows">
-            <div class="id-row"><span class="id-k">Experience</span><span class="id-v">3+ Years</span></div>
+            <div class="id-row"><span class="id-k">Experience</span><span class="id-v">2.5 Years</span></div>
             <div class="id-row"><span class="id-k">Specialization</span><span class="id-v">Android / Kotlin</span></div>
-            <div class="id-row"><span class="id-k">Users Served</span><span class="id-v">10,000+</span></div>
-            <div class="id-row"><span class="id-k">Projects</span><span class="id-v">25+ Delivered</span></div>
+            <div class="id-row"><span class="id-k">Deployment</span><span class="id-v">4 Countries</span></div>
+            <div class="id-row"><span class="id-k">Apps Shipped</span><span class="id-v">7 Projects</span></div>
           </div>
         </div>
         <div class="avail-badge">
@@ -878,44 +878,44 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
       <div class="skill-card rev">
         <div class="skill-icon"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
         <div class="skill-name">Kotlin</div>
-        <div class="skill-desc">Expert in Kotlin with 3+ years building production apps</div>
-        <div class="skill-bar-row"><span class="skill-bar-lbl">Proficiency</span><span class="skill-bar-pct">98%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-w="98"></div></div>
+        <div class="skill-desc">Expert in Kotlin, primary language across all production apps</div>
+        <div class="skill-bar-row"><span class="skill-bar-lbl">Proficiency</span><span class="skill-bar-pct">95%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-w="95"></div></div>
       </div>
       <div class="skill-card rev d1">
         <div class="skill-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
         <div class="skill-name">Jetpack Compose</div>
         <div class="skill-desc">Building modern declarative UIs with fluid animations</div>
-        <div class="skill-bar-row"><span class="skill-bar-lbl">Proficiency</span><span class="skill-bar-pct">95%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-w="95"></div></div>
+        <div class="skill-bar-row"><span class="skill-bar-lbl">Proficiency</span><span class="skill-bar-pct">85%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-w="85"></div></div>
       </div>
       <div class="skill-card rev d2">
         <div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-        <div class="skill-name">MVVM / MVI Architecture</div>
+        <div class="skill-name">MVVM / Clean Architecture</div>
         <div class="skill-desc">Scalable, testable, and maintainable app architectures</div>
-        <div class="skill-bar-row"><span class="skill-bar-lbl">Proficiency</span><span class="skill-bar-pct">96%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-w="96"></div></div>
+        <div class="skill-bar-row"><span class="skill-bar-lbl">Proficiency</span><span class="skill-bar-pct">92%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-w="92"></div></div>
       </div>
       <div class="skill-card rev">
         <div class="skill-icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></div>
         <div class="skill-name">Performance Optimization</div>
-        <div class="skill-desc">Memory &amp; battery optimization for blazing-fast apps</div>
-        <div class="skill-bar-row"><span class="skill-bar-lbl">Proficiency</span><span class="skill-bar-pct">94%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-w="94"></div></div>
+        <div class="skill-desc">Build-time and runtime optimization for production apps</div>
+        <div class="skill-bar-row"><span class="skill-bar-lbl">Proficiency</span><span class="skill-bar-pct">90%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-w="90"></div></div>
       </div>
       <div class="skill-card rev d1">
         <div class="skill-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
         <div class="skill-name">Room / Coroutines / Flow</div>
         <div class="skill-desc">Async data management and reactive programming</div>
-        <div class="skill-bar-row"><span class="skill-bar-lbl">Proficiency</span><span class="skill-bar-pct">97%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-w="97"></div></div>
+        <div class="skill-bar-row"><span class="skill-bar-lbl">Proficiency</span><span class="skill-bar-pct">93%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-w="93"></div></div>
       </div>
       <div class="skill-card rev d2">
         <div class="skill-icon"><svg viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></div>
         <div class="skill-name">CI/CD &amp; Testing</div>
-        <div class="skill-desc">Automated testing pipelines &amp; continuous deployment</div>
-        <div class="skill-bar-row"><span class="skill-bar-lbl">Proficiency</span><span class="skill-bar-pct">93%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-w="93"></div></div>
+        <div class="skill-desc">JUnit, Espresso, and Gradle build pipeline optimization</div>
+        <div class="skill-bar-row"><span class="skill-bar-lbl">Proficiency</span><span class="skill-bar-pct">85%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-w="85"></div></div>
       </div>
     </div>
   </div>
@@ -926,35 +926,67 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
   <div class="wrap">
     <div class="sec-label rev"><span class="sec-label-num">03</span><span class="sec-label-line"></span><span class="sec-label-text">Portfolio</span></div>
     <h2 class="sec-h2 rev">Featured <span class="hi">Projects</span></h2>
-    <p class="sec-p rev">Production apps serving thousands of users with exceptional performance and UX.</p>
+    <p class="sec-p rev">Production apps built and shipped across freelance, agency, and independent work.</p>
     <br><br>
 
     <!-- Project 1 -->
     <div class="proj-card rev" data-proj="0">
       <div class="proj-header">
         <div>
-          <div class="proj-index">PROJECT 01 / POSTIFY</div>
-          <h3 class="proj-title">Postify — AI-Powered LinkedIn Growth App</h3>
-          <p class="proj-desc">Postify is an AI-powered LinkedIn growth platform that helps professionals stand out, grow faster, and turn visibility into real opportunities. Combines profile optimization, AI content creation, smart scheduling, and performance analytics. Users upload their resume to instantly generate an ATS-optimized LinkedIn profile, while the AI engine creates high-quality posts and outreach messages. <a href="https://play.google.com/store/apps/details?id=com.postify.app.free&hl=en" target="_blank" rel="noopener">View on Play Store →</a></p>
-          <div class="proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">AI Integration</span><span class="proj-tag">Hilt</span><span class="proj-tag">Firebase</span><span class="proj-tag">API &amp; Data Handling</span></div>
+          <div class="proj-index">PROJECT 01 / SPEAKMATE</div>
+          <h3 class="proj-title">SpeakMate — AI English Speaking Practice</h3>
+          <p class="proj-desc">An AI-powered English speaking coach. Users practice real spoken conversations — IELTS prep, job interviews, business English, travel, daily conversation — and get instant AI feedback on grammar, pronunciation, vocabulary, and fluency after every sentence. Supports multiple English accents (American, British, Indian) and tracks fluency progress over time with streaks and achievements. Built the full conversation loop, AI feedback pipeline, and a custom skill-progress chart with gradient fills and proportional bar layout.</p>
+          <div class="proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">OpenAI API</span><span class="proj-tag">Google WaveNet TTS</span><span class="proj-tag">AdMob</span><span class="proj-tag">Firebase Analytics</span><span class="proj-tag">Custom Canvas Views</span></div>
         </div>
         <div class="proj-metrics-col">
-          <div class="metric-pill"><div class="metric-val">99%</div><div class="metric-key">Stability</div></div>
           <div class="metric-pill"><div class="metric-val">Live</div><div class="metric-key">Play Store</div></div>
+          <div class="metric-pill"><div class="metric-val">Solo</div><div class="metric-key">Built</div></div>
           <div class="metric-pill"><div class="metric-val">AI</div><div class="metric-key">Powered</div></div>
         </div>
       </div>
       <div class="proj-screens-section">
         <div class="screens-label">App Screens — Tap to preview</div>
         <div class="screens-dock">
-          <div class="phone-frame" onclick="openModal(0,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679932/Hotpot_0_l2w3og.png" alt="Postify 1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(0,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679926/Hotpot_1_hliuyc.png" alt="Postify 2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(0,2)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679929/Hotpot_2_zcimit.png" alt="Postify 3" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(0,3)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679928/8_z2rbq7.png" alt="Postify 4" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(0,4)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679925/Hotpot_4_nkpqqk.png" alt="Postify 5" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(0,5)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679920/5_xbxjma.png" alt="Postify 6" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(0,6)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679923/6_ht6hlq.png" alt="Postify 7" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(0,7)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679923/7_vqplt3.png" alt="Postify 8" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(0,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_01_ulskrt.png" alt="SpeakMate 1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(0,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dv0tole4k/image/upload/v1782009432/screen_02_djfppq.png" alt="SpeakMate 2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(0,2)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_03_rdijlu.png" alt="SpeakMate 3" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(0,3)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_04_bq7y5w.png" alt="SpeakMate 4" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(0,4)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_05_rjzd9f.png" alt="SpeakMate 5" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(0,5)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dv0tole4k/image/upload/v1782009432/screen_06_jia2fn.png" alt="SpeakMate 6" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+        </div>
+      </div>
+      <div class="proj-details-row">
+        <div><div class="det-heading">Key Features</div><ul class="det-list"><li>Real-time AI conversation practice</li><li>Instant feedback: grammar, pronunciation, vocabulary, fluency</li><li>Multiple English accents (US / UK / Indian)</li><li>Progress tracking, streaks &amp; achievements</li></ul></div>
+        <div><div class="det-heading">Highlights</div><ul class="det-list"><li>OpenAI API + WaveNet TTS pipeline</li><li>No account required, no audio stored</li><li>Custom skill-progress chart widget</li><li>AdMob monetization integrated</li></ul></div>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="proj-card rev" data-proj="1">
+      <div class="proj-header">
+        <div>
+          <div class="proj-index">PROJECT 02 / POSTIFY</div>
+          <h3 class="proj-title">Postify — AI-Powered LinkedIn Growth App</h3>
+          <p class="proj-desc">Postify is an AI-powered LinkedIn growth platform that helps professionals stand out, grow faster, and turn visibility into real opportunities. Combines profile optimization, AI content creation, smart scheduling, and performance analytics. Users upload their resume to instantly generate an ATS-optimized LinkedIn profile, while the AI engine creates high-quality posts and outreach messages. <a href="https://play.google.com/store/apps/details?id=com.postify.app.free&hl=en" target="_blank" rel="noopener">View on Play Store →</a></p>
+          <div class="proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">AI Integration</span><span class="proj-tag">Hilt</span><span class="proj-tag">Firebase</span><span class="proj-tag">API &amp; Data Handling</span></div>
+        </div>
+        <div class="proj-metrics-col">
+          <div class="metric-pill"><div class="metric-val">Live</div><div class="metric-key">Play Store</div></div>
+          <div class="metric-pill"><div class="metric-val">Solo</div><div class="metric-key">Built</div></div>
+          <div class="metric-pill"><div class="metric-val">AI</div><div class="metric-key">Powered</div></div>
+        </div>
+      </div>
+      <div class="proj-screens-section">
+        <div class="screens-label">App Screens — Tap to preview</div>
+        <div class="screens-dock">
+          <div class="phone-frame" onclick="openModal(1,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679932/Hotpot_0_l2w3og.png" alt="Postify 1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(1,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679926/Hotpot_1_hliuyc.png" alt="Postify 2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(1,2)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679929/Hotpot_2_zcimit.png" alt="Postify 3" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(1,3)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679928/8_z2rbq7.png" alt="Postify 4" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(1,4)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679925/Hotpot_4_nkpqqk.png" alt="Postify 5" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(1,5)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679920/5_xbxjma.png" alt="Postify 6" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(1,6)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679923/6_ht6hlq.png" alt="Postify 7" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(1,7)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679923/7_vqplt3.png" alt="Postify 8" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
         </div>
       </div>
       <div class="proj-details-row">
@@ -964,95 +996,95 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
     </div>
 
     <!-- Project 2 -->
-    <div class="proj-card rev" data-proj="1">
+    <div class="proj-card rev" data-proj="2">
       <div class="proj-header">
         <div>
           <div class="proj-index">PROJECT 02 / ENTERPRISE</div>
-          <h3 class="proj-title">Unilever Enterprise Suite: Powering 4-Country Operations</h3>
-          <p class="proj-desc">Engineered mission-critical Android applications trusted by Unilever across Pakistan, Bangladesh, Thailand, and the Philippines — handling millions in daily transactions. Built an enterprise-grade, multi-app ecosystem that revolutionized Unilever's supply chain operations. From warehouse floors to customer doorsteps, these apps orchestrate seamless logistics across international markets.</p>
-          <div class="proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">AI Integration</span><span class="proj-tag">Hilt</span><span class="proj-tag">Firebase</span><span class="proj-tag">Multi-Module</span></div>
+          <h3 class="proj-title">Unilever Enterprise Suite: 4-Country Operations</h3>
+          <p class="proj-desc">Built Android applications for Unilever deployed across Pakistan, Bangladesh, Thailand, and the Philippines as part of an enterprise-grade, multi-app ecosystem supporting Unilever's supply chain operations — from warehouse floors to customer doorsteps, orchestrating logistics across international markets.</p>
+          <div class="proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">Hilt</span><span class="proj-tag">Firebase</span><span class="proj-tag">Multi-Module</span></div>
         </div>
         <div class="proj-metrics-col">
           <div class="metric-pill"><div class="metric-val">4</div><div class="metric-key">Countries</div></div>
-          <div class="metric-pill"><div class="metric-val">99.5%</div><div class="metric-key">Crash-Free</div></div>
-          <div class="metric-pill"><div class="metric-val">2s</div><div class="metric-key">Load Time</div></div>
+          <div class="metric-pill"><div class="metric-val">40%</div><div class="metric-key">Build Time Cut</div></div>
+          <div class="metric-pill"><div class="metric-val">3x</div><div class="metric-key">Faster Migration</div></div>
         </div>
       </div>
       <div class="proj-screens-section">
         <div class="screens-label">App Screens — Tap to preview</div>
         <div class="screens-dock">
-          <div class="phone-frame" onclick="openModal(1,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904710/Hotpot_0_fssx5j.png" alt="U1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(1,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904704/Hotpot_1_ufomg1.png" alt="U2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(1,2)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904759/Hotpot_2_gntmqe.png" alt="U3" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(1,3)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904833/5_jjwioy.png" alt="U4" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(1,4)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904793/10_neocup.png" alt="U5" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(1,5)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904865/Hotpot_4_as9gxj.png" alt="U6" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(1,6)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904902/16_ketwjw.png" alt="U7" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(1,7)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904979/15_jyzu19.png" alt="U8" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(1,8)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904897/14_fkypvd.png" alt="U9" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(1,9)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904810/13_mgxjyg.png" alt="U10" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(2,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904710/Hotpot_0_fssx5j.png" alt="U1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(2,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904704/Hotpot_1_ufomg1.png" alt="U2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(2,2)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904759/Hotpot_2_gntmqe.png" alt="U3" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(2,3)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904833/5_jjwioy.png" alt="U4" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(2,4)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904793/10_neocup.png" alt="U5" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(2,5)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904865/Hotpot_4_as9gxj.png" alt="U6" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(2,6)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904902/16_ketwjw.png" alt="U7" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(2,7)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904979/15_jyzu19.png" alt="U8" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(2,8)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904897/14_fkypvd.png" alt="U9" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(2,9)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904810/13_mgxjyg.png" alt="U10" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
         </div>
       </div>
       <div class="proj-details-row">
         <div><div class="det-heading">Key Features</div><ul class="det-list"><li>Multi-Country Operations</li><li>Complete Enterprise Suite</li><li>Offline-First Architecture</li><li>Enterprise Security</li></ul></div>
-        <div><div class="det-heading">Highlights</div><ul class="det-list"><li>15+ Build Flavors</li><li>99.5% Crash-Free Rate</li><li>Weekly Multi-Country Releases</li><li>70% Faster Deployments</li></ul></div>
+        <div><div class="det-heading">Highlights</div><ul class="det-list"><li>Multiple Build Flavors</li><li>40% Faster Gradle Builds</li><li>Java-to-Kotlin Migration, 3x Ahead of Schedule</li><li>Multi-Country Release Pipeline</li></ul></div>
       </div>
     </div>
 
     <!-- Project 3 -->
-    <div class="proj-card rev" data-proj="2">
+    <div class="proj-card rev" data-proj="3">
       <div class="proj-header">
         <div>
           <div class="proj-index">PROJECT 03 / CONSUMER APP</div>
           <h3 class="proj-title">Recipe Expert</h3>
           <p class="proj-desc">A smart cooking companion for home cooks and food enthusiasts. Offers a rich collection of recipes from multiple cuisines, with ingredient-based search to reduce food waste. Users get personalized recommendations, step-by-step instructions, and can upload or share their own recipes. <a href="https://play.google.com/store/apps/details?id=com.hamzadev.recipeexpert" target="_blank" rel="noopener">View on Play Store →</a></p>
-          <div class="proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">ML Kit</span><span class="proj-tag">WorkManager</span><span class="proj-tag">Retrofit</span><span class="proj-tag">Firebase</span><span class="proj-tag">Hilt</span></div>
+          <div class="proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">WorkManager</span><span class="proj-tag">Retrofit</span><span class="proj-tag">Firebase</span><span class="proj-tag">Hilt</span></div>
         </div>
         <div class="proj-metrics-col">
-          <div class="metric-pill"><div class="metric-val">1000+</div><div class="metric-key">Recipes</div></div>
-          <div class="metric-pill"><div class="metric-val">4.2★</div><div class="metric-key">Rating</div></div>
           <div class="metric-pill"><div class="metric-val">Live</div><div class="metric-key">Play Store</div></div>
+          <div class="metric-pill"><div class="metric-val">Multi</div><div class="metric-key">Cuisine</div></div>
+          <div class="metric-pill"><div class="metric-val">Hilt</div><div class="metric-key">DI</div></div>
         </div>
       </div>
       <div class="proj-screens-section">
         <div class="screens-label">App Screens — Tap to preview</div>
         <div class="screens-dock">
-          <div class="phone-frame" onclick="openModal(2,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766245356/1_tpfh4s.jpg" alt="R1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(2,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766245355/2_eyktwm.jpg" alt="R2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(2,2)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766245356/4_tzwvfd.jpg" alt="R3" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(2,3)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766245355/2_eyktwm.jpg" alt="R4" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(3,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766245356/1_tpfh4s.jpg" alt="R1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(3,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766245355/2_eyktwm.jpg" alt="R2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(3,2)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766245356/4_tzwvfd.jpg" alt="R3" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(3,3)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766245355/2_eyktwm.jpg" alt="R4" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
         </div>
       </div>
       <div class="proj-details-row">
         <div><div class="det-heading">Key Features</div><ul class="det-list"><li>Recipe Discovery</li><li>Personalized Experience</li><li>Step-by-Step Guidance</li><li>Community Features</li></ul></div>
-        <div><div class="det-heading">Highlights</div><ul class="det-list"><li>Firebase Backend</li><li>Machine Learning Integration</li><li>Advanced Search Algorithm</li><li>Kotlin &amp; Jetpack</li></ul></div>
+        <div><div class="det-heading">Highlights</div><ul class="det-list"><li>Firebase Backend</li><li>Ingredient-Based Search</li><li>Kotlin &amp; Jetpack</li><li>Clean UI</li></ul></div>
       </div>
     </div>
 
     <!-- Project 4 -->
-    <div class="proj-card rev" data-proj="3">
+    <div class="proj-card rev" data-proj="4">
       <div class="proj-header">
         <div>
           <div class="proj-index">PROJECT 04 / B2B TOOL</div>
           <h3 class="proj-title">Shop Tracking</h3>
           <p class="proj-desc">A comprehensive solution designed to monitor and analyze the progress of distributors and shops effectively. Allows administrators to track distributor activities including shop visits, task completion, and overall performance. Provides real-time insights into shop-specific metrics ensuring better visibility into operations.</p>
-          <div class="proj-tags"><span class="proj-tag">Android</span><span class="proj-tag">Geolocation</span><span class="proj-tag">Data Visualization</span><span class="proj-tag">Cloud Backend</span><span class="proj-tag">RESTful API</span><span class="proj-tag">Material Design</span></div>
+          <div class="proj-tags"><span class="proj-tag">Android</span><span class="proj-tag">Geolocation</span><span class="proj-tag">Cloud Backend</span><span class="proj-tag">RESTful API</span><span class="proj-tag">Material Design</span></div>
         </div>
         <div class="proj-metrics-col">
-          <div class="metric-pill"><div class="metric-val">5k+</div><div class="metric-key">Shop Visits</div></div>
-          <div class="metric-pill"><div class="metric-val">40%</div><div class="metric-key">Time Saved</div></div>
-          <div class="metric-pill"><div class="metric-val">99.8%</div><div class="metric-key">Performance</div></div>
+          <div class="metric-pill"><div class="metric-val">Live</div><div class="metric-key">Tracking</div></div>
+          <div class="metric-pill"><div class="metric-val">Real</div><div class="metric-key">-Time Sync</div></div>
+          <div class="metric-pill"><div class="metric-val">B2B</div><div class="metric-key">Tool</div></div>
         </div>
       </div>
       <div class="proj-screens-section">
         <div class="screens-label">App Screens — Tap to preview</div>
         <div class="screens-dock">
-          <div class="phone-frame" onclick="openModal(3,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766299435/image1_evyhi2.jpg" alt="S1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(3,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766299426/image2_cmfvzz.jpg" alt="S2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(3,2)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766299427/image3_y1q0t8.jpg" alt="S3" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(3,3)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766299429/image4_bladvs.jpg" alt="S4" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(3,4)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766299428/image5_attcbm.jpg" alt="S5" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(3,5)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766299428/feedback_cg3uqe.jpg" alt="S6" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(4,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766299435/image1_evyhi2.jpg" alt="S1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(4,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766299426/image2_cmfvzz.jpg" alt="S2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(4,2)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766299427/image3_y1q0t8.jpg" alt="S3" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(4,3)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766299429/image4_bladvs.jpg" alt="S4" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(4,4)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766299428/image5_attcbm.jpg" alt="S5" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(4,5)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766299428/feedback_cg3uqe.jpg" alt="S6" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
         </div>
       </div>
       <div class="proj-details-row">
@@ -1062,36 +1094,36 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
     </div>
 
     <!-- Project 5 -->
-    <div class="proj-card rev" data-proj="4">
+    <div class="proj-card rev" data-proj="5">
       <div class="proj-header">
         <div>
           <div class="proj-index">PROJECT 05 / FIELD APPS</div>
           <h3 class="proj-title">RetailAudit &amp; MarkitSurvey — B2B Field Apps</h3>
-          <p class="proj-desc">Developed two connected Android applications for field teams conducting store audits and market surveys. Field teams needed to collect data offline and sync when internet was available. Manual data entry was consuming 15 hours weekly. Built offline-first apps with local SQLite databases, automatic sync, and JSON API integration — saving 200+ hours annually. Client: Markematics Digital (Jan 2024 – Dec 2024).</p>
+          <p class="proj-desc">Developed two connected Android applications for field teams conducting store audits and market surveys. Field teams needed to collect data offline and sync when internet was available. Built offline-first apps with local SQLite databases, automatic sync, and JSON API integration to replace manual data entry. Client: Markematics Digital (Jan 2024 – Dec 2024).</p>
           <div class="proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">Retrofit</span><span class="proj-tag">Node.js</span><span class="proj-tag">Offline-First</span><span class="proj-tag">Data Sync</span></div>
         </div>
         <div class="proj-metrics-col">
-          <div class="metric-pill"><div class="metric-val">1k+</div><div class="metric-key">Daily Syncs</div></div>
-          <div class="metric-pill"><div class="metric-val">99%</div><div class="metric-key">Accuracy</div></div>
-          <div class="metric-pill"><div class="metric-val">900hrs</div><div class="metric-key">Saved</div></div>
+          <div class="metric-pill"><div class="metric-val">2</div><div class="metric-key">Connected Apps</div></div>
+          <div class="metric-pill"><div class="metric-val">Offline</div><div class="metric-key">-First</div></div>
+          <div class="metric-pill"><div class="metric-val">1yr</div><div class="metric-key">Engagement</div></div>
         </div>
       </div>
       <div class="proj-screens-section">
         <div class="screens-label">App Screens — Tap to preview</div>
         <div class="screens-dock">
-          <div class="phone-frame" onclick="openModal(4,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314769/Hotpot_0_ifzlid.png" alt="Ra1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(4,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314783/Hotpot_1_lohei7.png" alt="Ra2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(4,2)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_2_otsuph.png" alt="Ra3" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(4,3)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314789/Hotpot_3_jkpu6m.png" alt="Ra4" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(4,4)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_4_j2whmh.png" alt="Ra5" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(4,5)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314770/Hotpot_5_haecbc.png" alt="Ra6" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(4,6)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314786/Hotpot_7_ufvib0.png" alt="Ra7" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(4,7)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314774/Hotpot_8_lcvlaq.png" alt="Ra8" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(4,8)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314779/Hotpot_9_gf9kmm.png" alt="Ra9" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(4,9)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314783/Hotpot_10_o4jvyr.png" alt="Ra10" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(4,10)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_6_v5kdw9.png" alt="Ra11" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(4,11)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314784/Hotpot_12_ekralz.png" alt="Ra12" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(4,12)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314787/Hotpot_14_ajoiu0.png" alt="Ra13" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(5,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314769/Hotpot_0_ifzlid.png" alt="Ra1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(5,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314783/Hotpot_1_lohei7.png" alt="Ra2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(5,2)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_2_otsuph.png" alt="Ra3" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(5,3)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314789/Hotpot_3_jkpu6m.png" alt="Ra4" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(5,4)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_4_j2whmh.png" alt="Ra5" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(5,5)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314770/Hotpot_5_haecbc.png" alt="Ra6" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(5,6)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314786/Hotpot_7_ufvib0.png" alt="Ra7" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(5,7)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314774/Hotpot_8_lcvlaq.png" alt="Ra8" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(5,8)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314779/Hotpot_9_gf9kmm.png" alt="Ra9" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(5,9)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314783/Hotpot_10_o4jvyr.png" alt="Ra10" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(5,10)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_6_v5kdw9.png" alt="Ra11" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(5,11)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314784/Hotpot_12_ekralz.png" alt="Ra12" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(5,12)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314787/Hotpot_14_ajoiu0.png" alt="Ra13" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
         </div>
       </div>
       <div class="proj-details-row">
@@ -1101,32 +1133,32 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
     </div>
 
     <!-- Project 6 -->
-    <div class="proj-card rev" data-proj="5">
+    <div class="proj-card rev" data-proj="6">
       <div class="proj-header">
         <div>
           <div class="proj-index">PROJECT 06 / CONSUMER APP</div>
           <h3 class="proj-title">Laugh &amp; Rhyme</h3>
-          <p class="proj-desc">Laugh &amp; Rhyme brings a world of fun and creativity to your fingertips with a wide collection of jokes, riddles, and poetry in both English and Urdu. Enjoy daily humor, challenge yourself with engaging riddles, and explore user-generated content. With AI-powered features, personalize your experience and share your own creations.</p>
+          <p class="proj-desc">Laugh &amp; Rhyme brings a world of fun and creativity to your fingertips with a wide collection of jokes, riddles, and poetry in both English and Urdu. Enjoy daily humor, challenge yourself with engaging riddles, and explore user-generated content. Includes personalization features and the ability to share your own creations.</p>
           <div class="proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">Compose</span><span class="proj-tag">JSON</span><span class="proj-tag">Hilt</span><span class="proj-tag">Room</span></div>
         </div>
         <div class="proj-metrics-col">
-          <div class="metric-pill"><div class="metric-val">1k+</div><div class="metric-key">Entries</div></div>
-          <div class="metric-pill"><div class="metric-val">99%</div><div class="metric-key">Stable</div></div>
           <div class="metric-pill"><div class="metric-val">EN+UR</div><div class="metric-key">Bilingual</div></div>
+          <div class="metric-pill"><div class="metric-val">Live</div><div class="metric-key">Play Store</div></div>
+          <div class="metric-pill"><div class="metric-val">Room</div><div class="metric-key">+ Hilt</div></div>
         </div>
       </div>
       <div class="proj-screens-section">
         <div class="screens-label">App Screens — Tap to preview</div>
         <div class="screens-dock">
-          <div class="phone-frame" onclick="openModal(5,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766295807/image1_wag1eg.png" alt="L1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(5,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766295807/image2_u1t5jb.png" alt="L2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(5,2)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766295807/image3_wsncz2.png" alt="L3" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(5,3)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766295806/image5_ulrmll.png" alt="L4" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(5,4)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766295806/image4_sugwwe.png" alt="L5" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(6,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766295807/image1_wag1eg.png" alt="L1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(6,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766295807/image2_u1t5jb.png" alt="L2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(6,2)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766295807/image3_wsncz2.png" alt="L3" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(6,3)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766295806/image5_ulrmll.png" alt="L4" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+          <div class="phone-frame" onclick="openModal(6,4)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766295806/image4_sugwwe.png" alt="L5" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
         </div>
       </div>
       <div class="proj-details-row">
-        <div><div class="det-heading">Key Features</div><ul class="det-list"><li>Bilingual Support (EN &amp; UR)</li><li>AI-Powered Personalization</li><li>Extensive Content Library</li><li>Social Sharing &amp; Bookmarks</li></ul></div>
+        <div><div class="det-heading">Key Features</div><ul class="det-list"><li>Bilingual Support (EN &amp; UR)</li><li>Personalization</li><li>Extensive Content Library</li><li>Social Sharing &amp; Bookmarks</li></ul></div>
         <div><div class="det-heading">Highlights</div><ul class="det-list"><li>Offline-First Architecture</li><li>Material Design 3</li><li>JSON Data Parsing</li><li>Smooth Animations</li></ul></div>
       </div>
     </div>
@@ -1136,34 +1168,34 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
 <!-- IMPACT -->
 <section id="impact">
   <div class="wrap">
-    <div class="sec-label rev"><span class="sec-label-num">04</span><span class="sec-label-line"></span><span class="sec-label-text">Achievements</span></div>
-    <h2 class="sec-h2 rev">Industry <span class="hi">Impact</span></h2>
-    <p class="sec-p rev">Recognition and achievements in the Android development community.</p>
+    <div class="sec-label rev"><span class="sec-label-num">04</span><span class="sec-label-line"></span><span class="sec-label-text">Highlights</span></div>
+    <h2 class="sec-h2 rev">Career <span class="hi">Highlights</span></h2>
+    <p class="sec-p rev">Milestones from enterprise and independent Android work.</p>
     <br><br>
     <div class="impact-grid">
       <div class="impact-card rev">
         <div class="impact-icon-wrap"><svg viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></div>
         <div class="impact-year">2026</div>
-        <div class="impact-title">Android UI Performance</div>
-        <div class="impact-desc">Jetpack Compose Performance Optimization</div>
+        <div class="impact-title">Independent Shipping</div>
+        <div class="impact-desc">Two apps self-published end-to-end on Play Store</div>
       </div>
       <div class="impact-card rev d1">
         <div class="impact-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-        <div class="impact-year">2025</div>
+        <div class="impact-year">2024 – 2025</div>
         <div class="impact-title">4-Country Deployment</div>
         <div class="impact-desc">Pakistan, Bangladesh, Thailand, Philippines</div>
       </div>
       <div class="impact-card rev d2">
         <div class="impact-icon-wrap"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-        <div class="impact-year">2026</div>
-        <div class="impact-title">Top 1% Developer</div>
-        <div class="impact-desc">Android dev community recognition</div>
+        <div class="impact-year">2024</div>
+        <div class="impact-title">Java-to-Kotlin Migration</div>
+        <div class="impact-desc">Completed 3x ahead of schedule</div>
       </div>
       <div class="impact-card rev d3">
         <div class="impact-icon-wrap"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <div class="impact-year">2020 – 2026</div>
-        <div class="impact-title">3+ Years Experience</div>
-        <div class="impact-desc">Building production apps</div>
+        <div class="impact-year">2023 – 2026</div>
+        <div class="impact-title">2.5+ Years Experience</div>
+        <div class="impact-desc">Building production Android apps</div>
       </div>
     </div>
   </div>
@@ -1173,8 +1205,8 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
 <section id="testimonials">
   <div class="wrap">
     <div class="sec-label rev"><span class="sec-label-num">05</span><span class="sec-label-line"></span><span class="sec-label-text">Testimonials</span></div>
-    <h2 class="sec-h2 rev">Client <span class="hi">Success Stories</span></h2>
-    <p class="sec-p rev">Trusted by companies worldwide to deliver exceptional results.</p>
+    <h2 class="sec-h2 rev">Client <span class="hi">Feedback</span></h2>
+    <p class="sec-p rev">What people I've worked with have said.</p>
     <br><br>
     <div class="testi-grid">
       <div class="testi-card rev">
@@ -1208,8 +1240,8 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
       </div>
       <div class="cta-box">
         <div class="cta-glow"></div>
-        <h2 class="cta-h2">Let's Build Something<br><span class="hi">Exceptional</span></h2>
-        <p class="cta-p">Available for consulting, technical leadership roles, and ambitious Android projects.</p>
+        <h2 class="cta-h2">Let's Build Something<br><span class="hi">Together</span></h2>
+        <p class="cta-p">Available for remote contract work, consulting, and Android development roles.</p>
         <div class="cta-links">
           <a href="mailto:droidgenius778@gmail.com" class="clink clink-main">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -1226,7 +1258,7 @@ footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-siz
         </div>
       </div>
     </div>
-    <footer>© 2025 Zameer Hussain · Android Developer · Crafted with precision</footer>
+    <footer>© 2026 Zameer Hussain · Android Developer · Karachi, Pakistan</footer>
   </div>
 </section>
 
@@ -1269,7 +1301,7 @@ document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
 (function ac(){if(cur){cur.style.left=mx+'px';cur.style.top=my+'px'}rx+=(mx-rx)*.11;ry+=(my-ry)*.11;if(ring){ring.style.left=rx+'px';ring.style.top=ry+'px'}requestAnimationFrame(ac)})();
 
 // MARQUEE
-const items=['Kotlin Expert','3+ Years','Android Dev','Jetpack Compose','Hilt / DI','Coroutines','MVVM / MVI','4 Countries','Enterprise Apps','Play Store','99% Satisfaction','Clean Code'];
+const items=['Kotlin','2.5 Years','Android Dev','Jetpack Compose','Hilt / DI','Coroutines','MVVM','4 Countries','Enterprise Apps','Play Store','Clean Code','Multi-Module'];
 const mq=document.getElementById('mq1');
 const h=items.map((t,i)=>`<span class="mq-item${i%3===0?' accent':''}">${t}<span class="mq-sep"></span></span>`).join('');
 mq.innerHTML=h+h;
@@ -1306,6 +1338,7 @@ document.querySelectorAll('.skill-card').forEach(c=>so.observe(c));
 
 // PROJECTS
 const PROJECTS=[
+  ['https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_01_ulskrt.png','https://res.cloudinary.com/dv0tole4k/image/upload/v1782009432/screen_02_djfppq.png','https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_03_rdijlu.png','https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_04_bq7y5w.png','https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_05_rjzd9f.png','https://res.cloudinary.com/dv0tole4k/image/upload/v1782009432/screen_06_jia2fn.png'],
   ['https://res.cloudinary.com/dfyphobvp/image/upload/v1766679932/Hotpot_0_l2w3og.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766679926/Hotpot_1_hliuyc.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766679929/Hotpot_2_zcimit.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766679928/8_z2rbq7.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766679925/Hotpot_4_nkpqqk.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766679920/5_xbxjma.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766679923/6_ht6hlq.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766679923/7_vqplt3.png'],
   ['https://res.cloudinary.com/dfyphobvp/image/upload/v1766904710/Hotpot_0_fssx5j.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904704/Hotpot_1_ufomg1.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904759/Hotpot_2_gntmqe.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904833/5_jjwioy.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904793/10_neocup.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904865/Hotpot_4_as9gxj.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904902/16_ketwjw.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904979/15_jyzu19.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904897/14_fkypvd.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904810/13_mgxjyg.png'],
   ['https://res.cloudinary.com/dfyphobvp/image/upload/v1766245356/1_tpfh4s.jpg','https://res.cloudinary.com/dfyphobvp/image/upload/v1766245355/2_eyktwm.jpg','https://res.cloudinary.com/dfyphobvp/image/upload/v1766245356/4_tzwvfd.jpg','https://res.cloudinary.com/dfyphobvp/image/upload/v1766245355/2_eyktwm.jpg'],
