@@ -18,17 +18,17 @@
   --ink-soft:#B7B0C6;
   --ink-faint:#7C7590;
   --line:rgba(255,255,255,.09);
-  --line-strong:rgba(255,255,255,.16);
+  --line-strong:rgba(255,255,255,.18);
 
   --amber:#FF8A3D;
   --amber-soft:rgba(255,138,61,.14);
   --violet:#8B5CF6;
   --violet-soft:rgba(139,92,246,.16);
   --grad: linear-gradient(120deg,var(--amber),var(--violet));
+  --grad-conic: conic-gradient(from 0deg, var(--amber), var(--violet), var(--amber));
 
   --display:'Space Grotesk',sans-serif;
   --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-
   --ease:cubic-bezier(.16,1,.3,1);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -48,17 +48,19 @@ a{color:inherit}
 section{padding:120px 0;position:relative}
 @media(max-width:720px){.wrap{padding:0 22px}section{padding:76px 0}}
 
-.noise{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.35;mix-blend-mode:overlay;
+.noise{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.3;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
 }
+
+#topProg{position:fixed;top:0;left:0;height:2px;background:var(--grad);z-index:1000;width:0%;transition:width .1s linear}
 
 /* ---------- nav ---------- */
 header{position:sticky;top:0;z-index:500;background:rgba(16,14,23,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
 .nav-inner{max-width:1140px;margin:0 auto;padding:0 40px;height:68px;display:flex;align-items:center;justify-content:space-between}
 .brand{font-family:var(--display);font-size:19px;font-weight:700;text-decoration:none;letter-spacing:-.01em;display:flex;align-items:center;gap:9px}
 .brand-dot{width:8px;height:8px;border-radius:50%;background:var(--grad)}
-.nav-links{display:flex;gap:8px;align-items:center}
-.nav-links a{font-size:14px;color:var(--ink-soft);text-decoration:none;padding:8px 14px;border-radius:100px;transition:color .2s,background .2s}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-links a{font-size:14px;color:var(--ink-soft);text-decoration:none;padding:8px 14px;border-radius:100px;transition:color .2s,background .2s;position:relative}
 .nav-links a:hover{color:var(--ink);background:var(--line)}
 .nav-hire{font-weight:600;color:var(--bg)!important;background:var(--amber);transition:transform .2s var(--ease),box-shadow .2s var(--ease)!important}
 .nav-hire:hover{background:var(--amber)!important;transform:translateY(-1px);box-shadow:0 8px 22px rgba(255,138,61,.35)}
@@ -72,7 +74,7 @@ header{position:sticky;top:0;z-index:500;background:rgba(16,14,23,.72);backdrop-
 /* ---------- hero ---------- */
 #hero{padding-top:60px;padding-bottom:64px;overflow:hidden}
 .hero-orbs{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
-.orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;animation:drift 26s ease-in-out infinite}
+.orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;animation:drift 26s ease-in-out infinite;will-change:transform}
 .orb-1{width:420px;height:420px;background:var(--violet);top:-120px;right:-80px}
 .orb-2{width:340px;height:340px;background:var(--amber);bottom:-100px;left:-60px;animation-delay:-9s;animation-duration:22s}
 @keyframes drift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-30px) scale(1.12)}}
@@ -86,11 +88,7 @@ header{position:sticky;top:0;z-index:500;background:rgba(16,14,23,.72);backdrop-
 .pulse-dot{width:7px;height:7px;border-radius:50%;background:#4ADE80;box-shadow:0 0 0 0 rgba(74,222,128,.6);animation:ping 2s ease-out infinite}
 @keyframes ping{0%{box-shadow:0 0 0 0 rgba(74,222,128,.55)}70%{box-shadow:0 0 0 9px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
 
-.hero h1{
-  font-family:var(--display);font-weight:700;
-  font-size:clamp(38px,6vw,68px);line-height:1.05;letter-spacing:-.02em;
-  max-width:16ch;margin-bottom:28px;
-}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(38px,6vw,68px);line-height:1.05;letter-spacing:-.02em;max-width:16ch;margin-bottom:28px}
 .hero h1 .line{display:block;overflow:hidden}
 .hero h1 .line span{display:inline-block;opacity:0;transform:translateY(110%);animation:slideUp .85s var(--ease) forwards}
 .hero h1 .line:nth-child(1) span{animation-delay:.15s}
@@ -98,18 +96,16 @@ header{position:sticky;top:0;z-index:500;background:rgba(16,14,23,.72);backdrop-
 .hero h1 .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 @keyframes slideUp{to{opacity:1;transform:none}}
 
-.hero-lede{font-size:18px;color:var(--ink-soft);max-width:56ch;line-height:1.72;margin-bottom:38px;
-  opacity:0;animation:fadeUp .8s .42s var(--ease) forwards;
-}
+.hero-lede{font-size:18px;color:var(--ink-soft);max-width:58ch;line-height:1.72;margin-bottom:38px;opacity:0;animation:fadeUp .8s .42s var(--ease) forwards}
 .hero-lede strong{color:var(--ink);font-weight:600}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:64px;opacity:0;animation:fadeUp .8s .56s var(--ease) forwards}
-.btn{font-family:var(--sans);font-size:14.5px;font-weight:600;text-decoration:none;padding:14px 26px;border-radius:100px;display:inline-flex;align-items:center;gap:8px;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s;}
+.btn{font-family:var(--sans);font-size:14.5px;font-weight:600;text-decoration:none;padding:14px 26px;border-radius:100px;display:inline-flex;align-items:center;gap:8px;transition:box-shadow .25s var(--ease),background .25s;will-change:transform}
 .btn-fill{background:var(--amber);color:#1A0E00}
-.btn-fill:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 14px 34px rgba(255,138,61,.4)}
+.btn-fill:hover{box-shadow:0 14px 34px rgba(255,138,61,.4)}
 .btn-line{background:transparent;color:var(--ink);border:1px solid var(--line-strong)}
-.btn-line:hover{border-color:var(--violet);background:var(--violet-soft);transform:translateY(-2px)}
+.btn-line:hover{border-color:var(--violet);background:var(--violet-soft)}
 
 .fact-strip{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--line);opacity:0;animation:fadeUp .8s .7s var(--ease) forwards}
 .fact{flex:1 1 150px;padding:26px 26px 4px 0;border-right:1px solid var(--line)}
@@ -136,27 +132,32 @@ header{position:sticky;top:0;z-index:500;background:rgba(16,14,23,.72);backdrop-
 .about-body p{font-size:16px;color:var(--ink-soft);line-height:1.85;margin-bottom:20px}
 .about-body p strong{color:var(--ink);font-weight:600}
 
-.fact-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:border-color .3s,transform .3s var(--ease);}
+.fact-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:border-color .3s,transform .3s var(--ease)}
 .fact-card:hover{border-color:var(--line-strong);transform:translateY(-3px)}
 .fact-row{display:flex;justify-content:space-between;gap:16px;padding:16px 22px;border-bottom:1px solid var(--line);font-size:14px}
 .fact-row:last-child{border-bottom:none}
 .fact-row .k{color:var(--ink-faint)}
 .fact-row .v{color:var(--ink);font-weight:600;text-align:right}
-.avail-note{
-  margin-top:20px;padding:18px 20px;border-radius:14px;
-  background:var(--amber-soft);border:1px solid rgba(255,138,61,.28);
-  font-size:13.5px;color:#FFC08A;line-height:1.6;
-}
+.avail-note{margin-top:20px;padding:18px 20px;border-radius:14px;background:var(--amber-soft);border:1px solid rgba(255,138,61,.28);font-size:13.5px;color:#FFC08A;line-height:1.6}
 @media(max-width:840px){.about-grid{grid-template-columns:1fr;gap:40px}}
+
+/* ---------- experience timeline ---------- */
+.xp-item{position:relative;padding:0 0 44px 32px;border-left:2px solid var(--line)}
+.xp-item:last-child{padding-bottom:0}
+.xp-item::before{content:'';position:absolute;left:-7px;top:2px;width:12px;height:12px;border-radius:50%;background:var(--bg-alt);border:2px solid var(--amber)}
+.xp-top{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:4px}
+.xp-role{font-family:var(--display);font-size:19px;font-weight:700}
+.xp-date{font-size:13px;color:var(--amber);font-weight:600;white-space:nowrap}
+.xp-org{font-size:14px;color:var(--ink-faint);margin-bottom:14px}
+.xp-item ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.xp-item ul li{font-size:14.5px;color:var(--ink-soft);line-height:1.65;padding-left:16px;position:relative}
+.xp-item ul li::before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--violet)}
 
 /* ---------- skills ---------- */
 .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.skill-card{
-  padding:26px 24px;border-radius:16px;background:var(--panel);border:1px solid var(--line);
-  transition:transform .3s var(--ease),border-color .3s,box-shadow .3s;position:relative;overflow:hidden;
-}
+.skill-card{padding:26px 24px;border-radius:16px;background:var(--panel);border:1px solid var(--line);transition:transform .25s var(--ease),border-color .3s,box-shadow .3s;position:relative;overflow:hidden;transform-style:preserve-3d}
 .skill-card::before{content:'';position:absolute;inset:0;background:var(--grad);opacity:0;transition:opacity .3s;z-index:0}
-.skill-card:hover{transform:translateY(-6px);border-color:var(--line-strong);box-shadow:0 20px 44px rgba(0,0,0,.4)}
+.skill-card:hover{border-color:var(--line-strong);box-shadow:0 20px 44px rgba(0,0,0,.4)}
 .skill-card:hover::before{opacity:.06}
 .skill-card > *{position:relative;z-index:1}
 .skill-cat{font-size:12.5px;color:var(--amber);font-weight:600;letter-spacing:.02em;margin-bottom:12px}
@@ -166,11 +167,9 @@ header{position:sticky;top:0;z-index:500;background:rgba(16,14,23,.72);backdrop-
 @media(max-width:900px){.skills-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.skills-grid{grid-template-columns:1fr}}
 
-.learning-block{
-  margin-top:20px;padding:28px 30px;border-radius:16px;
-  background:linear-gradient(135deg,var(--violet-soft),var(--amber-soft));
-  border:1px solid var(--line-strong);
-}
+.learning-block{margin-top:20px;padding:2px;border-radius:17px;background:var(--grad-conic);animation:spin 6s linear infinite;position:relative}
+@keyframes spin{to{--a:360deg}}
+.learning-block-inner{background:var(--bg-alt);border-radius:15px;padding:26px 28px}
 .learning-block .lb-label{font-size:13px;color:var(--violet);font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:8px}
 .learning-block .lb-label::before{content:'◆';font-size:10px}
 .learning-block .lb-items{font-size:17px;color:var(--ink);font-weight:600;margin-bottom:6px}
@@ -178,15 +177,13 @@ header{position:sticky;top:0;z-index:500;background:rgba(16,14,23,.72);backdrop-
 
 /* ---------- case studies ---------- */
 #work{background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.case{
-  border-radius:22px;background:var(--panel);border:1px solid var(--line);
-  margin-bottom:22px;overflow:hidden;transition:border-color .35s,transform .35s var(--ease),box-shadow .35s;
-}
+.case{border-radius:22px;background:var(--panel);border:1px solid var(--line);margin-bottom:22px;overflow:hidden;transition:border-color .35s,transform .35s var(--ease),box-shadow .35s}
 .case:hover{border-color:var(--line-strong);box-shadow:0 30px 70px rgba(0,0,0,.42)}
 .case-inner{padding:40px 40px 8px}
 .case-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;margin-bottom:6px}
 .case-num{font-family:var(--display);font-size:13px;color:var(--amber);font-weight:700;letter-spacing:.06em;margin-bottom:10px}
-.case-title{font-family:var(--display);font-size:25px;font-weight:700;letter-spacing:-.01em;margin-bottom:14px}
+.case-title{font-family:var(--display);font-size:25px;font-weight:700;letter-spacing:-.01em;margin-bottom:6px}
+.case-sub{font-size:13.5px;color:var(--ink-faint);margin-bottom:14px}
 .case-badges{display:flex;gap:8px;flex-wrap:wrap}
 .badge{font-size:12px;padding:5px 12px;border-radius:100px;white-space:nowrap;font-weight:500}
 .badge-live{background:rgba(74,222,128,.14);color:#6EE7A0;border:1px solid rgba(74,222,128,.28)}
@@ -194,7 +191,14 @@ header{position:sticky;top:0;z-index:500;background:rgba(16,14,23,.72);backdrop-
 .badge-link{background:var(--violet-soft);color:#C4B0FF;text-decoration:none;border:1px solid rgba(139,92,246,.3);transition:.2s}
 .badge-link:hover{background:var(--violet);color:#fff}
 
-.case-desc{font-size:15.5px;color:var(--ink-soft);line-height:1.75;max-width:74ch;margin-bottom:28px}
+.case-desc{font-size:15.5px;color:var(--ink-soft);line-height:1.75;max-width:74ch;margin-bottom:20px}
+
+.sub-apps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px}
+.sub-app{background:var(--bg-alt2);border:1px solid var(--line);border-radius:12px;padding:16px 18px;transition:border-color .25s,transform .25s var(--ease)}
+.sub-app:hover{border-color:var(--line-strong);transform:translateY(-3px)}
+.sub-app h5{font-size:14px;font-weight:700;margin-bottom:5px}
+.sub-app p{font-size:12.5px;color:var(--ink-soft);line-height:1.55}
+@media(max-width:760px){.sub-apps{grid-template-columns:1fr}}
 
 .case-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-bottom:30px}
 .cm h4{font-size:12px;color:var(--amber);font-weight:700;margin-bottom:9px;text-transform:uppercase;letter-spacing:.04em}
@@ -208,10 +212,7 @@ header{position:sticky;top:0;z-index:500;background:rgba(16,14,23,.72);backdrop-
 .shots{display:flex;gap:14px;overflow-x:auto;padding:0 40px 32px;scrollbar-width:thin}
 .shots::-webkit-scrollbar{height:5px}
 .shots::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:4px}
-.shot{
-  flex:0 0 auto;width:150px;border-radius:14px;overflow:hidden;cursor:zoom-in;
-  border:1px solid var(--line);background:var(--bg-alt2);transition:transform .3s var(--ease),border-color .3s;
-}
+.shot{flex:0 0 auto;width:150px;border-radius:14px;overflow:hidden;cursor:zoom-in;border:1px solid var(--line);background:var(--bg-alt2);transition:transform .3s var(--ease),border-color .3s}
 .shot:hover{transform:translateY(-8px) scale(1.03);border-color:var(--violet)}
 .shot img{aspect-ratio:9/19.5;object-fit:cover;transition:transform .4s var(--ease)}
 .shot:hover img{transform:scale(1.08)}
@@ -228,16 +229,6 @@ header{position:sticky;top:0;z-index:500;background:rgba(16,14,23,.72);backdrop-
 .mini-tags{font-size:12px;color:var(--ink-faint)}
 @media(max-width:720px){.other-grid{grid-template-columns:1fr}}
 
-/* ---------- timeline ---------- */
-.timeline{position:relative;padding-left:28px}
-.timeline::before{content:'';position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--amber),var(--violet))}
-.tl-row{position:relative;padding-bottom:38px}
-.tl-row:last-child{padding-bottom:0}
-.tl-row::before{content:'';position:absolute;left:-28px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--amber);}
-.tl-date{font-size:13px;color:var(--amber);font-weight:600;margin-bottom:6px}
-.tl-title{font-size:17px;font-weight:700;margin-bottom:5px}
-.tl-desc{font-size:14.5px;color:var(--ink-soft)}
-
 /* ---------- testimonials ---------- */
 #testimonials{background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -251,18 +242,17 @@ header{position:sticky;top:0;z-index:500;background:rgba(16,14,23,.72);backdrop-
 
 /* ---------- contact ---------- */
 #contact{padding-bottom:100px}
-.contact-box{
-  border-radius:28px;padding:64px 56px;background:linear-gradient(135deg,var(--violet-soft),var(--amber-soft));
-  border:1px solid var(--line-strong);position:relative;overflow:hidden;
-}
+.contact-box{border-radius:28px;padding:64px 56px;background:linear-gradient(135deg,var(--violet-soft),var(--amber-soft));border:1px solid var(--line-strong);position:relative;overflow:hidden}
 .contact-box h2{font-family:var(--display);font-weight:700;font-size:clamp(30px,4.6vw,50px);line-height:1.1;margin-bottom:18px;letter-spacing:-.015em;max-width:14ch}
-.contact-box p{font-size:16px;color:var(--ink-soft);line-height:1.75;margin-bottom:36px;max-width:52ch}
+.contact-box p{font-size:16px;color:var(--ink-soft);line-height:1.75;margin-bottom:14px;max-width:52ch}
+.contact-direct{font-size:14.5px;color:var(--ink-soft);margin-bottom:32px}
+.contact-direct a{color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px}
 .contact-links{display:flex;gap:12px;flex-wrap:wrap}
-.clink{padding:13px 24px;border-radius:100px;font-size:14.5px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .25s var(--ease),box-shadow .25s}
+.clink{padding:13px 24px;border-radius:100px;font-size:14.5px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:box-shadow .25s}
 .clink-main{background:var(--amber);color:#1A0E00}
-.clink-main:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(255,138,61,.4)}
+.clink-main:hover{box-shadow:0 14px 32px rgba(255,138,61,.4)}
 .clink-sec{background:rgba(255,255,255,.05);color:var(--ink);border:1px solid var(--line-strong)}
-.clink-sec:hover{transform:translateY(-2px);border-color:var(--violet);background:var(--violet-soft)}
+.clink-sec:hover{border-color:var(--violet);background:var(--violet-soft)}
 @media(max-width:640px){.contact-box{padding:40px 26px}}
 
 footer{border-top:1px solid var(--line);padding:30px 0;font-size:13px;color:var(--ink-faint)}
@@ -284,21 +274,23 @@ footer{border-top:1px solid var(--line);padding:30px 0;font-size:13px;color:var(
 </head>
 <body>
 <div class="noise"></div>
+<div id="topProg"></div>
 
 <header id="siteHeader">
   <div class="nav-inner">
     <a href="#hero" class="brand"><span class="brand-dot"></span>Zameer Hussain</a>
     <nav class="nav-links">
       <a href="#about">About</a>
+      <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
       <a href="#work">Work</a>
-      <a href="#testimonials">Reviews</a>
       <a href="#contact" class="nav-hire">Hire me</a>
     </nav>
     <button class="ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
   <div class="mob-menu" id="mobMenu">
     <a href="#about">About</a>
+    <a href="#experience">Experience</a>
     <a href="#skills">Skills</a>
     <a href="#work">Work</a>
     <a href="#testimonials">Reviews</a>
@@ -314,16 +306,16 @@ footer{border-top:1px solid var(--line);padding:30px 0;font-size:13px;color:var(
       <span class="line"><span>Android apps that hold up</span></span>
       <span class="line"><span class="grad-text">in production, not demos.</span></span>
     </h1>
-    <p class="hero-lede">I'm an Android engineer with <strong>3+ years</strong> building and shipping apps — from AI-driven consumer products I've launched solo, to enterprise deployments across four countries. Founder of <strong>Znext Sol</strong>, a small studio taking on contract Android work.</p>
+    <p class="hero-lede">I'm an Android engineer with <strong>3+ years</strong> shipping production apps — including Unilever's B2B/B2C Android suite across four countries — plus two AI-powered apps I designed, built, and launched solo. Founder of <strong>Znext Sol</strong>, a small studio taking on contract Android work.</p>
     <div class="hero-actions">
-      <a href="#work" class="btn btn-fill">View case studies</a>
-      <a href="#contact" class="btn btn-line">Get in touch</a>
+      <a href="#work" class="btn btn-fill magnet">View case studies</a>
+      <a href="#contact" class="btn btn-line magnet">Get in touch</a>
     </div>
     <div class="fact-strip">
       <div class="fact"><div class="fact-num" data-count="3" data-suffix="+">0</div><div class="fact-label">Years of experience</div></div>
-      <div class="fact"><div class="fact-num" data-count="7">0</div><div class="fact-label">Apps shipped</div></div>
       <div class="fact"><div class="fact-num" data-count="4">0</div><div class="fact-label">Countries deployed</div></div>
-      <div class="fact"><div class="fact-num" data-count="40" data-suffix="%">0</div><div class="fact-label">Faster build times, one client</div></div>
+      <div class="fact"><div class="fact-num" data-count="40" data-suffix="%">0</div><div class="fact-label">Faster build times</div></div>
+      <div class="fact"><div class="fact-num" data-count="200" data-suffix="+">0</div><div class="fact-label">Eng. hours saved / year</div></div>
     </div>
   </div>
 </section>
@@ -334,18 +326,55 @@ footer{border-top:1px solid var(--line);padding:30px 0;font-size:13px;color:var(
       <div class="sec-index">About</div>
       <h2 style="font-family:var(--display);font-weight:700;font-size:clamp(26px,3.2vw,34px);margin-bottom:22px;letter-spacing:-.015em">Android engineer, specializing in AI-integrated apps</h2>
       <p>I build Android apps that plug into AI — conversational feedback loops, text-to-speech pipelines, API-driven personalization — on a foundation of Kotlin, Jetpack Compose, and clean, testable architecture.</p>
-      <p>My work spans consumer apps I've designed and shipped alone (<strong>SpeakMate</strong>, <strong>Postify</strong>), enterprise deployments across four countries for a major FMCG client, and offline-first field tools for retail audit teams. I care about what happens after an app ships — performance, API cost, and retention — as much as what happens before.</p>
-      <p>Outside client work, I run <strong>Znext Sol</strong>, a small studio through which I take on freelance and contract Android builds directly.</p>
+      <p>Currently at <strong>Centegy Technologies</strong>, I build Unilever's B2B/B2C Android applications deployed across Pakistan, Thailand, Bangladesh, and the Philippines, working inside a 10+ person cross-functional Agile team. Before that, at <strong>Markematics Digital</strong>, I migrated a Java codebase to Kotlin in three days and built offline-first field apps and an e-learning platform. On the side, I've designed, built, and shipped two AI apps solo, end to end.</p>
+      <p>I run <strong>Znext Sol</strong>, a small studio through which I take on freelance and contract Android builds directly.</p>
     </div>
     <div class="rev d2">
       <div class="fact-card">
         <div class="fact-row"><span class="k">Experience</span><span class="v">3+ years</span></div>
-        <div class="fact-row"><span class="k">Specialization</span><span class="v">Android · Kotlin · AI</span></div>
+        <div class="fact-row"><span class="k">Current role</span><span class="v">Android Developer, Centegy</span></div>
         <div class="fact-row"><span class="k">Deployed</span><span class="v">4 countries</span></div>
-        <div class="fact-row"><span class="k">Apps shipped</span><span class="v">7 projects</span></div>
         <div class="fact-row"><span class="k">Based in</span><span class="v">Karachi, Pakistan</span></div>
+        <div class="fact-row"><span class="k">Email</span><span class="v">zameersahil318@gmail.com</span></div>
+        <div class="fact-row"><span class="k">Phone</span><span class="v">+92 340 7393734</span></div>
       </div>
       <div class="avail-note">Open to consulting and full-time roles, remote or on contract via Znext Sol.</div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <div class="sec-index">Experience</div>
+      <h2>Where I've built this</h2>
+      <p>Full-time roles, plus the independent projects I built during a planned career break.</p>
+    </div>
+    <div class="xp-item rev">
+      <div class="xp-top"><span class="xp-role">Android Developer</span><span class="xp-date">Jan 2025 – Present</span></div>
+      <div class="xp-org">Centegy Technologies · Karachi, Pakistan</div>
+      <ul>
+        <li>Deliver Unilever B2B &amp; B2C Android applications live across 4 countries, inside a 10+ member cross-functional team running Agile/Scrum</li>
+        <li>Built DSR Distributor (real-time Google Maps + distributor business logic), a Warehouse Management app, and a B2C e-commerce app, each with multi-flavor dev/staging/prod configs</li>
+        <li>Cut Gradle build time ~40% via incremental compilation and build caching; architected a scalable multi-module Clean Architecture with Retrofit + Hilt</li>
+      </ul>
+    </div>
+    <div class="xp-item rev d1">
+      <div class="xp-top"><span class="xp-role">Android Developer</span><span class="xp-date">Jan 2024 – Dec 2024</span></div>
+      <div class="xp-org">Markematics Digital · Karachi, Pakistan</div>
+      <ul>
+        <li>Migrated ShopTracking from Java to Kotlin in 3 days — 3x ahead of schedule — fixing memory leaks, moving to Coroutines, shrinking APK size, and improving cold start</li>
+        <li>Built RetailAudit &amp; MarkitSurvey, offline-first field apps with zero-data-loss background sync; a unified REST layer saved 200+ engineering hours a year</li>
+        <li>Built Tutify, an e-learning platform with real-time teacher-student chat, Zoom SDK live classes, and Firebase FCM push notifications</li>
+      </ul>
+    </div>
+    <div class="xp-item rev d2">
+      <div class="xp-top"><span class="xp-role">Independent Android Developer</span><span class="xp-date">2026</span></div>
+      <div class="xp-org">Self-initiated · Karachi, Pakistan</div>
+      <ul>
+        <li>Used a planned career break to independently design, build, and ship two AI-powered apps solo, end to end — Postify and SpeakMate — gaining deep hands-on OpenAI API and Firebase-at-scale experience</li>
+        <li>Owned the full product lifecycle on both: UI/UX, backend integration, Play Store listing, release pipeline, and user feedback iteration</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -354,24 +383,26 @@ footer{border-top:1px solid var(--line);padding:30px 0;font-size:13px;color:var(
   <div class="wrap">
     <div class="sec-head rev">
       <div class="sec-index">Skills</div>
-      <h2>The stack behind every app below</h2>
+      <h2>The stack behind every app above</h2>
       <p>Tools and patterns used in production, not tutorials.</p>
     </div>
     <div class="skills-grid">
       <div class="skill-card rev"><div class="skill-cat">Language</div><div class="skill-items"><span>Kotlin</span><span>Java</span></div></div>
-      <div class="skill-card rev d1"><div class="skill-cat">UI</div><div class="skill-items"><span>Jetpack Compose</span><span>Material 3</span><span>Custom Canvas</span><span>XML layouts</span></div></div>
+      <div class="skill-card rev d1"><div class="skill-cat">Android SDK</div><div class="skill-items"><span>Jetpack Compose</span><span>ViewModel</span><span>Room</span><span>Navigation</span><span>WorkManager</span></div></div>
       <div class="skill-card rev d2"><div class="skill-cat">Architecture</div><div class="skill-items"><span>MVVM</span><span>Clean Architecture</span><span>Multi-module</span></div></div>
-      <div class="skill-card rev"><div class="skill-cat">Async &amp; DI</div><div class="skill-items"><span>Coroutines</span><span>Flow</span><span>Hilt</span><span>Dagger 2</span></div></div>
-      <div class="skill-card rev d1"><div class="skill-cat">Data &amp; networking</div><div class="skill-items"><span>Room</span><span>Retrofit</span><span>OkHttp</span></div></div>
-      <div class="skill-card rev d2"><div class="skill-cat">Backend &amp; cloud</div><div class="skill-items"><span>Firebase Auth</span><span>Firestore</span><span>FCM</span><span>Crashlytics</span></div></div>
-      <div class="skill-card rev"><div class="skill-cat">AI &amp; media</div><div class="skill-items"><span>OpenAI API</span><span>Google WaveNet TTS</span><span>Maps SDK</span></div></div>
-      <div class="skill-card rev d1"><div class="skill-cat">Testing &amp; tooling</div><div class="skill-items"><span>JUnit</span><span>Espresso</span><span>Mockito</span><span>Git</span><span>Gradle</span></div></div>
-      <div class="skill-card rev d2"><div class="skill-cat">Monetization</div><div class="skill-items"><span>AdMob</span><span>Play Billing Library</span></div></div>
+      <div class="skill-card rev"><div class="skill-cat">Async &amp; APIs</div><div class="skill-items"><span>Coroutines</span><span>Flow</span><span>RxJava</span><span>Retrofit</span><span>OkHttp</span></div></div>
+      <div class="skill-card rev d1"><div class="skill-cat">DI &amp; testing</div><div class="skill-items"><span>Hilt</span><span>Dagger 2</span><span>JUnit</span><span>Espresso</span><span>Mockito</span></div></div>
+      <div class="skill-card rev d2"><div class="skill-cat">Cloud &amp; AI</div><div class="skill-items"><span>Firebase</span><span>OpenAI API</span><span>Google WaveNet TTS</span></div></div>
+      <div class="skill-card rev"><div class="skill-cat">Tools</div><div class="skill-items"><span>Google Maps SDK</span><span>Git</span><span>Gradle</span><span>Android Studio</span></div></div>
+      <div class="skill-card rev d1"><div class="skill-cat">Design &amp; UX</div><div class="skill-items"><span>Material Design 3</span><span>Responsive UI</span><span>Accessibility</span><span>Glide</span></div></div>
+      <div class="skill-card rev d2"><div class="skill-cat">Process</div><div class="skill-items"><span>Agile/Scrum</span><span>Play Store release management</span></div></div>
     </div>
     <div class="learning-block rev">
-      <div class="lb-label">Currently learning</div>
-      <div class="lb-items">Flutter &amp; Spring Boot</div>
-      <div class="lb-note">Actively building foundations in both — no shipped projects yet, listed here for transparency rather than as a claimed skill.</div>
+      <div class="learning-block-inner">
+        <div class="lb-label">Currently learning</div>
+        <div class="lb-items">Flutter &amp; Spring Boot</div>
+        <div class="lb-note">Actively building foundations in both — no shipped projects yet, listed here for transparency rather than as a claimed skill.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -388,18 +419,21 @@ footer{border-top:1px solid var(--line);padding:30px 0;font-size:13px;color:var(
       <div class="case-inner">
         <div class="case-num">CASE 01</div>
         <div class="case-top">
-          <div class="case-title">SpeakMate — AI English speaking practice</div>
+          <div>
+            <div class="case-title">SpeakMate — AI English speaking practice</div>
+            <div class="case-sub">Independent · 2026</div>
+          </div>
           <div class="case-badges">
             <a href="https://play.google.com/store/apps/details?id=com.speakmate.english" target="_blank" rel="noopener" class="badge badge-link">Play Store ↗</a>
-            <span class="badge badge-live">Live · 177 countries</span>
+            <span class="badge badge-live">Live · thousands of daily users</span>
           </div>
         </div>
-        <p class="case-desc">An AI-powered speaking coach. Users hold real spoken conversations — IELTS prep, job interviews, business English, travel, daily conversation — and get instant AI feedback on grammar, pronunciation, vocabulary, and fluency after every sentence, with progress tracked through streaks and fluency scores.</p>
+        <p class="case-desc">A real-time AI English speaking coach. Users speak naturally and the AI responds with lifelike voice across American, British, and Australian accents, covering Job Interview, IELTS, Business English, and Small Talk modes — with instant grammar correction, vocabulary feedback, and pronunciation scoring after every sentence.</p>
         <div class="case-meta">
           <div class="cm"><h4>Problem</h4><p>English learners get grammar tools, but not real-time spoken feedback on fluency and pronunciation in context.</p></div>
-          <div class="cm"><h4>My role</h4><p>Solo developer — designed and built the full conversation loop, AI feedback pipeline, and progress UI end to end.</p></div>
-          <div class="cm"><h4>Stack</h4><ul><li>OpenAI Chat Completions</li><li>Google WaveNet / Chirp3-HD TTS</li><li>Firebase Analytics &amp; Crashlytics</li><li>AdMob</li></ul></div>
-          <div class="cm"><h4>Outcome</h4><ul><li>~20x lower API cost per session</li><li>Live in 177 countries</li><li>Custom skill-progress chart shipped</li></ul></div>
+          <div class="cm"><h4>My role</h4><p>Solo — designed and built the conversation loop, AI feedback pipeline, and progress UI end to end.</p></div>
+          <div class="cm"><h4>Stack</h4><ul><li>OpenAI API</li><li>Google WaveNet TTS</li><li>Privacy-first, on-device architecture</li><li>Firebase</li></ul></div>
+          <div class="cm"><h4>Outcome</h4><ul><li>No audio ever stored on servers</li><li>XP streaks, progress tracking, achievements</li><li>Thousands of active daily users</li></ul></div>
         </div>
       </div>
       <div class="shots">
@@ -416,18 +450,21 @@ footer{border-top:1px solid var(--line);padding:30px 0;font-size:13px;color:var(
       <div class="case-inner">
         <div class="case-num">CASE 02</div>
         <div class="case-top">
-          <div class="case-title">Postify — AI-powered LinkedIn growth app</div>
+          <div>
+            <div class="case-title">Postify — AI LinkedIn growth platform</div>
+            <div class="case-sub">Independent · 2026</div>
+          </div>
           <div class="case-badges">
             <a href="https://play.google.com/store/apps/details?id=com.postify.app.free&hl=en" target="_blank" rel="noopener" class="badge badge-link">Play Store ↗</a>
             <span class="badge badge-live">Live</span>
           </div>
         </div>
-        <p class="case-desc">Helps professionals turn LinkedIn visibility into real opportunities: profile optimization, AI content creation, smart scheduling, and performance analytics in one app. Users upload a resume to instantly generate an ATS-optimized LinkedIn profile.</p>
+        <p class="case-desc">A full AI-powered LinkedIn growth platform, built and launched solo: AI post generator, ATS resume optimizer, smart follow-up message writer, post scheduler, and growth analytics, backed by Firebase Firestore for real-time cross-device sync.</p>
         <div class="case-meta">
           <div class="cm"><h4>Problem</h4><p>Writing ATS-friendly profiles and posting consistently is time-consuming for most professionals.</p></div>
-          <div class="cm"><h4>My role</h4><p>Solo developer — built the resume-parsing flow, AI content generation, scheduling, and analytics dashboard.</p></div>
-          <div class="cm"><h4>Stack</h4><ul><li>Kotlin, Hilt</li><li>AI text-generation integration</li><li>Firebase backend</li><li>REST API, JSON parsing</li></ul></div>
-          <div class="cm"><h4>Outcome</h4><ul><li>Live on Play Store</li><li>One-tap resume → optimized profile</li><li>Content and scheduling in a single flow</li></ul></div>
+          <div class="cm"><h4>My role</h4><p>Solo — owned the full lifecycle: UI/UX, backend integration, Play Store listing, release pipeline.</p></div>
+          <div class="cm"><h4>Stack</h4><ul><li>Kotlin, Jetpack Compose</li><li>OpenAI API</li><li>Firebase Firestore</li><li>MVVM + Clean Architecture, Hilt, multi-module</li></ul></div>
+          <div class="cm"><h4>Outcome</h4><ul><li>Live on Play Store</li><li>Fully accessible Compose UI on Material Design 3</li><li>One-tap resume → optimized profile</li></ul></div>
         </div>
       </div>
       <div class="shots">
@@ -444,15 +481,23 @@ footer{border-top:1px solid var(--line);padding:30px 0;font-size:13px;color:var(
       <div class="case-inner">
         <div class="case-num">CASE 03</div>
         <div class="case-top">
-          <div class="case-title">Enterprise supply-chain suite — 4-country deployment</div>
-          <div class="case-badges"><span class="badge badge-nda">Client work, scope described generically (NDA)</span></div>
+          <div>
+            <div class="case-title">Unilever Android suite — 4-country deployment</div>
+            <div class="case-sub">Centegy Technologies · Jan 2025 – Present</div>
+          </div>
+          <div class="case-badges"><span class="badge badge-nda">Client: Unilever, via Centegy Technologies</span></div>
         </div>
-        <p class="case-desc">At Centegy Technologies, built Android applications for a major FMCG client's supply-chain operations, deployed across Pakistan, Bangladesh, Thailand, and the Philippines as part of a multi-app ecosystem spanning warehouse floors to customer doorsteps.</p>
+        <p class="case-desc">Three flagship Android applications for Unilever's B2B and B2C operations, deployed across Pakistan, Thailand, Bangladesh, and the Philippines, each built with multi-flavor dev/staging/prod configurations for clean release management — built within a 10+ person cross-functional Agile team.</p>
+        <div class="sub-apps">
+          <div class="sub-app"><h5>DSR Distributor</h5><p>Real-time Google Maps integration with complex distributor business logic.</p></div>
+          <div class="sub-app"><h5>Warehouse Management</h5><p>Internal operations app for warehouse tracking and logistics.</p></div>
+          <div class="sub-app"><h5>B2C E-commerce</h5><p>Consumer-facing shopping platform for the same market ecosystem.</p></div>
+        </div>
         <div class="case-meta">
-          <div class="cm"><h4>Problem</h4><p>A legacy Java codebase was slowing releases across four countries; build times and a stalled migration were blocking new features.</p></div>
-          <div class="cm"><h4>My role</h4><p>Led the Java-to-Kotlin migration and contributed to the multi-module architecture across the app suite.</p></div>
-          <div class="cm"><h4>Stack</h4><ul><li>Kotlin, Hilt, multi-module</li><li>Offline-first data layer</li><li>Per-market build flavors</li></ul></div>
-          <div class="cm"><h4>Outcome</h4><ul><li>40% reduction in Gradle build time</li><li>Migration finished 3x ahead of schedule</li><li>Stable multi-country release pipeline</li></ul></div>
+          <div class="cm"><h4>Problem</h4><p>A legacy Java codebase and slow builds were holding back releases across four countries.</p></div>
+          <div class="cm"><h4>My role</h4><p>Android developer on a 10+ member team — architecture, build pipeline, and feature delivery across all three apps.</p></div>
+          <div class="cm"><h4>Stack</h4><ul><li>Kotlin, Hilt, Retrofit</li><li>Multi-module Clean Architecture</li><li>Google Maps SDK</li></ul></div>
+          <div class="cm"><h4>Outcome</h4><ul><li>~40% reduction in Gradle build time</li><li>Scalable, maintainable multi-module codebase</li><li>Stable multi-country release pipeline</li></ul></div>
         </div>
       </div>
       <div class="shots">
@@ -469,24 +514,32 @@ footer{border-top:1px solid var(--line);padding:30px 0;font-size:13px;color:var(
       <div class="case-inner">
         <div class="case-num">CASE 04</div>
         <div class="case-top">
-          <div class="case-title">RetailAudit &amp; MarkitSurvey — offline-first field apps</div>
+          <div>
+            <div class="case-title">Field &amp; learning apps — Markematics Digital</div>
+            <div class="case-sub">Jan 2024 – Dec 2024</div>
+          </div>
           <div class="case-badges"><span class="badge badge-nda">Client: Markematics Digital</span></div>
         </div>
-        <p class="case-desc">Two connected Android apps for field teams conducting store audits and market surveys. Built offline-first, with local SQLite storage, automatic sync, and a Node.js-backed API to replace manual paper data entry.</p>
+        <p class="case-desc">Three deliverables for one client over a year: a fast Java-to-Kotlin migration, two offline-first field apps for retail teams, and a full e-learning platform with live classes — all built with a unified REST API layer to cut redundant integrations.</p>
+        <div class="sub-apps">
+          <div class="sub-app"><h5>ShopTracking migration</h5><p>Migrated Java → Kotlin in 3 days, 3x ahead of schedule; fixed memory leaks, moved to Coroutines, shrank APK size.</p></div>
+          <div class="sub-app"><h5>RetailAudit &amp; MarkitSurvey</h5><p>Offline-first field apps with zero-data-loss background sync for low-connectivity areas.</p></div>
+          <div class="sub-app"><h5>Tutify</h5><p>E-learning platform with real-time teacher-student chat, Zoom SDK live classes, and FCM push.</p></div>
+        </div>
         <div class="case-meta">
-          <div class="cm"><h4>Problem</h4><p>Field auditors relied on manual, paper-based entry with no connectivity in many store locations, causing delays and errors.</p></div>
-          <div class="cm"><h4>My role</h4><p>Built both apps end to end: local data layer, sync engine, and the Node.js-backed API integration.</p></div>
-          <div class="cm"><h4>Stack</h4><ul><li>Kotlin, Retrofit</li><li>Local SQLite database</li><li>Node.js backend, JSON API</li></ul></div>
-          <div class="cm"><h4>Outcome</h4><ul><li>Zero data loss with full offline support</li><li>Automatic background sync on reconnect</li><li>1-year continuous client engagement</li></ul></div>
+          <div class="cm"><h4>Problem</h4><p>A slow legacy app, no-connectivity field work, and no unified way to run online classes.</p></div>
+          <div class="cm"><h4>My role</h4><p>Built all three end to end: migration, local data layer + sync engine, and the learning platform's real-time features.</p></div>
+          <div class="cm"><h4>Stack</h4><ul><li>Kotlin, Coroutines, Retrofit</li><li>Local SQLite, background sync</li><li>Firebase FCM, Zoom SDK</li></ul></div>
+          <div class="cm"><h4>Outcome</h4><ul><li>200+ engineering hours saved per year</li><li>Zero data loss with full offline support</li><li>Live real-time chat and virtual classrooms</li></ul></div>
         </div>
       </div>
       <div class="shots">
-        <div class="shot" onclick="openLb(3,0)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314769/Hotpot_0_ifzlid.png" alt="RetailAudit screen 1" loading="lazy"></div>
-        <div class="shot" onclick="openLb(3,1)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314783/Hotpot_1_lohei7.png" alt="RetailAudit screen 2" loading="lazy"></div>
-        <div class="shot" onclick="openLb(3,2)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_2_otsuph.png" alt="RetailAudit screen 3" loading="lazy"></div>
-        <div class="shot" onclick="openLb(3,3)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314789/Hotpot_3_jkpu6m.png" alt="RetailAudit screen 4" loading="lazy"></div>
-        <div class="shot" onclick="openLb(3,4)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_4_j2whmh.png" alt="RetailAudit screen 5" loading="lazy"></div>
-        <div class="shot" onclick="openLb(3,5)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314770/Hotpot_5_haecbc.png" alt="RetailAudit screen 6" loading="lazy"></div>
+        <div class="shot" onclick="openLb(3,0)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314769/Hotpot_0_ifzlid.png" alt="Field app screen 1" loading="lazy"></div>
+        <div class="shot" onclick="openLb(3,1)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314783/Hotpot_1_lohei7.png" alt="Field app screen 2" loading="lazy"></div>
+        <div class="shot" onclick="openLb(3,2)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_2_otsuph.png" alt="Field app screen 3" loading="lazy"></div>
+        <div class="shot" onclick="openLb(3,3)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314789/Hotpot_3_jkpu6m.png" alt="Field app screen 4" loading="lazy"></div>
+        <div class="shot" onclick="openLb(3,4)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_4_j2whmh.png" alt="Field app screen 5" loading="lazy"></div>
+        <div class="shot" onclick="openLb(3,5)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314770/Hotpot_5_haecbc.png" alt="Field app screen 6" loading="lazy"></div>
       </div>
     </div>
 
@@ -494,13 +547,16 @@ footer{border-top:1px solid var(--line);padding:30px 0;font-size:13px;color:var(
       <div class="case-inner">
         <div class="case-num">CASE 05</div>
         <div class="case-top">
-          <div class="case-title">PulsePoint Clinic — healthcare booking demo</div>
-          <div class="case-badges"><span class="badge badge-nda">Independent demo build</span></div>
+          <div>
+            <div class="case-title">PulsePoint Clinic — healthcare booking demo</div>
+            <div class="case-sub">Independent demo build</div>
+          </div>
+          <div class="case-badges"><span class="badge badge-nda">Client pitch template</span></div>
         </div>
         <p class="case-desc">A clinic demo app built to showcase appointment booking, patient records, and doctor scheduling in one Android experience — used as a template to pitch small healthcare providers on going digital.</p>
         <div class="case-meta">
           <div class="cm"><h4>Problem</h4><p>Small clinics manage bookings and patient info by phone and paper — slow, error-prone, hard to scale.</p></div>
-          <div class="cm"><h4>My role</h4><p>Solo developer — designed and built the booking flow, patient records screen, and scheduling UI as a pitch-ready demo.</p></div>
+          <div class="cm"><h4>My role</h4><p>Solo — designed and built the booking flow, patient records screen, and scheduling UI as a pitch-ready demo.</p></div>
           <div class="cm"><h4>Stack</h4><ul><li>Kotlin, MVVM</li><li>Firebase Firestore</li><li>Material Design 3</li></ul></div>
           <div class="cm"><h4>Outcome</h4><ul><li>Reusable demo for client pitches</li><li>End-to-end booking flow in one build</li></ul></div>
         </div>
@@ -518,14 +574,17 @@ footer{border-top:1px solid var(--line);padding:30px 0;font-size:13px;color:var(
       <div class="case-inner">
         <div class="case-num">CASE 06</div>
         <div class="case-top">
-          <div class="case-title">AcciControl — accident detection via GPS &amp; motion sensors</div>
-          <div class="case-badges"><span class="badge badge-nda">Final year project</span></div>
+          <div>
+            <div class="case-title">AcciControl — accident detection via GPS &amp; motion sensors</div>
+            <div class="case-sub">Final year project</div>
+          </div>
+          <div class="case-badges"><span class="badge badge-nda">University project</span></div>
         </div>
-        <p class="case-desc">My BS final year project: an Android app using GPS and the phone's motion sensors to detect sudden-impact patterns consistent with a road accident, then automatically alerts emergency contacts with the vehicle's live location.</p>
+        <p class="case-desc">My BS final year project: an Android app using GPS and the phone's motion sensors to monitor impact force and device orientation in real time, triggering automated emergency alerts with precise location coordinates instantly upon collision detection.</p>
         <div class="case-meta">
           <div class="cm"><h4>Problem</h4><p>Accident victims often can't call for help themselves — delayed response times cost lives in the critical first minutes.</p></div>
-          <div class="cm"><h4>My role</h4><p>Solo developer — built the sensor-fusion detection logic, GPS tracking, and automated alert flow.</p></div>
-          <div class="cm"><h4>Stack</h4><ul><li>Accelerometer / gyroscope fusion</li><li>Google Maps SDK, location services</li><li>Automated SMS/alert dispatch</li></ul></div>
+          <div class="cm"><h4>My role</h4><p>Solo — built the sensor-fusion detection logic, GPS tracking, and automated alert flow.</p></div>
+          <div class="cm"><h4>Stack</h4><ul><li>Accelerometer / gyroscope fusion</li><li>Google Maps SDK, location services</li><li>Automated alert dispatch</li></ul></div>
           <div class="cm"><h4>Outcome</h4><ul><li>Completed as final year project</li><li>Working end-to-end detection → alert pipeline</li></ul></div>
         </div>
       </div>
@@ -546,30 +605,15 @@ footer{border-top:1px solid var(--line);padding:30px 0;font-size:13px;color:var(
         <div class="mini-tags" style="margin-top:10px">Kotlin · Firebase · Hilt</div>
       </div>
       <div class="mini rev d1">
-        <h4>Shop Tracking (B2B)</h4>
-        <p>Distributor and shop performance tracking tool with real-time geolocation sync.</p>
-        <div class="mini-tags">Geolocation · REST API</div>
-      </div>
-      <div class="mini rev d2">
         <h4>Laugh &amp; Rhyme</h4>
         <p>Bilingual (English &amp; Urdu) jokes, riddles, and poetry app with social sharing.</p>
         <div class="mini-tags">Jetpack Compose · Room</div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="highlights">
-  <div class="wrap">
-    <div class="sec-head rev">
-      <div class="sec-index">Highlights</div>
-      <h2>A quick timeline</h2>
-    </div>
-    <div class="timeline">
-      <div class="tl-row rev"><div class="tl-date">2026</div><div class="tl-title">Founded Znext Sol</div><div class="tl-desc">Launched my own Android development studio for direct freelance and contract work.</div></div>
-      <div class="tl-row rev d1"><div class="tl-date">2024–2025</div><div class="tl-title">4-country deployment</div><div class="tl-desc">Shipped enterprise Android apps live across Pakistan, Bangladesh, Thailand, and the Philippines.</div></div>
-      <div class="tl-row rev d2"><div class="tl-date">2024</div><div class="tl-title">Java-to-Kotlin migration</div><div class="tl-desc">Led the migration for an enterprise app suite, completed 3x ahead of schedule.</div></div>
-      <div class="tl-row rev d3"><div class="tl-date">2023–present</div><div class="tl-title">3+ years building Android</div><div class="tl-desc">Shipping production apps solo and as part of client teams.</div></div>
+      <div class="mini rev d2">
+        <h4>Znext Sol</h4>
+        <p>My own studio site, built to acquire freelance and contract Android clients directly.</p>
+        <div class="mini-tags">Static site · GitHub Pages</div>
+      </div>
     </div>
   </div>
 </section>
@@ -605,11 +649,12 @@ footer{border-top:1px solid var(--line);padding:30px 0;font-size:13px;color:var(
     <div class="contact-box rev">
       <h2>Let's build something together</h2>
       <p>Available for remote contract work, consulting, and Android development roles — via Znext Sol or direct hire.</p>
+      <div class="contact-direct">Or reach me directly: <a href="mailto:zameersahil318@gmail.com">zameersahil318@gmail.com</a> · <a href="tel:+923407393734">+92 340 7393734</a></div>
       <div class="contact-links">
-        <a href="mailto:droidgenius778@gmail.com" class="clink clink-main">Email me</a>
-        <a href="./Zameer_Hussain_Resume.pdf" download class="clink clink-sec">Download resume</a>
-        <a href="https://github.com/zameer-sahil" target="_blank" rel="noopener noreferrer" class="clink clink-sec">GitHub ↗</a>
-        <a href="https://www.linkedin.com/in/zameer-hussain-286250252" target="_blank" rel="noopener noreferrer" class="clink clink-sec">LinkedIn ↗</a>
+        <a href="mailto:zameersahil318@gmail.com" class="clink clink-main magnet">Email me</a>
+        <a href="./Zameer_Hussain_Resume.pdf" download class="clink clink-sec magnet">Download resume</a>
+        <a href="https://github.com/zameer-sahil" target="_blank" rel="noopener noreferrer" class="clink clink-sec magnet">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/zameer-hussain-286250252" target="_blank" rel="noopener noreferrer" class="clink clink-sec magnet">LinkedIn ↗</a>
       </div>
     </div>
   </div>
@@ -637,6 +682,13 @@ const ham=document.getElementById('ham'),mob=document.getElementById('mobMenu');
 ham.addEventListener('click',()=>mob.classList.toggle('show'));
 mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mob.classList.remove('show')));
 
+/* top scroll progress — cheap, passive */
+const prog=document.getElementById('topProg');
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-innerHeight;
+  prog.style.width=(h>0?(scrollY/h*100):0)+'%';
+},{passive:true});
+
 /* scroll reveal */
 const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')}),{threshold:.12});
 document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
@@ -655,6 +707,27 @@ const co=new IntersectionObserver(es=>es.forEach(e=>{
   requestAnimationFrame(tick);
 }),{threshold:.6});
 document.querySelectorAll('.fact-num').forEach(el=>co.observe(el));
+
+/* magnetic buttons — contained pointermove, no global loop */
+document.querySelectorAll('.magnet').forEach(el=>{
+  el.addEventListener('mousemove',e=>{
+    const r=el.getBoundingClientRect();
+    const x=(e.clientX-r.left-r.width/2)*.25;
+    const y=(e.clientY-r.top-r.height/2)*.4;
+    el.style.transform=`translate(${x}px,${y}px)`;
+  });
+  el.addEventListener('mouseleave',()=>{el.style.transform='';});
+});
+
+/* subtle 3D tilt on case + skill cards */
+document.querySelectorAll('.case, .skill-card').forEach(el=>{
+  el.addEventListener('mousemove',e=>{
+    const r=el.getBoundingClientRect();
+    const px=(e.clientX-r.left)/r.width-.5, py=(e.clientY-r.top)/r.height-.5;
+    el.style.transform=`perspective(900px) rotateX(${(-py*2.2).toFixed(2)}deg) rotateY(${(px*2.2).toFixed(2)}deg) translateY(-2px)`;
+  });
+  el.addEventListener('mouseleave',()=>{el.style.transform='';});
+});
 
 /* lightbox */
 const SHOTS=[
