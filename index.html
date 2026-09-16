@@ -3,1405 +3,679 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zameer Hussain — Android Engineer (AI-Integrated Apps)</title>
+<title>Zameer Hussain — Android Engineer</title>
+<meta name="description" content="Android engineer specializing in AI-integrated apps. Founder, Znext Sol. Karachi, Pakistan.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --void:     #06080f;
-  --base:     #090d18;
-  --surface:  #0e1522;
-  --surface2: #131b2d;
-  --surface3: #192338;
+:root{
+  --bg:#100E17;
+  --bg-alt:#17141F;
+  --bg-alt2:#1D1929;
+  --panel:#1A1724;
+  --ink:#F6F4F8;
+  --ink-soft:#B7B0C6;
+  --ink-faint:#7C7590;
+  --line:rgba(255,255,255,.09);
+  --line-strong:rgba(255,255,255,.16);
 
-  --cyan:  #00e5ff;
-  --cyan2: #00bcd4;
-  --cyan4: rgba(0,229,255,0.07);
-  --lime:  #c6ff00;
-  --green: #00ff88;
+  --amber:#FF8A3D;
+  --amber-soft:rgba(255,138,61,.14);
+  --violet:#8B5CF6;
+  --violet-soft:rgba(139,92,246,.16);
+  --grad: linear-gradient(120deg,var(--amber),var(--violet));
 
-  --text-hi:  #ffffff;
-  --text-mid: #c8d3e3;
-  --text-lo:  #a3b2c9;
+  --display:'Space Grotesk',sans-serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 
-  --bdr:  rgba(0,229,255,0.10);
-  --bdr2: rgba(0,229,255,0.22);
-  --bdrw: rgba(255,255,255,0.06);
-
-  --ease:  cubic-bezier(0.16,1,0.3,1);
-  --ease2: cubic-bezier(0.34,1.56,0.64,1);
-
-  --ff-display: 'Bebas Neue', sans-serif;
-  --ff-body:    'Manrope', sans-serif;
-  --ff-mono:    'JetBrains Mono', monospace;
-
-  --r:  12px;
-  --rl: 18px;
-  --rx: 26px;
+  --ease:cubic-bezier(.16,1,.3,1);
 }
-
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+
 body{
-  background:var(--void);color:var(--text-hi);
-  font-family:var(--ff-body);line-height:1.6;
-  overflow-x:hidden;cursor:none;
+  background:var(--bg);color:var(--ink);
+  font-family:var(--sans);font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+::selection{background:var(--violet-soft);color:var(--ink)}
+
+.wrap{max-width:1140px;margin:0 auto;padding:0 40px}
+section{padding:120px 0;position:relative}
+@media(max-width:720px){.wrap{padding:0 22px}section{padding:76px 0}}
+
+.noise{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.35;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
 }
 
-::-webkit-scrollbar{width:2px}
-::-webkit-scrollbar-track{background:var(--base)}
-::-webkit-scrollbar-thumb{background:var(--cyan)}
+/* ---------- nav ---------- */
+header{position:sticky;top:0;z-index:500;background:rgba(16,14,23,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
+.nav-inner{max-width:1140px;margin:0 auto;padding:0 40px;height:68px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:var(--display);font-size:19px;font-weight:700;text-decoration:none;letter-spacing:-.01em;display:flex;align-items:center;gap:9px}
+.brand-dot{width:8px;height:8px;border-radius:50%;background:var(--grad)}
+.nav-links{display:flex;gap:8px;align-items:center}
+.nav-links a{font-size:14px;color:var(--ink-soft);text-decoration:none;padding:8px 14px;border-radius:100px;transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--ink);background:var(--line)}
+.nav-hire{font-weight:600;color:var(--bg)!important;background:var(--amber);transition:transform .2s var(--ease),box-shadow .2s var(--ease)!important}
+.nav-hire:hover{background:var(--amber)!important;transform:translateY(-1px);box-shadow:0 8px 22px rgba(255,138,61,.35)}
+.ham{display:none;background:none;border:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px}
+.ham span{width:20px;height:1.5px;background:var(--ink);display:block;transition:.25s}
+.mob-menu{display:none;flex-direction:column;border-bottom:1px solid var(--line);background:var(--bg-alt)}
+.mob-menu a{padding:15px 22px;font-size:15px;color:var(--ink);text-decoration:none;border-top:1px solid var(--line)}
+.mob-menu.show{display:flex}
+@media(max-width:800px){.nav-links{display:none}.ham{display:flex}.nav-inner{padding:0 22px}}
 
-#prog{
-  position:fixed;top:0;left:0;height:2px;z-index:9000;width:0%;
-  background:linear-gradient(90deg,var(--cyan),var(--lime));
-  box-shadow:0 0 14px var(--cyan);transition:width .05s linear;
+/* ---------- hero ---------- */
+#hero{padding-top:60px;padding-bottom:64px;overflow:hidden}
+.hero-orbs{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;animation:drift 26s ease-in-out infinite}
+.orb-1{width:420px;height:420px;background:var(--violet);top:-120px;right:-80px}
+.orb-2{width:340px;height:340px;background:var(--amber);bottom:-100px;left:-60px;animation-delay:-9s;animation-duration:22s}
+@keyframes drift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-30px) scale(1.12)}}
+
+.hero-inner{position:relative;z-index:2}
+.hero-kicker{
+  display:inline-flex;align-items:center;gap:9px;font-size:13.5px;font-weight:500;color:var(--ink-soft);
+  padding:7px 14px 7px 10px;border-radius:100px;border:1px solid var(--line-strong);background:var(--panel);margin-bottom:28px;
+  opacity:0;animation:fadeUp .7s .05s var(--ease) forwards;
 }
+.pulse-dot{width:7px;height:7px;border-radius:50%;background:#4ADE80;box-shadow:0 0 0 0 rgba(74,222,128,.6);animation:ping 2s ease-out infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(74,222,128,.55)}70%{box-shadow:0 0 0 9px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
 
-#cur{
-  position:fixed;z-index:99999;pointer-events:none;
-  width:7px;height:7px;border-radius:50%;background:var(--cyan);
-  transform:translate(-50%,-50%);
-  transition:width .25s var(--ease),height .25s var(--ease),background .2s;
-  box-shadow:0 0 18px var(--cyan),0 0 40px rgba(0,229,255,.35);
+.hero h1{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(38px,6vw,68px);line-height:1.05;letter-spacing:-.02em;
+  max-width:16ch;margin-bottom:28px;
 }
-#cur-ring{
-  position:fixed;z-index:99998;pointer-events:none;
-  width:38px;height:38px;border-radius:50%;
-  border:1px solid rgba(0,229,255,.3);
-  transform:translate(-50%,-50%);transition:all .1s var(--ease);
-  mix-blend-mode:screen;
+.hero h1 .line{display:block;overflow:hidden}
+.hero h1 .line span{display:inline-block;opacity:0;transform:translateY(110%);animation:slideUp .85s var(--ease) forwards}
+.hero h1 .line:nth-child(1) span{animation-delay:.15s}
+.hero h1 .line:nth-child(2) span{animation-delay:.26s}
+.hero h1 .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+@keyframes slideUp{to{opacity:1;transform:none}}
+
+.hero-lede{font-size:18px;color:var(--ink-soft);max-width:56ch;line-height:1.72;margin-bottom:38px;
+  opacity:0;animation:fadeUp .8s .42s var(--ease) forwards;
 }
-body:has(a:hover) #cur,body:has(button:hover) #cur{width:18px;height:18px;background:var(--lime);box-shadow:0 0 18px var(--lime)}
-body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:54px;height:54px;border-color:rgba(198,255,0,.22)}
+.hero-lede strong{color:var(--ink);font-weight:600}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 
-body::after{
-  content:'';position:fixed;inset:0;z-index:99997;pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-  opacity:.5;mix-blend-mode:overlay;
-}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:64px;opacity:0;animation:fadeUp .8s .56s var(--ease) forwards}
+.btn{font-family:var(--sans);font-size:14.5px;font-weight:600;text-decoration:none;padding:14px 26px;border-radius:100px;display:inline-flex;align-items:center;gap:8px;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s;}
+.btn-fill{background:var(--amber);color:#1A0E00}
+.btn-fill:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 14px 34px rgba(255,138,61,.4)}
+.btn-line{background:transparent;color:var(--ink);border:1px solid var(--line-strong)}
+.btn-line:hover{border-color:var(--violet);background:var(--violet-soft);transform:translateY(-2px)}
 
-.grid-bg{
-  position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:
-    linear-gradient(rgba(0,229,255,.022) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,229,255,.022) 1px,transparent 1px);
-  background-size:56px 56px;
-  mask-image:radial-gradient(ellipse 65% 65% at 50% 40%,black 25%,transparent 100%);
-}
+.fact-strip{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--line);opacity:0;animation:fadeUp .8s .7s var(--ease) forwards}
+.fact{flex:1 1 150px;padding:26px 26px 4px 0;border-right:1px solid var(--line)}
+.fact:last-child{border-right:none}
+.fact-num{font-family:var(--display);font-size:34px;font-weight:700;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.fact-label{font-size:12.5px;color:var(--ink-faint);margin-top:4px}
+@media(max-width:720px){.fact{flex:1 1 45%;border-right:none;border-bottom:1px solid var(--line);padding:18px 0}}
 
-.ambient{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.amb{position:absolute;border-radius:50%;filter:blur(130px)}
-.amb-1{width:800px;height:800px;background:var(--cyan);top:-15%;left:-12%;opacity:.055;animation:af 28s ease-in-out infinite}
-.amb-2{width:600px;height:600px;background:var(--lime);bottom:-18%;right:-8%;opacity:.04;animation:af 22s ease-in-out infinite reverse;animation-delay:-8s}
-.amb-3{width:400px;height:400px;background:#a855f7;top:35%;left:48%;opacity:.03;animation:af 18s ease-in-out infinite;animation-delay:-4s}
-@keyframes af{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(50px,-40px) scale(1.07)}66%{transform:translate(-30px,35px) scale(.95)}}
-
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:800;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 52px;height:64px;
-  transition:all .4s var(--ease);
-}
-nav.scrolled{
-  background:rgba(6,8,15,.88);backdrop-filter:blur(44px) saturate(1.4);
-  border-bottom:1px solid var(--bdr);
-}
-.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text-hi)}
-.nav-logo{
-  width:36px;height:36px;background:var(--cyan);border-radius:9px;
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--ff-mono);font-size:12px;font-weight:500;color:var(--void);
-  box-shadow:0 0 20px rgba(0,229,255,.45);
-}
-.nav-name{font-family:var(--ff-body);font-size:14.5px;font-weight:700;letter-spacing:-.02em}
-
-.nav-links{display:flex;align-items:center;gap:2px}
-.nav-link{
-  padding:6px 15px;border-radius:100px;
-  background:transparent;border:none;color:var(--text-mid);
-  font-family:var(--ff-body);font-size:13px;font-weight:500;cursor:none;transition:all .2s;
-}
-.nav-link:hover{color:var(--text-hi)}
-.nav-link.on{background:rgba(0,229,255,.08);color:var(--cyan)}
-
-.nav-right{display:flex;align-items:center;gap:10px}
-.nav-resume{
-  padding:8px 16px;border-radius:100px;
-  background:transparent;border:1px solid var(--bdrw);
-  color:var(--text-mid);font-family:var(--ff-body);font-size:12.5px;font-weight:600;
-  cursor:none;transition:all .3s var(--ease);text-decoration:none;
-}
-.nav-resume:hover{border-color:var(--bdr2);color:var(--cyan)}
-.nav-cta{
-  padding:8px 20px;border-radius:100px;
-  background:transparent;border:1px solid var(--cyan);
-  color:var(--cyan);font-family:var(--ff-body);font-size:13px;font-weight:700;
-  cursor:none;transition:all .3s var(--ease);text-decoration:none;letter-spacing:.02em;
-}
-.nav-cta:hover{background:var(--cyan);color:var(--void);box-shadow:0 0 28px rgba(0,229,255,.38)}
-
-.ham{display:none;background:none;border:none;cursor:none;flex-direction:column;gap:5px;padding:8px}
-.ham span{display:block;width:20px;height:1.5px;background:var(--text-mid);border-radius:2px;transition:all .3s}
-.ham.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);background:var(--cyan)}
-.ham.open span:nth-child(2){opacity:0}
-.ham.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--cyan)}
-
-.mob-menu{
-  display:none;position:fixed;top:64px;inset-x:0;
-  background:rgba(6,8,15,.97);backdrop-filter:blur(40px);
-  border-bottom:1px solid var(--bdr);z-index:799;padding:12px 20px 20px;
-}
-.mob-menu.show{display:block;animation:mIn .3s var(--ease)}
-@keyframes mIn{from{opacity:0;transform:translateY(-6px)}}
-.mob-link{
-  display:block;width:100%;padding:13px 16px;background:none;border:none;
-  color:var(--text-mid);font-family:var(--ff-body);font-size:14.5px;font-weight:500;
-  text-align:left;cursor:none;border-radius:var(--r);transition:all .2s;
-}
-.mob-link:hover{color:var(--cyan);background:var(--cyan4)}
-
-section{position:relative;z-index:2}
-.wrap{max-width:1240px;margin:0 auto;padding:96px 52px}
-
-.sec-label{display:inline-flex;align-items:center;gap:10px;margin-bottom:20px}
-.sec-label-num{font-family:var(--ff-mono);font-size:10.5px;color:var(--cyan);letter-spacing:.22em}
-.sec-label-line{width:28px;height:1px;background:var(--cyan);opacity:.4}
-.sec-label-text{font-family:var(--ff-mono);font-size:9.5px;color:var(--text-lo);letter-spacing:.28em;text-transform:uppercase}
-
-.sec-h2{
-  font-family:var(--ff-display);
-  font-size:clamp(48px,6.5vw,88px);
-  letter-spacing:.02em;line-height:.93;
-  margin-bottom:16px;
-}
-.sec-h2 .hi{color:var(--cyan)}
-
-.sec-p{font-size:15.5px;color:var(--text-mid);line-height:1.8;max-width:560px;font-weight:400}
-
-.rev{opacity:0;transform:translateY(32px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
-.rev.d1{transition-delay:.11s}.rev.d2{transition-delay:.22s}.rev.d3{transition-delay:.33s}.rev.d4{transition-delay:.44s}
+/* ---------- reveal ---------- */
+.rev{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .rev.vis{opacity:1;transform:none}
+.rev.d1.vis{transition-delay:.08s}.rev.d2.vis{transition-delay:.16s}.rev.d3.vis{transition-delay:.24s}
 
-#hero{
-  min-height:100svh;display:flex;align-items:center;
-  padding:72px 52px 52px;overflow:hidden;
-}
+/* ---------- section headers ---------- */
+.sec-head{max-width:640px;margin-bottom:56px}
+.sec-index{display:inline-flex;align-items:center;gap:9px;font-size:13px;color:var(--amber);font-weight:600;margin-bottom:14px}
+.sec-index::before{content:'';width:20px;height:2px;background:var(--grad);border-radius:2px}
+.sec-head h2{font-family:var(--display);font-weight:700;font-size:clamp(28px,3.8vw,42px);line-height:1.12;margin-bottom:14px;letter-spacing:-.015em}
+.sec-head p{color:var(--ink-soft);font-size:15.5px;line-height:1.7;max-width:52ch}
 
-.hero-bg-text{
-  position:absolute;left:-8px;top:50%;transform:translateY(-52%);
-  font-family:var(--ff-display);
-  font-size:clamp(140px,18vw,260px);
-  color:transparent;-webkit-text-stroke:1px rgba(0,229,255,.04);
-  letter-spacing:.05em;line-height:1;
-  pointer-events:none;z-index:0;white-space:nowrap;user-select:none;
-}
+/* ---------- about ---------- */
+#about{background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:72px}
+.about-body p{font-size:16px;color:var(--ink-soft);line-height:1.85;margin-bottom:20px}
+.about-body p strong{color:var(--ink);font-weight:600}
 
-.hero-inner{
-  position:relative;z-index:2;
-  max-width:1240px;margin:0 auto;width:100%;
-  display:grid;
-  grid-template-columns:1fr 390px;
-  gap:56px;align-items:center;
+.fact-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:border-color .3s,transform .3s var(--ease);}
+.fact-card:hover{border-color:var(--line-strong);transform:translateY(-3px)}
+.fact-row{display:flex;justify-content:space-between;gap:16px;padding:16px 22px;border-bottom:1px solid var(--line);font-size:14px}
+.fact-row:last-child{border-bottom:none}
+.fact-row .k{color:var(--ink-faint)}
+.fact-row .v{color:var(--ink);font-weight:600;text-align:right}
+.avail-note{
+  margin-top:20px;padding:18px 20px;border-radius:14px;
+  background:var(--amber-soft);border:1px solid rgba(255,138,61,.28);
+  font-size:13.5px;color:#FFC08A;line-height:1.6;
 }
+@media(max-width:840px){.about-grid{grid-template-columns:1fr;gap:40px}}
 
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:9px;
-  padding:5px 13px 5px 9px;border-radius:100px;
-  border:1px solid var(--bdr2);background:rgba(0,229,255,.05);
-  margin-bottom:24px;
-}
-.eyebrow-dot{
-  width:7px;height:7px;border-radius:50%;background:var(--green);
-  box-shadow:0 0 10px var(--green);animation:pulse 2s ease-in-out infinite;flex-shrink:0;
-}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.75)}}
-.eyebrow-txt{font-family:var(--ff-mono);font-size:10.5px;color:rgba(0,229,255,.85);letter-spacing:.14em}
-
-.hero-h1{
-  font-family:var(--ff-display);
-  font-size:clamp(64px,9vw,120px);
-  letter-spacing:.025em;line-height:.9;
-  margin-bottom:26px;width:100%;
-}
-.hero-h1 .line{display:block;overflow:hidden}
-.hero-h1 .w{display:inline-block;animation:slideUp 1.1s var(--ease) both}
-.hero-h1 .line:nth-child(1) .w{animation-delay:.05s}
-.hero-h1 .line:nth-child(2) .w{animation-delay:.14s;color:var(--cyan)}
-@keyframes slideUp{from{transform:translateY(108%)}to{transform:none}}
-
-.hero-niche{
-  font-family:var(--ff-mono);font-size:13px;color:var(--text-lo);
-  letter-spacing:.02em;margin-bottom:22px;animation:fadeUp .9s .3s var(--ease) both;
-}
-.hero-niche span{color:var(--lime)}
-
-.hero-desc{
-  font-size:15.5px;color:var(--text-mid);
-  line-height:1.78;max-width:480px;
-  margin-bottom:36px;font-weight:400;
-  animation:fadeUp .9s .48s var(--ease) both;
-}
-.hero-desc strong{color:var(--text-hi);font-weight:600}
-@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-
-.hero-btns{display:flex;gap:11px;flex-wrap:wrap;animation:fadeUp .9s .62s var(--ease) both}
-
-.btn-primary{
-  padding:13px 28px;border-radius:100px;
-  background:var(--cyan);color:var(--void);
-  font-family:var(--ff-body);font-size:13.5px;font-weight:700;
-  border:none;cursor:none;transition:all .35s var(--ease);
-  display:inline-flex;align-items:center;gap:8px;
-  box-shadow:0 6px 26px rgba(0,229,255,.30);
-  text-decoration:none;letter-spacing:.02em;
-}
-.btn-primary:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 12px 38px rgba(0,229,255,.46)}
-
-.btn-outline{
-  padding:12px 26px;border-radius:100px;
-  background:transparent;color:var(--text-hi);
-  border:1px solid var(--bdrw);
-  font-family:var(--ff-body);font-size:13.5px;font-weight:600;
-  cursor:none;transition:all .3s var(--ease);
-  display:inline-flex;align-items:center;gap:8px;text-decoration:none;
-}
-.btn-outline:hover{border-color:var(--cyan);color:var(--cyan);background:var(--cyan4);transform:translateY(-2px)}
-
-.hero-stats-card{
-  background:var(--surface);border:1px solid var(--bdr);
-  border-radius:22px;padding:26px 24px;
-  position:relative;overflow:hidden;
-  animation:fadeUp .9s .28s var(--ease) both;
-  box-shadow:0 28px 56px rgba(0,0,0,.42),inset 0 1px 0 rgba(0,229,255,.06);
-}
-.hero-stats-card::before{
-  content:'';position:absolute;top:-1px;left:28px;right:28px;height:1px;
-  background:linear-gradient(90deg,transparent,var(--cyan),transparent);
-}
-
-.card-head-label{
-  font-family:var(--ff-mono);font-size:9px;
-  letter-spacing:.3em;color:var(--text-lo);
-  text-transform:uppercase;margin-bottom:18px;
-  display:flex;align-items:center;gap:8px;
-}
-.card-head-label::after{content:'';flex:1;height:1px;background:var(--bdrw)}
-
-.stats-2x2{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:18px}
-.stat-cell{
-  padding:16px 13px;border-radius:11px;
-  background:var(--surface2);border:1px solid var(--bdrw);
-  transition:all .3s var(--ease);cursor:none;
-}
-.stat-cell:hover{border-color:var(--bdr);background:var(--surface3);transform:translateY(-2px)}
-.stat-num{font-family:var(--ff-display);font-size:38px;line-height:1;color:var(--text-hi);margin-bottom:3px}
-.stat-num span{color:var(--cyan);font-size:19px;vertical-align:top;margin-top:5px;display:inline-block}
-.stat-label{font-size:10px;color:var(--text-lo);font-weight:400;letter-spacing:.02em}
-
-.tech-chips{display:flex;flex-wrap:wrap;gap:5px}
-.tech-chip{
-  padding:4px 9px;border-radius:7px;
-  background:var(--surface2);border:1px solid var(--bdrw);
-  font-family:var(--ff-mono);font-size:10px;color:var(--text-mid);
-  transition:all .2s;cursor:none;
-}
-.tech-chip:hover{color:var(--cyan);border-color:var(--bdr);background:var(--cyan4)}
-
-.scroll-ind{
-  position:absolute;bottom:24px;left:52px;
-  display:flex;align-items:center;gap:12px;
-  font-family:var(--ff-mono);font-size:8.5px;
-  letter-spacing:.28em;color:var(--text-lo);
-  z-index:2;animation:fadeUp 1s 1.3s both;
-}
-.scroll-track{width:40px;height:1px;background:var(--bdrw);position:relative;overflow:hidden}
-.scroll-fill{
-  position:absolute;top:0;left:0;height:100%;
-  background:linear-gradient(90deg,var(--cyan),var(--lime));
-  animation:scrollFill 2.4s ease-in-out infinite;
-}
-@keyframes scrollFill{0%{width:0;left:0}50%{width:100%;left:0}100%{width:0;left:100%}}
-
-.marquee-strip{
-  padding:0;overflow:hidden;position:relative;z-index:2;
-  border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);
-  background:rgba(6,8,15,.4);
-}
-.marquee-inner{display:flex;gap:0;white-space:nowrap;padding:14px 0}
-.marquee-row-1{animation:mq1 22s linear infinite}
-@keyframes mq1{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-.mq-item{
-  display:inline-flex;align-items:center;gap:18px;
-  font-family:var(--ff-mono);font-size:10.5px;font-weight:400;
-  color:var(--text-lo);padding:0 24px;letter-spacing:.14em;text-transform:uppercase;
-}
-.mq-item.accent{color:var(--cyan)}
-.mq-sep{width:3px;height:3px;border-radius:50%;background:var(--bdr2)}
-
-#about{background:var(--base)}
-.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:80px;align-items:start}
-
-.about-text p{font-size:15.5px;color:var(--text-mid);line-height:1.9;margin-bottom:20px;font-weight:400}
-.about-text p strong{color:var(--text-hi);font-weight:600}
-
-.founder-strip{
-  display:flex;align-items:center;gap:12px;padding:14px 18px;border-radius:var(--rl);
-  border:1px solid var(--bdr);background:var(--cyan4);margin-bottom:24px;
-}
-.founder-strip .fs-icon{
-  width:36px;height:36px;border-radius:9px;background:var(--surface2);border:1px solid var(--bdr);
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
-}
-.founder-strip .fs-icon svg{width:16px;height:16px;stroke:var(--cyan);fill:none;stroke-width:1.8}
-.founder-strip .fs-text{font-size:12.5px;color:var(--text-mid)}
-.founder-strip .fs-text strong{color:var(--text-hi)}
-
-.id-card{
-  background:var(--surface);border:1px solid var(--bdr);border-radius:var(--rx);
-  overflow:hidden;margin-bottom:12px;
-  box-shadow:0 20px 52px rgba(0,0,0,.38),inset 0 1px 0 rgba(0,229,255,.05);
-}
-.id-top{padding:22px 22px 0;display:flex;align-items:center;gap:13px}
-.id-avatar{
-  width:50px;height:50px;border-radius:13px;flex-shrink:0;
-  background:linear-gradient(135deg,var(--cyan),var(--cyan2));
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--ff-mono);font-size:13px;font-weight:500;color:var(--void);
-  box-shadow:0 4px 18px rgba(0,229,255,.32);
-}
-.id-name{font-weight:700;font-size:14.5px;margin-bottom:2px}
-.id-role{font-size:11.5px;color:var(--text-lo)}
-.id-rows{padding:18px 22px 22px}
-.id-row{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:9px 0;border-bottom:1px solid var(--bdrw);
-}
-.id-row:last-child{border:none}
-.id-k{font-size:11.5px;color:var(--text-lo)}
-.id-v{font-family:var(--ff-mono);font-size:11.5px;color:var(--cyan)}
-
-.avail-badge{
-  display:flex;align-items:center;gap:11px;
-  padding:14px 18px;border-radius:var(--rl);
-  border:1px solid rgba(0,255,136,.18);background:rgba(0,255,136,.04);
-}
-.avail-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:pulse 2s infinite;flex-shrink:0}
-.avail-text{font-size:12.5px;color:var(--text-mid)}
-.avail-text strong{color:var(--green);font-weight:600}
-
-#skills{background:var(--void)}
-.skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-
+/* ---------- skills ---------- */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .skill-card{
-  padding:24px 20px;border-radius:var(--rl);
-  background:var(--surface);border:1px solid var(--bdrw);
-  transition:all .4s var(--ease);cursor:none;position:relative;overflow:hidden;
+  padding:26px 24px;border-radius:16px;background:var(--panel);border:1px solid var(--line);
+  transition:transform .3s var(--ease),border-color .3s,box-shadow .3s;position:relative;overflow:hidden;
 }
-.skill-card::after{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,var(--cyan),var(--lime));
-  transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease);
-}
-.skill-card:hover{border-color:var(--bdr);transform:translateY(-5px);box-shadow:0 22px 52px rgba(0,0,0,.38)}
-.skill-card:hover::after{transform:scaleX(1)}
+.skill-card::before{content:'';position:absolute;inset:0;background:var(--grad);opacity:0;transition:opacity .3s;z-index:0}
+.skill-card:hover{transform:translateY(-6px);border-color:var(--line-strong);box-shadow:0 20px 44px rgba(0,0,0,.4)}
+.skill-card:hover::before{opacity:.06}
+.skill-card > *{position:relative;z-index:1}
+.skill-cat{font-size:12.5px;color:var(--amber);font-weight:600;letter-spacing:.02em;margin-bottom:12px}
+.skill-items{display:flex;flex-wrap:wrap;gap:7px}
+.skill-items span{padding:5px 11px;border-radius:100px;background:var(--bg-alt2);border:1px solid var(--line);font-size:12.5px;color:var(--ink-soft);transition:.2s}
+.skill-card:hover .skill-items span{border-color:var(--line-strong);color:var(--ink)}
+@media(max-width:900px){.skills-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.skills-grid{grid-template-columns:1fr}}
 
-.skill-cat{font-family:var(--ff-mono);font-size:9px;letter-spacing:.2em;color:var(--cyan);text-transform:uppercase;margin-bottom:10px}
-.skill-name{font-size:13.5px;font-weight:700;margin-bottom:8px}
-.skill-list{display:flex;flex-wrap:wrap;gap:5px}
-.skill-list span{
-  padding:3px 8px;border-radius:6px;background:var(--surface2);border:1px solid var(--bdrw);
-  font-family:var(--ff-mono);font-size:9.5px;color:var(--text-mid);
+.learning-block{
+  margin-top:20px;padding:28px 30px;border-radius:16px;
+  background:linear-gradient(135deg,var(--violet-soft),var(--amber-soft));
+  border:1px solid var(--line-strong);
 }
+.learning-block .lb-label{font-size:13px;color:var(--violet);font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.learning-block .lb-label::before{content:'◆';font-size:10px}
+.learning-block .lb-items{font-size:17px;color:var(--ink);font-weight:600;margin-bottom:6px}
+.learning-block .lb-note{font-size:13.5px;color:var(--ink-soft);line-height:1.6}
 
-#projects{background:var(--base)}
+/* ---------- case studies ---------- */
+#work{background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.case{
+  border-radius:22px;background:var(--panel);border:1px solid var(--line);
+  margin-bottom:22px;overflow:hidden;transition:border-color .35s,transform .35s var(--ease),box-shadow .35s;
+}
+.case:hover{border-color:var(--line-strong);box-shadow:0 30px 70px rgba(0,0,0,.42)}
+.case-inner{padding:40px 40px 8px}
+.case-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;margin-bottom:6px}
+.case-num{font-family:var(--display);font-size:13px;color:var(--amber);font-weight:700;letter-spacing:.06em;margin-bottom:10px}
+.case-title{font-family:var(--display);font-size:25px;font-weight:700;letter-spacing:-.01em;margin-bottom:14px}
+.case-badges{display:flex;gap:8px;flex-wrap:wrap}
+.badge{font-size:12px;padding:5px 12px;border-radius:100px;white-space:nowrap;font-weight:500}
+.badge-live{background:rgba(74,222,128,.14);color:#6EE7A0;border:1px solid rgba(74,222,128,.28)}
+.badge-nda{background:var(--bg-alt2);color:var(--ink-faint);border:1px solid var(--line)}
+.badge-link{background:var(--violet-soft);color:#C4B0FF;text-decoration:none;border:1px solid rgba(139,92,246,.3);transition:.2s}
+.badge-link:hover{background:var(--violet);color:#fff}
 
-.proj-card{
-  margin-bottom:20px;position:relative;
-  border-radius:28px;overflow:hidden;
-  background:var(--surface);border:1px solid var(--bdrw);
-  transition:border-color .5s,box-shadow .5s;
-}
-.proj-card:hover{border-color:var(--bdr);box-shadow:0 40px 90px rgba(0,0,0,.5)}
+.case-desc{font-size:15.5px;color:var(--ink-soft);line-height:1.75;max-width:74ch;margin-bottom:28px}
 
-.proj-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent 5%,var(--cyan) 40%,var(--lime) 60%,transparent 95%);
-  opacity:0;transition:opacity .4s;
-}
-.proj-card:hover::before{opacity:1}
+.case-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-bottom:30px}
+.cm h4{font-size:12px;color:var(--amber);font-weight:700;margin-bottom:9px;text-transform:uppercase;letter-spacing:.04em}
+.cm p{font-size:13.5px;color:var(--ink-soft);line-height:1.65}
+.cm ul{list-style:none}
+.cm ul li{font-size:13.5px;color:var(--ink-soft);line-height:1.75;padding-left:14px;position:relative}
+.cm ul li::before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--violet)}
+@media(max-width:900px){.case-meta{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.case-meta{grid-template-columns:1fr}.case-inner{padding:28px 24px 8px}}
 
-.proj-header{
-  padding:38px 44px 30px;
-  border-bottom:1px solid var(--bdrw);
-  display:grid;grid-template-columns:1fr 130px;gap:32px;align-items:start;
+.shots{display:flex;gap:14px;overflow-x:auto;padding:0 40px 32px;scrollbar-width:thin}
+.shots::-webkit-scrollbar{height:5px}
+.shots::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:4px}
+.shot{
+  flex:0 0 auto;width:150px;border-radius:14px;overflow:hidden;cursor:zoom-in;
+  border:1px solid var(--line);background:var(--bg-alt2);transition:transform .3s var(--ease),border-color .3s;
 }
+.shot:hover{transform:translateY(-8px) scale(1.03);border-color:var(--violet)}
+.shot img{aspect-ratio:9/19.5;object-fit:cover;transition:transform .4s var(--ease)}
+.shot:hover img{transform:scale(1.08)}
+.dummy-flag{font-size:11px;color:var(--ink-faint);padding:0 40px 14px}
+@media(max-width:640px){.shots{padding:0 24px 26px}.dummy-flag{padding:0 24px 12px}}
 
-.proj-index{font-family:var(--ff-mono);font-size:9.5px;color:var(--cyan);letter-spacing:.22em;margin-bottom:11px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.proj-title{
-  font-family:var(--ff-display);
-  font-size:clamp(22px,2.6vw,36px);
-  letter-spacing:.015em;line-height:1.05;margin-bottom:12px;
-}
-.proj-desc{font-size:14px;color:var(--text-mid);line-height:1.85;max-width:680px;font-weight:400}
-.proj-desc a{color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(0,229,255,.28);transition:border-color .2s}
-.proj-desc a:hover{border-color:var(--cyan)}
-
-.proj-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:16px}
-.proj-tag{
-  padding:3px 10px;border-radius:6px;
-  background:var(--surface2);border:1px solid var(--bdrw);
-  font-family:var(--ff-mono);font-size:9.5px;color:var(--text-lo);letter-spacing:.04em;
-}
-
-.badge-live{
-  display:inline-flex;align-items:center;gap:6px;padding:3px 10px 3px 8px;border-radius:100px;
-  background:rgba(0,255,136,.08);border:1px solid rgba(0,255,136,.25);
-  font-family:var(--ff-mono);font-size:9px;color:var(--green);letter-spacing:.1em;text-decoration:none;
-}
-.badge-live .dot{width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green)}
-.badge-store{
-  display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:100px;
-  background:var(--surface2);border:1px solid var(--bdrw);
-  font-family:var(--ff-mono);font-size:9px;color:var(--text-mid);letter-spacing:.06em;text-decoration:none;
-  transition:all .2s;
-}
-.badge-store:hover{border-color:var(--bdr);color:var(--cyan)}
-.badge-nda{
-  display:inline-flex;align-items:center;padding:3px 10px;border-radius:100px;
-  background:rgba(255,255,255,.03);border:1px solid var(--bdrw);
-  font-family:var(--ff-mono);font-size:9px;color:var(--text-lo);letter-spacing:.08em;
-}
-
-.proj-metrics-col{display:flex;flex-direction:column;gap:8px;padding-top:22px}
-.metric-pill{
-  padding:11px 14px;border-radius:11px;
-  background:var(--surface2);border:1px solid var(--bdrw);
-  text-align:center;transition:all .25s;
-}
-.metric-pill:hover{border-color:var(--bdr);background:var(--surface3)}
-.metric-val{font-family:var(--ff-display);font-size:20px;color:var(--cyan);line-height:1}
-.metric-key{font-family:var(--ff-mono);font-size:8.5px;color:var(--text-lo);letter-spacing:.15em;text-transform:uppercase;margin-top:3px}
-
-.proj-screens-section{padding:28px 44px 34px;background:var(--surface2)}
-.screens-label{font-family:var(--ff-mono);font-size:9.5px;color:var(--text-lo);letter-spacing:.24em;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:8px}
-.screens-label .dummy-flag{color:var(--lime);font-size:8.5px;letter-spacing:.1em;padding:2px 7px;border:1px solid rgba(198,255,0,.3);border-radius:100px}
-
-.screens-dock{
-  display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;
-  scrollbar-width:thin;scrollbar-color:var(--bdr) transparent;
-}
-.screens-dock::-webkit-scrollbar{height:2px}
-.screens-dock::-webkit-scrollbar-thumb{background:var(--bdr2);border-radius:2px}
-
-.phone-frame{flex-shrink:0;width:78px;cursor:none;transition:all .35s var(--ease);position:relative}
-.phone-frame:hover{transform:translateY(-10px) scale(1.05);z-index:2}
-
-.phone-shell{
-  background:#080e1c;border:1.5px solid rgba(0,229,255,.13);
-  border-radius:15px;overflow:hidden;
-  box-shadow:0 6px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.03);
-  transition:all .35s var(--ease);
-}
-.phone-frame:hover .phone-shell{
-  border-color:rgba(0,229,255,.42);
-  box-shadow:0 18px 52px rgba(0,229,255,.18),0 0 0 1px rgba(0,229,255,.18);
-}
-.phone-notch{height:7px;background:#040810;display:flex;align-items:center;justify-content:center}
-.phone-notch::after{content:'';width:18px;height:2.5px;background:rgba(0,229,255,.07);border-radius:2px}
-.phone-screen{aspect-ratio:9/19;overflow:hidden;position:relative}
-.phone-screen img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ease)}
-.phone-frame:hover .phone-screen img{transform:scale(1.07)}
-.phone-overlay{
-  position:absolute;inset:0;background:rgba(0,229,255,.14);
-  backdrop-filter:blur(1px);opacity:0;transition:opacity .22s;
-  display:flex;align-items:center;justify-content:center;
-  font-size:16px;color:rgba(255,255,255,.9);
-}
-.phone-frame:hover .phone-overlay{opacity:1}
-
-/* CASE STUDY GRID: Problem / Role / Tech / Outcome */
-.case-study-grid{
-  padding:26px 44px;display:grid;grid-template-columns:repeat(4,1fr);
-  gap:24px;border-top:1px solid var(--bdrw);
-}
-.cs-heading{
-  font-family:var(--ff-mono);font-size:9px;
-  letter-spacing:.22em;color:var(--cyan);text-transform:uppercase;
-  margin-bottom:10px;display:flex;align-items:center;gap:8px;
-}
-.cs-heading::before{content:'';width:14px;height:1px;background:var(--cyan);opacity:.5}
-.cs-block p{font-size:12.5px;color:var(--text-mid);line-height:1.7}
-.cs-block ul{list-style:none;display:flex;flex-direction:column;gap:6px}
-.cs-block ul li{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--text-mid);line-height:1.55}
-.cs-block ul li::before{content:'';width:3.5px;height:3.5px;border-radius:50%;background:var(--cyan);flex-shrink:0;margin-top:6px;box-shadow:0 0 5px rgba(0,229,255,.5)}
-
-/* Compact "other projects" grid */
-.other-projects-label{font-family:var(--ff-mono);font-size:11px;color:var(--text-lo);letter-spacing:.2em;text-transform:uppercase;margin:44px 0 18px}
+.other-label{font-size:13px;color:var(--amber);font-weight:700;margin:48px 0 20px}
 .other-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.mini-proj{
-  padding:22px;border-radius:var(--rl);background:var(--surface);border:1px solid var(--bdrw);
-  transition:all .3s var(--ease);
-}
-.mini-proj:hover{border-color:var(--bdr);transform:translateY(-4px)}
-.mini-proj-title{font-size:14.5px;font-weight:700;margin-bottom:6px}
-.mini-proj-desc{font-size:12px;color:var(--text-lo);line-height:1.6;margin-bottom:12px}
-.mini-proj-tags{display:flex;flex-wrap:wrap;gap:5px}
+.mini{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;transition:transform .3s var(--ease),border-color .3s}
+.mini:hover{transform:translateY(-5px);border-color:var(--line-strong)}
+.mini h4{font-size:15.5px;font-weight:700;margin-bottom:8px}
+.mini p{font-size:13.5px;color:var(--ink-soft);line-height:1.6;margin-bottom:10px}
+.mini a{color:var(--violet);text-decoration:underline;text-underline-offset:2px;font-size:13px}
+.mini-tags{font-size:12px;color:var(--ink-faint)}
+@media(max-width:720px){.other-grid{grid-template-columns:1fr}}
 
-#impact{background:var(--void)}
-.impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+/* ---------- timeline ---------- */
+.timeline{position:relative;padding-left:28px}
+.timeline::before{content:'';position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--amber),var(--violet))}
+.tl-row{position:relative;padding-bottom:38px}
+.tl-row:last-child{padding-bottom:0}
+.tl-row::before{content:'';position:absolute;left:-28px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--amber);}
+.tl-date{font-size:13px;color:var(--amber);font-weight:600;margin-bottom:6px}
+.tl-title{font-size:17px;font-weight:700;margin-bottom:5px}
+.tl-desc{font-size:14.5px;color:var(--ink-soft)}
 
-.impact-card{
-  padding:28px 20px 24px;border-radius:var(--rl);
-  background:var(--surface);border:1px solid var(--bdrw);
-  text-align:center;position:relative;overflow:hidden;
-  cursor:none;transition:all .4s var(--ease);
-}
-.impact-card:hover{transform:translateY(-7px);border-color:var(--bdr);box-shadow:0 24px 52px rgba(0,0,0,.38)}
-
-.impact-icon-wrap{
-  width:48px;height:48px;border-radius:13px;margin:0 auto 16px;
-  background:var(--cyan4);border:1px solid var(--bdr);
-  display:flex;align-items:center;justify-content:center;
-}
-.impact-icon-wrap svg{width:20px;height:20px;stroke:var(--cyan);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.impact-year{font-family:var(--ff-mono);font-size:9.5px;letter-spacing:.18em;color:var(--cyan);margin-bottom:9px}
-.impact-title{font-size:13.5px;font-weight:700;margin-bottom:7px}
-.impact-desc{font-size:11.5px;color:var(--text-lo);line-height:1.6}
-
-#testimonials{background:var(--base)}
+/* ---------- testimonials ---------- */
+#testimonials{background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.testi{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:30px;transition:transform .3s var(--ease),border-color .3s}
+.testi:hover{transform:translateY(-6px);border-color:var(--line-strong)}
+.testi .mark{font-family:var(--display);font-size:44px;color:var(--violet);opacity:.5;line-height:1;margin-bottom:6px}
+.testi p{font-size:15.5px;color:var(--ink);line-height:1.7;margin-bottom:22px}
+.testi-author strong{color:var(--ink);display:block;font-size:14.5px;margin-bottom:2px}
+.testi-author span{font-size:13px;color:var(--ink-faint)}
+@media(max-width:840px){.testi-grid{grid-template-columns:1fr}}
 
-.testi-card{
-  padding:32px 28px;border-radius:var(--rx);
-  background:var(--surface);border:1px solid var(--bdrw);
-  position:relative;overflow:hidden;transition:all .35s var(--ease);cursor:none;
+/* ---------- contact ---------- */
+#contact{padding-bottom:100px}
+.contact-box{
+  border-radius:28px;padding:64px 56px;background:linear-gradient(135deg,var(--violet-soft),var(--amber-soft));
+  border:1px solid var(--line-strong);position:relative;overflow:hidden;
 }
-.testi-card:hover{transform:translateY(-5px);border-color:var(--bdr);box-shadow:0 22px 52px rgba(0,0,0,.38)}
-.testi-quote-icon{position:absolute;top:20px;right:22px;font-family:var(--ff-display);font-size:72px;color:var(--cyan);opacity:.04;line-height:1;pointer-events:none}
+.contact-box h2{font-family:var(--display);font-weight:700;font-size:clamp(30px,4.6vw,50px);line-height:1.1;margin-bottom:18px;letter-spacing:-.015em;max-width:14ch}
+.contact-box p{font-size:16px;color:var(--ink-soft);line-height:1.75;margin-bottom:36px;max-width:52ch}
+.contact-links{display:flex;gap:12px;flex-wrap:wrap}
+.clink{padding:13px 24px;border-radius:100px;font-size:14.5px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .25s var(--ease),box-shadow .25s}
+.clink-main{background:var(--amber);color:#1A0E00}
+.clink-main:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(255,138,61,.4)}
+.clink-sec{background:rgba(255,255,255,.05);color:var(--ink);border:1px solid var(--line-strong)}
+.clink-sec:hover{transform:translateY(-2px);border-color:var(--violet);background:var(--violet-soft)}
+@media(max-width:640px){.contact-box{padding:40px 26px}}
 
-.stars{display:flex;gap:3px;margin-bottom:16px}
-.star{font-size:11px;color:var(--cyan)}
-.testi-text{font-size:13.5px;color:var(--text-mid);line-height:1.9;font-style:italic;font-weight:400;margin-bottom:22px;position:relative;z-index:1}
-.testi-author{display:flex;align-items:center;gap:11px}
-.testi-av{
-  width:40px;height:40px;border-radius:10px;flex-shrink:0;
-  background:linear-gradient(135deg,var(--cyan),var(--cyan2));
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--ff-mono);font-size:11px;font-weight:500;color:var(--void);
-  box-shadow:0 3px 14px rgba(0,229,255,.28);
-}
-.testi-name{font-weight:700;font-size:13.5px}
-.testi-role{font-size:11px;color:var(--text-lo);margin-top:2px}
+footer{border-top:1px solid var(--line);padding:30px 0;font-size:13px;color:var(--ink-faint)}
+.footer-inner{max-width:1140px;margin:0 auto;padding:0 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+@media(max-width:720px){.footer-inner{padding:0 22px}}
 
-#contact{background:var(--void)}
-.contact-inner{max-width:780px;margin:0 auto;text-align:center}
-
-.cta-box{
-  margin-top:44px;padding:68px 56px;border-radius:32px;
-  background:var(--surface);border:1px solid var(--bdr);
-  position:relative;overflow:hidden;
-  box-shadow:0 52px 110px rgba(0,0,0,.48);
-}
-.cta-box::before{
-  content:'';position:absolute;top:-1px;left:64px;right:64px;height:1px;
-  background:linear-gradient(90deg,transparent,var(--cyan),var(--lime),transparent);
-}
-.cta-glow{position:absolute;inset:0;pointer-events:none;overflow:hidden}
-.cta-glow::before{
-  content:'';position:absolute;
-  width:380px;height:380px;border-radius:50%;
-  background:radial-gradient(circle,rgba(0,229,255,.055),transparent 65%);
-  top:-25%;left:50%;transform:translateX(-50%);
-}
-
-.cta-h2{
-  font-family:var(--ff-display);
-  font-size:clamp(40px,5.5vw,72px);
-  letter-spacing:.02em;line-height:.92;
-  margin-bottom:14px;position:relative;z-index:1;
-}
-.cta-h2 .hi{color:var(--cyan)}
-.cta-p{font-size:15.5px;color:var(--text-mid);margin-bottom:40px;line-height:1.8;font-weight:400;position:relative;z-index:1}
-
-.cta-links{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
-.clink{
-  padding:13px 26px;border-radius:100px;font-size:13.5px;font-weight:700;
-  cursor:none;transition:all .35s var(--ease);
-  display:flex;align-items:center;gap:8px;text-decoration:none;
-  font-family:var(--ff-body);letter-spacing:.015em;
-}
-.clink-main{background:var(--cyan);color:var(--void);box-shadow:0 5px 24px rgba(0,229,255,.36)}
-.clink-main:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(0,229,255,.5)}
-.clink-sec{background:var(--surface2);color:var(--text-mid);border:1px solid var(--bdrw)}
-.clink-sec:hover{border-color:var(--bdr2);color:var(--cyan);transform:translateY(-2px)}
-
-footer{text-align:center;padding:36px 0 28px;font-family:var(--ff-mono);font-size:10.5px;color:var(--text-lo);letter-spacing:.08em}
-
-#modal{
-  display:none;position:fixed;inset:0;z-index:9000;
-  background:rgba(3,4,8,.97);backdrop-filter:blur(38px);
-  align-items:center;justify-content:center;padding:20px;cursor:none;
-}
-#modal.on{display:flex;animation:mfIn .3s var(--ease)}
-@keyframes mfIn{from{opacity:0}}
-
-.modal-wrap{position:relative;width:100%;max-width:310px;display:flex;flex-direction:column;align-items:center}
-.modal-toolbar{
-  display:flex;align-items:center;gap:5px;
-  background:var(--surface);border:1px solid var(--bdr);
-  border-radius:100px;padding:4px 7px;
-  width:100%;justify-content:space-between;margin-bottom:14px;
-  box-shadow:0 4px 22px rgba(0,0,0,.55);
-}
-.mt-grp{display:flex;align-items:center;gap:3px}
-.mt-btn{
-  width:32px;height:32px;border-radius:50%;background:none;border:1px solid transparent;
-  color:var(--text-lo);cursor:none;font-size:14px;
-  display:flex;align-items:center;justify-content:center;transition:all .2s;font-family:inherit;
-}
-.mt-btn:hover:not(:disabled){background:var(--cyan4);color:var(--cyan);border-color:var(--bdr)}
-.mt-btn:disabled{opacity:.2}
-.mt-sep{width:1px;height:16px;background:var(--bdrw);margin:0 3px}
-.mt-lbl{font-family:var(--ff-mono);font-size:9.5px;color:var(--text-lo);padding:0 5px;min-width:32px;text-align:center}
-
-.modal-phone-shell{
-  background:var(--surface);border:1.5px solid var(--bdr2);
-  border-radius:26px;overflow:hidden;width:100%;
-  box-shadow:0 56px 130px rgba(0,0,0,.88),0 0 52px rgba(0,229,255,.07);
-}
-.modal-notch{height:9px;background:#020307;display:flex;align-items:center;justify-content:center}
-.modal-notch::after{content:'';width:22px;height:2.5px;background:rgba(0,229,255,.09);border-radius:2px}
-.modal-screen{overflow:hidden;user-select:none;position:relative;max-height:70svh}
-.modal-screen img{width:100%;display:block;transform-origin:center;transition:transform .12s;cursor:grab}
-.modal-screen img:active{cursor:grabbing}
-.modal-hint{margin-top:12px;font-family:var(--ff-mono);font-size:8.5px;color:rgba(0,229,255,.22);text-align:center;letter-spacing:.08em}
-
-@media(max-width:1060px){
-  .hero-inner{grid-template-columns:1fr;gap:48px}
-  .about-grid{grid-template-columns:1fr;gap:48px}
-  .skills-grid{grid-template-columns:repeat(2,1fr)}
-  .impact-grid{grid-template-columns:repeat(2,1fr)}
-  .case-study-grid{grid-template-columns:repeat(2,1fr)}
-  .other-grid{grid-template-columns:repeat(2,1fr)}
-  nav{padding:0 28px}
-  .wrap{padding:80px 28px}
-  #hero{padding:72px 28px 48px}
-  .scroll-ind{left:28px}
-}
-@media(max-width:768px){
-  .nav-links,.nav-resume,.nav-cta{display:none}
-  .ham{display:flex}
-  .skills-grid{grid-template-columns:1fr 1fr}
-  .testi-grid{grid-template-columns:1fr}
-  .proj-header{grid-template-columns:1fr;gap:20px;padding:24px 22px 20px}
-  .proj-metrics-col{flex-direction:row;flex-wrap:wrap;padding-top:0}
-  .metric-pill{flex:1;min-width:72px}
-  .proj-screens-section{padding:20px 22px 26px}
-  .case-study-grid{grid-template-columns:1fr;padding:18px 22px}
-  .other-grid{grid-template-columns:1fr}
-  .impact-grid{grid-template-columns:1fr 1fr}
-  .cta-box{padding:44px 24px}
-  .cta-links{flex-direction:column;align-items:center}
-  .clink{width:100%;max-width:240px;justify-content:center}
-  body{cursor:auto}
-  #cur,#cur-ring{display:none}
-}
-@media(max-width:480px){.impact-grid{grid-template-columns:1fr}.skills-grid{grid-template-columns:1fr}}
+/* ---------- lightbox ---------- */
+#lb{display:none;position:fixed;inset:0;z-index:900;background:rgba(8,7,12,.94);align-items:center;justify-content:center;padding:24px}
+#lb.on{display:flex}
+.lb-box{position:relative;max-width:340px;width:100%}
+.lb-box img{width:100%;border-radius:14px;border:1px solid var(--line-strong)}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:var(--panel);border:1px solid var(--line-strong);color:#fff;font-size:16px;cursor:pointer;transition:.2s}
+.lb-nav:hover{background:var(--violet)}
+.lb-prev{left:-52px}.lb-next{right:-52px}
+.lb-close{position:absolute;top:-42px;right:0;background:none;border:none;color:#fff;font-size:22px;cursor:pointer}
+.lb-count{position:absolute;bottom:-32px;left:0;right:0;text-align:center;color:var(--ink-faint);font-size:12.5px}
+@media(max-width:600px){.lb-prev{left:6px}.lb-next{right:6px}}
 </style>
 </head>
 <body>
+<div class="noise"></div>
 
-<div class="grid-bg"></div>
-<div class="ambient">
-  <div class="amb amb-1"></div>
-  <div class="amb amb-2"></div>
-  <div class="amb amb-3"></div>
-</div>
-<div id="cur"></div>
-<div id="cur-ring"></div>
-<div id="prog"></div>
-
-<!-- NAV -->
-<nav id="nav">
-  <a href="#hero" class="nav-brand" onclick="goTo('hero');return false;">
-    <div class="nav-logo">ZH</div>
-    <span class="nav-name">Zameer Hussain</span>
-  </a>
-  <div class="nav-links" id="navLinks">
-    <button class="nav-link on" onclick="goTo('hero')">Home</button>
-    <button class="nav-link" onclick="goTo('about')">About</button>
-    <button class="nav-link" onclick="goTo('skills')">Tech Stack</button>
-    <button class="nav-link" onclick="goTo('projects')">Case Studies</button>
-    <button class="nav-link" onclick="goTo('impact')">Impact</button>
-    <button class="nav-link" onclick="goTo('testimonials')">Reviews</button>
+<header id="siteHeader">
+  <div class="nav-inner">
+    <a href="#hero" class="brand"><span class="brand-dot"></span>Zameer Hussain</a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#work">Work</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact" class="nav-hire">Hire me</a>
+    </nav>
+    <button class="ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
-  <div class="nav-right">
-    <!-- TODO: replace with your real resume PDF link -->
-    <a href="./Zameer_Hussain_Resume.pdf" download class="nav-resume">Resume ↓</a>
-    <a href="mailto:droidgenius778@gmail.com" class="nav-cta">Hire Me</a>
+  <div class="mob-menu" id="mobMenu">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#work">Work</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#contact">Contact</a>
   </div>
-  <button class="ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
-</nav>
-<div class="mob-menu" id="mobMenu">
-  <button class="mob-link" onclick="goTo('hero');closeMob()">Home</button>
-  <button class="mob-link" onclick="goTo('about');closeMob()">About</button>
-  <button class="mob-link" onclick="goTo('skills');closeMob()">Tech Stack</button>
-  <button class="mob-link" onclick="goTo('projects');closeMob()">Case Studies</button>
-  <button class="mob-link" onclick="goTo('impact');closeMob()">Impact</button>
-  <button class="mob-link" onclick="goTo('testimonials');closeMob()">Reviews</button>
-  <button class="mob-link" onclick="goTo('contact');closeMob()">Contact</button>
-  <a href="./Zameer_Hussain_Resume.pdf" download class="mob-link" style="display:block">Download Resume ↓</a>
-</div>
+</header>
 
-<!-- HERO -->
 <section id="hero">
-  <div class="hero-bg-text">ANDROID</div>
-  <div class="hero-inner">
-    <div class="hero-left">
-      <div class="hero-eyebrow">
-        <div class="eyebrow-dot"></div>
-        <span class="eyebrow-txt">Available for hire</span>
-      </div>
-      <h1 class="hero-h1">
-        <span class="line"><span class="w">Android Engineer</span></span>
-        <span class="line"><span class="w">AI-Integrated Apps</span></span>
-      </h1>
-      <div class="hero-niche">Kotlin · Jetpack Compose · <span>2.5+ yrs shipping production apps across 4 countries</span></div>
-      <p class="hero-desc">
-        I build <strong>production-ready Android apps</strong> that plug into AI —
-        OpenAI, TTS, and beyond — with scalable architecture and
-        <strong>delightful, fast UX</strong>. Founder of <strong>Znext Sol</strong>, a small Android studio.
-      </p>
-      <div class="hero-btns">
-        <button class="btn-primary" onclick="goTo('projects')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          View Case Studies
-        </button>
-        <button class="btn-outline" onclick="goTo('contact')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Get In Touch
-        </button>
-      </div>
+  <div class="hero-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
+  <div class="wrap hero-inner">
+    <div class="hero-kicker"><span class="pulse-dot"></span>Available for hire</div>
+    <h1>
+      <span class="line"><span>Android apps that hold up</span></span>
+      <span class="line"><span class="grad-text">in production, not demos.</span></span>
+    </h1>
+    <p class="hero-lede">I'm an Android engineer with <strong>3+ years</strong> building and shipping apps — from AI-driven consumer products I've launched solo, to enterprise deployments across four countries. Founder of <strong>Znext Sol</strong>, a small studio taking on contract Android work.</p>
+    <div class="hero-actions">
+      <a href="#work" class="btn btn-fill">View case studies</a>
+      <a href="#contact" class="btn btn-line">Get in touch</a>
     </div>
-    <div>
-      <div class="hero-stats-card">
-        <div class="card-head-label">Career Overview</div>
-        <div class="stats-2x2">
-          <div class="stat-cell"><div class="stat-num">2.5<span>yr</span></div><div class="stat-label">Professional Experience</div></div>
-          <div class="stat-cell"><div class="stat-num">7</div><div class="stat-label">Apps Shipped</div></div>
-          <div class="stat-cell"><div class="stat-num">4</div><div class="stat-label">Countries Deployed</div></div>
-          <div class="stat-cell"><div class="stat-num">40<span>%</span></div><div class="stat-label">Gradle Build Time Cut</div></div>
-        </div>
-        <div class="tech-chips">
-          <span class="tech-chip">Kotlin</span>
-          <span class="tech-chip">Compose</span>
-          <span class="tech-chip">Coroutines</span>
-          <span class="tech-chip">Hilt</span>
-          <span class="tech-chip">Room</span>
-          <span class="tech-chip">Retrofit</span>
-          <span class="tech-chip">Firebase</span>
-          <span class="tech-chip">OpenAI API</span>
-        </div>
-      </div>
+    <div class="fact-strip">
+      <div class="fact"><div class="fact-num" data-count="3" data-suffix="+">0</div><div class="fact-label">Years of experience</div></div>
+      <div class="fact"><div class="fact-num" data-count="7">0</div><div class="fact-label">Apps shipped</div></div>
+      <div class="fact"><div class="fact-num" data-count="4">0</div><div class="fact-label">Countries deployed</div></div>
+      <div class="fact"><div class="fact-num" data-count="40" data-suffix="%">0</div><div class="fact-label">Faster build times, one client</div></div>
     </div>
-  </div>
-  <div class="scroll-ind">
-    <span>SCROLL</span>
-    <div class="scroll-track"><div class="scroll-fill"></div></div>
   </div>
 </section>
 
-<!-- MARQUEE -->
-<div class="marquee-strip">
-  <div class="marquee-inner marquee-row-1" id="mq1"></div>
-</div>
-
-<!-- ABOUT -->
 <section id="about">
-  <div class="wrap">
-    <div class="about-grid">
-      <div class="about-text rev">
-        <div class="sec-label">
-          <span class="sec-label-num">01</span>
-          <span class="sec-label-line"></span>
-          <span class="sec-label-text">About Me</span>
-        </div>
-        <h2 class="sec-h2">Android Engineer<br><span class="hi">Specializing in AI Apps</span></h2>
-        <br>
-        <div class="founder-strip">
-          <div class="fs-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></div>
-          <div class="fs-text"><strong>Founder, Znext Sol</strong> — a small studio taking on freelance and contract Android work</div>
-        </div>
-        <p>With <strong>2.5 years of experience</strong> in Android development, I specialize in apps that integrate AI — conversational feedback loops, TTS pipelines, and API-driven personalization — on top of <strong>Jetpack Compose</strong> and clean, scalable architecture.</p>
-        <p>My work spans consumer apps I've built and shipped solo (SpeakMate, Postify), enterprise deployments across four countries for Unilever, and offline-first field tools for retail audit teams. I write clean, maintainable, testable code — and I care about what happens after the app ships: performance, cost, and retention.</p>
+  <div class="wrap about-grid">
+    <div class="about-body rev">
+      <div class="sec-index">About</div>
+      <h2 style="font-family:var(--display);font-weight:700;font-size:clamp(26px,3.2vw,34px);margin-bottom:22px;letter-spacing:-.015em">Android engineer, specializing in AI-integrated apps</h2>
+      <p>I build Android apps that plug into AI — conversational feedback loops, text-to-speech pipelines, API-driven personalization — on a foundation of Kotlin, Jetpack Compose, and clean, testable architecture.</p>
+      <p>My work spans consumer apps I've designed and shipped alone (<strong>SpeakMate</strong>, <strong>Postify</strong>), enterprise deployments across four countries for a major FMCG client, and offline-first field tools for retail audit teams. I care about what happens after an app ships — performance, API cost, and retention — as much as what happens before.</p>
+      <p>Outside client work, I run <strong>Znext Sol</strong>, a small studio through which I take on freelance and contract Android builds directly.</p>
+    </div>
+    <div class="rev d2">
+      <div class="fact-card">
+        <div class="fact-row"><span class="k">Experience</span><span class="v">3+ years</span></div>
+        <div class="fact-row"><span class="k">Specialization</span><span class="v">Android · Kotlin · AI</span></div>
+        <div class="fact-row"><span class="k">Deployed</span><span class="v">4 countries</span></div>
+        <div class="fact-row"><span class="k">Apps shipped</span><span class="v">7 projects</span></div>
+        <div class="fact-row"><span class="k">Based in</span><span class="v">Karachi, Pakistan</span></div>
       </div>
-      <div class="rev d2">
-        <div class="id-card">
-          <div class="id-top">
-            <div class="id-avatar">ZH</div>
-            <div>
-              <div class="id-name">Zameer Hussain</div>
-              <div class="id-role">Android Developer · Founder, Znext Sol</div>
-            </div>
-          </div>
-          <div class="id-rows">
-            <div class="id-row"><span class="id-k">Experience</span><span class="id-v">2.5 Years</span></div>
-            <div class="id-row"><span class="id-k">Specialization</span><span class="id-v">Android / Kotlin / AI</span></div>
-            <div class="id-row"><span class="id-k">Deployment</span><span class="id-v">4 Countries</span></div>
-            <div class="id-row"><span class="id-k">Apps Shipped</span><span class="id-v">7 Projects</span></div>
-            <div class="id-row"><span class="id-k">Based In</span><span class="id-v">Karachi, PK</span></div>
-          </div>
-        </div>
-        <div class="avail-badge">
-          <div class="avail-dot"></div>
-          <div class="avail-text"><strong>Available for hire</strong> — Open to consulting &amp; full-time roles</div>
-        </div>
-      </div>
+      <div class="avail-note">Open to consulting and full-time roles, remote or on contract via Znext Sol.</div>
     </div>
   </div>
 </section>
 
-<!-- TECH STACK -->
 <section id="skills">
   <div class="wrap">
-    <div class="sec-label rev"><span class="sec-label-num">02</span><span class="sec-label-line"></span><span class="sec-label-text">Tech Stack</span></div>
-    <h2 class="sec-h2 rev">Built On A <span class="hi">Solid Stack</span></h2>
-    <p class="sec-p rev">The tools and patterns behind every app below — used in production, not just tutorials.</p>
-    <br><br>
+    <div class="sec-head rev">
+      <div class="sec-index">Skills</div>
+      <h2>The stack behind every app below</h2>
+      <p>Tools and patterns used in production, not tutorials.</p>
+    </div>
     <div class="skills-grid">
-      <div class="skill-card rev">
-        <div class="skill-cat">Language</div>
-        <div class="skill-name">Kotlin &amp; Java</div>
-        <div class="skill-list"><span>Kotlin (Expert)</span><span>Coroutines</span><span>Flow</span></div>
-      </div>
-      <div class="skill-card rev d1">
-        <div class="skill-cat">UI</div>
-        <div class="skill-name">Jetpack Compose</div>
-        <div class="skill-list"><span>Compose</span><span>Material 3</span><span>Custom Canvas</span></div>
-      </div>
-      <div class="skill-card rev d2">
-        <div class="skill-cat">Architecture</div>
-        <div class="skill-name">MVVM / Clean / Multi-Module</div>
-        <div class="skill-list"><span>MVVM</span><span>Clean Arch</span><span>Multi-Module</span></div>
-      </div>
-      <div class="skill-card rev">
-        <div class="skill-cat">DI &amp; Data</div>
-        <div class="skill-name">Hilt, Room, Retrofit</div>
-        <div class="skill-list"><span>Hilt</span><span>Dagger2</span><span>Room</span><span>Retrofit</span></div>
-      </div>
-      <div class="skill-card rev d1">
-        <div class="skill-cat">Backend / Cloud</div>
-        <div class="skill-name">Firebase Suite</div>
-        <div class="skill-list"><span>Auth</span><span>Firestore</span><span>FCM</span><span>Crashlytics</span></div>
-      </div>
-      <div class="skill-card rev d2">
-        <div class="skill-cat">AI &amp; Media</div>
-        <div class="skill-name">AI-Integrated Apps</div>
-        <div class="skill-list"><span>OpenAI API</span><span>Google WaveNet TTS</span><span>Maps SDK</span></div>
-      </div>
-      <div class="skill-card rev">
-        <div class="skill-cat">Testing</div>
-        <div class="skill-name">Quality &amp; CI</div>
-        <div class="skill-list"><span>JUnit</span><span>Espresso</span><span>Mockito</span></div>
-      </div>
-      <div class="skill-card rev d1">
-        <div class="skill-cat">Monetization &amp; Tools</div>
-        <div class="skill-name">Growth Tooling</div>
-        <div class="skill-list"><span>AdMob</span><span>Play Billing</span><span>Git</span><span>Gradle</span></div>
-      </div>
+      <div class="skill-card rev"><div class="skill-cat">Language</div><div class="skill-items"><span>Kotlin</span><span>Java</span></div></div>
+      <div class="skill-card rev d1"><div class="skill-cat">UI</div><div class="skill-items"><span>Jetpack Compose</span><span>Material 3</span><span>Custom Canvas</span><span>XML layouts</span></div></div>
+      <div class="skill-card rev d2"><div class="skill-cat">Architecture</div><div class="skill-items"><span>MVVM</span><span>Clean Architecture</span><span>Multi-module</span></div></div>
+      <div class="skill-card rev"><div class="skill-cat">Async &amp; DI</div><div class="skill-items"><span>Coroutines</span><span>Flow</span><span>Hilt</span><span>Dagger 2</span></div></div>
+      <div class="skill-card rev d1"><div class="skill-cat">Data &amp; networking</div><div class="skill-items"><span>Room</span><span>Retrofit</span><span>OkHttp</span></div></div>
+      <div class="skill-card rev d2"><div class="skill-cat">Backend &amp; cloud</div><div class="skill-items"><span>Firebase Auth</span><span>Firestore</span><span>FCM</span><span>Crashlytics</span></div></div>
+      <div class="skill-card rev"><div class="skill-cat">AI &amp; media</div><div class="skill-items"><span>OpenAI API</span><span>Google WaveNet TTS</span><span>Maps SDK</span></div></div>
+      <div class="skill-card rev d1"><div class="skill-cat">Testing &amp; tooling</div><div class="skill-items"><span>JUnit</span><span>Espresso</span><span>Mockito</span><span>Git</span><span>Gradle</span></div></div>
+      <div class="skill-card rev d2"><div class="skill-cat">Monetization</div><div class="skill-items"><span>AdMob</span><span>Play Billing Library</span></div></div>
+    </div>
+    <div class="learning-block rev">
+      <div class="lb-label">Currently learning</div>
+      <div class="lb-items">Flutter &amp; Spring Boot</div>
+      <div class="lb-note">Actively building foundations in both — no shipped projects yet, listed here for transparency rather than as a claimed skill.</div>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS / CASE STUDIES -->
-<section id="projects">
+<section id="work">
   <div class="wrap">
-    <div class="sec-label rev"><span class="sec-label-num">03</span><span class="sec-label-line"></span><span class="sec-label-text">Case Studies</span></div>
-    <h2 class="sec-h2 rev">Featured <span class="hi">Case Studies</span></h2>
-    <p class="sec-p rev">A few projects, explained in depth: the problem, my role, the stack, and what shipped.</p>
-    <br><br>
+    <div class="sec-head rev">
+      <div class="sec-index">Selected work</div>
+      <h2>Case studies</h2>
+      <p>The problem, my role, the stack, and what shipped — for each.</p>
+    </div>
 
-    <!-- Case Study 1: SpeakMate -->
-    <div class="proj-card rev" data-proj="0">
-      <div class="proj-header">
-        <div>
-          <div class="proj-index">CASE STUDY 01 / SPEAKMATE
-            <a href="https://play.google.com/store/apps/details?id=com.speakmate.english" target="_blank" rel="noopener" class="badge-store">▶ Play Store</a>
-            <span class="badge-live"><span class="dot"></span>Live · 177 Countries</span>
+    <div class="case rev">
+      <div class="case-inner">
+        <div class="case-num">CASE 01</div>
+        <div class="case-top">
+          <div class="case-title">SpeakMate — AI English speaking practice</div>
+          <div class="case-badges">
+            <a href="https://play.google.com/store/apps/details?id=com.speakmate.english" target="_blank" rel="noopener" class="badge badge-link">Play Store ↗</a>
+            <span class="badge badge-live">Live · 177 countries</span>
           </div>
-          <h3 class="proj-title">SpeakMate — AI English Speaking Practice</h3>
-          <p class="proj-desc">An AI-powered English speaking coach. Users practice real spoken conversations — IELTS prep, job interviews, business English, travel, daily conversation — and get instant AI feedback on grammar, pronunciation, vocabulary, and fluency after every sentence. Supports multiple English accents and tracks fluency progress with streaks and achievements.</p>
-          <div class="proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">OpenAI API</span><span class="proj-tag">Google WaveNet TTS</span><span class="proj-tag">Firebase</span><span class="proj-tag">AdMob</span><span class="proj-tag">Custom Canvas Views</span></div>
         </div>
-        <div class="proj-metrics-col">
-          <div class="metric-pill"><div class="metric-val">20x</div><div class="metric-key">API Cost Cut</div></div>
-          <div class="metric-pill"><div class="metric-val">177</div><div class="metric-key">Countries Live</div></div>
-          <div class="metric-pill"><div class="metric-val">Solo</div><div class="metric-key">Built &amp; Shipped</div></div>
-        </div>
-      </div>
-      <div class="proj-screens-section">
-        <div class="screens-label">App Screens</div>
-        <div class="screens-dock">
-          <div class="phone-frame" onclick="openModal(0,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_01_ulskrt.png" alt="SpeakMate 1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(0,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dv0tole4k/image/upload/v1782009432/screen_02_djfppq.png" alt="SpeakMate 2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(0,2)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_03_rdijlu.png" alt="SpeakMate 3" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(0,3)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_04_bq7y5w.png" alt="SpeakMate 4" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(0,4)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_05_rjzd9f.png" alt="SpeakMate 5" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(0,5)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dv0tole4k/image/upload/v1782009432/screen_06_jia2fn.png" alt="SpeakMate 6" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+        <p class="case-desc">An AI-powered speaking coach. Users hold real spoken conversations — IELTS prep, job interviews, business English, travel, daily conversation — and get instant AI feedback on grammar, pronunciation, vocabulary, and fluency after every sentence, with progress tracked through streaks and fluency scores.</p>
+        <div class="case-meta">
+          <div class="cm"><h4>Problem</h4><p>English learners get grammar tools, but not real-time spoken feedback on fluency and pronunciation in context.</p></div>
+          <div class="cm"><h4>My role</h4><p>Solo developer — designed and built the full conversation loop, AI feedback pipeline, and progress UI end to end.</p></div>
+          <div class="cm"><h4>Stack</h4><ul><li>OpenAI Chat Completions</li><li>Google WaveNet / Chirp3-HD TTS</li><li>Firebase Analytics &amp; Crashlytics</li><li>AdMob</li></ul></div>
+          <div class="cm"><h4>Outcome</h4><ul><li>~20x lower API cost per session</li><li>Live in 177 countries</li><li>Custom skill-progress chart shipped</li></ul></div>
         </div>
       </div>
-      <div class="case-study-grid">
-        <div class="cs-block"><div class="cs-heading">Problem</div><p>English learners get grammar tools, but not real-time spoken feedback on fluency, pronunciation, and vocabulary in context.</p></div>
-        <div class="cs-block"><div class="cs-heading">My Role</div><p>Solo developer — designed and built the full conversation loop, AI feedback pipeline, and progress-tracking UI end-to-end.</p></div>
-        <div class="cs-block"><div class="cs-heading">Tech Stack</div><ul><li>OpenAI Chat Completions API</li><li>Google WaveNet / Chirp3-HD TTS</li><li>Firebase Analytics &amp; Crashlytics</li><li>AdMob monetization</li></ul></div>
-        <div class="cs-block"><div class="cs-heading">Outcome</div><ul><li>~20x reduction in API cost per session</li><li>Live in 177 countries on Play Store</li><li>Custom skill-progress chart widget shipped</li></ul></div>
+      <div class="shots">
+        <div class="shot" onclick="openLb(0,0)"><img src="https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_01_ulskrt.png" alt="SpeakMate screen 1" loading="lazy"></div>
+        <div class="shot" onclick="openLb(0,1)"><img src="https://res.cloudinary.com/dv0tole4k/image/upload/v1782009432/screen_02_djfppq.png" alt="SpeakMate screen 2" loading="lazy"></div>
+        <div class="shot" onclick="openLb(0,2)"><img src="https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_03_rdijlu.png" alt="SpeakMate screen 3" loading="lazy"></div>
+        <div class="shot" onclick="openLb(0,3)"><img src="https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_04_bq7y5w.png" alt="SpeakMate screen 4" loading="lazy"></div>
+        <div class="shot" onclick="openLb(0,4)"><img src="https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_05_rjzd9f.png" alt="SpeakMate screen 5" loading="lazy"></div>
+        <div class="shot" onclick="openLb(0,5)"><img src="https://res.cloudinary.com/dv0tole4k/image/upload/v1782009432/screen_06_jia2fn.png" alt="SpeakMate screen 6" loading="lazy"></div>
       </div>
     </div>
 
-    <!-- Case Study 2: Postify -->
-    <div class="proj-card rev" data-proj="1">
-      <div class="proj-header">
-        <div>
-          <div class="proj-index">CASE STUDY 02 / POSTIFY
-            <a href="https://play.google.com/store/apps/details?id=com.postify.app.free&hl=en" target="_blank" rel="noopener" class="badge-store">▶ Play Store</a>
-            <span class="badge-live"><span class="dot"></span>Live</span>
+    <div class="case rev">
+      <div class="case-inner">
+        <div class="case-num">CASE 02</div>
+        <div class="case-top">
+          <div class="case-title">Postify — AI-powered LinkedIn growth app</div>
+          <div class="case-badges">
+            <a href="https://play.google.com/store/apps/details?id=com.postify.app.free&hl=en" target="_blank" rel="noopener" class="badge badge-link">Play Store ↗</a>
+            <span class="badge badge-live">Live</span>
           </div>
-          <h3 class="proj-title">Postify — AI-Powered LinkedIn Growth App</h3>
-          <p class="proj-desc">An AI-powered LinkedIn growth platform that helps professionals stand out and turn visibility into real opportunities. Combines profile optimization, AI content creation, smart scheduling, and performance analytics. Users upload their resume to instantly generate an ATS-optimized LinkedIn profile.</p>
-          <div class="proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">AI Integration</span><span class="proj-tag">Hilt</span><span class="proj-tag">Firebase</span><span class="proj-tag">API &amp; Data Handling</span></div>
         </div>
-        <div class="proj-metrics-col">
-          <div class="metric-pill"><div class="metric-val">Live</div><div class="metric-key">Play Store</div></div>
-          <div class="metric-pill"><div class="metric-val">Solo</div><div class="metric-key">Built</div></div>
-          <div class="metric-pill"><div class="metric-val">AI</div><div class="metric-key">Resume → Profile</div></div>
-        </div>
-      </div>
-      <div class="proj-screens-section">
-        <div class="screens-label">App Screens</div>
-        <div class="screens-dock">
-          <div class="phone-frame" onclick="openModal(1,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679932/Hotpot_0_l2w3og.png" alt="Postify 1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(1,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679926/Hotpot_1_hliuyc.png" alt="Postify 2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(1,2)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679929/Hotpot_2_zcimit.png" alt="Postify 3" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(1,3)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679928/8_z2rbq7.png" alt="Postify 4" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(1,4)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679925/Hotpot_4_nkpqqk.png" alt="Postify 5" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(1,5)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679920/5_xbxjma.png" alt="Postify 6" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+        <p class="case-desc">Helps professionals turn LinkedIn visibility into real opportunities: profile optimization, AI content creation, smart scheduling, and performance analytics in one app. Users upload a resume to instantly generate an ATS-optimized LinkedIn profile.</p>
+        <div class="case-meta">
+          <div class="cm"><h4>Problem</h4><p>Writing ATS-friendly profiles and posting consistently is time-consuming for most professionals.</p></div>
+          <div class="cm"><h4>My role</h4><p>Solo developer — built the resume-parsing flow, AI content generation, scheduling, and analytics dashboard.</p></div>
+          <div class="cm"><h4>Stack</h4><ul><li>Kotlin, Hilt</li><li>AI text-generation integration</li><li>Firebase backend</li><li>REST API, JSON parsing</li></ul></div>
+          <div class="cm"><h4>Outcome</h4><ul><li>Live on Play Store</li><li>One-tap resume → optimized profile</li><li>Content and scheduling in a single flow</li></ul></div>
         </div>
       </div>
-      <div class="case-study-grid">
-        <div class="cs-block"><div class="cs-heading">Problem</div><p>Job seekers and professionals know LinkedIn matters, but writing ATS-friendly profiles and consistent content is time-consuming.</p></div>
-        <div class="cs-block"><div class="cs-heading">My Role</div><p>Solo developer — built the resume-parsing flow, AI content generation, scheduling, and analytics dashboard.</p></div>
-        <div class="cs-block"><div class="cs-heading">Tech Stack</div><ul><li>Kotlin + Hilt DI</li><li>AI text-generation integration</li><li>Firebase backend</li><li>REST API + JSON parsing</li></ul></div>
-        <div class="cs-block"><div class="cs-heading">Outcome</div><ul><li>Live and functional on Play Store</li><li>One-tap resume → optimized profile</li><li>Content + scheduling in a single flow</li></ul></div>
+      <div class="shots">
+        <div class="shot" onclick="openLb(1,0)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679932/Hotpot_0_l2w3og.png" alt="Postify screen 1" loading="lazy"></div>
+        <div class="shot" onclick="openLb(1,1)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679926/Hotpot_1_hliuyc.png" alt="Postify screen 2" loading="lazy"></div>
+        <div class="shot" onclick="openLb(1,2)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679929/Hotpot_2_zcimit.png" alt="Postify screen 3" loading="lazy"></div>
+        <div class="shot" onclick="openLb(1,3)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679928/8_z2rbq7.png" alt="Postify screen 4" loading="lazy"></div>
+        <div class="shot" onclick="openLb(1,4)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679925/Hotpot_4_nkpqqk.png" alt="Postify screen 5" loading="lazy"></div>
+        <div class="shot" onclick="openLb(1,5)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679920/5_xbxjma.png" alt="Postify screen 6" loading="lazy"></div>
       </div>
     </div>
 
-    <!-- Case Study 3: Unilever Enterprise -->
-    <div class="proj-card rev" data-proj="2">
-      <div class="proj-header">
-        <div>
-          <div class="proj-index">CASE STUDY 03 / ENTERPRISE
-            <span class="badge-nda">Client work · scope described generically (NDA)</span>
-          </div>
-          <h3 class="proj-title">Enterprise Supply-Chain Suite — 4-Country Deployment</h3>
-          <p class="proj-desc">At Centegy Technologies, built Android applications for a major FMCG client's supply-chain operations, deployed across Pakistan, Bangladesh, Thailand, and the Philippines as part of a multi-app ecosystem — from warehouse floors to customer doorsteps, orchestrating logistics across four international markets.</p>
-          <div class="proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">Java → Kotlin Migration</span><span class="proj-tag">Hilt</span><span class="proj-tag">Firebase</span><span class="proj-tag">Multi-Module</span></div>
+    <div class="case rev">
+      <div class="case-inner">
+        <div class="case-num">CASE 03</div>
+        <div class="case-top">
+          <div class="case-title">Enterprise supply-chain suite — 4-country deployment</div>
+          <div class="case-badges"><span class="badge badge-nda">Client work, scope described generically (NDA)</span></div>
         </div>
-        <div class="proj-metrics-col">
-          <div class="metric-pill"><div class="metric-val">4</div><div class="metric-key">Countries</div></div>
-          <div class="metric-pill"><div class="metric-val">40%</div><div class="metric-key">Build Time Cut</div></div>
-          <div class="metric-pill"><div class="metric-val">3x</div><div class="metric-key">Faster Migration</div></div>
+        <p class="case-desc">At Centegy Technologies, built Android applications for a major FMCG client's supply-chain operations, deployed across Pakistan, Bangladesh, Thailand, and the Philippines as part of a multi-app ecosystem spanning warehouse floors to customer doorsteps.</p>
+        <div class="case-meta">
+          <div class="cm"><h4>Problem</h4><p>A legacy Java codebase was slowing releases across four countries; build times and a stalled migration were blocking new features.</p></div>
+          <div class="cm"><h4>My role</h4><p>Led the Java-to-Kotlin migration and contributed to the multi-module architecture across the app suite.</p></div>
+          <div class="cm"><h4>Stack</h4><ul><li>Kotlin, Hilt, multi-module</li><li>Offline-first data layer</li><li>Per-market build flavors</li></ul></div>
+          <div class="cm"><h4>Outcome</h4><ul><li>40% reduction in Gradle build time</li><li>Migration finished 3x ahead of schedule</li><li>Stable multi-country release pipeline</li></ul></div>
         </div>
       </div>
-      <div class="proj-screens-section">
-        <div class="screens-label">App Screens</div>
-        <div class="screens-dock">
-          <div class="phone-frame" onclick="openModal(2,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904710/Hotpot_0_fssx5j.png" alt="U1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(2,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904704/Hotpot_1_ufomg1.png" alt="U2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(2,2)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904759/Hotpot_2_gntmqe.png" alt="U3" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(2,3)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904833/5_jjwioy.png" alt="U4" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(2,4)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904793/10_neocup.png" alt="U5" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(2,5)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904865/Hotpot_4_as9gxj.png" alt="U6" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-        </div>
-      </div>
-      <div class="case-study-grid">
-        <div class="cs-block"><div class="cs-heading">Problem</div><p>A legacy Java codebase was slowing releases across four countries, with build times and a stalled migration blocking new features.</p></div>
-        <div class="cs-block"><div class="cs-heading">My Role</div><p>Led the Java-to-Kotlin migration and contributed to the multi-module architecture across the app suite.</p></div>
-        <div class="cs-block"><div class="cs-heading">Tech Stack</div><ul><li>Kotlin, Hilt, Multi-Module</li><li>Offline-first data layer</li><li>Multiple build flavors per market</li></ul></div>
-        <div class="cs-block"><div class="cs-heading">Outcome</div><ul><li>40% reduction in Gradle build time</li><li>Migration completed 3x ahead of schedule</li><li>Stable multi-country release pipeline</li></ul></div>
+      <div class="shots">
+        <div class="shot" onclick="openLb(2,0)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904710/Hotpot_0_fssx5j.png" alt="Enterprise app screen 1" loading="lazy"></div>
+        <div class="shot" onclick="openLb(2,1)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904704/Hotpot_1_ufomg1.png" alt="Enterprise app screen 2" loading="lazy"></div>
+        <div class="shot" onclick="openLb(2,2)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904759/Hotpot_2_gntmqe.png" alt="Enterprise app screen 3" loading="lazy"></div>
+        <div class="shot" onclick="openLb(2,3)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904833/5_jjwioy.png" alt="Enterprise app screen 4" loading="lazy"></div>
+        <div class="shot" onclick="openLb(2,4)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904793/10_neocup.png" alt="Enterprise app screen 5" loading="lazy"></div>
+        <div class="shot" onclick="openLb(2,5)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904865/Hotpot_4_as9gxj.png" alt="Enterprise app screen 6" loading="lazy"></div>
       </div>
     </div>
 
-    <!-- Case Study 4: RetailAudit & MarkitSurvey -->
-    <div class="proj-card rev" data-proj="3">
-      <div class="proj-header">
-        <div>
-          <div class="proj-index">CASE STUDY 04 / FIELD APPS
-            <span class="badge-nda">Client: Markematics Digital</span>
-          </div>
-          <h3 class="proj-title">RetailAudit &amp; MarkitSurvey — Offline-First Field Apps</h3>
-          <p class="proj-desc">Two connected Android applications for field teams conducting store audits and market surveys. Field teams needed to collect data offline and sync when internet was available. Built offline-first apps with local SQLite databases, automatic sync, and JSON API integration to replace manual data entry.</p>
-          <div class="proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">Retrofit</span><span class="proj-tag">Node.js</span><span class="proj-tag">Offline-First</span><span class="proj-tag">Data Sync</span></div>
+    <div class="case rev">
+      <div class="case-inner">
+        <div class="case-num">CASE 04</div>
+        <div class="case-top">
+          <div class="case-title">RetailAudit &amp; MarkitSurvey — offline-first field apps</div>
+          <div class="case-badges"><span class="badge badge-nda">Client: Markematics Digital</span></div>
         </div>
-        <div class="proj-metrics-col">
-          <div class="metric-pill"><div class="metric-val">2</div><div class="metric-key">Connected Apps</div></div>
-          <div class="metric-pill"><div class="metric-val">Offline</div><div class="metric-key">-First</div></div>
-          <div class="metric-pill"><div class="metric-val">1yr</div><div class="metric-key">Engagement</div></div>
+        <p class="case-desc">Two connected Android apps for field teams conducting store audits and market surveys. Built offline-first, with local SQLite storage, automatic sync, and a Node.js-backed API to replace manual paper data entry.</p>
+        <div class="case-meta">
+          <div class="cm"><h4>Problem</h4><p>Field auditors relied on manual, paper-based entry with no connectivity in many store locations, causing delays and errors.</p></div>
+          <div class="cm"><h4>My role</h4><p>Built both apps end to end: local data layer, sync engine, and the Node.js-backed API integration.</p></div>
+          <div class="cm"><h4>Stack</h4><ul><li>Kotlin, Retrofit</li><li>Local SQLite database</li><li>Node.js backend, JSON API</li></ul></div>
+          <div class="cm"><h4>Outcome</h4><ul><li>Zero data loss with full offline support</li><li>Automatic background sync on reconnect</li><li>1-year continuous client engagement</li></ul></div>
         </div>
       </div>
-      <div class="proj-screens-section">
-        <div class="screens-label">App Screens</div>
-        <div class="screens-dock">
-          <div class="phone-frame" onclick="openModal(3,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314769/Hotpot_0_ifzlid.png" alt="Ra1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(3,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314783/Hotpot_1_lohei7.png" alt="Ra2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(3,2)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_2_otsuph.png" alt="Ra3" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(3,3)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314789/Hotpot_3_jkpu6m.png" alt="Ra4" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(3,4)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_4_j2whmh.png" alt="Ra5" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(3,5)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314770/Hotpot_5_haecbc.png" alt="Ra6" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-        </div>
-      </div>
-      <div class="case-study-grid">
-        <div class="cs-block"><div class="cs-heading">Problem</div><p>Field auditors relied on manual, paper-based data entry with no connectivity in many store locations, causing delays and errors.</p></div>
-        <div class="cs-block"><div class="cs-heading">My Role</div><p>Built both connected apps end-to-end: local data layer, sync engine, and the Node.js-backed API integration.</p></div>
-        <div class="cs-block"><div class="cs-heading">Tech Stack</div><ul><li>Kotlin, Retrofit</li><li>Local SQLite database</li><li>Node.js backend, JSON API</li></ul></div>
-        <div class="cs-block"><div class="cs-heading">Outcome</div><ul><li>Zero data loss with full offline support</li><li>Automatic background sync on reconnect</li><li>1-year continuous client engagement</li></ul></div>
+      <div class="shots">
+        <div class="shot" onclick="openLb(3,0)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314769/Hotpot_0_ifzlid.png" alt="RetailAudit screen 1" loading="lazy"></div>
+        <div class="shot" onclick="openLb(3,1)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314783/Hotpot_1_lohei7.png" alt="RetailAudit screen 2" loading="lazy"></div>
+        <div class="shot" onclick="openLb(3,2)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_2_otsuph.png" alt="RetailAudit screen 3" loading="lazy"></div>
+        <div class="shot" onclick="openLb(3,3)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314789/Hotpot_3_jkpu6m.png" alt="RetailAudit screen 4" loading="lazy"></div>
+        <div class="shot" onclick="openLb(3,4)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_4_j2whmh.png" alt="RetailAudit screen 5" loading="lazy"></div>
+        <div class="shot" onclick="openLb(3,5)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314770/Hotpot_5_haecbc.png" alt="RetailAudit screen 6" loading="lazy"></div>
       </div>
     </div>
 
-    <!-- Case Study 5: PulsePoint Clinic -->
-    <div class="proj-card rev" data-proj="4">
-      <div class="proj-header">
-        <div>
-          <div class="proj-index">CASE STUDY 05 / HEALTHCARE DEMO
-            <span class="badge-nda">Independent demo build</span>
-          </div>
-          <h3 class="proj-title">PulsePoint Clinic — Healthcare Booking Demo</h3>
-          <p class="proj-desc">A healthcare clinic demo app built to showcase appointment booking, patient records, and doctor scheduling in a single Android experience — used as a template to pitch clinics and small healthcare providers on going digital.</p>
-          <div class="proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">MVVM</span><span class="proj-tag">Firebase</span><span class="proj-tag">Material Design 3</span></div>
+    <div class="case rev">
+      <div class="case-inner">
+        <div class="case-num">CASE 05</div>
+        <div class="case-top">
+          <div class="case-title">PulsePoint Clinic — healthcare booking demo</div>
+          <div class="case-badges"><span class="badge badge-nda">Independent demo build</span></div>
         </div>
-        <div class="proj-metrics-col">
-          <div class="metric-pill"><div class="metric-val">Demo</div><div class="metric-key">Client Pitch</div></div>
-          <div class="metric-pill"><div class="metric-val">Solo</div><div class="metric-key">Built</div></div>
-        </div>
-      </div>
-      <div class="proj-screens-section">
-        <div class="screens-label">App Screens <span class="dummy-flag">placeholder — real screens coming</span></div>
-        <div class="screens-dock">
-          <div class="phone-frame" onclick="openModal(4,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://placehold.co/400x866/0e1522/00e5ff?text=PulsePoint+1&font=roboto" alt="PulsePoint 1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(4,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://placehold.co/400x866/0e1522/00e5ff?text=PulsePoint+2&font=roboto" alt="PulsePoint 2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(4,2)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://placehold.co/400x866/0e1522/00e5ff?text=PulsePoint+3&font=roboto" alt="PulsePoint 3" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(4,3)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://placehold.co/400x866/0e1522/00e5ff?text=PulsePoint+4&font=roboto" alt="PulsePoint 4" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+        <p class="case-desc">A clinic demo app built to showcase appointment booking, patient records, and doctor scheduling in one Android experience — used as a template to pitch small healthcare providers on going digital.</p>
+        <div class="case-meta">
+          <div class="cm"><h4>Problem</h4><p>Small clinics manage bookings and patient info by phone and paper — slow, error-prone, hard to scale.</p></div>
+          <div class="cm"><h4>My role</h4><p>Solo developer — designed and built the booking flow, patient records screen, and scheduling UI as a pitch-ready demo.</p></div>
+          <div class="cm"><h4>Stack</h4><ul><li>Kotlin, MVVM</li><li>Firebase Firestore</li><li>Material Design 3</li></ul></div>
+          <div class="cm"><h4>Outcome</h4><ul><li>Reusable demo for client pitches</li><li>End-to-end booking flow in one build</li></ul></div>
         </div>
       </div>
-      <div class="case-study-grid">
-        <div class="cs-block"><div class="cs-heading">Problem</div><p>Small clinics manage bookings and patient info via phone calls and paper — slow, error-prone, and hard to scale.</p></div>
-        <div class="cs-block"><div class="cs-heading">My Role</div><p>Solo developer — designed and built the booking flow, patient records screen, and doctor scheduling UI as a pitch-ready demo.</p></div>
-        <div class="cs-block"><div class="cs-heading">Tech Stack</div><ul><li>Kotlin, MVVM</li><li>Firebase Firestore</li><li>Material Design 3</li></ul></div>
-        <div class="cs-block"><div class="cs-heading">Outcome</div><ul><li>Reusable demo for client pitches</li><li>End-to-end booking flow in a single build</li></ul></div>
+      <div class="dummy-flag">Placeholder screens — real screens to follow.</div>
+      <div class="shots">
+        <div class="shot" onclick="openLb(4,0)"><img src="https://placehold.co/400x866/1D1929/FF8A3D?text=PulsePoint+1&font=roboto" alt="PulsePoint placeholder 1" loading="lazy"></div>
+        <div class="shot" onclick="openLb(4,1)"><img src="https://placehold.co/400x866/1D1929/FF8A3D?text=PulsePoint+2&font=roboto" alt="PulsePoint placeholder 2" loading="lazy"></div>
+        <div class="shot" onclick="openLb(4,2)"><img src="https://placehold.co/400x866/1D1929/FF8A3D?text=PulsePoint+3&font=roboto" alt="PulsePoint placeholder 3" loading="lazy"></div>
+        <div class="shot" onclick="openLb(4,3)"><img src="https://placehold.co/400x866/1D1929/FF8A3D?text=PulsePoint+4&font=roboto" alt="PulsePoint placeholder 4" loading="lazy"></div>
       </div>
     </div>
 
-    <!-- Case Study 6: AcciControl -->
-    <div class="proj-card rev" data-proj="5">
-      <div class="proj-header">
-        <div>
-          <div class="proj-index">CASE STUDY 06 / FINAL YEAR PROJECT
-            <span class="badge-nda">University project</span>
-          </div>
-          <h3 class="proj-title">AcciControl — GPS &amp; Motion-Based Accident Detection</h3>
-          <p class="proj-desc">Final Year Project: an Android app that uses GPS and the phone's motion sensors (accelerometer/gyroscope) to detect sudden impact patterns consistent with a road accident, then automatically alerts emergency contacts with the vehicle's live location.</p>
-          <div class="proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">Sensor APIs</span><span class="proj-tag">Google Maps SDK</span><span class="proj-tag">Location Services</span></div>
+    <div class="case rev">
+      <div class="case-inner">
+        <div class="case-num">CASE 06</div>
+        <div class="case-top">
+          <div class="case-title">AcciControl — accident detection via GPS &amp; motion sensors</div>
+          <div class="case-badges"><span class="badge badge-nda">Final year project</span></div>
         </div>
-        <div class="proj-metrics-col">
-          <div class="metric-pill"><div class="metric-val">FYP</div><div class="metric-key">BS Project</div></div>
-          <div class="metric-pill"><div class="metric-val">Solo</div><div class="metric-key">Built</div></div>
-        </div>
-      </div>
-      <div class="proj-screens-section">
-        <div class="screens-label">App Screens <span class="dummy-flag">placeholder — real screens coming</span></div>
-        <div class="screens-dock">
-          <div class="phone-frame" onclick="openModal(5,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://placehold.co/400x866/0e1522/c6ff00?text=AcciControl+1&font=roboto" alt="AcciControl 1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(5,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://placehold.co/400x866/0e1522/c6ff00?text=AcciControl+2&font=roboto" alt="AcciControl 2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(5,2)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://placehold.co/400x866/0e1522/c6ff00?text=AcciControl+3&font=roboto" alt="AcciControl 3" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
+        <p class="case-desc">My BS final year project: an Android app using GPS and the phone's motion sensors to detect sudden-impact patterns consistent with a road accident, then automatically alerts emergency contacts with the vehicle's live location.</p>
+        <div class="case-meta">
+          <div class="cm"><h4>Problem</h4><p>Accident victims often can't call for help themselves — delayed response times cost lives in the critical first minutes.</p></div>
+          <div class="cm"><h4>My role</h4><p>Solo developer — built the sensor-fusion detection logic, GPS tracking, and automated alert flow.</p></div>
+          <div class="cm"><h4>Stack</h4><ul><li>Accelerometer / gyroscope fusion</li><li>Google Maps SDK, location services</li><li>Automated SMS/alert dispatch</li></ul></div>
+          <div class="cm"><h4>Outcome</h4><ul><li>Completed as final year project</li><li>Working end-to-end detection → alert pipeline</li></ul></div>
         </div>
       </div>
-      <div class="case-study-grid">
-        <div class="cs-block"><div class="cs-heading">Problem</div><p>Road accident victims often can't call for help themselves — delayed response times cost lives in the critical first minutes.</p></div>
-        <div class="cs-block"><div class="cs-heading">My Role</div><p>Solo developer — built the sensor-fusion detection logic, GPS tracking, and automated emergency-alert flow.</p></div>
-        <div class="cs-block"><div class="cs-heading">Tech Stack</div><ul><li>Accelerometer / gyroscope sensor fusion</li><li>Google Maps SDK, Location Services</li><li>Automated SMS/alert dispatch</li></ul></div>
-        <div class="cs-block"><div class="cs-heading">Outcome</div><ul><li>Completed as Final Year Project</li><li>Working end-to-end detection → alert pipeline</li></ul></div>
+      <div class="dummy-flag">Placeholder screens — real screens to follow.</div>
+      <div class="shots">
+        <div class="shot" onclick="openLb(5,0)"><img src="https://placehold.co/400x866/1D1929/8B5CF6?text=AcciControl+1&font=roboto" alt="AcciControl placeholder 1" loading="lazy"></div>
+        <div class="shot" onclick="openLb(5,1)"><img src="https://placehold.co/400x866/1D1929/8B5CF6?text=AcciControl+2&font=roboto" alt="AcciControl placeholder 2" loading="lazy"></div>
+        <div class="shot" onclick="openLb(5,2)"><img src="https://placehold.co/400x866/1D1929/8B5CF6?text=AcciControl+3&font=roboto" alt="AcciControl placeholder 3" loading="lazy"></div>
       </div>
     </div>
 
-    <!-- Znext Sol — own studio -->
-    <div class="proj-card rev" data-proj="6">
-      <div class="proj-header">
-        <div>
-          <div class="proj-index">CASE STUDY 07 / OWN BUSINESS
-            <span class="badge-live"><span class="dot"></span>Founder</span>
-          </div>
-          <h3 class="proj-title">Znext Sol — Android Development Studio</h3>
-          <p class="proj-desc">My own productized Android studio — a website and brand built to acquire freelance and contract clients directly, positioning me as a founder rather than a single freelancer. Handles inbound inquiries, showcases prior work, and outlines service packages for Android and AI-integrated app builds.</p>
-          <div class="proj-tags"><span class="proj-tag">GitHub Pages</span><span class="proj-tag">HTML/CSS/JS</span><span class="proj-tag">Brand &amp; Positioning</span></div>
-        </div>
-        <div class="proj-metrics-col">
-          <div class="metric-pill"><div class="metric-val">Live</div><div class="metric-key">GitHub Pages</div></div>
-          <div class="metric-pill"><div class="metric-val">Solo</div><div class="metric-key">Founder</div></div>
-        </div>
-      </div>
-      <div class="proj-screens-section">
-        <div class="screens-label">Site Screens <span class="dummy-flag">placeholder — real screens coming</span></div>
-        <div class="screens-dock">
-          <div class="phone-frame" onclick="openModal(6,0)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://placehold.co/400x866/0e1522/00e5ff?text=Znext+Sol+1&font=roboto" alt="Znext Sol 1" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-          <div class="phone-frame" onclick="openModal(6,1)"><div class="phone-shell"><div class="phone-notch"></div><div class="phone-screen"><img src="https://placehold.co/400x866/0e1522/00e5ff?text=Znext+Sol+2&font=roboto" alt="Znext Sol 2" loading="lazy"></div><div class="phone-overlay">⤢</div></div></div>
-        </div>
-      </div>
-      <div class="case-study-grid">
-        <div class="cs-block"><div class="cs-heading">Problem</div><p>Freelance profiles on marketplaces get lost in a sea of similar listings — a branded studio stands out and builds trust faster.</p></div>
-        <div class="cs-block"><div class="cs-heading">My Role</div><p>Founder — designed and built the brand, site, and service offering from scratch.</p></div>
-        <div class="cs-block"><div class="cs-heading">Tech Stack</div><ul><li>Static site, deployed on GitHub Pages</li><li>HTML / CSS / JS</li></ul></div>
-        <div class="cs-block"><div class="cs-heading">Outcome</div><ul><li>Live studio site for direct client acquisition</li><li>Positions me as founder, not solo freelancer</li></ul></div>
-      </div>
-    </div>
-
-    <!-- Other / smaller projects -->
-    <div class="other-projects-label">Other Shipped Apps</div>
+    <div class="other-label rev">Other shipped apps</div>
     <div class="other-grid">
-      <div class="mini-proj rev">
-        <div class="mini-proj-title">Recipe Expert</div>
-        <div class="mini-proj-desc">Cooking companion app with ingredient-based recipe search across cuisines. <a href="https://play.google.com/store/apps/details?id=com.hamzadev.recipeexpert" target="_blank" rel="noopener" style="color:var(--cyan)">Play Store →</a></div>
-        <div class="mini-proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">Firebase</span><span class="proj-tag">Hilt</span></div>
+      <div class="mini rev">
+        <h4>Recipe Expert</h4>
+        <p>Cooking companion app with ingredient-based recipe search across cuisines.</p>
+        <a href="https://play.google.com/store/apps/details?id=com.hamzadev.recipeexpert" target="_blank" rel="noopener">Play Store ↗</a>
+        <div class="mini-tags" style="margin-top:10px">Kotlin · Firebase · Hilt</div>
       </div>
-      <div class="mini-proj rev d1">
-        <div class="mini-proj-title">Shop Tracking (B2B)</div>
-        <div class="mini-proj-desc">Distributor and shop performance tracking tool with real-time geolocation sync.</div>
-        <div class="mini-proj-tags"><span class="proj-tag">Geolocation</span><span class="proj-tag">REST API</span></div>
+      <div class="mini rev d1">
+        <h4>Shop Tracking (B2B)</h4>
+        <p>Distributor and shop performance tracking tool with real-time geolocation sync.</p>
+        <div class="mini-tags">Geolocation · REST API</div>
       </div>
-      <div class="mini-proj rev d2">
-        <div class="mini-proj-title">Laugh &amp; Rhyme</div>
-        <div class="mini-proj-desc">Bilingual (English &amp; Urdu) jokes, riddles, and poetry app with social sharing.</div>
-        <div class="mini-proj-tags"><span class="proj-tag">Compose</span><span class="proj-tag">Room</span></div>
+      <div class="mini rev d2">
+        <h4>Laugh &amp; Rhyme</h4>
+        <p>Bilingual (English &amp; Urdu) jokes, riddles, and poetry app with social sharing.</p>
+        <div class="mini-tags">Jetpack Compose · Room</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- IMPACT -->
-<section id="impact">
+<section id="highlights">
   <div class="wrap">
-    <div class="sec-label rev"><span class="sec-label-num">04</span><span class="sec-label-line"></span><span class="sec-label-text">Highlights</span></div>
-    <h2 class="sec-h2 rev">Career <span class="hi">Highlights</span></h2>
-    <p class="sec-p rev">Milestones from enterprise, independent, and founder work.</p>
-    <br><br>
-    <div class="impact-grid">
-      <div class="impact-card rev">
-        <div class="impact-icon-wrap"><svg viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></div>
-        <div class="impact-year">2026</div>
-        <div class="impact-title">Founded Znext Sol</div>
-        <div class="impact-desc">Launched my own Android development studio</div>
-      </div>
-      <div class="impact-card rev d1">
-        <div class="impact-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-        <div class="impact-year">2024 – 2025</div>
-        <div class="impact-title">4-Country Deployment</div>
-        <div class="impact-desc">Pakistan, Bangladesh, Thailand, Philippines</div>
-      </div>
-      <div class="impact-card rev d2">
-        <div class="impact-icon-wrap"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-        <div class="impact-year">2024</div>
-        <div class="impact-title">Java-to-Kotlin Migration</div>
-        <div class="impact-desc">Completed 3x ahead of schedule</div>
-      </div>
-      <div class="impact-card rev d3">
-        <div class="impact-icon-wrap"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <div class="impact-year">2023 – 2026</div>
-        <div class="impact-title">2.5+ Years Experience</div>
-        <div class="impact-desc">Building production Android apps</div>
-      </div>
+    <div class="sec-head rev">
+      <div class="sec-index">Highlights</div>
+      <h2>A quick timeline</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-row rev"><div class="tl-date">2026</div><div class="tl-title">Founded Znext Sol</div><div class="tl-desc">Launched my own Android development studio for direct freelance and contract work.</div></div>
+      <div class="tl-row rev d1"><div class="tl-date">2024–2025</div><div class="tl-title">4-country deployment</div><div class="tl-desc">Shipped enterprise Android apps live across Pakistan, Bangladesh, Thailand, and the Philippines.</div></div>
+      <div class="tl-row rev d2"><div class="tl-date">2024</div><div class="tl-title">Java-to-Kotlin migration</div><div class="tl-desc">Led the migration for an enterprise app suite, completed 3x ahead of schedule.</div></div>
+      <div class="tl-row rev d3"><div class="tl-date">2023–present</div><div class="tl-title">3+ years building Android</div><div class="tl-desc">Shipping production apps solo and as part of client teams.</div></div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
 <section id="testimonials">
   <div class="wrap">
-    <div class="sec-label rev"><span class="sec-label-num">05</span><span class="sec-label-line"></span><span class="sec-label-text">Testimonials</span></div>
-    <h2 class="sec-h2 rev">Client <span class="hi">Feedback</span></h2>
-    <p class="sec-p rev">What people I've worked with have said.</p>
-    <br><br>
+    <div class="sec-head rev">
+      <div class="sec-index">Reviews</div>
+      <h2>What clients have said</h2>
+    </div>
     <div class="testi-grid">
-      <div class="testi-card rev">
-        <div class="testi-quote-icon">"</div>
-        <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-        <p class="testi-text">Delivered a high-quality Android application with clean architecture and efficient performance. Communication and reliability throughout the project were outstanding.</p>
-        <div class="testi-author"><div class="testi-av">AZ</div><div><div class="testi-name">Ali Zohair</div><div class="testi-role">Project Lead</div></div></div>
+      <div class="testi rev">
+        <div class="mark">"</div>
+        <p>Delivered a high-quality Android application with clean architecture and efficient performance. Communication and reliability throughout the project were outstanding.</p>
+        <div class="testi-author"><strong>Ali Zohair</strong><span>Project Lead</span></div>
       </div>
-      <div class="testi-card rev d1">
-        <div class="testi-quote-icon">"</div>
-        <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-        <p class="testi-text">Demonstrated exceptional problem-solving skills and attention to detail. The app was intuitive, smooth, and met all project requirements on time.</p>
-        <div class="testi-author"><div class="testi-av">MS</div><div><div class="testi-name">Muhammad Saleh</div><div class="testi-role">Product Manager</div></div></div>
+      <div class="testi rev d1">
+        <div class="mark">"</div>
+        <p>Demonstrated exceptional problem-solving skills and attention to detail. The app was intuitive, smooth, and met all project requirements on time.</p>
+        <div class="testi-author"><strong>Muhammad Saleh</strong><span>Product Manager</span></div>
       </div>
-      <div class="testi-card rev d2">
-        <div class="testi-quote-icon">"</div>
-        <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-        <p class="testi-text">Professional, knowledgeable, and reliable. Delivered a scalable Android solution with optimized UI and robust features, making collaboration seamless.</p>
-        <div class="testi-author"><div class="testi-av">FZ</div><div><div class="testi-name">Fahad Zafar</div><div class="testi-role">Tech Consultant</div></div></div>
+      <div class="testi rev d2">
+        <div class="mark">"</div>
+        <p>Professional, knowledgeable, and reliable. Delivered a scalable Android solution with optimized UI and robust features, making collaboration seamless.</p>
+        <div class="testi-author"><strong>Fahad Zafar</strong><span>Tech Consultant</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="wrap">
-    <div class="contact-inner rev">
-      <div class="sec-label" style="justify-content:center">
-        <span class="sec-label-num">06</span><span class="sec-label-line"></span><span class="sec-label-text">Contact</span>
-      </div>
-      <div class="cta-box">
-        <div class="cta-glow"></div>
-        <h2 class="cta-h2">Let's Build Something<br><span class="hi">Together</span></h2>
-        <p class="cta-p">Available for remote contract work, consulting, and Android development roles — via Znext Sol or direct hire.</p>
-        <div class="cta-links">
-          <a href="mailto:droidgenius778@gmail.com" class="clink clink-main">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            Email Me
-          </a>
-          <!-- TODO: replace with your real resume PDF link -->
-          <a href="./Zameer_Hussain_Resume.pdf" download class="clink clink-sec">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
-            Download Resume
-          </a>
-          <a href="https://github.com/zameer-sahil" target="_blank" rel="noopener noreferrer" class="clink clink-sec">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-            GitHub
-          </a>
-          <a href="https://www.linkedin.com/in/zameer-hussain-286250252" target="_blank" rel="noopener noreferrer" class="clink clink-sec">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-            LinkedIn
-          </a>
-        </div>
+    <div class="contact-box rev">
+      <h2>Let's build something together</h2>
+      <p>Available for remote contract work, consulting, and Android development roles — via Znext Sol or direct hire.</p>
+      <div class="contact-links">
+        <a href="mailto:droidgenius778@gmail.com" class="clink clink-main">Email me</a>
+        <a href="./Zameer_Hussain_Resume.pdf" download class="clink clink-sec">Download resume</a>
+        <a href="https://github.com/zameer-sahil" target="_blank" rel="noopener noreferrer" class="clink clink-sec">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/zameer-hussain-286250252" target="_blank" rel="noopener noreferrer" class="clink clink-sec">LinkedIn ↗</a>
       </div>
     </div>
-    <footer>© 2026 Zameer Hussain · Android Developer · Founder, Znext Sol · Karachi, Pakistan</footer>
   </div>
 </section>
 
-<!-- MODAL -->
-<div id="modal">
-  <div class="modal-wrap">
-    <div class="modal-toolbar">
-      <div class="mt-grp">
-        <button class="mt-btn" id="mtPrev" onclick="navModal(-1)">←</button>
-        <span class="mt-lbl" id="mtCounter">1/1</span>
-        <button class="mt-btn" id="mtNext" onclick="navModal(1)">→</button>
-      </div>
-      <div class="mt-sep"></div>
-      <div class="mt-grp">
-        <button class="mt-btn" onclick="doZoom(.35)">+</button>
-        <span class="mt-lbl" id="mtPct">100%</span>
-        <button class="mt-btn" onclick="doZoom(-.35)">−</button>
-        <button class="mt-btn" onclick="resetZoom()" style="font-size:10px">↺</button>
-      </div>
-      <div class="mt-sep"></div>
-      <button class="mt-btn" onclick="closeModal()">✕</button>
-    </div>
-    <div class="modal-phone-shell">
-      <div class="modal-notch"></div>
-      <div class="modal-screen" id="mScreen"
-        onmousedown="dragStart(event)" onmousemove="dragMove(event)" onmouseup="dragEnd()" onmouseleave="dragEnd()"
-        ontouchstart="touchStart(event)" ontouchmove="touchMove(event)" ontouchend="touchEnd(event)">
-        <img id="mImg" src="" alt="" draggable="false">
-      </div>
-    </div>
-    <div class="modal-hint">scroll to zoom · drag to pan · ← → navigate · esc close</div>
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Zameer Hussain</span>
+    <span>Android Developer · Founder, Znext Sol · Karachi, Pakistan</span>
+  </div>
+</footer>
+
+<div id="lb">
+  <div class="lb-box">
+    <button class="lb-close" onclick="closeLb()">✕</button>
+    <button class="lb-nav lb-prev" onclick="navLb(-1)">←</button>
+    <img id="lbImg" src="" alt="">
+    <button class="lb-nav lb-next" onclick="navLb(1)">→</button>
+    <div class="lb-count" id="lbCount"></div>
   </div>
 </div>
 
 <script>
-const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
-(function ac(){if(cur){cur.style.left=mx+'px';cur.style.top=my+'px'}rx+=(mx-rx)*.11;ry+=(my-ry)*.11;if(ring){ring.style.left=rx+'px';ring.style.top=ry+'px'}requestAnimationFrame(ac)})();
-
-const items=['Kotlin','2.5 Years','AI-Integrated Apps','Jetpack Compose','Hilt / DI','Coroutines','MVVM','4 Countries','Znext Sol','Play Store','Clean Code','Multi-Module'];
-const mq=document.getElementById('mq1');
-const h=items.map((t,i)=>`<span class="mq-item${i%3===0?' accent':''}">${t}<span class="mq-sep"></span></span>`).join('');
-mq.innerHTML=h+h;
-
-function goTo(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth'})}
 const ham=document.getElementById('ham'),mob=document.getElementById('mobMenu');
-ham.addEventListener('click',()=>{ham.classList.toggle('open');mob.classList.toggle('show')});
-function closeMob(){ham.classList.remove('open');mob.classList.remove('show')}
+ham.addEventListener('click',()=>mob.classList.toggle('show'));
+mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mob.classList.remove('show')));
 
-const SECS=['hero','about','skills','projects','impact','testimonials','contact'];
-function updateNav(){
-  let a='hero';
-  SECS.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<=110)a=id});
-  document.querySelectorAll('.nav-link').forEach((b,i)=>b.classList.toggle('on',SECS[i]===a));
-  document.getElementById('nav').classList.toggle('scrolled',scrollY>30);
-}
-
-const prog=document.getElementById('prog');
-window.addEventListener('scroll',()=>{
-  prog.style.width=(scrollY/(document.documentElement.scrollHeight-innerHeight)*100)+'%';
-  updateNav();
-},{passive:true});
-
-const ro=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')}),{threshold:.06});
+/* scroll reveal */
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')}),{threshold:.12});
 document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
 
-const PROJECTS=[
+/* count-up stats, once */
+const counted=new WeakSet();
+const co=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting||counted.has(e.target))return;
+  counted.add(e.target);
+  const el=e.target,target=+el.dataset.count,suffix=el.dataset.suffix||'',dur=1100,start=performance.now();
+  function tick(now){
+    const p=Math.min(1,(now-start)/dur),eased=1-Math.pow(1-p,3);
+    el.textContent=Math.round(eased*target)+suffix;
+    if(p<1)requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}),{threshold:.6});
+document.querySelectorAll('.fact-num').forEach(el=>co.observe(el));
+
+/* lightbox */
+const SHOTS=[
   ['https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_01_ulskrt.png','https://res.cloudinary.com/dv0tole4k/image/upload/v1782009432/screen_02_djfppq.png','https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_03_rdijlu.png','https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_04_bq7y5w.png','https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_05_rjzd9f.png','https://res.cloudinary.com/dv0tole4k/image/upload/v1782009432/screen_06_jia2fn.png'],
   ['https://res.cloudinary.com/dfyphobvp/image/upload/v1766679932/Hotpot_0_l2w3og.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766679926/Hotpot_1_hliuyc.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766679929/Hotpot_2_zcimit.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766679928/8_z2rbq7.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766679925/Hotpot_4_nkpqqk.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766679920/5_xbxjma.png'],
   ['https://res.cloudinary.com/dfyphobvp/image/upload/v1766904710/Hotpot_0_fssx5j.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904704/Hotpot_1_ufomg1.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904759/Hotpot_2_gntmqe.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904833/5_jjwioy.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904793/10_neocup.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904865/Hotpot_4_as9gxj.png'],
   ['https://res.cloudinary.com/dfyphobvp/image/upload/v1766314769/Hotpot_0_ifzlid.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766314783/Hotpot_1_lohei7.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_2_otsuph.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766314789/Hotpot_3_jkpu6m.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_4_j2whmh.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766314770/Hotpot_5_haecbc.png'],
-  ['https://placehold.co/400x866/0e1522/00e5ff?text=PulsePoint+1&font=roboto','https://placehold.co/400x866/0e1522/00e5ff?text=PulsePoint+2&font=roboto','https://placehold.co/400x866/0e1522/00e5ff?text=PulsePoint+3&font=roboto','https://placehold.co/400x866/0e1522/00e5ff?text=PulsePoint+4&font=roboto'],
-  ['https://placehold.co/400x866/0e1522/c6ff00?text=AcciControl+1&font=roboto','https://placehold.co/400x866/0e1522/c6ff00?text=AcciControl+2&font=roboto','https://placehold.co/400x866/0e1522/c6ff00?text=AcciControl+3&font=roboto'],
-  ['https://placehold.co/400x866/0e1522/00e5ff?text=Znext+Sol+1&font=roboto','https://placehold.co/400x866/0e1522/00e5ff?text=Znext+Sol+2&font=roboto']
+  ['https://placehold.co/400x866/1D1929/FF8A3D?text=PulsePoint+1&font=roboto','https://placehold.co/400x866/1D1929/FF8A3D?text=PulsePoint+2&font=roboto','https://placehold.co/400x866/1D1929/FF8A3D?text=PulsePoint+3&font=roboto','https://placehold.co/400x866/1D1929/FF8A3D?text=PulsePoint+4&font=roboto'],
+  ['https://placehold.co/400x866/1D1929/8B5CF6?text=AcciControl+1&font=roboto','https://placehold.co/400x866/1D1929/8B5CF6?text=AcciControl+2&font=roboto','https://placehold.co/400x866/1D1929/8B5CF6?text=AcciControl+3&font=roboto']
 ];
-
-let curProj=0,curIdx=0,scale=1,pos={x:0,y:0},drag=false,dragFrom={x:0,y:0},lastDist=null;
-function openModal(proj,idx){curProj=proj;curIdx=idx;scale=1;pos={x:0,y:0};loadModalImg();document.getElementById('modal').classList.add('on');document.body.style.overflow='hidden'}
-function loadModalImg(){
-  const imgs=PROJECTS[curProj],img=document.getElementById('mImg');
-  img.src=imgs[curIdx];
-  document.getElementById('mtCounter').textContent=(curIdx+1)+'/'+imgs.length;
-  document.getElementById('mtPrev').disabled=curIdx===0;
-  document.getElementById('mtNext').disabled=curIdx===imgs.length-1;
-  applyT();
-}
-function navModal(dir){
-  const imgs=PROJECTS[curProj],next=curIdx+dir;
-  if(next<0||next>=imgs.length)return;
-  curIdx=next;scale=1;pos={x:0,y:0};
-  const img=document.getElementById('mImg');
-  img.style.transition='opacity .14s,transform .14s';img.style.opacity='0';img.style.transform=`translateX(${dir*18}px)`;
-  setTimeout(()=>{
-    loadModalImg();img.style.transform=`translateX(${-dir*18}px)`;
-    requestAnimationFrame(()=>requestAnimationFrame(()=>{img.style.transition='opacity .2s,transform .22s';img.style.opacity='1';img.style.transform='none'}));
-  },140);
-}
-function closeModal(){document.getElementById('modal').classList.remove('on');document.body.style.overflow=''}
-document.getElementById('modal').addEventListener('click',e=>{if(e.target===document.getElementById('modal'))closeModal()});
-function applyT(){const img=document.getElementById('mImg');img.style.transform=`scale(${scale}) translate(${pos.x/scale}px,${pos.y/scale}px)`;document.getElementById('mtPct').textContent=Math.round(scale*100)+'%';document.getElementById('mScreen').style.cursor=scale>1?'grab':'default'}
-function doZoom(d){scale=Math.max(1,Math.min(4,scale+d));if(scale===1)pos={x:0,y:0};applyT()}
-function resetZoom(){scale=1;pos={x:0,y:0};applyT()}
-document.getElementById('mScreen').addEventListener('wheel',e=>{e.preventDefault();doZoom(e.deltaY>0?-.25:.25)},{passive:false});
-function dragStart(e){if(scale<=1)return;drag=true;dragFrom={x:e.clientX-pos.x,y:e.clientY-pos.y}}
-function dragMove(e){if(!drag)return;pos={x:e.clientX-dragFrom.x,y:e.clientY-dragFrom.y};applyT()}
-function dragEnd(){drag=false}
-function touchStart(e){if(e.touches.length===2)lastDist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);else if(e.touches.length===1&&scale>1){drag=true;dragFrom={x:e.touches[0].clientX-pos.x,y:e.touches[0].clientY-pos.y}}}
-function touchMove(e){e.preventDefault();if(e.touches.length===2&&lastDist){const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);scale=Math.max(1,Math.min(4,scale*d/lastDist));lastDist=d;if(scale===1)pos={x:0,y:0};applyT()}else if(e.touches.length===1&&drag){pos={x:e.touches[0].clientX-dragFrom.x,y:e.touches[0].clientY-dragFrom.y};applyT()}}
-function touchEnd(e){drag=false;if(!e.touches||e.touches.length<2)lastDist=null}
+let curCase=0,curIdx=0;
+function openLb(c,i){curCase=c;curIdx=i;render();document.getElementById('lb').classList.add('on')}
+function closeLb(){document.getElementById('lb').classList.remove('on')}
+function navLb(d){const n=curIdx+d;if(n<0||n>=SHOTS[curCase].length)return;curIdx=n;render()}
+function render(){document.getElementById('lbImg').src=SHOTS[curCase][curIdx];document.getElementById('lbCount').textContent=(curIdx+1)+' / '+SHOTS[curCase].length}
+document.getElementById('lb').addEventListener('click',e=>{if(e.target.id==='lb')closeLb()});
 document.addEventListener('keydown',e=>{
-  if(!document.getElementById('modal').classList.contains('on'))return;
-  if(e.key==='Escape')closeModal();
-  if(e.key==='ArrowRight')navModal(1);if(e.key==='ArrowLeft')navModal(-1);
-  if(e.key==='+')doZoom(.35);if(e.key==='-')doZoom(-.35);
+  if(!document.getElementById('lb').classList.contains('on'))return;
+  if(e.key==='Escape')closeLb();
+  if(e.key==='ArrowRight')navLb(1);
+  if(e.key==='ArrowLeft')navLb(-1);
 });
 </script>
 </body>
