@@ -3,753 +3,253 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zameer Hussain — Android Engineer</title>
-<meta name="description" content="Android engineer specializing in AI-integrated apps. Founder, Znext Sol. Karachi, Pakistan.">
+<title>Zameer Hussain — Android & Flutter Engineer</title>
+<meta name="description" content="Android & Flutter engineer building AI-integrated apps. Founder, Znext Sol. Karachi, Pakistan.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#100E17;
-  --bg-alt:#17141F;
-  --bg-alt2:#1D1929;
-  --panel:#1A1724;
-  --ink:#F6F4F8;
-  --ink-soft:#B7B0C6;
-  --ink-faint:#7C7590;
-  --line:rgba(255,255,255,.09);
-  --line-strong:rgba(255,255,255,.18);
-
-  --amber:#FF8A3D;
-  --amber-soft:rgba(255,138,61,.14);
-  --violet:#8B5CF6;
-  --violet-soft:rgba(139,92,246,.16);
-  --grad: linear-gradient(120deg,var(--amber),var(--violet));
-  --grad-conic: conic-gradient(from 0deg, var(--amber), var(--violet), var(--amber));
-
-  --display:'Space Grotesk',sans-serif;
-  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-  --ease:cubic-bezier(.16,1,.3,1);
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
-
-body{
-  background:var(--bg);color:var(--ink);
-  font-family:var(--sans);font-size:16px;line-height:1.6;
-  -webkit-font-smoothing:antialiased;overflow-x:hidden;
-}
-img{max-width:100%;display:block}
-a{color:inherit}
-::selection{background:var(--violet-soft);color:var(--ink)}
-
-.wrap{max-width:1140px;margin:0 auto;padding:0 40px}
-section{padding:120px 0;position:relative}
-@media(max-width:720px){.wrap{padding:0 22px}section{padding:76px 0}}
-
-.noise{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.3;mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
-}
-
-#topProg{position:fixed;top:0;left:0;height:2px;background:var(--grad);z-index:1000;width:0%;transition:width .1s linear}
-
-/* ---------- nav ---------- */
-header{position:sticky;top:0;z-index:500;background:rgba(16,14,23,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
-.nav-inner{max-width:1140px;margin:0 auto;padding:0 40px;height:68px;display:flex;align-items:center;justify-content:space-between}
-.brand{font-family:var(--display);font-size:19px;font-weight:700;text-decoration:none;letter-spacing:-.01em;display:flex;align-items:center;gap:9px}
-.brand-dot{width:8px;height:8px;border-radius:50%;background:var(--grad)}
-.nav-links{display:flex;gap:6px;align-items:center}
-.nav-links a{font-size:14px;color:var(--ink-soft);text-decoration:none;padding:8px 14px;border-radius:100px;transition:color .2s,background .2s;position:relative}
-.nav-links a:hover{color:var(--ink);background:var(--line)}
-.nav-hire{font-weight:600;color:var(--bg)!important;background:var(--amber);transition:transform .2s var(--ease),box-shadow .2s var(--ease)!important}
-.nav-hire:hover{background:var(--amber)!important;transform:translateY(-1px);box-shadow:0 8px 22px rgba(255,138,61,.35)}
-.ham{display:none;background:none;border:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px}
-.ham span{width:20px;height:1.5px;background:var(--ink);display:block;transition:.25s}
-.mob-menu{display:none;flex-direction:column;border-bottom:1px solid var(--line);background:var(--bg-alt)}
-.mob-menu a{padding:15px 22px;font-size:15px;color:var(--ink);text-decoration:none;border-top:1px solid var(--line)}
-.mob-menu.show{display:flex}
-@media(max-width:800px){.nav-links{display:none}.ham{display:flex}.nav-inner{padding:0 22px}}
-
-/* ---------- hero ---------- */
-#hero{padding-top:60px;padding-bottom:64px;overflow:hidden}
-.hero-orbs{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
-.orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;animation:drift 26s ease-in-out infinite;will-change:transform}
-.orb-1{width:420px;height:420px;background:var(--violet);top:-120px;right:-80px}
-.orb-2{width:340px;height:340px;background:var(--amber);bottom:-100px;left:-60px;animation-delay:-9s;animation-duration:22s}
-@keyframes drift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-30px) scale(1.12)}}
-
-.hero-inner{position:relative;z-index:2}
-.hero-kicker{
-  display:inline-flex;align-items:center;gap:9px;font-size:13.5px;font-weight:500;color:var(--ink-soft);
-  padding:7px 14px 7px 10px;border-radius:100px;border:1px solid var(--line-strong);background:var(--panel);margin-bottom:28px;
-  opacity:0;animation:fadeUp .7s .05s var(--ease) forwards;
-}
-.pulse-dot{width:7px;height:7px;border-radius:50%;background:#4ADE80;box-shadow:0 0 0 0 rgba(74,222,128,.6);animation:ping 2s ease-out infinite}
-@keyframes ping{0%{box-shadow:0 0 0 0 rgba(74,222,128,.55)}70%{box-shadow:0 0 0 9px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
-
-.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(38px,6vw,68px);line-height:1.05;letter-spacing:-.02em;max-width:16ch;margin-bottom:28px}
-.hero h1 .line{display:block;overflow:hidden}
-.hero h1 .line span{display:inline-block;opacity:0;transform:translateY(110%);animation:slideUp .85s var(--ease) forwards}
-.hero h1 .line:nth-child(1) span{animation-delay:.15s}
-.hero h1 .line:nth-child(2) span{animation-delay:.26s}
-.hero h1 .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-@keyframes slideUp{to{opacity:1;transform:none}}
-
-.hero-lede{font-size:18px;color:var(--ink-soft);max-width:58ch;line-height:1.72;margin-bottom:38px;opacity:0;animation:fadeUp .8s .42s var(--ease) forwards}
-.hero-lede strong{color:var(--ink);font-weight:600}
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:64px;opacity:0;animation:fadeUp .8s .56s var(--ease) forwards}
-.btn{font-family:var(--sans);font-size:14.5px;font-weight:600;text-decoration:none;padding:14px 26px;border-radius:100px;display:inline-flex;align-items:center;gap:8px;transition:box-shadow .25s var(--ease),background .25s;will-change:transform}
-.btn-fill{background:var(--amber);color:#1A0E00}
-.btn-fill:hover{box-shadow:0 14px 34px rgba(255,138,61,.4)}
-.btn-line{background:transparent;color:var(--ink);border:1px solid var(--line-strong)}
-.btn-line:hover{border-color:var(--violet);background:var(--violet-soft)}
-
-.fact-strip{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--line);opacity:0;animation:fadeUp .8s .7s var(--ease) forwards}
-.fact{flex:1 1 150px;padding:26px 26px 4px 0;border-right:1px solid var(--line)}
-.fact:last-child{border-right:none}
-.fact-num{font-family:var(--display);font-size:34px;font-weight:700;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.fact-label{font-size:12.5px;color:var(--ink-faint);margin-top:4px}
-@media(max-width:720px){.fact{flex:1 1 45%;border-right:none;border-bottom:1px solid var(--line);padding:18px 0}}
-
-/* ---------- reveal ---------- */
-.rev{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
-.rev.vis{opacity:1;transform:none}
-.rev.d1.vis{transition-delay:.08s}.rev.d2.vis{transition-delay:.16s}.rev.d3.vis{transition-delay:.24s}
-
-/* ---------- section headers ---------- */
-.sec-head{max-width:640px;margin-bottom:56px}
-.sec-index{display:inline-flex;align-items:center;gap:9px;font-size:13px;color:var(--amber);font-weight:600;margin-bottom:14px}
-.sec-index::before{content:'';width:20px;height:2px;background:var(--grad);border-radius:2px}
-.sec-head h2{font-family:var(--display);font-weight:700;font-size:clamp(28px,3.8vw,42px);line-height:1.12;margin-bottom:14px;letter-spacing:-.015em}
-.sec-head p{color:var(--ink-soft);font-size:15.5px;line-height:1.7;max-width:52ch}
-
-/* ---------- about ---------- */
-#about{background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:72px}
-.about-body p{font-size:16px;color:var(--ink-soft);line-height:1.85;margin-bottom:20px}
-.about-body p strong{color:var(--ink);font-weight:600}
-
-.fact-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:border-color .3s,transform .3s var(--ease)}
-.fact-card:hover{border-color:var(--line-strong);transform:translateY(-3px)}
-.fact-row{display:flex;justify-content:space-between;gap:16px;padding:16px 22px;border-bottom:1px solid var(--line);font-size:14px}
-.fact-row:last-child{border-bottom:none}
-.fact-row .k{color:var(--ink-faint)}
-.fact-row .v{color:var(--ink);font-weight:600;text-align:right}
-.avail-note{margin-top:20px;padding:18px 20px;border-radius:14px;background:var(--amber-soft);border:1px solid rgba(255,138,61,.28);font-size:13.5px;color:#FFC08A;line-height:1.6}
-@media(max-width:840px){.about-grid{grid-template-columns:1fr;gap:40px}}
-
-/* ---------- experience timeline ---------- */
-.xp-item{position:relative;padding:0 0 44px 32px;border-left:2px solid var(--line)}
-.xp-item:last-child{padding-bottom:0}
-.xp-item::before{content:'';position:absolute;left:-7px;top:2px;width:12px;height:12px;border-radius:50%;background:var(--bg-alt);border:2px solid var(--amber)}
-.xp-top{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:4px}
-.xp-role{font-family:var(--display);font-size:19px;font-weight:700}
-.xp-date{font-size:13px;color:var(--amber);font-weight:600;white-space:nowrap}
-.xp-org{font-size:14px;color:var(--ink-faint);margin-bottom:14px}
-.xp-item ul{list-style:none;display:flex;flex-direction:column;gap:9px}
-.xp-item ul li{font-size:14.5px;color:var(--ink-soft);line-height:1.65;padding-left:16px;position:relative}
-.xp-item ul li::before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--violet)}
-
-/* ---------- skills ---------- */
-.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.skill-card{padding:26px 24px;border-radius:16px;background:var(--panel);border:1px solid var(--line);transition:transform .25s var(--ease),border-color .3s,box-shadow .3s;position:relative;overflow:hidden;transform-style:preserve-3d}
-.skill-card::before{content:'';position:absolute;inset:0;background:var(--grad);opacity:0;transition:opacity .3s;z-index:0}
-.skill-card:hover{border-color:var(--line-strong);box-shadow:0 20px 44px rgba(0,0,0,.4)}
-.skill-card:hover::before{opacity:.06}
-.skill-card > *{position:relative;z-index:1}
-.skill-cat{font-size:12.5px;color:var(--amber);font-weight:600;letter-spacing:.02em;margin-bottom:12px}
-.skill-items{display:flex;flex-wrap:wrap;gap:7px}
-.skill-items span{padding:5px 11px;border-radius:100px;background:var(--bg-alt2);border:1px solid var(--line);font-size:12.5px;color:var(--ink-soft);transition:.2s}
-.skill-card:hover .skill-items span{border-color:var(--line-strong);color:var(--ink)}
-@media(max-width:900px){.skills-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.skills-grid{grid-template-columns:1fr}}
-
-.learning-block{margin-top:20px;padding:2px;border-radius:17px;background:var(--grad-conic);animation:spin 6s linear infinite;position:relative}
-@keyframes spin{to{--a:360deg}}
-.learning-block-inner{background:var(--bg-alt);border-radius:15px;padding:26px 28px}
-.learning-block .lb-label{font-size:13px;color:var(--violet);font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:8px}
-.learning-block .lb-label::before{content:'◆';font-size:10px}
-.learning-block .lb-items{font-size:17px;color:var(--ink);font-weight:600;margin-bottom:6px}
-.learning-block .lb-note{font-size:13.5px;color:var(--ink-soft);line-height:1.6}
-
-/* ---------- case studies ---------- */
-#work{background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.case{border-radius:22px;background:var(--panel);border:1px solid var(--line);margin-bottom:22px;overflow:hidden;transition:border-color .35s,transform .35s var(--ease),box-shadow .35s}
-.case:hover{border-color:var(--line-strong);box-shadow:0 30px 70px rgba(0,0,0,.42)}
-.case-inner{padding:40px 40px 8px}
-.case-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;margin-bottom:6px}
-.case-num{font-family:var(--display);font-size:13px;color:var(--amber);font-weight:700;letter-spacing:.06em;margin-bottom:10px}
-.case-title{font-family:var(--display);font-size:25px;font-weight:700;letter-spacing:-.01em;margin-bottom:6px}
-.case-sub{font-size:13.5px;color:var(--ink-faint);margin-bottom:14px}
-.case-badges{display:flex;gap:8px;flex-wrap:wrap}
-.badge{font-size:12px;padding:5px 12px;border-radius:100px;white-space:nowrap;font-weight:500}
-.badge-live{background:rgba(74,222,128,.14);color:#6EE7A0;border:1px solid rgba(74,222,128,.28)}
-.badge-nda{background:var(--bg-alt2);color:var(--ink-faint);border:1px solid var(--line)}
-.badge-link{background:var(--violet-soft);color:#C4B0FF;text-decoration:none;border:1px solid rgba(139,92,246,.3);transition:.2s}
-.badge-link:hover{background:var(--violet);color:#fff}
-
-.case-desc{font-size:15.5px;color:var(--ink-soft);line-height:1.75;max-width:74ch;margin-bottom:20px}
-
-.sub-apps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px}
-.sub-app{background:var(--bg-alt2);border:1px solid var(--line);border-radius:12px;padding:16px 18px;transition:border-color .25s,transform .25s var(--ease)}
-.sub-app:hover{border-color:var(--line-strong);transform:translateY(-3px)}
-.sub-app h5{font-size:14px;font-weight:700;margin-bottom:5px}
-.sub-app p{font-size:12.5px;color:var(--ink-soft);line-height:1.55}
-@media(max-width:760px){.sub-apps{grid-template-columns:1fr}}
-
-.case-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-bottom:30px}
-.cm h4{font-size:12px;color:var(--amber);font-weight:700;margin-bottom:9px;text-transform:uppercase;letter-spacing:.04em}
-.cm p{font-size:13.5px;color:var(--ink-soft);line-height:1.65}
-.cm ul{list-style:none}
-.cm ul li{font-size:13.5px;color:var(--ink-soft);line-height:1.75;padding-left:14px;position:relative}
-.cm ul li::before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--violet)}
-@media(max-width:900px){.case-meta{grid-template-columns:1fr 1fr}}
-@media(max-width:640px){.case-meta{grid-template-columns:1fr}.case-inner{padding:28px 24px 8px}}
-
-.shots{display:flex;gap:14px;overflow-x:auto;padding:0 40px 32px;scrollbar-width:thin}
-.shots::-webkit-scrollbar{height:5px}
-.shots::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:4px}
-.shot{flex:0 0 auto;width:150px;border-radius:14px;overflow:hidden;cursor:zoom-in;border:1px solid var(--line);background:var(--bg-alt2);transition:transform .3s var(--ease),border-color .3s}
-.shot:hover{transform:translateY(-8px) scale(1.03);border-color:var(--violet)}
-.shot img{aspect-ratio:9/19.5;object-fit:cover;transition:transform .4s var(--ease)}
-.shot:hover img{transform:scale(1.08)}
-.dummy-flag{font-size:11px;color:var(--ink-faint);padding:0 40px 14px}
-@media(max-width:640px){.shots{padding:0 24px 26px}.dummy-flag{padding:0 24px 12px}}
-
-.other-label{font-size:13px;color:var(--amber);font-weight:700;margin:48px 0 20px}
-.other-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.mini{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;transition:transform .3s var(--ease),border-color .3s}
-.mini:hover{transform:translateY(-5px);border-color:var(--line-strong)}
-.mini h4{font-size:15.5px;font-weight:700;margin-bottom:8px}
-.mini p{font-size:13.5px;color:var(--ink-soft);line-height:1.6;margin-bottom:10px}
-.mini a{color:var(--violet);text-decoration:underline;text-underline-offset:2px;font-size:13px}
-.mini-tags{font-size:12px;color:var(--ink-faint)}
-@media(max-width:720px){.other-grid{grid-template-columns:1fr}}
-
-/* ---------- testimonials ---------- */
-#testimonials{background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.testi{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:30px;transition:transform .3s var(--ease),border-color .3s}
-.testi:hover{transform:translateY(-6px);border-color:var(--line-strong)}
-.testi .mark{font-family:var(--display);font-size:44px;color:var(--violet);opacity:.5;line-height:1;margin-bottom:6px}
-.testi p{font-size:15.5px;color:var(--ink);line-height:1.7;margin-bottom:22px}
-.testi-author strong{color:var(--ink);display:block;font-size:14.5px;margin-bottom:2px}
-.testi-author span{font-size:13px;color:var(--ink-faint)}
-@media(max-width:840px){.testi-grid{grid-template-columns:1fr}}
-
-/* ---------- contact ---------- */
-#contact{padding-bottom:100px}
-.contact-box{border-radius:28px;padding:64px 56px;background:linear-gradient(135deg,var(--violet-soft),var(--amber-soft));border:1px solid var(--line-strong);position:relative;overflow:hidden}
-.contact-box h2{font-family:var(--display);font-weight:700;font-size:clamp(30px,4.6vw,50px);line-height:1.1;margin-bottom:18px;letter-spacing:-.015em;max-width:14ch}
-.contact-box p{font-size:16px;color:var(--ink-soft);line-height:1.75;margin-bottom:14px;max-width:52ch}
-.contact-direct{font-size:14.5px;color:var(--ink-soft);margin-bottom:32px}
-.contact-direct a{color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px}
-.contact-links{display:flex;gap:12px;flex-wrap:wrap}
-.clink{padding:13px 24px;border-radius:100px;font-size:14.5px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:box-shadow .25s}
-.clink-main{background:var(--amber);color:#1A0E00}
-.clink-main:hover{box-shadow:0 14px 32px rgba(255,138,61,.4)}
-.clink-sec{background:rgba(255,255,255,.05);color:var(--ink);border:1px solid var(--line-strong)}
-.clink-sec:hover{border-color:var(--violet);background:var(--violet-soft)}
-@media(max-width:640px){.contact-box{padding:40px 26px}}
-
-footer{border-top:1px solid var(--line);padding:30px 0;font-size:13px;color:var(--ink-faint)}
-.footer-inner{max-width:1140px;margin:0 auto;padding:0 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
-@media(max-width:720px){.footer-inner{padding:0 22px}}
-
-/* ---------- lightbox ---------- */
-#lb{display:none;position:fixed;inset:0;z-index:900;background:rgba(8,7,12,.94);align-items:center;justify-content:center;padding:24px}
-#lb.on{display:flex}
-.lb-box{position:relative;max-width:340px;width:100%}
-.lb-box img{width:100%;border-radius:14px;border:1px solid var(--line-strong)}
-.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:var(--panel);border:1px solid var(--line-strong);color:#fff;font-size:16px;cursor:pointer;transition:.2s}
-.lb-nav:hover{background:var(--violet)}
-.lb-prev{left:-52px}.lb-next{right:-52px}
-.lb-close{position:absolute;top:-42px;right:0;background:none;border:none;color:#fff;font-size:22px;cursor:pointer}
-.lb-count{position:absolute;bottom:-32px;left:0;right:0;text-align:center;color:var(--ink-faint);font-size:12.5px}
-@media(max-width:600px){.lb-prev{left:6px}.lb-next{right:6px}}
+:root{--bg:#070A14;--card:rgba(255,255,255,.04);--ink:#F4F6FF;--soft:#A9B0C8;--faint:#6F7896;--line:rgba(255,255,255,.09);
+--c1:#22D3EE;--c2:#8B5CF6;--c3:#F472B6;--grad:linear-gradient(120deg,var(--c1),var(--c2) 55%,var(--c3));
+--d:'Space Grotesk',sans-serif;--s:'Inter',system-ui,sans-serif;--e:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+body{background:var(--bg);color:var(--ink);font:16px/1.65 var(--s);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit}.wrap{max-width:1120px;margin:0 auto;padding:0 28px}section{padding:110px 0;position:relative}
+@media(max-width:700px){section{padding:72px 0}.wrap{padding:0 20px}}
+.aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.aurora i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.28;animation:float 24s ease-in-out infinite}
+.aurora i:nth-child(1){width:520px;height:520px;background:var(--c2);top:-140px;right:-100px}
+.aurora i:nth-child(2){width:440px;height:440px;background:var(--c1);bottom:-120px;left:-100px;animation-delay:-8s}
+.aurora i:nth-child(3){width:340px;height:340px;background:var(--c3);top:45%;left:50%;opacity:.14;animation-delay:-15s}
+@keyframes float{50%{transform:translate(50px,-40px) scale(1.15)}}
+.glow{position:fixed;width:420px;height:420px;border-radius:50%;pointer-events:none;z-index:1;left:0;top:0;background:radial-gradient(circle,rgba(139,92,246,.16),transparent 65%);transform:translate(-50%,-50%)}
+main,header,footer{position:relative;z-index:2}
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--grad);z-index:999}
+header{position:sticky;top:0;background:rgba(7,10,20,.7);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);z-index:500}
+.nav{max-width:1120px;margin:auto;padding:0 28px;height:66px;display:flex;align-items:center;justify-content:space-between}
+.brand{font:700 19px var(--d);text-decoration:none}.brand b{background:var(--grad);-webkit-background-clip:text;color:transparent}
+.links{display:flex;gap:4px}.links a{font-size:14px;color:var(--soft);text-decoration:none;padding:8px 14px;border-radius:99px;transition:.25s}
+.links a:hover{color:var(--ink);background:var(--line)}.links .hire{background:var(--grad);color:#fff;font-weight:600}
+@media(max-width:760px){.links a:not(.hire){display:none}}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% auto;animation:shine 6s linear infinite}
+@keyframes shine{to{background-position:200% center}}
+/* hero */
+#hero{padding:90px 0 70px}
+.kick{display:inline-flex;gap:9px;align-items:center;font-size:13.5px;color:var(--soft);padding:7px 15px;border:1px solid var(--line);border-radius:99px;background:var(--card);margin-bottom:26px}
+.kick i{width:8px;height:8px;border-radius:50%;background:#4ADE80;animation:ping 2s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(74,222,128,.6)}80%,100%{box-shadow:0 0 0 10px transparent}}
+h1{font:700 clamp(38px,6.4vw,74px)/1.04 var(--d);letter-spacing:-.025em;max-width:17ch;margin-bottom:22px}
+.role{font:500 clamp(18px,2.4vw,24px) var(--d);color:var(--soft);margin-bottom:22px;min-height:1.6em}
+.role b{color:var(--c1)}.caret{display:inline-block;width:2px;height:1.1em;background:var(--c1);margin-left:3px;vertical-align:-3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.lede{color:var(--soft);font-size:17.5px;max-width:60ch;margin-bottom:34px}.lede strong{color:var(--ink)}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:56px}
+.btn{font-weight:600;font-size:14.5px;text-decoration:none;padding:14px 26px;border-radius:99px;transition:.3s var(--e);display:inline-block}
+.btn.f{background:var(--grad);color:#fff;box-shadow:0 10px 30px rgba(139,92,246,.35)}.btn.f:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(34,211,238,.35)}
+.btn.o{border:1px solid var(--line);background:var(--card)}.btn.o:hover{border-color:var(--c1);transform:translateY(-3px)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stat{padding:22px;border-radius:18px;background:var(--card);border:1px solid var(--line);backdrop-filter:blur(8px)}
+.stat b{font:700 36px var(--d);display:block;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font-size:13px;color:var(--faint)}
+@media(max-width:700px){.stats{grid-template-columns:1fr 1fr}}
+.marq{overflow:hidden;border-block:1px solid var(--line);padding:16px 0;margin-top:20px;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marq div{display:flex;gap:38px;width:max-content;animation:mq 32s linear infinite;font:600 15px var(--d);color:var(--faint)}
+.marq span::after{content:'✦';margin-left:38px;color:var(--c2)}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* headings */
+.idx{font:600 13px var(--d);color:var(--c1);letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px}
+h2{font:700 clamp(28px,4vw,44px)/1.1 var(--d);letter-spacing:-.02em;margin-bottom:14px}
+.sub{color:var(--soft);max-width:56ch;margin-bottom:48px}
+.rev{opacity:0;transform:translateY(30px);transition:opacity .8s var(--e),transform .8s var(--e)}.rev.vis{opacity:1;transform:none}
+/* glass card with mouse-follow glow */
+.gc{position:relative;border-radius:22px;background:var(--card);border:1px solid var(--line);backdrop-filter:blur(10px);overflow:hidden;transition:border-color .3s,transform .4s var(--e)}
+.gc::before{content:'';position:absolute;inset:0;background:radial-gradient(360px circle at var(--mx,50%) var(--my,0%),rgba(139,92,246,.16),transparent 60%);opacity:0;transition:.3s;pointer-events:none}
+.gc:hover{border-color:rgba(139,92,246,.45)}.gc:hover::before{opacity:1}
+/* about + xp */
+.two{display:grid;grid-template-columns:1.3fr 1fr;gap:56px}@media(max-width:840px){.two{grid-template-columns:1fr;gap:34px}}
+.two p{color:var(--soft);margin-bottom:18px}.two p strong{color:var(--ink)}
+.facts div{display:flex;justify-content:space-between;gap:14px;padding:15px 22px;border-bottom:1px solid var(--line);font-size:14px}.facts div:last-child{border:0}
+.facts span{color:var(--faint)}.facts b{text-align:right;font-weight:600}
+.xp{position:relative;padding:0 0 38px 30px;border-left:2px solid var(--line)}.xp::before{content:'';position:absolute;left:-7px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--c1);box-shadow:0 0 14px var(--c1)}
+.xp h3{font:700 19px var(--d)}.xp em{font-style:normal;color:var(--c1);font-size:13px;font-weight:600;margin-left:10px}.xp small{display:block;color:var(--faint);margin:2px 0 10px}
+.xp li{list-style:none;color:var(--soft);font-size:14.5px;padding-left:16px;position:relative;margin-bottom:7px}.xp li::before{content:'';position:absolute;left:0;top:10px;width:5px;height:5px;border-radius:50%;background:var(--c2)}
+/* skills */
+.sk{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}@media(max-width:900px){.sk{grid-template-columns:1fr 1fr}}@media(max-width:600px){.sk{grid-template-columns:1fr}}
+.sk .gc{padding:24px}.sk h4{font:600 12.5px var(--d);color:var(--c1);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:7px}.chips span{font-size:12.5px;padding:5px 12px;border-radius:99px;background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--soft);transition:.25s}
+.gc:hover .chips span{color:var(--ink);border-color:rgba(34,211,238,.35)}.chips .new{border-color:var(--c3);color:#FBCFE8}
+.learn{margin-top:16px;padding:22px 26px;border-radius:18px;border:1px dashed rgba(244,114,182,.5);background:rgba(244,114,182,.06);font-size:14px;color:var(--soft)}.learn b{color:var(--ink);font-size:17px;display:block}
+/* case studies */
+.case{margin-bottom:26px}.ci{padding:38px}@media(max-width:700px){.ci{padding:24px}}
+.ct{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:14px}
+.cn{font:700 13px var(--d);color:var(--c3);letter-spacing:.1em;margin-bottom:6px}.case h3{font:700 27px var(--d);letter-spacing:-.01em}.cs{color:var(--faint);font-size:13.5px}
+.bd{display:flex;gap:8px;flex-wrap:wrap;align-items:flex-start}.b{font-size:12px;padding:5px 12px;border-radius:99px;border:1px solid var(--line);color:var(--soft);text-decoration:none;white-space:nowrap}
+.b.live{color:#6EE7A0;border-color:rgba(74,222,128,.35);background:rgba(74,222,128,.1)}.b.lk{color:#C4B5FD;border-color:rgba(139,92,246,.4);background:rgba(139,92,246,.12)}.b.lk:hover{background:var(--c2);color:#fff}
+.cd{color:var(--soft);max-width:76ch;margin-bottom:24px}
+.mets{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:26px}
+.met{padding:16px 18px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid var(--line)}.met b{font:700 26px var(--d);display:block;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}.met span{font-size:12.5px;color:var(--soft);line-height:1.4;display:block}
+.cg{display:grid;grid-template-columns:1fr 1.2fr;gap:30px;margin-bottom:22px}@media(max-width:760px){.cg{grid-template-columns:1fr}}
+.cg h5{font:600 12px var(--d);color:var(--c1);letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px}.cg p,.cg li{font-size:14px;color:var(--soft)}.cg ul{list-style:none}.cg li{padding:0 0 8px 20px;position:relative}.cg li::before{content:'→';position:absolute;left:0;color:var(--c2)}
+.shots{display:flex;gap:14px;overflow-x:auto;padding:4px 38px 30px;scrollbar-width:thin}@media(max-width:700px){.shots{padding:4px 24px 26px}}
+.shot{flex:0 0 auto;width:152px;border-radius:14px;overflow:hidden;cursor:zoom-in;border:1px solid var(--line);transition:.35s var(--e)}.shot:hover{transform:translateY(-8px) scale(1.04);border-color:var(--c1);box-shadow:0 18px 40px rgba(34,211,238,.18)}
+.shot img{display:block;width:100%;aspect-ratio:9/19.5;object-fit:cover}
+.more{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px}@media(max-width:760px){.more{grid-template-columns:1fr}}
+.more .gc{padding:24px}.more h4{font:700 16px var(--d);margin-bottom:6px}.more p{font-size:13.5px;color:var(--soft);margin-bottom:10px}.more a{color:var(--c1);font-size:13px}.more small{color:var(--faint);display:block;margin-top:8px}
+/* testimonials + contact */
+.tg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}@media(max-width:840px){.tg{grid-template-columns:1fr}}
+.tg .gc{padding:28px}.tg i{font:700 46px var(--d);color:var(--c2);line-height:1;display:block;font-style:normal}.tg p{margin:6px 0 20px}.tg b{display:block;font-size:14.5px}.tg span{font-size:13px;color:var(--faint)}
+.cb{padding:64px 52px;border-radius:30px;border:1px solid var(--line);background:linear-gradient(135deg,rgba(34,211,238,.1),rgba(139,92,246,.14),rgba(244,114,182,.1));background-size:200% 200%;animation:bg 10s ease infinite}@keyframes bg{50%{background-position:100% 50%}}
+@media(max-width:640px){.cb{padding:38px 24px}}
+.cb h2{max-width:14ch;font-size:clamp(30px,4.6vw,52px)}.cb p{color:var(--soft);max-width:52ch;margin-bottom:28px}.cb .btns{margin:0}
+footer{border-top:1px solid var(--line);padding:28px;text-align:center;font-size:13px;color:var(--faint)}
+#lb{display:none;position:fixed;inset:0;background:rgba(4,6,12,.94);z-index:900;align-items:center;justify-content:center}#lb.on{display:flex}
+#lb img{max-height:86vh;max-width:88vw;border-radius:14px;border:1px solid var(--line)}
+#lb button{position:absolute;background:var(--card);color:#fff;border:1px solid var(--line);width:42px;height:42px;border-radius:50%;font-size:18px;cursor:pointer}#lb .x{top:20px;right:20px}#lb .p{left:16px}#lb .n{right:16px}
 </style>
 </head>
 <body>
-<div class="noise"></div>
-<div id="topProg"></div>
-
-<header id="siteHeader">
-  <div class="nav-inner">
-    <a href="#hero" class="brand"><span class="brand-dot"></span>Zameer Hussain</a>
-    <nav class="nav-links">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#work">Work</a>
-      <a href="#contact" class="nav-hire">Hire me</a>
-    </nav>
-    <button class="ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
-  </div>
-  <div class="mob-menu" id="mobMenu">
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#skills">Skills</a>
-    <a href="#work">Work</a>
-    <a href="#testimonials">Reviews</a>
-    <a href="#contact">Contact</a>
-  </div>
-</header>
-
-<section id="hero">
-  <div class="hero-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
-  <div class="wrap hero-inner">
-    <div class="hero-kicker"><span class="pulse-dot"></span>Available for hire</div>
-    <h1>
-      <span class="line"><span>Android apps that hold up</span></span>
-      <span class="line"><span class="grad-text">in production, not demos.</span></span>
-    </h1>
-    <p class="hero-lede">I'm an Android engineer with <strong>3+ years</strong> shipping production apps — including Unilever's B2B/B2C Android suite across four countries — plus two AI-powered apps I designed, built, and launched solo. Founder of <strong>Znext Sol</strong>, a small studio taking on contract Android work.</p>
-    <div class="hero-actions">
-      <a href="#work" class="btn btn-fill magnet">View case studies</a>
-      <a href="#contact" class="btn btn-line magnet">Get in touch</a>
-    </div>
-    <div class="fact-strip">
-      <div class="fact"><div class="fact-num" data-count="3" data-suffix="+">0</div><div class="fact-label">Years of experience</div></div>
-      <div class="fact"><div class="fact-num" data-count="4">0</div><div class="fact-label">Countries deployed</div></div>
-      <div class="fact"><div class="fact-num" data-count="40" data-suffix="%">0</div><div class="fact-label">Faster build times</div></div>
-      <div class="fact"><div class="fact-num" data-count="200" data-suffix="+">0</div><div class="fact-label">Eng. hours saved / year</div></div>
-    </div>
-  </div>
-</section>
-
-<section id="about">
-  <div class="wrap about-grid">
-    <div class="about-body rev">
-      <div class="sec-index">About</div>
-      <h2 style="font-family:var(--display);font-weight:700;font-size:clamp(26px,3.2vw,34px);margin-bottom:22px;letter-spacing:-.015em">Android engineer, specializing in AI-integrated apps</h2>
-      <p>I build Android apps that plug into AI — conversational feedback loops, text-to-speech pipelines, API-driven personalization — on a foundation of Kotlin, Jetpack Compose, and clean, testable architecture.</p>
-      <p>Currently at <strong>Centegy Technologies</strong>, I build Unilever's B2B/B2C Android applications deployed across Pakistan, Thailand, Bangladesh, and the Philippines, working inside a 10+ person cross-functional Agile team. Before that, at <strong>Markematics Digital</strong>, I migrated a Java codebase to Kotlin in three days and built offline-first field apps and an e-learning platform. On the side, I've designed, built, and shipped two AI apps solo, end to end.</p>
-      <p>I run <strong>Znext Sol</strong>, a small studio through which I take on freelance and contract Android builds directly.</p>
-    </div>
-    <div class="rev d2">
-      <div class="fact-card">
-        <div class="fact-row"><span class="k">Experience</span><span class="v">3+ years</span></div>
-        <div class="fact-row"><span class="k">Current role</span><span class="v">Android Developer, Centegy</span></div>
-        <div class="fact-row"><span class="k">Deployed</span><span class="v">4 countries</span></div>
-        <div class="fact-row"><span class="k">Based in</span><span class="v">Karachi, Pakistan</span></div>
-        <div class="fact-row"><span class="k">Email</span><span class="v">zameersahil318@gmail.com</span></div>
-        <div class="fact-row"><span class="k">Phone</span><span class="v">+92 340 7393734</span></div>
-      </div>
-      <div class="avail-note">Open to consulting and full-time roles, remote or on contract via Znext Sol.</div>
-    </div>
-  </div>
-</section>
-
-<section id="experience">
-  <div class="wrap">
-    <div class="sec-head rev">
-      <div class="sec-index">Experience</div>
-      <h2>Where I've built this</h2>
-      <p>Full-time roles, plus the independent projects I built during a planned career break.</p>
-    </div>
-    <div class="xp-item rev">
-      <div class="xp-top"><span class="xp-role">Android Developer</span><span class="xp-date">Jan 2025 – Present</span></div>
-      <div class="xp-org">Centegy Technologies · Karachi, Pakistan</div>
-      <ul>
-        <li>Deliver Unilever B2B &amp; B2C Android applications live across 4 countries, inside a 10+ member cross-functional team running Agile/Scrum</li>
-        <li>Built DSR Distributor (real-time Google Maps + distributor business logic), a Warehouse Management app, and a B2C e-commerce app, each with multi-flavor dev/staging/prod configs</li>
-        <li>Cut Gradle build time ~40% via incremental compilation and build caching; architected a scalable multi-module Clean Architecture with Retrofit + Hilt</li>
-      </ul>
-    </div>
-    <div class="xp-item rev d1">
-      <div class="xp-top"><span class="xp-role">Android Developer</span><span class="xp-date">Jan 2024 – Dec 2024</span></div>
-      <div class="xp-org">Markematics Digital · Karachi, Pakistan</div>
-      <ul>
-        <li>Migrated ShopTracking from Java to Kotlin in 3 days — 3x ahead of schedule — fixing memory leaks, moving to Coroutines, shrinking APK size, and improving cold start</li>
-        <li>Built RetailAudit &amp; MarkitSurvey, offline-first field apps with zero-data-loss background sync; a unified REST layer saved 200+ engineering hours a year</li>
-        <li>Built Tutify, an e-learning platform with real-time teacher-student chat, Zoom SDK live classes, and Firebase FCM push notifications</li>
-      </ul>
-    </div>
-    <div class="xp-item rev d2">
-      <div class="xp-top"><span class="xp-role">Independent Android Developer</span><span class="xp-date">2026</span></div>
-      <div class="xp-org">Self-initiated · Karachi, Pakistan</div>
-      <ul>
-        <li>Used a planned career break to independently design, build, and ship two AI-powered apps solo, end to end — Postify and SpeakMate — gaining deep hands-on OpenAI API and Firebase-at-scale experience</li>
-        <li>Owned the full product lifecycle on both: UI/UX, backend integration, Play Store listing, release pipeline, and user feedback iteration</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section id="skills">
-  <div class="wrap">
-    <div class="sec-head rev">
-      <div class="sec-index">Skills</div>
-      <h2>The stack behind every app above</h2>
-      <p>Tools and patterns used in production, not tutorials.</p>
-    </div>
-    <div class="skills-grid">
-      <div class="skill-card rev"><div class="skill-cat">Language</div><div class="skill-items"><span>Kotlin</span><span>Java</span></div></div>
-      <div class="skill-card rev d1"><div class="skill-cat">Android SDK</div><div class="skill-items"><span>Jetpack Compose</span><span>ViewModel</span><span>Room</span><span>Navigation</span><span>WorkManager</span></div></div>
-      <div class="skill-card rev d2"><div class="skill-cat">Architecture</div><div class="skill-items"><span>MVVM</span><span>Clean Architecture</span><span>Multi-module</span></div></div>
-      <div class="skill-card rev"><div class="skill-cat">Async &amp; APIs</div><div class="skill-items"><span>Coroutines</span><span>Flow</span><span>RxJava</span><span>Retrofit</span><span>OkHttp</span></div></div>
-      <div class="skill-card rev d1"><div class="skill-cat">DI &amp; testing</div><div class="skill-items"><span>Hilt</span><span>Dagger 2</span><span>JUnit</span><span>Espresso</span><span>Mockito</span></div></div>
-      <div class="skill-card rev d2"><div class="skill-cat">Cloud &amp; AI</div><div class="skill-items"><span>Firebase</span><span>OpenAI API</span><span>Google WaveNet TTS</span></div></div>
-      <div class="skill-card rev"><div class="skill-cat">Tools</div><div class="skill-items"><span>Google Maps SDK</span><span>Git</span><span>Gradle</span><span>Android Studio</span></div></div>
-      <div class="skill-card rev d1"><div class="skill-cat">Design &amp; UX</div><div class="skill-items"><span>Material Design 3</span><span>Responsive UI</span><span>Accessibility</span><span>Glide</span></div></div>
-      <div class="skill-card rev d2"><div class="skill-cat">Process</div><div class="skill-items"><span>Agile/Scrum</span><span>Play Store release management</span></div></div>
-    </div>
-    <div class="learning-block rev">
-      <div class="learning-block-inner">
-        <div class="lb-label">Currently learning</div>
-        <div class="lb-items">Flutter &amp; Spring Boot</div>
-        <div class="lb-note">Actively building foundations in both — no shipped projects yet, listed here for transparency rather than as a claimed skill.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="work">
-  <div class="wrap">
-    <div class="sec-head rev">
-      <div class="sec-index">Selected work</div>
-      <h2>Case studies</h2>
-      <p>The problem, my role, the stack, and what shipped — for each.</p>
-    </div>
-
-    <div class="case rev">
-      <div class="case-inner">
-        <div class="case-num">CASE 01</div>
-        <div class="case-top">
-          <div>
-            <div class="case-title">SpeakMate — AI English speaking practice</div>
-            <div class="case-sub">Independent · 2026</div>
-          </div>
-          <div class="case-badges">
-            <a href="https://play.google.com/store/apps/details?id=com.speakmate.english" target="_blank" rel="noopener" class="badge badge-link">Play Store ↗</a>
-            <span class="badge badge-live">Live · thousands of daily users</span>
-          </div>
-        </div>
-        <p class="case-desc">A real-time AI English speaking coach. Users speak naturally and the AI responds with lifelike voice across American, British, and Australian accents, covering Job Interview, IELTS, Business English, and Small Talk modes — with instant grammar correction, vocabulary feedback, and pronunciation scoring after every sentence.</p>
-        <div class="case-meta">
-          <div class="cm"><h4>Problem</h4><p>English learners get grammar tools, but not real-time spoken feedback on fluency and pronunciation in context.</p></div>
-          <div class="cm"><h4>My role</h4><p>Solo — designed and built the conversation loop, AI feedback pipeline, and progress UI end to end.</p></div>
-          <div class="cm"><h4>Stack</h4><ul><li>OpenAI API</li><li>Google WaveNet TTS</li><li>Privacy-first, on-device architecture</li><li>Firebase</li></ul></div>
-          <div class="cm"><h4>Outcome</h4><ul><li>No audio ever stored on servers</li><li>XP streaks, progress tracking, achievements</li><li>Thousands of active daily users</li></ul></div>
-        </div>
-      </div>
-      <div class="shots">
-        <div class="shot" onclick="openLb(0,0)"><img src="https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_01_ulskrt.png" alt="SpeakMate screen 1" loading="lazy"></div>
-        <div class="shot" onclick="openLb(0,1)"><img src="https://res.cloudinary.com/dv0tole4k/image/upload/v1782009432/screen_02_djfppq.png" alt="SpeakMate screen 2" loading="lazy"></div>
-        <div class="shot" onclick="openLb(0,2)"><img src="https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_03_rdijlu.png" alt="SpeakMate screen 3" loading="lazy"></div>
-        <div class="shot" onclick="openLb(0,3)"><img src="https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_04_bq7y5w.png" alt="SpeakMate screen 4" loading="lazy"></div>
-        <div class="shot" onclick="openLb(0,4)"><img src="https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_05_rjzd9f.png" alt="SpeakMate screen 5" loading="lazy"></div>
-        <div class="shot" onclick="openLb(0,5)"><img src="https://res.cloudinary.com/dv0tole4k/image/upload/v1782009432/screen_06_jia2fn.png" alt="SpeakMate screen 6" loading="lazy"></div>
-      </div>
-    </div>
-
-    <div class="case rev">
-      <div class="case-inner">
-        <div class="case-num">CASE 02</div>
-        <div class="case-top">
-          <div>
-            <div class="case-title">Postify — AI LinkedIn growth platform</div>
-            <div class="case-sub">Independent · 2026</div>
-          </div>
-          <div class="case-badges">
-            <a href="https://play.google.com/store/apps/details?id=com.postify.app.free&hl=en" target="_blank" rel="noopener" class="badge badge-link">Play Store ↗</a>
-            <span class="badge badge-live">Live</span>
-          </div>
-        </div>
-        <p class="case-desc">A full AI-powered LinkedIn growth platform, built and launched solo: AI post generator, ATS resume optimizer, smart follow-up message writer, post scheduler, and growth analytics, backed by Firebase Firestore for real-time cross-device sync.</p>
-        <div class="case-meta">
-          <div class="cm"><h4>Problem</h4><p>Writing ATS-friendly profiles and posting consistently is time-consuming for most professionals.</p></div>
-          <div class="cm"><h4>My role</h4><p>Solo — owned the full lifecycle: UI/UX, backend integration, Play Store listing, release pipeline.</p></div>
-          <div class="cm"><h4>Stack</h4><ul><li>Kotlin, Jetpack Compose</li><li>OpenAI API</li><li>Firebase Firestore</li><li>MVVM + Clean Architecture, Hilt, multi-module</li></ul></div>
-          <div class="cm"><h4>Outcome</h4><ul><li>Live on Play Store</li><li>Fully accessible Compose UI on Material Design 3</li><li>One-tap resume → optimized profile</li></ul></div>
-        </div>
-      </div>
-      <div class="shots">
-        <div class="shot" onclick="openLb(1,0)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679932/Hotpot_0_l2w3og.png" alt="Postify screen 1" loading="lazy"></div>
-        <div class="shot" onclick="openLb(1,1)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679926/Hotpot_1_hliuyc.png" alt="Postify screen 2" loading="lazy"></div>
-        <div class="shot" onclick="openLb(1,2)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679929/Hotpot_2_zcimit.png" alt="Postify screen 3" loading="lazy"></div>
-        <div class="shot" onclick="openLb(1,3)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679928/8_z2rbq7.png" alt="Postify screen 4" loading="lazy"></div>
-        <div class="shot" onclick="openLb(1,4)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679925/Hotpot_4_nkpqqk.png" alt="Postify screen 5" loading="lazy"></div>
-        <div class="shot" onclick="openLb(1,5)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766679920/5_xbxjma.png" alt="Postify screen 6" loading="lazy"></div>
-      </div>
-    </div>
-
-    <div class="case rev">
-      <div class="case-inner">
-        <div class="case-num">CASE 03</div>
-        <div class="case-top">
-          <div>
-            <div class="case-title">Unilever Android suite — 4-country deployment</div>
-            <div class="case-sub">Centegy Technologies · Jan 2025 – Present</div>
-          </div>
-          <div class="case-badges"><span class="badge badge-nda">Client: Unilever, via Centegy Technologies</span></div>
-        </div>
-        <p class="case-desc">Three flagship Android applications for Unilever's B2B and B2C operations, deployed across Pakistan, Thailand, Bangladesh, and the Philippines, each built with multi-flavor dev/staging/prod configurations for clean release management — built within a 10+ person cross-functional Agile team.</p>
-        <div class="sub-apps">
-          <div class="sub-app"><h5>DSR Distributor</h5><p>Real-time Google Maps integration with complex distributor business logic.</p></div>
-          <div class="sub-app"><h5>Warehouse Management</h5><p>Internal operations app for warehouse tracking and logistics.</p></div>
-          <div class="sub-app"><h5>B2C E-commerce</h5><p>Consumer-facing shopping platform for the same market ecosystem.</p></div>
-        </div>
-        <div class="case-meta">
-          <div class="cm"><h4>Problem</h4><p>A legacy Java codebase and slow builds were holding back releases across four countries.</p></div>
-          <div class="cm"><h4>My role</h4><p>Android developer on a 10+ member team — architecture, build pipeline, and feature delivery across all three apps.</p></div>
-          <div class="cm"><h4>Stack</h4><ul><li>Kotlin, Hilt, Retrofit</li><li>Multi-module Clean Architecture</li><li>Google Maps SDK</li></ul></div>
-          <div class="cm"><h4>Outcome</h4><ul><li>~40% reduction in Gradle build time</li><li>Scalable, maintainable multi-module codebase</li><li>Stable multi-country release pipeline</li></ul></div>
-        </div>
-      </div>
-      <div class="shots">
-        <div class="shot" onclick="openLb(2,0)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904710/Hotpot_0_fssx5j.png" alt="Enterprise app screen 1" loading="lazy"></div>
-        <div class="shot" onclick="openLb(2,1)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904704/Hotpot_1_ufomg1.png" alt="Enterprise app screen 2" loading="lazy"></div>
-        <div class="shot" onclick="openLb(2,2)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904759/Hotpot_2_gntmqe.png" alt="Enterprise app screen 3" loading="lazy"></div>
-        <div class="shot" onclick="openLb(2,3)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904833/5_jjwioy.png" alt="Enterprise app screen 4" loading="lazy"></div>
-        <div class="shot" onclick="openLb(2,4)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904793/10_neocup.png" alt="Enterprise app screen 5" loading="lazy"></div>
-        <div class="shot" onclick="openLb(2,5)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766904865/Hotpot_4_as9gxj.png" alt="Enterprise app screen 6" loading="lazy"></div>
-      </div>
-    </div>
-
-    <div class="case rev">
-      <div class="case-inner">
-        <div class="case-num">CASE 04</div>
-        <div class="case-top">
-          <div>
-            <div class="case-title">Field &amp; learning apps — Markematics Digital</div>
-            <div class="case-sub">Jan 2024 – Dec 2024</div>
-          </div>
-          <div class="case-badges"><span class="badge badge-nda">Client: Markematics Digital</span></div>
-        </div>
-        <p class="case-desc">Three deliverables for one client over a year: a fast Java-to-Kotlin migration, two offline-first field apps for retail teams, and a full e-learning platform with live classes — all built with a unified REST API layer to cut redundant integrations.</p>
-        <div class="sub-apps">
-          <div class="sub-app"><h5>ShopTracking migration</h5><p>Migrated Java → Kotlin in 3 days, 3x ahead of schedule; fixed memory leaks, moved to Coroutines, shrank APK size.</p></div>
-          <div class="sub-app"><h5>RetailAudit &amp; MarkitSurvey</h5><p>Offline-first field apps with zero-data-loss background sync for low-connectivity areas.</p></div>
-          <div class="sub-app"><h5>Tutify</h5><p>E-learning platform with real-time teacher-student chat, Zoom SDK live classes, and FCM push.</p></div>
-        </div>
-        <div class="case-meta">
-          <div class="cm"><h4>Problem</h4><p>A slow legacy app, no-connectivity field work, and no unified way to run online classes.</p></div>
-          <div class="cm"><h4>My role</h4><p>Built all three end to end: migration, local data layer + sync engine, and the learning platform's real-time features.</p></div>
-          <div class="cm"><h4>Stack</h4><ul><li>Kotlin, Coroutines, Retrofit</li><li>Local SQLite, background sync</li><li>Firebase FCM, Zoom SDK</li></ul></div>
-          <div class="cm"><h4>Outcome</h4><ul><li>200+ engineering hours saved per year</li><li>Zero data loss with full offline support</li><li>Live real-time chat and virtual classrooms</li></ul></div>
-        </div>
-      </div>
-      <div class="shots">
-        <div class="shot" onclick="openLb(3,0)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314769/Hotpot_0_ifzlid.png" alt="Field app screen 1" loading="lazy"></div>
-        <div class="shot" onclick="openLb(3,1)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314783/Hotpot_1_lohei7.png" alt="Field app screen 2" loading="lazy"></div>
-        <div class="shot" onclick="openLb(3,2)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_2_otsuph.png" alt="Field app screen 3" loading="lazy"></div>
-        <div class="shot" onclick="openLb(3,3)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314789/Hotpot_3_jkpu6m.png" alt="Field app screen 4" loading="lazy"></div>
-        <div class="shot" onclick="openLb(3,4)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_4_j2whmh.png" alt="Field app screen 5" loading="lazy"></div>
-        <div class="shot" onclick="openLb(3,5)"><img src="https://res.cloudinary.com/dfyphobvp/image/upload/v1766314770/Hotpot_5_haecbc.png" alt="Field app screen 6" loading="lazy"></div>
-      </div>
-    </div>
-
-    <div class="case rev">
-      <div class="case-inner">
-        <div class="case-num">CASE 05</div>
-        <div class="case-top">
-          <div>
-            <div class="case-title">PulsePoint Clinic — healthcare booking demo</div>
-            <div class="case-sub">Independent demo build</div>
-          </div>
-          <div class="case-badges"><span class="badge badge-nda">Client pitch template</span></div>
-        </div>
-        <p class="case-desc">A clinic demo app built to showcase appointment booking, patient records, and doctor scheduling in one Android experience — used as a template to pitch small healthcare providers on going digital.</p>
-        <div class="case-meta">
-          <div class="cm"><h4>Problem</h4><p>Small clinics manage bookings and patient info by phone and paper — slow, error-prone, hard to scale.</p></div>
-          <div class="cm"><h4>My role</h4><p>Solo — designed and built the booking flow, patient records screen, and scheduling UI as a pitch-ready demo.</p></div>
-          <div class="cm"><h4>Stack</h4><ul><li>Kotlin, MVVM</li><li>Firebase Firestore</li><li>Material Design 3</li></ul></div>
-          <div class="cm"><h4>Outcome</h4><ul><li>Reusable demo for client pitches</li><li>End-to-end booking flow in one build</li></ul></div>
-        </div>
-      </div>
-      <div class="dummy-flag">Placeholder screens — real screens to follow.</div>
-      <div class="shots">
-        <div class="shot" onclick="openLb(4,0)"><img src="https://placehold.co/400x866/1D1929/FF8A3D?text=PulsePoint+1&font=roboto" alt="PulsePoint placeholder 1" loading="lazy"></div>
-        <div class="shot" onclick="openLb(4,1)"><img src="https://placehold.co/400x866/1D1929/FF8A3D?text=PulsePoint+2&font=roboto" alt="PulsePoint placeholder 2" loading="lazy"></div>
-        <div class="shot" onclick="openLb(4,2)"><img src="https://placehold.co/400x866/1D1929/FF8A3D?text=PulsePoint+3&font=roboto" alt="PulsePoint placeholder 3" loading="lazy"></div>
-        <div class="shot" onclick="openLb(4,3)"><img src="https://placehold.co/400x866/1D1929/FF8A3D?text=PulsePoint+4&font=roboto" alt="PulsePoint placeholder 4" loading="lazy"></div>
-      </div>
-    </div>
-
-    <div class="case rev">
-      <div class="case-inner">
-        <div class="case-num">CASE 06</div>
-        <div class="case-top">
-          <div>
-            <div class="case-title">AcciControl — accident detection via GPS &amp; motion sensors</div>
-            <div class="case-sub">Final year project</div>
-          </div>
-          <div class="case-badges"><span class="badge badge-nda">University project</span></div>
-        </div>
-        <p class="case-desc">My BS final year project: an Android app using GPS and the phone's motion sensors to monitor impact force and device orientation in real time, triggering automated emergency alerts with precise location coordinates instantly upon collision detection.</p>
-        <div class="case-meta">
-          <div class="cm"><h4>Problem</h4><p>Accident victims often can't call for help themselves — delayed response times cost lives in the critical first minutes.</p></div>
-          <div class="cm"><h4>My role</h4><p>Solo — built the sensor-fusion detection logic, GPS tracking, and automated alert flow.</p></div>
-          <div class="cm"><h4>Stack</h4><ul><li>Accelerometer / gyroscope fusion</li><li>Google Maps SDK, location services</li><li>Automated alert dispatch</li></ul></div>
-          <div class="cm"><h4>Outcome</h4><ul><li>Completed as final year project</li><li>Working end-to-end detection → alert pipeline</li></ul></div>
-        </div>
-      </div>
-      <div class="dummy-flag">Placeholder screens — real screens to follow.</div>
-      <div class="shots">
-        <div class="shot" onclick="openLb(5,0)"><img src="https://placehold.co/400x866/1D1929/8B5CF6?text=AcciControl+1&font=roboto" alt="AcciControl placeholder 1" loading="lazy"></div>
-        <div class="shot" onclick="openLb(5,1)"><img src="https://placehold.co/400x866/1D1929/8B5CF6?text=AcciControl+2&font=roboto" alt="AcciControl placeholder 2" loading="lazy"></div>
-        <div class="shot" onclick="openLb(5,2)"><img src="https://placehold.co/400x866/1D1929/8B5CF6?text=AcciControl+3&font=roboto" alt="AcciControl placeholder 3" loading="lazy"></div>
-      </div>
-    </div>
-
-    <div class="other-label rev">Other shipped apps</div>
-    <div class="other-grid">
-      <div class="mini rev">
-        <h4>Recipe Expert</h4>
-        <p>Cooking companion app with ingredient-based recipe search across cuisines.</p>
-        <a href="https://play.google.com/store/apps/details?id=com.hamzadev.recipeexpert" target="_blank" rel="noopener">Play Store ↗</a>
-        <div class="mini-tags" style="margin-top:10px">Kotlin · Firebase · Hilt</div>
-      </div>
-      <div class="mini rev d1">
-        <h4>Laugh &amp; Rhyme</h4>
-        <p>Bilingual (English &amp; Urdu) jokes, riddles, and poetry app with social sharing.</p>
-        <div class="mini-tags">Jetpack Compose · Room</div>
-      </div>
-      <div class="mini rev d2">
-        <h4>Znext Sol</h4>
-        <p>My own studio site, built to acquire freelance and contract Android clients directly.</p>
-        <div class="mini-tags">Static site · GitHub Pages</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="testimonials">
-  <div class="wrap">
-    <div class="sec-head rev">
-      <div class="sec-index">Reviews</div>
-      <h2>What clients have said</h2>
-    </div>
-    <div class="testi-grid">
-      <div class="testi rev">
-        <div class="mark">"</div>
-        <p>Delivered a high-quality Android application with clean architecture and efficient performance. Communication and reliability throughout the project were outstanding.</p>
-        <div class="testi-author"><strong>Ali Zohair</strong><span>Project Lead</span></div>
-      </div>
-      <div class="testi rev d1">
-        <div class="mark">"</div>
-        <p>Demonstrated exceptional problem-solving skills and attention to detail. The app was intuitive, smooth, and met all project requirements on time.</p>
-        <div class="testi-author"><strong>Muhammad Saleh</strong><span>Product Manager</span></div>
-      </div>
-      <div class="testi rev d2">
-        <div class="mark">"</div>
-        <p>Professional, knowledgeable, and reliable. Delivered a scalable Android solution with optimized UI and robust features, making collaboration seamless.</p>
-        <div class="testi-author"><strong>Fahad Zafar</strong><span>Tech Consultant</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="wrap">
-    <div class="contact-box rev">
-      <h2>Let's build something together</h2>
-      <p>Available for remote contract work, consulting, and Android development roles — via Znext Sol or direct hire.</p>
-      <div class="contact-direct">Or reach me directly: <a href="mailto:zameersahil318@gmail.com">zameersahil318@gmail.com</a> · <a href="tel:+923407393734">+92 340 7393734</a></div>
-      <div class="contact-links">
-        <a href="mailto:zameersahil318@gmail.com" class="clink clink-main magnet">Email me</a>
-        <a href="./Zameer_Hussain_Resume.pdf" download class="clink clink-sec magnet">Download resume</a>
-        <a href="https://github.com/zameer-sahil" target="_blank" rel="noopener noreferrer" class="clink clink-sec magnet">GitHub ↗</a>
-        <a href="https://www.linkedin.com/in/zameer-hussain-286250252" target="_blank" rel="noopener noreferrer" class="clink clink-sec magnet">LinkedIn ↗</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-inner">
-    <span>© 2026 Zameer Hussain</span>
-    <span>Android Developer · Founder, Znext Sol · Karachi, Pakistan</span>
-  </div>
-</footer>
-
-<div id="lb">
-  <div class="lb-box">
-    <button class="lb-close" onclick="closeLb()">✕</button>
-    <button class="lb-nav lb-prev" onclick="navLb(-1)">←</button>
-    <img id="lbImg" src="" alt="">
-    <button class="lb-nav lb-next" onclick="navLb(1)">→</button>
-    <div class="lb-count" id="lbCount"></div>
-  </div>
+<div class="aurora"><i></i><i></i><i></i></div><div class="glow" id="glow"></div><div id="prog"></div>
+<header><div class="nav"><a class="brand" href="#hero">Zameer<b>.dev</b></a>
+<nav class="links"><a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#work">Work</a><a class="hire" href="#contact">Hire me</a></nav></div></header>
+<main>
+<section id="hero"><div class="wrap">
+<div class="kick"><i></i>Available for hire</div>
+<h1>I build apps that <span class="grad">hold up in production.</span></h1>
+<div class="role">Android Engineer · <b id="typed"></b><span class="caret"></span></div>
+<p class="lede">3+ years shipping production apps — including Unilever's B2B/B2C Android suite across <strong>four countries</strong> — plus AI-powered apps I designed, built, and launched solo in <strong>Kotlin and Flutter</strong>. Founder of <strong>Znext Sol</strong>, a studio taking on contract app work.</p>
+<div class="btns"><a href="#work" class="btn f">View case studies</a><a href="#contact" class="btn o">Get in touch</a></div>
+<div class="stats">
+<div class="stat"><b data-n="3" data-s="+">0</b><span>Years of experience</span></div>
+<div class="stat"><b data-n="4">0</b><span>Countries deployed</span></div>
+<div class="stat"><b data-n="40" data-s="%">0</b><span>Faster Gradle builds</span></div>
+<div class="stat"><b data-n="200" data-s="+">0</b><span>Eng. hours saved / year</span></div></div>
 </div>
+<div class="marq"><div id="mq"></div></div></section>
+
+<section id="about"><div class="wrap two">
+<div class="rev"><div class="idx">About</div><h2>Android & Flutter engineer, specialising in AI-integrated apps</h2>
+<p>I build mobile apps that plug into AI — conversational feedback loops, text-to-speech pipelines, API-driven personalization — on a foundation of <strong>Kotlin, Jetpack Compose, Dart/Flutter</strong>, and clean, testable architecture.</p>
+<p>At <strong>Centegy Technologies</strong> I build Unilever's B2B/B2C Android apps for Pakistan, Thailand, Bangladesh and the Philippines inside a 10+ person Agile team. At <strong>Markematics Digital</strong> I migrated a Java codebase to Kotlin in three days and built offline-first field apps and an e-learning platform. On the side I've shipped AI apps solo, end to end.</p>
+<p>I run <strong>Znext Sol</strong>, a small studio for freelance and contract builds.</p></div>
+<div class="rev"><div class="gc facts"><div><span>Current role</span><b>Android Developer, Centegy</b></div><div><span>Deployed</span><b>4 countries</b></div><div><span>Based in</span><b>Karachi, Pakistan</b></div><div><span>Email</span><b>zameersahil318@gmail.com</b></div><div><span>Phone</span><b>+92 340 7393734</b></div></div></div>
+</div></section>
+
+<section id="experience"><div class="wrap">
+<div class="rev"><div class="idx">Experience</div><h2>Where I've built this</h2><p class="sub">Full-time roles, plus independent products I shipped on my own.</p></div>
+<div class="xp rev"><h3>Android Developer<em>Jan 2025 – Present</em></h3><small>Centegy Technologies · Karachi</small><ul>
+<li>Deliver Unilever B2B &amp; B2C Android apps live in 4 countries, in a 10+ member Agile/Scrum team</li>
+<li>Built DSR Distributor (real-time Google Maps), a Warehouse Management app and a B2C e-commerce app, each with dev/staging/prod flavors</li>
+<li>Cut Gradle build time ~40% with incremental compilation and caching; architected multi-module Clean Architecture with Retrofit + Hilt</li></ul></div>
+<div class="xp rev"><h3>Android Developer<em>Jan 2024 – Dec 2024</em></h3><small>Markematics Digital · Karachi</small><ul>
+<li>Migrated ShopTracking Java → Kotlin in 3 days (3x ahead of schedule): fixed memory leaks, moved to Coroutines, smaller APK, faster cold start</li>
+<li>Built RetailAudit &amp; MarkitSurvey — offline-first field apps with zero-data-loss sync; a unified REST layer saved 200+ engineering hours a year</li>
+<li>Built Tutify: real-time chat, Zoom SDK live classes, Firebase FCM push</li></ul></div>
+<div class="xp rev"><h3>Independent Mobile Developer<em>2026</em></h3><small>Self-initiated · Karachi</small><ul>
+<li>Designed, built and shipped AI-powered apps solo — Postify and SpeakMate — with deep OpenAI API and Firebase-at-scale experience</li>
+<li>Built Clean Pro in Flutter/Dart, extending my mobile stack beyond native Android</li>
+<li>Owned the full lifecycle: UI/UX, backend, Play Store listing, release pipeline, user feedback</li></ul></div>
+</div></section>
+
+<section id="skills"><div class="wrap">
+<div class="rev"><div class="idx">Skills</div><h2>The stack behind every app</h2><p class="sub">Tools and patterns used in production, not tutorials.</p></div>
+<div class="sk" id="sk"></div>
+<div class="learn rev"><b>Currently learning: Spring Boot</b>Building backend foundations — no shipped project yet, listed for transparency.</div>
+</div></section>
+
+<section id="work"><div class="wrap">
+<div class="rev"><div class="idx">Selected work</div><h2>Case studies</h2><p class="sub">The challenge, what I built, the stack, and measurable results.</p></div>
+<div id="cases"></div>
+<div class="more">
+<div class="gc rev"><h4>Recipe Expert</h4><p>Cooking companion with ingredient-based recipe search across cuisines.</p><a href="https://play.google.com/store/apps/details?id=com.hamzadev.recipeexpert" target="_blank" rel="noopener">Play Store ↗</a><small>Kotlin · Firebase · Hilt</small></div>
+<div class="gc rev"><h4>Laugh &amp; Rhyme</h4><p>Bilingual (English &amp; Urdu) jokes, riddles and poetry app with social sharing.</p><small>Jetpack Compose · Room</small></div>
+<div class="gc rev"><h4>Znext Sol</h4><p>My studio site, built to win freelance and contract app clients directly.</p><small>Static site · GitHub Pages</small></div></div>
+</div></section>
+
+<section id="testimonials"><div class="wrap">
+<div class="rev"><div class="idx">Reviews</div><h2>What clients have said</h2></div>
+<div class="tg">
+<div class="gc rev"><i>"</i><p>Delivered a high-quality Android application with clean architecture and efficient performance. Communication and reliability throughout the project were outstanding.</p><b>Ali Zohair</b><span>Project Lead</span></div>
+<div class="gc rev"><i>"</i><p>Demonstrated exceptional problem-solving skills and attention to detail. The app was intuitive, smooth, and met all project requirements on time.</p><b>Muhammad Saleh</b><span>Product Manager</span></div>
+<div class="gc rev"><i>"</i><p>Professional, knowledgeable, and reliable. Delivered a scalable Android solution with optimized UI and robust features, making collaboration seamless.</p><b>Fahad Zafar</b><span>Tech Consultant</span></div></div>
+</div></section>
+
+<section id="contact" style="padding-top:40px"><div class="wrap"><div class="cb rev">
+<h2>Let's build something <span class="grad">together</span></h2>
+<p>Available for remote contract work, consulting and Android/Flutter roles — via Znext Sol or direct hire.</p>
+<div class="btns"><a class="btn f" href="mailto:zameersahil318@gmail.com">Email me</a>
+<a class="btn o" href="https://drive.google.com/file/d/1q-9dLaxpTYG6aEmhKJePPEzxNAOzuKTP/view?usp=drive_link" target="_blank" rel="noopener">Download resume</a>
+<a class="btn o" href="https://github.com/zameer-sahil" target="_blank" rel="noopener">GitHub ↗</a>
+<a class="btn o" href="https://www.linkedin.com/in/zameer-hussain-286250252" target="_blank" rel="noopener">LinkedIn ↗</a></div></div></div></section>
+</main>
+<footer>© 2026 Zameer Hussain · Android &amp; Flutter Developer · Founder, Znext Sol · Karachi, Pakistan</footer>
+<div id="lb"><button class="x" onclick="lb.classList.remove('on')">✕</button><button class="p" onclick="nav(-1)">←</button><img id="li" alt=""><button class="n" onclick="nav(1)">→</button></div>
 
 <script>
-const ham=document.getElementById('ham'),mob=document.getElementById('mobMenu');
-ham.addEventListener('click',()=>mob.classList.toggle('show'));
-mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mob.classList.remove('show')));
-
-/* top scroll progress — cheap, passive */
-const prog=document.getElementById('topProg');
-window.addEventListener('scroll',()=>{
-  const h=document.documentElement.scrollHeight-innerHeight;
-  prog.style.width=(h>0?(scrollY/h*100):0)+'%';
-},{passive:true});
-
-/* scroll reveal */
-const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')}),{threshold:.12});
-document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
-
-/* count-up stats, once */
-const counted=new WeakSet();
-const co=new IntersectionObserver(es=>es.forEach(e=>{
-  if(!e.isIntersecting||counted.has(e.target))return;
-  counted.add(e.target);
-  const el=e.target,target=+el.dataset.count,suffix=el.dataset.suffix||'',dur=1100,start=performance.now();
-  function tick(now){
-    const p=Math.min(1,(now-start)/dur),eased=1-Math.pow(1-p,3);
-    el.textContent=Math.round(eased*target)+suffix;
-    if(p<1)requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
-}),{threshold:.6});
-document.querySelectorAll('.fact-num').forEach(el=>co.observe(el));
-
-/* magnetic buttons — contained pointermove, no global loop */
-document.querySelectorAll('.magnet').forEach(el=>{
-  el.addEventListener('mousemove',e=>{
-    const r=el.getBoundingClientRect();
-    const x=(e.clientX-r.left-r.width/2)*.25;
-    const y=(e.clientY-r.top-r.height/2)*.4;
-    el.style.transform=`translate(${x}px,${y}px)`;
-  });
-  el.addEventListener('mouseleave',()=>{el.style.transform='';});
-});
-
-/* subtle 3D tilt on case + skill cards */
-document.querySelectorAll('.case, .skill-card').forEach(el=>{
-  el.addEventListener('mousemove',e=>{
-    const r=el.getBoundingClientRect();
-    const px=(e.clientX-r.left)/r.width-.5, py=(e.clientY-r.top)/r.height-.5;
-    el.style.transform=`perspective(900px) rotateX(${(-py*2.2).toFixed(2)}deg) rotateY(${(px*2.2).toFixed(2)}deg) translateY(-2px)`;
-  });
-  el.addEventListener('mouseleave',()=>{el.style.transform='';});
-});
-
+const $=s=>document.querySelector(s),cl=(a,l)=>l.map(x=>`https://res.cloudinary.com/${a}/image/upload/${x}`);
+const D='dfyphobvp';
+const CASES=[
+{n:'01',t:'SpeakMate — AI English speaking coach',s:'Independent · 2026',b:[['Play Store ↗','https://play.google.com/store/apps/details?id=com.speakmate.english','lk'],['Live · thousands of daily users','','live']],
+d:'A real-time AI speaking coach: users talk naturally and get a lifelike reply in American, British or Australian accents, with grammar, vocabulary and pronunciation feedback after every sentence.',
+c:'Learners get grammar tools, but almost no instant spoken feedback on fluency and pronunciation in context — and they worry about voice privacy.',
+w:['Designed the full conversation loop: speech in → AI reply → WaveNet voice out','Built the feedback pipeline scoring grammar, vocabulary and pronunciation per sentence','Four practice modes — Job Interview, IELTS, Business English, Small Talk — with XP streaks and achievements','Privacy-first design: no audio is ever stored on servers'],
+m:[['1000s','daily active users'],['0','audio files stored'],['3','accents supported'],['4','practice modes']],
+k:['Kotlin','Jetpack Compose','OpenAI API','Google WaveNet TTS','Firebase'],
+p:cl('dv0tole4k',['v1782009431/screen_01_ulskrt.png','v1782009432/screen_02_djfppq.png','v1782009431/screen_03_rdijlu.png','v1782009431/screen_04_bq7y5w.png','v1782009431/screen_05_rjzd9f.png','v1782009432/screen_06_jia2fn.png'])},
+{n:'02',t:'Postify — AI LinkedIn growth platform',s:'Independent · 2026',b:[['Play Store ↗','https://play.google.com/store/apps/details?id=com.postify.app.free&hl=en','lk'],['Live','','live']],
+d:'An all-in-one AI LinkedIn toolkit, built and launched solo: post generator, ATS resume optimizer, follow-up message writer, post scheduler and growth analytics.',
+c:'Writing ATS-friendly profiles and posting consistently eats hours every week for most professionals.',
+w:['One-tap resume → ATS-optimized profile using the OpenAI API','Firestore-backed real-time sync across devices','Multi-module MVVM + Clean Architecture with Hilt for fast, safe iteration','Owned UI/UX, Play Store listing and release pipeline end to end'],
+m:[['5','AI tools in one app'],['1','developer, zero to launch'],['M3','fully accessible Compose UI']],
+k:['Kotlin','Jetpack Compose','OpenAI API','Firestore','Hilt'],
+p:cl(D,['v1766679932/Hotpot_0_l2w3og.png','v1766679926/Hotpot_1_hliuyc.png','v1766679929/Hotpot_2_zcimit.png','v1766679928/8_z2rbq7.png','v1766679925/Hotpot_4_nkpqqk.png','v1766679920/5_xbxjma.png'])},
+{n:'03',t:'Clean Pro — cleaning-service booking app',s:'Independent · Flutter · 2026',b:[['Live demo ↗','https://postify-official.github.io/Cleanpro-demo-/','lk'],['Flutter · Dart','','live']],
+d:'A cross-platform booking app for cleaning companies, built in Flutter and used as a live demo to pitch service businesses on replacing phone-and-WhatsApp scheduling.',
+c:'Small cleaning companies juggle customers, cleaners and time slots over calls and chats — causing double bookings, back-and-forth and lost repeat customers.',
+w:['Customer booking flow with automated time-slot selection','One place to manage customers, bookings and cleaners','Single Dart codebase built to scale across Android and iOS','Polished demo experience that lets a prospect try the product with no commitment'],
+m:[['1','codebase, multi-platform'],['0','back-and-forth to book a slot'],['Live','demo used in client pitches']],
+k:['Flutter','Dart','Firebase','Material Design 3'],p:[]},
+{n:'04',t:'Unilever Android suite — 4-country rollout',s:'Centegy Technologies · Jan 2025 – Present',b:[['Client: Unilever','','']],
+d:'Three flagship apps for Unilever B2B and B2C operations in Pakistan, Thailand, Bangladesh and the Philippines — DSR Distributor (real-time Google Maps), Warehouse Management, and a B2C e-commerce app.',
+c:'Slow builds and a growing codebase were slowing releases across four countries and three apps.',
+w:['Architected scalable multi-module Clean Architecture with Retrofit + Hilt','Tuned Gradle with incremental compilation and build caching','Set up dev/staging/prod flavors for clean, multi-country releases','Delivered in a 10+ person cross-functional Agile/Scrum team'],
+m:[['40%','faster Gradle builds'],['4','countries live'],['3','production apps'],['10+','person team']],
+k:['Kotlin','Hilt','Retrofit','Multi-module','Google Maps SDK'],
+p:cl(D,['v1766904710/Hotpot_0_fssx5j.png','v1766904704/Hotpot_1_ufomg1.png','v1766904759/Hotpot_2_gntmqe.png','v1766904833/5_jjwioy.png','v1766904793/10_neocup.png','v1766904865/Hotpot_4_as9gxj.png'])},
+{n:'05',t:'Field & learning apps — Markematics Digital',s:'Jan 2024 – Dec 2024',b:[['Client: Markematics Digital','','']],
+d:'A year of delivery for one client: a Java→Kotlin migration, two offline-first field apps for retail teams, and an e-learning platform with live classes.',
+c:'A slow legacy app, field teams working without connectivity, and no unified way to run online classes.',
+w:['Migrated ShopTracking to Kotlin/Coroutines in 3 days — fixed leaks, cut APK size, faster cold start','Built RetailAudit & MarkitSurvey with a local database and background sync engine','Created Tutify: real-time chat, Zoom SDK live classes, FCM push','Unified REST API layer removed duplicated integrations'],
+m:[['3 days','migration, 3x ahead'],['200+','eng. hours saved / year'],['0','data loss offline']],
+k:['Kotlin','Coroutines','Retrofit','SQLite','Zoom SDK','FCM'],
+p:cl(D,['v1766314769/Hotpot_0_ifzlid.png','v1766314783/Hotpot_1_lohei7.png','v1766314768/Hotpot_2_otsuph.png','v1766314789/Hotpot_3_jkpu6m.png','v1766314768/Hotpot_4_j2whmh.png','v1766314770/Hotpot_5_haecbc.png'])},
+{n:'06',t:'AcciControl — accident detection via GPS & sensors',s:'BS final year project',b:[['University project','','']],
+d:'An Android app that fuses accelerometer and gyroscope data with GPS to detect a collision in real time and instantly send emergency alerts with exact coordinates.',
+c:'Accident victims often cannot call for help — delayed response in the first minutes costs lives.',
+w:['Sensor-fusion logic detecting impact force and device orientation','Real-time GPS tracking with Maps SDK','Automated alert dispatch containing precise location','Working end-to-end pipeline: detection → alert'],
+m:[['Real-time','impact detection'],['Auto','emergency alert + location']],
+k:['Kotlin','Sensors API','Google Maps SDK','Location services'],p:[]}];
+const SK={'Languages':['Kotlin','Java','Dart*'],'Cross-platform':['Flutter*','Dart*'],'Android SDK':['Jetpack Compose','ViewModel','Room','Navigation','WorkManager'],'Architecture':['MVVM','Clean Architecture','Multi-module'],'Async & APIs':['Coroutines','Flow','RxJava','Retrofit','OkHttp'],'DI & Testing':['Hilt','Dagger 2','JUnit','Espresso','Mockito'],'Cloud & AI':['Firebase','OpenAI API','Google WaveNet TTS'],'Tools':['Google Maps SDK','Git','Gradle','Android Studio'],'Design & Process':['Material Design 3','Accessibility','Agile/Scrum','Play Store releases']};
+$('#sk').innerHTML=Object.entries(SK).map(([k,v])=>`<div class="gc rev"><h4>${k}</h4><div class="chips">${v.map(x=>x.endsWith('*')?`<span class="new">${x.slice(0,-1)}</span>`:`<span>${x}</span>`).join('')}</div></div>`).join('');
+$('#cases').innerHTML=CASES.map((c,i)=>`<article class="gc case rev"><div class="ci"><div class="ct"><div><div class="cn">CASE ${c.n}</div><h3>${c.t}</h3><div class="cs">${c.s}</div></div><div class="bd">${c.b.map(([t,h,k])=>h?`<a class="b ${k}" href="${h}" target="_blank" rel="noopener">${t}</a>`:`<span class="b ${k}">${t}</span>`).join('')}</div></div>
+<p class="cd">${c.d}</p><div class="mets">${c.m.map(([a,b])=>`<div class="met"><b>${a}</b><span>${b}</span></div>`).join('')}</div>
+<div class="cg"><div><h5>The challenge</h5><p>${c.c}</p><h5 style="margin-top:18px">Stack</h5><div class="chips">${c.k.map(x=>`<span>${x}</span>`).join('')}</div></div><div><h5>What I built</h5><ul>${c.w.map(x=>`<li>${x}</li>`).join('')}</ul></div></div></div>
+${c.p.length?`<div class="shots">${c.p.map((u,j)=>`<div class="shot" onclick="open_(${i},${j})"><img src="${u}" alt="${c.t} screen ${j+1}" loading="lazy"></div>`).join('')}</div>`:''}</article>`).join('');
+$('#mq').innerHTML=[...'x','x'].map(()=>['Kotlin','Flutter','Dart','Jetpack Compose','Firebase','OpenAI API','Clean Architecture','Hilt','Coroutines','Retrofit','Material 3','Google Maps SDK'].map(t=>`<span>${t}</span>`).join('')).join('');
+/* typing role */
+const R=['Flutter Developer','AI-App Builder','Founder, Znext Sol'];let ri=0,ci=0,del=0;const ty=$('#typed');
+(function t(){const w=R[ri];ty.textContent=w.slice(0,ci);if(!del&&ci++==w.length){del=1;return setTimeout(t,1400)}if(del&&--ci==0){del=0;ri=(ri+1)%R.length}setTimeout(t,del?40:80)})();
+/* progress, glow, reveal, counters, card glow */
+addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-innerHeight;$('#prog').style.width=scrollY/h*100+'%'},{passive:true});
+addEventListener('mousemove',e=>{glow.style.transform=`translate(${e.clientX-210}px,${e.clientY-210}px)`});
+document.addEventListener('mousemove',e=>{const c=e.target.closest&&e.target.closest('.gc');if(c){const r=c.getBoundingClientRect();c.style.setProperty('--mx',e.clientX-r.left+'px');c.style.setProperty('--my',e.clientY-r.top+'px')}});
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('vis')),{threshold:.1});document.querySelectorAll('.rev').forEach(el=>io.observe(el));
+const cio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;cio.unobserve(e.target);const el=e.target,T=+el.dataset.n,S=el.dataset.s||'',t0=performance.now();(function f(n){const p=Math.min(1,(n-t0)/1200);el.textContent=Math.round((1-Math.pow(1-p,3))*T)+S;p<1&&requestAnimationFrame(f)})(t0)}),{threshold:.6});document.querySelectorAll('[data-n]').forEach(el=>cio.observe(el));
 /* lightbox */
-const SHOTS=[
-  ['https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_01_ulskrt.png','https://res.cloudinary.com/dv0tole4k/image/upload/v1782009432/screen_02_djfppq.png','https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_03_rdijlu.png','https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_04_bq7y5w.png','https://res.cloudinary.com/dv0tole4k/image/upload/v1782009431/screen_05_rjzd9f.png','https://res.cloudinary.com/dv0tole4k/image/upload/v1782009432/screen_06_jia2fn.png'],
-  ['https://res.cloudinary.com/dfyphobvp/image/upload/v1766679932/Hotpot_0_l2w3og.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766679926/Hotpot_1_hliuyc.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766679929/Hotpot_2_zcimit.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766679928/8_z2rbq7.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766679925/Hotpot_4_nkpqqk.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766679920/5_xbxjma.png'],
-  ['https://res.cloudinary.com/dfyphobvp/image/upload/v1766904710/Hotpot_0_fssx5j.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904704/Hotpot_1_ufomg1.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904759/Hotpot_2_gntmqe.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904833/5_jjwioy.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904793/10_neocup.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766904865/Hotpot_4_as9gxj.png'],
-  ['https://res.cloudinary.com/dfyphobvp/image/upload/v1766314769/Hotpot_0_ifzlid.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766314783/Hotpot_1_lohei7.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_2_otsuph.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766314789/Hotpot_3_jkpu6m.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766314768/Hotpot_4_j2whmh.png','https://res.cloudinary.com/dfyphobvp/image/upload/v1766314770/Hotpot_5_haecbc.png'],
-  ['https://placehold.co/400x866/1D1929/FF8A3D?text=PulsePoint+1&font=roboto','https://placehold.co/400x866/1D1929/FF8A3D?text=PulsePoint+2&font=roboto','https://placehold.co/400x866/1D1929/FF8A3D?text=PulsePoint+3&font=roboto','https://placehold.co/400x866/1D1929/FF8A3D?text=PulsePoint+4&font=roboto'],
-  ['https://placehold.co/400x866/1D1929/8B5CF6?text=AcciControl+1&font=roboto','https://placehold.co/400x866/1D1929/8B5CF6?text=AcciControl+2&font=roboto','https://placehold.co/400x866/1D1929/8B5CF6?text=AcciControl+3&font=roboto']
-];
-let curCase=0,curIdx=0;
-function openLb(c,i){curCase=c;curIdx=i;render();document.getElementById('lb').classList.add('on')}
-function closeLb(){document.getElementById('lb').classList.remove('on')}
-function navLb(d){const n=curIdx+d;if(n<0||n>=SHOTS[curCase].length)return;curIdx=n;render()}
-function render(){document.getElementById('lbImg').src=SHOTS[curCase][curIdx];document.getElementById('lbCount').textContent=(curIdx+1)+' / '+SHOTS[curCase].length}
-document.getElementById('lb').addEventListener('click',e=>{if(e.target.id==='lb')closeLb()});
-document.addEventListener('keydown',e=>{
-  if(!document.getElementById('lb').classList.contains('on'))return;
-  if(e.key==='Escape')closeLb();
-  if(e.key==='ArrowRight')navLb(1);
-  if(e.key==='ArrowLeft')navLb(-1);
-});
+const lb=$('#lb');let cc=0,ci2=0;
+function open_(c,i){cc=c;ci2=i;lbr();lb.classList.add('on')}function nav(d){const n=ci2+d;if(n>=0&&n<CASES[cc].p.length){ci2=n;lbr()}}function lbr(){$('#li').src=CASES[cc].p[ci2]}
+lb.addEventListener('click',e=>{if(e.target===lb)lb.classList.remove('on')});
+addEventListener('keydown',e=>{if(!lb.classList.contains('on'))return;if(e.key==='Escape')lb.classList.remove('on');if(e.key==='ArrowRight')nav(1);if(e.key==='ArrowLeft')nav(-1)});
 </script>
 </body>
 </html>
