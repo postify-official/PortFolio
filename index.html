@@ -125,6 +125,8 @@ h2{font:700 clamp(27px,3.8vw,42px)/1.15 var(--d);letter-spacing:-.025em;margin-b
 .shot{flex:0 0 auto;width:150px;border-radius:12px;overflow:hidden;cursor:zoom-in;border:1px solid var(--line);transition:.35s var(--e);box-shadow:0 10px 26px rgba(0,0,0,.3)}
 .shot:hover{transform:translateY(-6px) scale(1.03);border-color:var(--accent)}
 .shot img{display:block;width:100%;aspect-ratio:9/19.5;object-fit:cover}
+.shot.wide{width:420px}.shot.wide img{aspect-ratio:16/9.6;object-position:top}
+@media(max-width:700px){.shot.wide{width:300px}}
 .more{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}@media(max-width:760px){.more{grid-template-columns:1fr}}
 .more .gc{padding:22px}.more h4{font:700 15.5px var(--d);margin-bottom:6px}.more p{font-size:13.5px;color:var(--soft);margin-bottom:10px}
 .more a{color:var(--accent);font:600 13px var(--d)}.more small{color:var(--faint);display:block;margin-top:8px}
@@ -284,7 +286,8 @@ d:'A cross-platform booking app for cleaning companies, built in Flutter on a Sp
 c:'Small cleaning companies juggle customers, cleaners and time slots over calls and chats — causing double bookings, back-and-forth and lost repeat customers.',
 w:['Customer booking flow with automated time-slot selection','Spring Boot REST backend powering bookings, customers, cleaners and slots','One place for a company to manage customers, bookings and cleaners','Single Dart codebase for Android and iOS, shipped as a live demo for client pitches'],
 m:[['1','codebase, multi-platform'],['0','back-and-forth to book a slot'],['Live','demo used in client pitches']],
-k:['Flutter','Dart','Spring Boot','REST API','Material Design 3'],p:['https://res.cloudinary.com/dv0tole4k/image/upload/v1790009961/Screenshot_2026-04-30_215944_ergg2h.png']},
+k:['Flutter','Dart','Spring Boot','REST API','Material Design 3'],wide:1,
+p:['https://res.cloudinary.com/dv0tole4k/image/upload/v1790009961/Screenshot_2026-04-30_215944_ergg2h.png']},
 {n:'05',t:'Postify — AI LinkedIn growth platform',s:'Independent · 2026',b:[['Play Store ↗','https://play.google.com/store/apps/details?id=com.postify.app.free&hl=en','lk'],['Live','','live']],
 d:'An all-in-one AI LinkedIn toolkit, built and launched solo: post generator, ATS resume optimizer, follow-up message writer, post scheduler and growth analytics.',
 c:'Writing ATS-friendly profiles and posting consistently eats hours every week for most professionals.',
@@ -302,11 +305,11 @@ const SK={'Languages':['Kotlin','Java','Dart*'],'Cross-platform & Backend':['Flu
 $('#sk').innerHTML=Object.entries(SK).map(([k,v])=>`<div class="gc rev"><h4>${k}</h4><div class="chips">${v.map(x=>x.endsWith('*')?`<span class="new">${x.slice(0,-1)}</span>`:`<span>${x}</span>`).join('')}</div></div>`).join('');
 /* PLACEHOLDER screens: replace CASES[3].p (Clean Pro) and CASES[5].p (AcciControl) with real screenshot URLs */
 const ph=(n,i)=>'data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="400" height="866" viewBox="0 0 400 866"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#171B28"/><stop offset="1" stop-color="#0D0F16"/></linearGradient></defs><rect width="400" height="866" fill="url(#g)"/><rect x="28" y="70" width="140" height="12" rx="6" fill="#2A3045"/><rect x="28" y="96" width="230" height="26" rx="8" fill="#3A4160"/><rect x="28" y="160" width="344" height="150" rx="20" fill="#1C2132"/><rect x="28" y="330" width="164" height="110" rx="18" fill="#1C2132"/><rect x="208" y="330" width="164" height="110" rx="18" fill="#1C2132"/><rect x="28" y="462" width="344" height="58" rx="16" fill="#1C2132"/><rect x="28" y="536" width="344" height="58" rx="16" fill="#1C2132"/><text x="200" y="650" text-anchor="middle" font-family="Inter,sans-serif" font-size="15" fill="#6B7388">${n} · Screen ${i}</text><rect x="28" y="740" width="344" height="56" rx="14" fill="#7C93FF" opacity=".85"/></svg>`);
-CASES[3].p=[1,2,3,4].map(i=>ph('Clean Pro',i));CASES[5].p=[1,2,3].map(i=>ph('AcciControl',i));
+CASES[5].p=[1,2,3].map(i=>ph('AcciControl',i));
 $('#cases').innerHTML=CASES.map((c,i)=>`<article class="gc case rev"><div class="ci"><div class="ct"><div><div class="cn">CASE ${c.n}</div><h3>${c.t}</h3><div class="cs">${c.s}</div></div><div class="bd">${c.b.map(([t,h,k])=>h?`<a class="b ${k}" href="${h}" target="_blank" rel="noopener">${t}</a>`:`<span class="b ${k}">${t}</span>`).join('')}</div></div>
 <p class="cd">${c.d}</p><div class="mets">${c.m.map(([a,b])=>`<div class="met"><b>${a}</b><span>${b}</span></div>`).join('')}</div>
 <div class="cg"><div><h5>The challenge</h5><p>${c.c}</p><h5 style="margin-top:18px">Stack</h5><div class="chips">${c.k.map(x=>`<span>${x}</span>`).join('')}</div></div><div><h5>What I built</h5><ul>${c.w.map(x=>`<li>${x}</li>`).join('')}</ul></div></div>${c.r?`<div class="rp"><h5>Running it in production</h5><ul>${c.r.map(x=>`<li>${x}</li>`).join('')}</ul></div>`:''}</div>
-${c.p.length?`<div class="shots">${c.p.map((u,j)=>`<div class="shot" onclick="open_(${i},${j})"><img src="${u}" alt="${c.t} screen ${j+1}" loading="lazy"></div>`).join('')}</div>`:''}</article>`).join('');
+${c.p.length?`<div class="shots">${c.p.map((u,j)=>`<div class="shot${c.wide?' wide':''}" onclick="open_(${i},${j})"><img src="${u}" alt="${c.t} screen ${j+1}" loading="lazy"></div>`).join('')}</div>`:''}</article>`).join('');
 $('#mq').innerHTML=[...'x','x'].map(()=>['Kotlin','Flutter','Dart','Jetpack Compose','Firebase','OpenAI API','Clean Architecture','Hilt','Coroutines','Retrofit','Material 3','Google Maps SDK'].map(t=>`<span>${t}</span>`).join('')).join('');
 /* typing role */
 const R=['Enterprise Android Developer','Flutter Developer','AI-App Architect','Founder, Znext Sol'];let ri=0,ci=0,del=0;const ty=$('#typed');
