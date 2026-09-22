@@ -125,8 +125,8 @@ h2{font:700 clamp(27px,3.8vw,42px)/1.15 var(--d);letter-spacing:-.025em;margin-b
 .shot{flex:0 0 auto;width:150px;border-radius:12px;overflow:hidden;cursor:zoom-in;border:1px solid var(--line);transition:.35s var(--e);box-shadow:0 10px 26px rgba(0,0,0,.3)}
 .shot:hover{transform:translateY(-6px) scale(1.03);border-color:var(--accent)}
 .shot img{display:block;width:100%;aspect-ratio:9/19.5;object-fit:cover}
-.shot.wide{width:420px}.shot.wide img{aspect-ratio:16/9.6;object-position:top}
-@media(max-width:700px){.shot.wide{width:300px}}
+.shot.wide{width:auto;max-width:560px;background:#12151f}.shot.wide img{width:auto;height:325px;max-width:560px;aspect-ratio:auto;object-fit:contain}
+@media(max-width:700px){.shot.wide img{height:220px;max-width:100%}}
 .more{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}@media(max-width:760px){.more{grid-template-columns:1fr}}
 .more .gc{padding:22px}.more h4{font:700 15.5px var(--d);margin-bottom:6px}.more p{font-size:13.5px;color:var(--soft);margin-bottom:10px}
 .more a{color:var(--accent);font:600 13px var(--d)}.more small{color:var(--faint);display:block;margin-top:8px}
@@ -287,7 +287,7 @@ c:'Small cleaning companies juggle customers, cleaners and time slots over calls
 w:['Customer booking flow with automated time-slot selection','Spring Boot REST backend powering bookings, customers, cleaners and slots','One place for a company to manage customers, bookings and cleaners','Single Dart codebase for Android and iOS, shipped as a live demo for client pitches'],
 m:[['1','codebase, multi-platform'],['0','back-and-forth to book a slot'],['Live','demo used in client pitches']],
 k:['Flutter','Dart','Spring Boot','REST API','Material Design 3'],wide:1,
-p:['https://res.cloudinary.com/dv0tole4k/image/upload/v1790014127/image1_rzbfil.jpg']},
+p:['https://res.cloudinary.com/dv0tole4k/image/upload/v1790009961/Screenshot_2026-04-30_215944_ergg2h.png']},
 {n:'05',t:'Postify — AI LinkedIn growth platform',s:'Independent · 2026',b:[['Play Store ↗','https://play.google.com/store/apps/details?id=com.postify.app.free&hl=en','lk'],['Live','','live']],
 d:'An all-in-one AI LinkedIn toolkit, built and launched solo: post generator, ATS resume optimizer, follow-up message writer, post scheduler and growth analytics.',
 c:'Writing ATS-friendly profiles and posting consistently eats hours every week for most professionals.',
