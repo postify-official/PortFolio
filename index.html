@@ -1,263 +1,61 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Zameer Hussain — Senior Android & Flutter Engineer | Enterprise Mobile Development</title>
-<meta name="description" content="Android & Flutter engineer with 3+ years shipping production, enterprise-scale mobile apps across 4 countries. Clean Architecture, AI integration, Founder of Znext Sol. Karachi, Pakistan.">
-<meta name="keywords" content="Senior Android Developer, Flutter Engineer, Kotlin Expert, Clean Architecture, MVVM, Enterprise Mobile Development, Production-Grade Apps, AI Integration, OpenAI API, Scalable Mobile Architecture, Multi-Country App Deployment, Agile Scrum, Freelance Android Developer, Karachi Pakistan">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07080c">
+<title>Zameer Hussain — Android & Flutter Engineer</title>
+<meta name="description" content="Zameer Hussain — Senior Android & Flutter Engineer building production-grade, scalable and AI-integrated mobile systems.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Fraunces:ital,opsz@1,9..144&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#0A0B0F;--bg2:#0D0F16;--card:rgba(255,255,255,.032);--card-hi:rgba(255,255,255,.055);
-  --ink:#F2F3F7;--soft:#A7ADBE;--faint:#5F6577;--line:rgba(255,255,255,.09);--line-hi:rgba(255,255,255,.16);
-  --accent:#7C93FF;--accent-dim:#5A6BD8;--gold:#D2A75C;--good:#4ADE80;
-  --d:'Manrope',system-ui,sans-serif;--s:'Inter',system-ui,sans-serif;--serif:'Fraunces',Georgia,serif;
-  --e:cubic-bezier(.16,1,.3,1);--radius:14px
-}
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-body{background:var(--bg);color:var(--ink);font:16px/1.65 var(--s);overflow-x:hidden;-webkit-font-smoothing:antialiased}
-a{color:inherit}.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
-section{padding:104px 0;position:relative}
-section+section{border-top:1px solid var(--line)}
-@media(max-width:700px){section{padding:64px 0}.wrap{padding:0 20px}}
-
-.aurora{position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
-  background-size:64px 64px;
-  -webkit-mask-image:radial-gradient(ellipse 80% 55% at 50% 0,#000 20%,transparent 75%);
-  mask-image:radial-gradient(ellipse 80% 55% at 50% 0,#000 20%,transparent 75%)}
-.glow{position:fixed;width:460px;height:460px;border-radius:50%;pointer-events:none;z-index:1;left:0;top:0;
-  background:radial-gradient(circle,rgba(124,147,255,.09),transparent 65%);transform:translate(-50%,-50%)}
-main,header,footer{position:relative;z-index:2}
-#prog{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--gold),var(--accent));z-index:999}
-
-header{position:sticky;top:0;background:rgba(10,11,15,.72);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);z-index:500}
-.nav{max-width:1120px;margin:auto;padding:0 28px;height:66px;display:flex;align-items:center;justify-content:space-between}
-.brand{font:700 19px var(--d);text-decoration:none;letter-spacing:-.01em}.brand b{color:var(--gold);font-weight:700}
-.links{display:flex;gap:2px}.links a{font-size:14px;color:var(--soft);text-decoration:none;padding:8px 14px;border-radius:8px;transition:.25s}
-.links a:hover{color:var(--ink);background:var(--line)}.links a.act{color:var(--ink);background:var(--line)}
-.links .hire{background:#EEF0F8;color:#0A0B0F;font-weight:700;margin-left:6px}
-.links .hire:hover{background:#fff}.links .hire.act{background:#fff;color:#0A0B0F}
-@media(max-width:760px){.links a:not(.hire){display:none}}
-
-.grad{font:italic 400 1.06em var(--serif);color:var(--gold);letter-spacing:-.005em}
-
-#hero{padding:92px 0 68px}
-.kick{display:inline-flex;gap:9px;align-items:center;font:600 13px var(--d);color:var(--soft);padding:7px 15px;border:1px solid var(--line);border-radius:99px;background:var(--card);margin-bottom:28px;box-shadow:0 4px 18px rgba(0,0,0,.25)}
-.kick i{width:7px;height:7px;border-radius:50%;background:var(--good);animation:ping 2s infinite}
-@keyframes ping{0%{box-shadow:0 0 0 0 rgba(74,222,128,.55)}80%,100%{box-shadow:0 0 0 9px transparent}}
-h1{font:700 clamp(36px,6vw,66px)/1.08 var(--d);letter-spacing:-.03em;max-width:16.5ch;margin-bottom:22px}
-.role{font:600 clamp(17px,2.2vw,22px) var(--d);color:var(--soft);margin-bottom:22px;min-height:1.6em;letter-spacing:-.005em}
-.role b{color:var(--accent);font-weight:700}.caret{display:inline-block;width:2px;height:1.05em;background:var(--accent);margin-left:3px;vertical-align:-2px;animation:blink 1s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-.lede{color:var(--soft);font-size:17px;max-width:62ch;margin-bottom:34px}.lede strong{color:var(--ink);font-weight:600}
-.btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:54px}
-.btn{font:700 14.5px var(--d);text-decoration:none;padding:13px 25px;border-radius:10px;transition:.3s var(--e);display:inline-block}
-.btn.f{background:#EEF0F8;color:#0A0B0F;box-shadow:0 10px 28px rgba(124,147,255,.14)}
-.btn.f:hover{background:#fff;transform:translateY(-2px);box-shadow:0 14px 36px rgba(124,147,255,.22)}
-.btn.o{border:1px solid var(--line);background:var(--card);color:var(--ink)}
-.btn.o:hover{border-color:var(--accent);transform:translateY(-2px)}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.stat{padding:20px 22px;border-radius:var(--radius);background:var(--card);border:1px solid var(--line);position:relative;overflow:hidden}
-.stat::after{content:'';position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--accent));opacity:0;transition:.3s}
-.stat:hover::after{opacity:1}
-.stat b{font:700 32px var(--d);display:block;color:var(--ink);letter-spacing:-.02em}
-.stat span{font-size:12.5px;color:var(--faint)}
-@media(max-width:700px){.stats{grid-template-columns:1fr 1fr}}
-.marq{overflow:hidden;border-block:1px solid var(--line);padding:15px 0;margin-top:22px;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
-.marq div{display:flex;gap:34px;width:max-content;animation:mq 34s linear infinite;font:600 14px var(--d);color:var(--faint)}
-.marq span::after{content:'/';margin-left:34px;color:var(--gold)}
-@keyframes mq{to{transform:translateX(-50%)}}
-
-.idx{font:700 12.5px var(--d);color:var(--gold);letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px}
-h2{font:700 clamp(27px,3.8vw,42px)/1.15 var(--d);letter-spacing:-.025em;margin-bottom:14px}
-.sub{color:var(--soft);max-width:56ch;margin-bottom:46px}
-.rev{opacity:0;transform:translateY(24px);transition:opacity .7s var(--e),transform .7s var(--e)}.rev.vis{opacity:1;transform:none}
-
-.gc{position:relative;border-radius:var(--radius);background:var(--card);border:1px solid var(--line);overflow:hidden;transition:border-color .3s,transform .35s var(--e)}
-.gc::before{content:'';position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(124,147,255,.10),transparent 60%);opacity:0;transition:.3s;pointer-events:none}
-.gc:hover{border-color:rgba(124,147,255,.35)}.gc:hover::before{opacity:1}
-
-.two{display:grid;grid-template-columns:1.3fr 1fr;gap:56px}@media(max-width:840px){.two{grid-template-columns:1fr;gap:30px}}
-.two p{color:var(--soft);margin-bottom:18px}.two p strong{color:var(--ink);font-weight:600}
-.facts div{display:flex;justify-content:space-between;gap:14px;padding:15px 22px;border-bottom:1px solid var(--line);font-size:14px}.facts div:last-child{border:0}
-.facts span{color:var(--faint)}.facts b{text-align:right;font-weight:600}
-
-.xp{position:relative;padding:0 0 36px 30px;border-left:2px solid var(--line)}
-.xp::before{content:'';position:absolute;left:-7px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--gold)}
-.xp h3{font:700 18.5px var(--d);letter-spacing:-.01em}.xp em{font-style:normal;color:var(--gold);font-size:13px;font-weight:700;margin-left:10px}
-.xp small{display:block;color:var(--faint);margin:2px 0 10px}
-.xp li{list-style:none;color:var(--soft);font-size:14.5px;padding-left:16px;position:relative;margin-bottom:7px}
-.xp li::before{content:'';position:absolute;left:0;top:10px;width:5px;height:5px;border-radius:50%;background:var(--accent)}
-
-.sk{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}@media(max-width:900px){.sk{grid-template-columns:1fr 1fr}}@media(max-width:600px){.sk{grid-template-columns:1fr}}
-.sk .gc{padding:22px}.sk h4{font:700 12px var(--d);color:var(--gold);letter-spacing:.09em;text-transform:uppercase;margin-bottom:12px}
-.chips{display:flex;flex-wrap:wrap;gap:7px}.chips span{font-size:12.5px;padding:5px 12px;border-radius:8px;background:rgba(255,255,255,.045);border:1px solid var(--line);color:var(--soft);transition:.25s}
-.gc:hover .chips span{color:var(--ink);border-color:rgba(124,147,255,.3)}.chips .new{border-color:rgba(210,167,92,.5);color:#EBD3A8;background:rgba(210,167,92,.07)}
-
-.case{margin-bottom:26px;position:relative}
-.case::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent 70%);opacity:.55;z-index:1}
-.ci{padding:36px}@media(max-width:700px){.ci{padding:22px}}
-.ct{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:14px}
-.cn{font:700 12.5px var(--d);color:var(--gold);letter-spacing:.1em;margin-bottom:6px}
-.case h3{font:700 25px var(--d);letter-spacing:-.015em}.cs{color:var(--faint);font-size:13.5px}
-.bd{display:flex;gap:8px;flex-wrap:wrap;align-items:flex-start}
-.b{font:600 12px var(--d);padding:5px 12px;border-radius:8px;border:1px solid var(--line);color:var(--soft);text-decoration:none;white-space:nowrap}
-.b.live{color:#6EE7A0;border-color:rgba(74,222,128,.32);background:rgba(74,222,128,.08)}
-.b.lk{color:var(--accent);border-color:rgba(124,147,255,.35);background:rgba(124,147,255,.08)}.b.lk:hover{background:var(--accent);color:#0A0B0F}
-.cd{color:var(--soft);max-width:76ch;margin-bottom:24px}
-.mets{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:26px}
-.met{padding:15px 18px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid var(--line);transition:.3s var(--e)}
-.met:hover{border-color:rgba(210,167,92,.4);transform:translateY(-2px)}
-.met b{font:700 24px var(--d);display:block;color:var(--ink);letter-spacing:-.02em}.met span{font-size:12.5px;color:var(--soft);line-height:1.4;display:block}
-.cg{display:grid;grid-template-columns:1fr 1.2fr;gap:30px;margin-bottom:22px}@media(max-width:760px){.cg{grid-template-columns:1fr}}
-.cg h5{font:700 11.5px var(--d);color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px}
-.cg p,.cg li{font-size:14px;color:var(--soft)}.cg ul{list-style:none}.cg li{padding:0 0 8px 20px;position:relative}.cg li::before{content:'→';position:absolute;left:0;color:var(--gold)}
-.rp{margin:8px 0 22px;padding:20px 24px;border-radius:12px;border:1px solid rgba(210,167,92,.26);background:rgba(210,167,92,.045)}
-.rp h5{font:700 11.5px var(--d);color:var(--gold);letter-spacing:.11em;text-transform:uppercase;margin-bottom:12px}
-.rp ul{list-style:none;columns:2;column-gap:36px}.rp li{break-inside:avoid;font-size:13.5px;color:var(--soft);padding:0 0 10px 20px;position:relative}
-.rp li::before{content:'→';position:absolute;left:0;color:var(--gold)}@media(max-width:760px){.rp ul{columns:1}}
-.shots{display:flex;gap:14px;overflow-x:auto;padding:4px 36px 28px;scrollbar-width:thin}@media(max-width:700px){.shots{padding:4px 22px 24px}}
-.shot{flex:0 0 auto;width:150px;border-radius:12px;overflow:hidden;cursor:zoom-in;border:1px solid var(--line);transition:.35s var(--e);box-shadow:0 10px 26px rgba(0,0,0,.3)}
-.shot:hover{transform:translateY(-6px) scale(1.03);border-color:var(--accent)}
-.shot img{display:block;width:100%;aspect-ratio:9/19.5;object-fit:cover}
-.shot.wide{width:auto;max-width:560px;background:#12151f}.shot.wide img{width:auto;height:325px;max-width:560px;aspect-ratio:auto;object-fit:contain}
-@media(max-width:700px){.shot.wide img{height:220px;max-width:100%}}
-.more{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}@media(max-width:760px){.more{grid-template-columns:1fr}}
-.more .gc{padding:22px}.more h4{font:700 15.5px var(--d);margin-bottom:6px}.more p{font-size:13.5px;color:var(--soft);margin-bottom:10px}
-.more a{color:var(--accent);font:600 13px var(--d)}.more small{color:var(--faint);display:block;margin-top:8px}
-
-.tg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}@media(max-width:840px){.tg{grid-template-columns:1fr}}
-.tg .gc{padding:26px}.tg i{font:italic 400 42px var(--serif);color:var(--gold);line-height:1;display:block}
-.tg p{margin:6px 0 20px;font-size:14.5px;color:var(--soft)}.tg b{display:block;font-size:14px}.tg span{font-size:12.5px;color:var(--faint)}
-
-.cb{padding:60px 50px;border-radius:22px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(124,147,255,.11),rgba(210,167,92,.05) 60%),radial-gradient(600px circle at 90% -10%,rgba(210,167,92,.12),transparent 60%)}
-@media(max-width:640px){.cb{padding:36px 22px}}
-.cb h2{max-width:14ch;font-size:clamp(28px,4.4vw,44px)}.cb p{color:var(--soft);max-width:52ch;margin-bottom:28px}.cb .btns{margin:0}
-footer{border-top:1px solid var(--line);padding:26px;text-align:center;font-size:13px;color:var(--faint)}
-
-#lb{display:none;position:fixed;inset:0;background:rgba(4,5,9,.94);z-index:900;align-items:center;justify-content:center}#lb.on{display:flex}
-#lb img{max-height:86vh;max-width:88vw;border-radius:12px;border:1px solid var(--line)}
-#lb button{position:absolute;background:var(--card);color:#fff;border:1px solid var(--line);width:42px;height:42px;border-radius:50%;font-size:18px;cursor:pointer}
-#lb .x{top:20px;right:20px}#lb .p{left:16px}#lb .n{right:16px}
-
-body{opacity:0;animation:pageIn .6s var(--e) .05s forwards}
-@keyframes pageIn{to{opacity:1}}
-.li{opacity:0;transform:translateY(22px);transition:opacity .7s var(--e),transform .7s var(--e)}
-.li.on{opacity:1;transform:none}
-h1 .word{display:inline-block;opacity:0;transform:translateY(1.1em) rotate(4deg);animation:wordIn .8s var(--e) forwards}
-@keyframes wordIn{to{opacity:1;transform:none}}
-.kick i{position:relative}
-.kick i::after{content:'';position:absolute;inset:-6px;border-radius:50%;border:1px solid var(--good);opacity:.5;animation:ringOut 2.4s ease-out infinite}
-@keyframes ringOut{0%{transform:scale(.4);opacity:.6}100%{transform:scale(2.2);opacity:0}}
-.stat,.gc{transform-style:preserve-3d;will-change:transform}
-.stat{transition:transform .35s var(--e),border-color .35s var(--e),box-shadow .35s var(--e)}
-.stat:hover{transform:translateY(-4px);border-color:var(--line-hi);box-shadow:0 14px 30px rgba(0,0,0,.28)}
-.gc{transition:transform .25s var(--e),border-color .3s var(--e),box-shadow .35s var(--e)}
-.gc:hover{box-shadow:0 18px 40px rgba(0,0,0,.32)}
-.shot{transition:transform .4s var(--e),border-color .3s var(--e),box-shadow .4s var(--e)}
-.btn{transition:transform .28s var(--e),box-shadow .3s var(--e),background .3s}
-.btn span.mtxt{display:inline-block;transition:transform .28s var(--e)}
-.links a{position:relative}
-.links a:not(.hire)::after{content:'';position:absolute;left:14px;right:14px;bottom:5px;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--e)}
-.links a:not(.hire):hover::after,.links a.act:not(.hire)::after{transform:scaleX(1)}
-.b,.chips span{transition:transform .25s var(--e),background .25s,border-color .25s,color .25s}
-.b:hover{transform:translateY(-2px)}
-.chips span:hover{transform:translateY(-1px)}
-.marq div{will-change:transform}
-.grad{background:linear-gradient(90deg,var(--gold),#F0D9A8,var(--gold));background-size:220% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:goldShine 5s linear infinite}
-@keyframes goldShine{to{background-position:-220% center}}
-.xp{overflow:visible}
-.xp::before{transition:box-shadow .3s}
-.xp:hover::before{box-shadow:0 0 0 5px rgba(210,167,92,.14)}
-.aurora{transition:transform .1s linear}
-@media(prefers-reduced-motion:reduce){body{opacity:1;animation:none}.li{opacity:1;transform:none}h1 .word{opacity:1;transform:none;animation:none}.grad{animation:none}}
+:root{--bg:#07080c;--panel:#0d1017;--panel2:#11151e;--text:#f4f6fb;--muted:#98a0b2;--dim:#596174;--line:rgba(255,255,255,.09);--blue:#7c9cff;--cyan:#68e4ff;--lime:#9af7c5;--gold:#e8c27a;--max:1180px;--ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font:16px/1.65 Manrope,system-ui,sans-serif;overflow-x:hidden}a{color:inherit;text-decoration:none}button{font:inherit}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-2;background:radial-gradient(circle at 15% 10%,rgba(124,156,255,.10),transparent 26%),radial-gradient(circle at 90% 30%,rgba(104,228,255,.06),transparent 22%),linear-gradient(180deg,#07080c 0%,#090b10 45%,#07080c 100%)}
+body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.28;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(#000,transparent 75%)}
+.container{width:min(var(--max),calc(100% - 44px));margin:auto}.mono{font:500 11px/1.2 "DM Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--blue)}
+.progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan),var(--gold));z-index:1000}
+.nav{position:fixed;top:0;left:0;right:0;height:74px;z-index:900;border-bottom:1px solid transparent;transition:.35s var(--ease)}.nav.scrolled{background:rgba(7,8,12,.78);backdrop-filter:blur(18px);border-color:var(--line)}.navin{height:100%;display:flex;align-items:center;justify-content:space-between}.logo{font-weight:800;letter-spacing:-.05em;font-size:19px}.logo span{color:var(--blue)}.navlinks{display:flex;gap:4px;align-items:center}.navlinks a{font-size:13px;color:var(--muted);padding:9px 12px;border-radius:9px;transition:.25s}.navlinks a:hover{color:var(--text);background:rgba(255,255,255,.06)}.navlinks .cta{background:#eef2ff;color:#07080c;font-weight:800;margin-left:8px}.menu{display:none;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text);width:40px;height:40px;border-radius:10px}
+.hero{min-height:100vh;padding:150px 0 90px;display:grid;align-items:center}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center}.eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:25px}.dot{width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 7px rgba(154,247,197,.08),0 0 24px rgba(154,247,197,.45)}
+h1{font-size:clamp(48px,7vw,86px);line-height:.98;letter-spacing:-.065em;max-width:850px;margin-bottom:25px}h1 .accent{background:linear-gradient(100deg,#fff 5%,var(--blue) 50%,var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}.hero-copy{font-size:17px;color:var(--muted);max-width:700px}.hero-copy strong{color:var(--text)}.actions{display:flex;gap:12px;flex-wrap:wrap;margin:32px 0 36px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 18px;border-radius:11px;border:1px solid var(--line);font-weight:800;font-size:13px;transition:.3s var(--ease)}.btn.primary{background:#f2f5ff;color:#07080c;border-color:#f2f5ff}.btn:hover{transform:translateY(-3px);border-color:rgba(124,156,255,.55);box-shadow:0 18px 45px rgba(0,0,0,.28)}.btn.ghost{background:rgba(255,255,255,.035)}
+.hero-meta{display:flex;gap:28px;flex-wrap:wrap;color:var(--dim);font-size:12px}.hero-meta b{display:block;color:var(--text);font-size:13px;margin-bottom:2px}.hero-meta span{display:block}
+.portrait-stage{position:relative;min-height:620px;display:grid;place-items:center;perspective:1200px}.orbit{position:absolute;width:540px;height:540px;border:1px solid rgba(124,156,255,.15);border-radius:50%;animation:spin 22s linear infinite}.orbit:before,.orbit:after{content:"";position:absolute;width:9px;height:9px;border-radius:50%;background:var(--cyan);box-shadow:0 0 28px var(--cyan)}.orbit:before{top:13%;left:9%}.orbit:after{bottom:10%;right:12%;background:var(--gold);box-shadow:0 0 28px var(--gold)}
+@keyframes spin{to{transform:rotate(360deg)}}.portrait{width:min(390px,75vw);aspect-ratio:896/1195;object-fit:cover;object-position:center top;border-radius:190px 190px 28px 28px;border:1px solid rgba(255,255,255,.15);box-shadow:0 45px 100px rgba(0,0,0,.55),0 0 80px rgba(124,156,255,.10);transform:rotateY(-7deg) rotateX(2deg);transition:transform .25s var(--ease);position:relative;z-index:3}.portrait-wrap:after{content:"";position:absolute;inset:8% 12% 0;background:linear-gradient(135deg,rgba(124,156,255,.22),transparent 45%,rgba(232,194,122,.12));filter:blur(35px);z-index:0}.portrait-wrap{position:relative}.float-photo{position:absolute;width:142px;aspect-ratio:896/1195;object-fit:cover;border-radius:22px;border:1px solid rgba(255,255,255,.13);box-shadow:0 25px 55px rgba(0,0,0,.45);z-index:4;animation:float 5s ease-in-out infinite}.float-photo.one{left:-5px;top:12%;transform:rotate(-7deg)}.float-photo.two{right:-15px;bottom:14%;transform:rotate(7deg);animation-delay:-2s}@keyframes float{50%{translate:0 -12px}}
+.badge{position:absolute;z-index:5;padding:10px 13px;background:rgba(11,14,21,.76);backdrop-filter:blur(15px);border:1px solid var(--line);border-radius:12px;font-size:11px;box-shadow:0 20px 40px rgba(0,0,0,.35)}.badge strong{display:block;font-size:13px}.badge.a{right:2%;top:20%}.badge.b{left:0;bottom:10%}
+.ticker{border-block:1px solid var(--line);overflow:hidden}.ticker-track{display:flex;width:max-content;animation:ticker 35s linear infinite}.ticker span{padding:15px 24px;color:#667084;font:500 11px "DM Mono",monospace;text-transform:uppercase;letter-spacing:.12em}.ticker span:after{content:"✦";margin-left:48px;color:var(--gold)}@keyframes ticker{to{transform:translateX(-50%)}}
+section{padding:125px 0;border-top:1px solid var(--line)}.section-head{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:55px}.section-head h2{font-size:clamp(35px,5vw,58px);line-height:1;letter-spacing:-.055em;margin-top:12px}.section-head p{max-width:470px;color:var(--muted)}
+.about{display:grid;grid-template-columns:1.2fr .8fr;gap:80px}.about p{font-size:17px;color:var(--muted);margin-bottom:20px}.about p strong{color:var(--text)}.facts{display:grid;gap:10px}.fact{padding:18px 20px;background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:14px;display:flex;justify-content:space-between;gap:20px}.fact span{color:var(--dim);font-size:12px}.fact b{text-align:right;font-size:13px}
+.timeline{position:relative;margin-left:10px}.timeline:before{content:"";position:absolute;left:6px;top:0;bottom:0;width:1px;background:linear-gradient(var(--blue),var(--gold),transparent)}.job{position:relative;padding:0 0 58px 48px}.job:last-child{padding-bottom:0}.job:before{content:"";position:absolute;left:0;top:3px;width:13px;height:13px;border-radius:50%;background:var(--bg);border:2px solid var(--blue);box-shadow:0 0 0 7px rgba(124,156,255,.06)}.job h3{font-size:22px;letter-spacing:-.025em}.job .when{color:var(--gold);font:500 11px "DM Mono",monospace;text-transform:uppercase;margin-left:10px}.job .company{color:var(--dim);font-size:13px;margin:5px 0 15px}.job ul{list-style:none;display:grid;gap:8px}.job li{color:var(--muted);font-size:14px;padding-left:18px;position:relative}.job li:before{content:"→";position:absolute;left:0;color:var(--blue)}
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.skill{padding:24px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.018));min-height:155px;transition:.35s var(--ease)}.skill:hover{transform:translateY(-6px);border-color:rgba(124,156,255,.3);background:linear-gradient(145deg,rgba(124,156,255,.09),rgba(255,255,255,.018))}.skill h3{font-size:12px;color:var(--gold);text-transform:uppercase;letter-spacing:.12em;margin-bottom:17px}.chips{display:flex;flex-wrap:wrap;gap:7px}.chip{font-size:12px;color:#b7becd;border:1px solid var(--line);background:rgba(255,255,255,.035);padding:6px 9px;border-radius:8px}.chip.new{color:var(--cyan);border-color:rgba(104,228,255,.25)}
+.work-grid{display:grid;gap:22px}.project{border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015));overflow:hidden;transition:.4s var(--ease)}.project:hover{border-color:rgba(124,156,255,.35);transform:translateY(-5px);box-shadow:0 35px 80px rgba(0,0,0,.28)}.project-top{padding:30px 30px 24px;display:grid;grid-template-columns:1fr auto;gap:25px}.project-no{font:500 11px "DM Mono";color:var(--gold);letter-spacing:.12em}.project h3{font-size:27px;letter-spacing:-.035em;margin:6px 0}.project .subline{color:var(--dim);font-size:12px}.project-desc{color:var(--muted);font-size:14px;max-width:800px;margin-top:17px}.tags{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}.tag{border:1px solid var(--line);padding:6px 10px;border-radius:8px;color:#aeb6c8;font-size:11px}.tag.live{color:var(--lime);border-color:rgba(154,247,197,.22);background:rgba(154,247,197,.04)}.tag.link{color:var(--blue);border-color:rgba(124,156,255,.25);background:rgba(124,156,255,.04)}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:0 30px 26px}.metric{padding:14px;border:1px solid var(--line);border-radius:12px;background:rgba(0,0,0,.13)}.metric b{display:block;font-size:20px;letter-spacing:-.04em}.metric span{color:var(--dim);font-size:11px}.project-body{display:grid;grid-template-columns:.85fr 1.15fr;gap:35px;padding:0 30px 28px}.project-body h4{font:500 10px "DM Mono";letter-spacing:.13em;text-transform:uppercase;color:var(--blue);margin-bottom:9px}.project-body p,.project-body li{color:var(--muted);font-size:13px}.project-body ul{list-style:none;display:grid;gap:8px}.project-body li{padding-left:17px;position:relative}.project-body li:before{content:"↳";position:absolute;left:0;color:var(--gold)}.production{margin:0 30px 25px;padding:18px 20px;border:1px solid rgba(232,194,122,.2);background:rgba(232,194,122,.035);border-radius:14px}.production h4{color:var(--gold)}.production ul{columns:2;list-style:none}.production li{color:var(--muted);font-size:12px;margin-bottom:8px;padding-left:17px;position:relative}.production li:before{content:"•";position:absolute;left:0;color:var(--gold)}.shots{display:flex;gap:12px;overflow:auto;padding:0 30px 30px}.shot{flex:0 0 145px;border:1px solid var(--line);border-radius:12px;overflow:hidden;cursor:pointer;background:#0a0c11;transition:.3s var(--ease)}.shot:hover{transform:translateY(-6px);border-color:var(--blue)}.shot img{display:block;width:100%;aspect-ratio:9/19.5;object-fit:cover}.shot.wide{flex-basis:auto}.shot.wide img{width:auto;height:270px;aspect-ratio:auto}
+.more{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:25px}.more-card{padding:23px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.025)}.more-card h3{font-size:15px}.more-card p{font-size:13px;color:var(--muted);margin:8px 0 10px}.more-card small{color:var(--dim)}.more-card a{color:var(--blue);font-size:12px}
+.testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.quote{padding:28px;border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.03)}.quote .q{font-size:39px;color:var(--gold);line-height:.8}.quote p{color:var(--muted);font-size:14px;margin:12px 0 25px}.quote b{font-size:13px}.quote span{display:block;color:var(--dim);font-size:11px;margin-top:3px}
+.contact{padding-bottom:75px}.contact-card{position:relative;overflow:hidden;padding:65px;border:1px solid rgba(124,156,255,.22);border-radius:28px;background:radial-gradient(circle at 85% 10%,rgba(104,228,255,.12),transparent 28%),linear-gradient(135deg,rgba(124,156,255,.11),rgba(232,194,122,.045))}.contact-card:before{content:"";position:absolute;width:320px;height:320px;border:1px solid rgba(124,156,255,.12);border-radius:50%;right:-100px;top:-160px}.contact-card h2{font-size:clamp(38px,5vw,64px);line-height:1;letter-spacing:-.06em;max-width:700px}.contact-card p{color:var(--muted);max-width:620px;margin:18px 0 28px}.footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--dim);font-size:12px;display:flex;justify-content:space-between;gap:20px}
+.reveal{opacity:0;transform:translateY(24px);transition:.8s var(--ease)}.reveal.show{opacity:1;transform:none}.cursor-glow{position:fixed;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(124,156,255,.07),transparent 65%);pointer-events:none;z-index:-1;transform:translate(-50%,-50%)}
+.lightbox{position:fixed;inset:0;background:rgba(2,3,6,.94);backdrop-filter:blur(10px);z-index:1200;display:none;align-items:center;justify-content:center;padding:30px}.lightbox.on{display:flex}.lightbox img{max-width:min(92vw,900px);max-height:88vh;border-radius:16px;border:1px solid var(--line)}.lb-close{position:absolute;top:20px;right:20px;width:44px;height:44px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:white;border-radius:50%;cursor:pointer}
+@media(max-width:900px){.hero-grid,.about{grid-template-columns:1fr}.hero{padding-top:125px}.portrait-stage{min-height:540px}.skills{grid-template-columns:1fr 1fr}.testimonials{grid-template-columns:1fr}.project-body{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}.more{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:18px}.navlinks a:not(.cta){display:none}.menu{display:block}.navlinks{gap:7px}}
+@media(max-width:600px){.container{width:min(100% - 28px,var(--max))}.hero{padding-bottom:55px}.portrait-stage{min-height:460px}.orbit{width:350px;height:350px}.portrait{width:285px}.float-photo{width:95px}.badge{font-size:9px}.badge strong{font-size:11px}.skills{grid-template-columns:1fr}.project-top{grid-template-columns:1fr;padding:23px}.tags{justify-content:flex-start}.project-body,.metrics{padding-left:23px;padding-right:23px}.shots{padding-left:23px;padding-right:23px}.production{margin-left:23px;margin-right:23px}.production ul{columns:1}.contact-card{padding:38px 24px}.footer{display:block}.footer span{display:block;margin-top:8px}}
 </style>
 </head>
 <body>
-<div class="aurora"></div><div class="glow" id="glow"></div><div id="prog"></div>
-<header><div class="nav"><a class="brand" href="#hero">Zameer<b> Hussain</b></a>
-<nav class="links"><a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#work">Work</a><a class="hire" href="#contact">Hire me</a></nav></div></header>
-<main>
-<section id="hero"><div class="wrap">
-<div class="kick"><i></i>Available for hire — remote &amp; contract</div>
-<h1>I engineer production-grade apps that <span class="grad">scale in the real world.</span></h1>
-<div class="role">Senior Android Engineer · <b id="typed"></b><span class="caret"></span></div>
-<p class="lede">3+ years delivering <strong>enterprise-scale mobile software</strong> — including Unilever's B2B/B2C Android suite live across <strong>four countries</strong> — plus AI-integrated consumer apps I designed, architected, and shipped solo in <strong>Kotlin and Flutter</strong>. Founder of <strong>Znext Sol</strong>, a studio delivering contract mobile engineering for growing businesses.</p>
-<div class="btns"><a href="#work" class="btn f">View case studies</a><a href="#contact" class="btn o">Get in touch</a></div>
-<div class="stats">
-<div class="stat"><b data-n="3" data-s="+">0</b><span>Years, production Android</span></div>
-<div class="stat"><b data-n="4">0</b><span>Countries deployed</span></div>
-<div class="stat"><b data-n="40" data-s="%">0</b><span>Faster Gradle builds</span></div>
-<div class="stat"><b data-n="200" data-s="+">0</b><span>Eng. hours saved / year</span></div></div>
-</div>
-<div class="marq"><div id="mq"></div></div></section>
-
-<section id="about"><div class="wrap two">
-<div class="rev"><div class="idx">About</div><h2>Senior Android &amp; Flutter engineer, specialised in scalable, AI-integrated mobile systems</h2>
-<p>I build production-grade mobile applications on a foundation of <strong>Kotlin, Jetpack Compose, Dart/Flutter, Spring Boot</strong>, and clean, testable Clean Architecture — the kind of codebase a team can maintain and scale, not just ship once.</p>
-<p>At <strong>Centegy Technologies</strong> I deliver Unilever's B2B/B2C Android suite for Pakistan, Thailand, Bangladesh and the Philippines inside a 10+ person cross-functional Agile/Scrum team, owning architecture decisions, code reviews, and multi-country release management. At <strong>Markematics Digital</strong> I migrated a legacy Java codebase to Kotlin in three days and built offline-first field apps and a real-time e-learning platform. Independently, I've taken AI-powered products from zero to Play Store, end to end.</p>
-<p>I run <strong>Znext Sol</strong>, a mobile engineering studio for freelance and contract builds — from architecture and API design through release and post-launch support.</p></div>
-<div class="rev"><div class="gc facts"><div><span>Current role</span><b>Android Developer, Centegy</b></div><div><span>Deployed</span><b>4 countries</b></div><div><span>Based in</span><b>Karachi, Pakistan</b></div><div><span>Email</span><b>zameersahil318@gmail.com</b></div><div><span>Phone</span><b>+92 340 7393734</b></div></div></div>
-</div></section>
-
-<section id="experience"><div class="wrap">
-<div class="rev"><div class="idx">Experience</div><h2>Where I've built this</h2><p class="sub">Full-time, production engineering roles — plus independent products I owned end to end.</p></div>
-<div class="xp rev"><h3>Android Developer<em>Jan 2025 – Present</em></h3><small>Centegy Technologies · Karachi</small><ul>
-<li>Deliver Unilever B2B &amp; B2C Android apps live in 4 countries, inside a 10+ member cross-functional Agile/Scrum team</li>
-<li>Built DSR Distributor (real-time Google Maps tracking), a Warehouse Management app, and a B2C e-commerce app — each with dev/staging/prod release flavors</li>
-<li>Cut Gradle build time ~40% via incremental compilation and build caching; architected scalable multi-module Clean Architecture with Retrofit + Hilt</li></ul></div>
-<div class="xp rev"><h3>Android Developer<em>Jan 2024 – Dec 2024</em></h3><small>Markematics Digital · Karachi</small><ul>
-<li>Migrated ShopTracking Java → Kotlin in 3 days (3x ahead of schedule): resolved memory leaks, adopted Coroutines, reduced APK size, faster cold start</li>
-<li>Built RetailAudit &amp; MarkitSurvey — offline-first field apps with zero-data-loss sync; a unified REST layer saved 200+ engineering hours a year</li>
-<li>Built Tutify: real-time chat, Zoom SDK live classes, Firebase FCM push notifications</li></ul></div>
-<div class="xp rev"><h3>Independent Mobile Developer<em>2026</em></h3><small>Self-initiated · Karachi</small><ul>
-<li>Designed, architected and shipped AI-powered apps solo — Postify and SpeakMate — with production experience integrating the OpenAI API and Firebase at scale</li>
-<li>Built Clean Pro end to end: a cross-platform Flutter/Dart app backed by a Spring Boot API</li>
-<li>Owned the full product lifecycle: UI/UX, backend, Play Store listing, release pipeline, and user feedback loops</li></ul></div>
-</div></section>
-
-<section id="skills"><div class="wrap">
-<div class="rev"><div class="idx">Skills</div><h2>The stack behind every app</h2><p class="sub">Tools and architectural patterns used in production, not tutorials.</p></div>
-<div class="sk" id="sk"></div>
-</div></section>
-
-<section id="work"><div class="wrap">
-<div class="rev"><div class="idx">Selected work</div><h2>Case studies</h2><p class="sub">The challenge, what I built, the stack, and measurable, production results.</p></div>
-<div id="cases"></div>
-<div class="more">
-<div class="gc rev"><h4>Recipe Expert</h4><p>Cooking companion with ingredient-based recipe search across cuisines.</p><a href="https://play.google.com/store/apps/details?id=com.hamzadev.recipeexpert" target="_blank" rel="noopener">Play Store ↗</a><small>Kotlin · Firebase · Hilt</small></div>
-<div class="gc rev"><h4>Laugh &amp; Rhyme</h4><p>Bilingual (English &amp; Urdu) jokes, riddles and poetry app with social sharing.</p><small>Jetpack Compose · Room</small></div>
-<div class="gc rev"><h4>Znext Sol</h4><p>My studio site, built to win freelance and contract app clients directly.</p><small>Static site · GitHub Pages</small></div></div>
-</div></section>
-
-<section id="testimonials"><div class="wrap">
-<div class="rev"><div class="idx">Reviews</div><h2>What clients have said</h2></div>
-<div class="tg">
-<div class="gc rev"><i>"</i><p>Delivered a high-quality Android application with clean architecture and efficient performance. Communication and reliability throughout the project were outstanding.</p><b>Ali Zohair</b><span>Project Lead</span></div>
-<div class="gc rev"><i>"</i><p>Demonstrated exceptional problem-solving skills and attention to detail. The app was intuitive, smooth, and met all project requirements on time.</p><b>Muhammad Saleh</b><span>Product Manager</span></div>
-<div class="gc rev"><i>"</i><p>Professional, knowledgeable, and reliable. Delivered a scalable Android solution with optimized UI and robust features, making collaboration seamless.</p><b>Fahad Zafar</b><span>Tech Consultant</span></div></div>
-</div></section>
-
-<section id="contact" style="padding-top:36px"><div class="wrap"><div class="cb rev">
-<h2>Let's build something <span class="grad">that lasts.</span></h2>
-<p>Available for remote contract work, technical consulting and Android/Flutter engineering roles — via Znext Sol or direct hire.</p>
-<div class="btns"><a class="btn f" href="mailto:zameersahil318@gmail.com">Email me</a>
-<a class="btn o" href="https://drive.google.com/file/d/1q-9dLaxpTYG6aEmhKJePPEzxNAOzuKTP/view?usp=drive_link" target="_blank" rel="noopener">Download resume</a>
-<a class="btn o" href="https://github.com/zameer-sahil" target="_blank" rel="noopener">GitHub ↗</a>
-<a class="btn o" href="https://www.linkedin.com/in/zameer-hussain-286250252" target="_blank" rel="noopener">LinkedIn ↗</a></div></div></div></section>
+<div class="progress" id="progress"></div><div class="cursor-glow" id="cursorGlow"></div>
+<header class="nav" id="nav"><div class="container navin"><a class="logo" href="#top">Zameer<span>.</span></a><nav class="navlinks"><a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#work">Work</a><a href="#contact" class="cta">Hire me ↗</a></nav><button class="menu" onclick="document.body.classList.toggle('nav-open')">☰</button></div></header>
+<main id="top">
+<section class="hero"><div class="container hero-grid"><div class="reveal"><div class="eyebrow mono"><i class="dot"></i>Available for remote & contract work</div><h1>I build mobile products that <span class="accent">survive production.</span></h1><p class="hero-copy">Senior Android & Flutter engineer with <strong>3+ years</strong> shipping production software — including Unilever's enterprise Android suite across <strong>four countries</strong> — plus AI products built and shipped independently.</p><div class="actions"><a class="btn primary" href="#work">Explore my work ↓</a><a class="btn ghost" href="#contact">Start a conversation ↗</a></div><div class="hero-meta"><div><b>Android</b><span>Kotlin · Compose · Clean Architecture</span></div><div><b>Cross-platform</b><span>Flutter · Dart · Spring Boot</span></div><div><b>AI</b><span>OpenAI · voice · production apps</span></div></div></div>
+<div class="portrait-stage reveal" id="portraitStage"><div class="orbit"></div><div class="portrait-wrap"><img class="float-photo one" src="assets/profile-side.jpg" alt="Zameer Hussain profile portrait"><img class="portrait" id="portrait" src="assets/profile-front.jpg" alt="Zameer Hussain professional portrait"><img class="float-photo two" src="assets/profile-close.jpg" alt="Zameer Hussain profile portrait"><div class="badge a"><strong>4 countries</strong>enterprise rollout</div><div class="badge b"><strong>Founder · Znext Sol</strong>mobile engineering studio</div></div></div></div></section>
+<div class="ticker"><div class="ticker-track" id="ticker"></div></div>
+<section id="about"><div class="container"><div class="section-head reveal"><div><div class="mono">01 / About</div><h2>Engineering with product ownership.</h2></div><p>Not just screens and APIs. I care about architecture, reliability, release pipelines, measurable performance and what happens after launch.</p></div><div class="about"><div class="reveal"><p>I build production-grade mobile applications on a foundation of <strong>Kotlin, Jetpack Compose, Dart/Flutter, Spring Boot</strong>, and clean, testable Clean Architecture — the kind of codebase a team can maintain and scale, not just ship once.</p><p>At <strong>Centegy Technologies</strong> I deliver Unilever's B2B/B2C Android suite for Pakistan, Thailand, Bangladesh and the Philippines inside a 10+ person cross-functional Agile/Scrum team, owning architecture decisions, code reviews, and multi-country release management.</p><p>At <strong>Markematics Digital</strong> I migrated a legacy Java codebase to Kotlin in three days and built offline-first field apps and a real-time e-learning platform. Independently, I've taken AI-powered products from zero to Play Store.</p><p>I run <strong>Znext Sol</strong>, a mobile engineering studio for freelance and contract builds — from architecture and API design through release and post-launch support.</p></div><div class="facts reveal"><div class="fact"><span>Current role</span><b>Android Developer, Centegy</b></div><div class="fact"><span>Deployed</span><b>4 countries</b></div><div class="fact"><span>Based in</span><b>Karachi, Pakistan</b></div><div class="fact"><span>Email</span><b>zameersahil318@gmail.com</b></div><div class="fact"><span>Phone</span><b>+92 340 7393734</b></div></div></div></div></section>
+<section id="experience"><div class="container"><div class="section-head reveal"><div><div class="mono">02 / Experience</div><h2>Where the systems got real.</h2></div><p>Full-time production engineering roles plus independent products owned end to end.</p></div><div class="timeline" id="experienceList"></div></div></section>
+<section id="skills"><div class="container"><div class="section-head reveal"><div><div class="mono">03 / Stack</div><h2>The tools behind the work.</h2></div><p>Production technologies and architectural patterns — not tutorial badges.</p></div><div class="skills" id="skillsGrid"></div></div></section>
+<section id="work"><div class="container"><div class="section-head reveal"><div><div class="mono">04 / Selected work</div><h2>Proof, not promises.</h2></div><p>Challenges, decisions, stacks and measurable outcomes from real projects.</p></div><div class="work-grid" id="cases"></div><div class="more" id="more"></div></div></section>
+<section id="testimonials"><div class="container"><div class="section-head reveal"><div><div class="mono">05 / Reviews</div><h2>What collaborators said.</h2></div></div><div class="testimonials"><article class="quote reveal"><div class="q">“</div><p>Delivered a high-quality Android application with clean architecture and efficient performance. Communication and reliability throughout the project were outstanding.</p><b>Ali Zohair</b><span>Project Lead</span></article><article class="quote reveal"><div class="q">“</div><p>Demonstrated exceptional problem-solving skills and attention to detail. The app was intuitive, smooth, and met all project requirements on time.</p><b>Muhammad Saleh</b><span>Product Manager</span></article><article class="quote reveal"><div class="q">“</div><p>Professional, knowledgeable, and reliable. Delivered a scalable Android solution with optimized UI and robust features, making collaboration seamless.</p><b>Fahad Zafar</b><span>Tech Consultant</span></article></div></div></section>
+<section class="contact" id="contact"><div class="container"><div class="contact-card reveal"><div class="mono">06 / Contact</div><h2>Let's build something <span class="accent">that lasts.</span></h2><p>Available for remote contract work, technical consulting and Android/Flutter engineering roles — via Znext Sol or direct hire.</p><div class="actions"><a class="btn primary" href="mailto:zameersahil318@gmail.com">Email me ↗</a><a class="btn ghost" href="https://drive.google.com/file/d/1q-9dLaxpTYG6aEmhKJePPEzxNAOzuKTP/view?usp=drive_link" target="_blank" rel="noopener">Resume ↗</a><a class="btn ghost" href="https://github.com/zameer-sahil" target="_blank" rel="noopener">GitHub ↗</a><a class="btn ghost" href="https://www.linkedin.com/in/zameer-hussain-286250252" target="_blank" rel="noopener">LinkedIn ↗</a></div></div></div></section>
 </main>
-<footer>© 2026 Zameer Hussain · Senior Android &amp; Flutter Engineer · Founder, Znext Sol · Karachi, Pakistan</footer>
-<div id="lb"><button class="x" onclick="lb.classList.remove('on')">✕</button><button class="p" onclick="nav(-1)">←</button><img id="li" alt=""><button class="n" onclick="nav(1)">→</button></div>
-
+<footer><div class="container footer"><span>© 2026 Zameer Hussain · Senior Android & Flutter Engineer</span><span>Founder, Znext Sol · Karachi, Pakistan</span></div></footer>
+<div class="lightbox" id="lightbox"><button class="lb-close" onclick="closeLightbox()">×</button><img id="lightboxImg" alt="Project screenshot"></div>
 <script>
-const $=s=>document.querySelector(s),cl=(a,l)=>l.map(x=>`https://res.cloudinary.com/${a}/image/upload/${x}`);
-const D='dfyphobvp';
-/* Case order requested: SpeakMate, Unilever, Markematics (3rd), Clean Pro, Postify (5th), AcciControl */
 const CASES=[
 {n:'01',t:'SpeakMate — AI English speaking coach',s:'Solo founder & developer · Live in production · Actively maintained',b:[['Play Store ↗','https://play.google.com/store/apps/details?id=com.speakmate.english','lk'],['Live · 800 users · I run it solo','','live']],
 d:'A real-time AI English speaking coach I designed, built and now run on my own. Users hold natural voice conversations with a human-like AI agent and get lifelike replies, instant grammar correction, pronunciation scoring and personalized coaching across Job Interview, IELTS, Business English and Small Talk modes.',
@@ -302,27 +100,23 @@ w:['Sensor-fusion logic detecting impact force and device orientation','Real-tim
 m:[['Real-time','impact detection'],['Auto','emergency alert + location']],
 k:['Kotlin','Sensors API','Google Maps SDK','Location services'],p:['https://res.cloudinary.com/dv0tole4k/image/upload/v1790059128/image2_zsdbic.jpg', 'https://res.cloudinary.com/dv0tole4k/image/upload/v1790059128/image3_eijkll.jpg', 'https://res.cloudinary.com/dv0tole4k/image/upload/v1790059128/image4_r7igaf.jpg', 'https://res.cloudinary.com/dv0tole4k/image/upload/v1790059128/image5_yrrild.jpg', 'https://res.cloudinary.com/dv0tole4k/image/upload/v1790059165/image1_nlcawg.jpg', 'https://res.cloudinary.com/dv0tole4k/image/upload/v1790059165/image2_bl5dfk.jpg', 'https://res.cloudinary.com/dv0tole4k/image/upload/v1790059165/image3_tji3zv.jpg']}];
 const SK={'Languages':['Kotlin','Java','Dart*'],'Cross-platform & Backend':['Flutter*','Spring Boot*','REST APIs'],'Android SDK':['Jetpack Compose','ViewModel','Room','Navigation','WorkManager'],'Architecture':['MVVM','Clean Architecture','Multi-module','Scalable App Design'],'Async & APIs':['Coroutines','Flow','RxJava','Retrofit','OkHttp'],'DI & Testing':['Hilt','Dagger 2','JUnit','Espresso','Mockito'],'Cloud & AI':['Firebase','OpenAI API','Google WaveNet TTS'],'Tools':['Google Maps SDK','Git','Gradle','Android Studio'],'Delivery & Process':['Material Design 3','Accessibility','Agile/Scrum','Code Reviews','Play Store Releases']};
-$('#sk').innerHTML=Object.entries(SK).map(([k,v])=>`<div class="gc rev"><h4>${k}</h4><div class="chips">${v.map(x=>x.endsWith('*')?`<span class="new">${x.slice(0,-1)}</span>`:`<span>${x}</span>`).join('')}</div></div>`).join('');
-$('#cases').innerHTML=CASES.map((c,i)=>`<article class="gc case rev"><div class="ci"><div class="ct"><div><div class="cn">CASE ${c.n}</div><h3>${c.t}</h3><div class="cs">${c.s}</div></div><div class="bd">${c.b.map(([t,h,k])=>h?`<a class="b ${k}" href="${h}" target="_blank" rel="noopener">${t}</a>`:`<span class="b ${k}">${t}</span>`).join('')}</div></div>
-<p class="cd">${c.d}</p><div class="mets">${c.m.map(([a,b])=>`<div class="met"><b>${a}</b><span>${b}</span></div>`).join('')}</div>
-<div class="cg"><div><h5>The challenge</h5><p>${c.c}</p><h5 style="margin-top:18px">Stack</h5><div class="chips">${c.k.map(x=>`<span>${x}</span>`).join('')}</div></div><div><h5>What I built</h5><ul>${c.w.map(x=>`<li>${x}</li>`).join('')}</ul></div></div>${c.r?`<div class="rp"><h5>Running it in production</h5><ul>${c.r.map(x=>`<li>${x}</li>`).join('')}</ul></div>`:''}</div>
-${c.p.length?`<div class="shots">${c.p.map((u,j)=>`<div class="shot${c.wide?' wide':''}" onclick="open_(${i},${j})"><img src="${u}" alt="${c.t} screen ${j+1}" loading="lazy"></div>`).join('')}</div>`:''}</article>`).join('');
-$('#mq').innerHTML=[...'x','x'].map(()=>['Kotlin','Flutter','Dart','Jetpack Compose','Firebase','OpenAI API','Clean Architecture','Hilt','Coroutines','Retrofit','Material 3','Google Maps SDK'].map(t=>`<span>${t}</span>`).join('')).join('');
-/* typing role */
-const R=['Enterprise Android Developer','Flutter Developer','AI-App Architect','Founder, Znext Sol'];let ri=0,ci=0,del=0;const ty=$('#typed');
-(function t(){const w=R[ri];ty.textContent=w.slice(0,ci);if(!del&&ci++==w.length){del=1;return setTimeout(t,1400)}if(del&&--ci==0){del=0;ri=(ri+1)%R.length}setTimeout(t,del?40:80)})();
-/* progress, glow, reveal, counters, card glow */
-addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-innerHeight;$('#prog').style.width=scrollY/h*100+'%'},{passive:true});
-addEventListener('mousemove',e=>{glow.style.transform=`translate(${e.clientX-230}px,${e.clientY-230}px)`});
-document.addEventListener('mousemove',e=>{const c=e.target.closest&&e.target.closest('.gc');if(c){const r=c.getBoundingClientRect();c.style.setProperty('--mx',e.clientX-r.left+'px');c.style.setProperty('--my',e.clientY-r.top+'px')}});
-const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('vis')),{threshold:.1});document.querySelectorAll('.rev').forEach(el=>io.observe(el));
-const cio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;cio.unobserve(e.target);const el=e.target,T=+el.dataset.n,S=el.dataset.s||'',t0=performance.now();(function f(n){const p=Math.min(1,(n-t0)/1200);el.textContent=Math.round((1-Math.pow(1-p,3))*T)+S;p<1&&requestAnimationFrame(f)})(t0)}),{threshold:.6});document.querySelectorAll('[data-n]').forEach(el=>cio.observe(el));
-/* lightbox */
-const lb=$('#lb');let cc=0,ci2=0;
-function open_(c,i){cc=c;ci2=i;lbr();lb.classList.add('on')}function nav(d){const n=ci2+d;if(n>=0&&n<CASES[cc].p.length){ci2=n;lbr()}}function lbr(){$('#li').src=CASES[cc].p[ci2]}
-lb.addEventListener('click',e=>{if(e.target===lb)lb.classList.remove('on')});
-addEventListener('keydown',e=>{if(!lb.classList.contains('on'))return;if(e.key==='Escape')lb.classList.remove('on');if(e.key==='ArrowRight')nav(1);if(e.key==='ArrowLeft')nav(-1)});
-const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)document.querySelectorAll('.links a').forEach(a=>a.classList.toggle('act',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});document.querySelectorAll('main section[id]').forEach(x=>so.observe(x));
-</script>
-</body>
-</html>
+const experience=[
+['Android Developer','Jan 2025 – Present','Centegy Technologies · Karachi',['Deliver Unilever B2B & B2C Android apps live in 4 countries, inside a 10+ member cross-functional Agile/Scrum team','Built DSR Distributor (real-time Google Maps tracking), a Warehouse Management app, and a B2C e-commerce app — each with dev/staging/prod release flavors','Cut Gradle build time ~40% via incremental compilation and build caching; architected scalable multi-module Clean Architecture with Retrofit + Hilt']],
+['Android Developer','Jan 2024 – Dec 2024','Markematics Digital · Karachi',['Migrated ShopTracking Java → Kotlin in 3 days (3x ahead of schedule): resolved memory leaks, adopted Coroutines, reduced APK size, faster cold start','Built RetailAudit & MarkitSurvey — offline-first field apps with zero-data-loss sync; a unified REST layer saved 200+ engineering hours a year','Built Tutify: real-time chat, Zoom SDK live classes, Firebase FCM push notifications']],
+['Independent Mobile Developer','2026','Self-initiated · Karachi',['Designed, architected and shipped AI-powered apps solo — Postify and SpeakMate — with production experience integrating the OpenAI API and Firebase at scale','Built Clean Pro end to end: a cross-platform Flutter/Dart app backed by a Spring Boot API','Owned the full product lifecycle: UI/UX, backend, Play Store listing, release pipeline, and user feedback loops']]
+];
+const more=[['Recipe Expert','Cooking companion with ingredient-based recipe search across cuisines.','Play Store ↗','https://play.google.com/store/apps/details?id=com.hamzadev.recipeexpert','Kotlin · Firebase · Hilt'],['Laugh & Rhyme','Bilingual (English & Urdu) jokes, riddles and poetry app with social sharing.','','','Jetpack Compose · Room'],['Znext Sol','My studio site, built to win freelance and contract app clients directly.','','','Static site · GitHub Pages']];
+const ticker=['Kotlin','Flutter','Dart','Jetpack Compose','Firebase','OpenAI API','Clean Architecture','Hilt','Coroutines','Retrofit','Material 3','Google Maps SDK'];
+const $=s=>document.querySelector(s);
+$('#ticker').innerHTML=[...ticker,...ticker].map(x=>`<span>${x}</span>`).join('');
+$('#experienceList').innerHTML=experience.map(x=>`<article class="job reveal"><h3>${x[0]} <span class="when">${x[1]}</span></h3><div class="company">${x[2]}</div><ul>${x[3].map(y=>`<li>${y}</li>`).join('')}</ul></article>`).join('');
+$('#skillsGrid').innerHTML=Object.entries(SK).map(([k,v])=>`<article class="skill reveal"><h3>${k}</h3><div class="chips">${v.map(x=>`<span class="chip ${x.endsWith('*')?'new':''}">${x.replace('*','')}</span>`).join('')}</div></article>`).join('');
+function projectHTML(c,i){return `<article class="project reveal"><div class="project-top"><div><div class="project-no">CASE ${c.n}</div><h3>${c.t}</h3><div class="subline">${c.s}</div><p class="project-desc">${c.d}</p></div><div class="tags">${c.b.map(([t,h,k])=>h?`<a class="tag ${k||''}" href="${h}" target="_blank" rel="noopener">${t}</a>`:`<span class="tag ${k||''}">${t}</span>`).join('')}</div></div><div class="metrics">${c.m.map(x=>`<div class="metric"><b>${x[0]}</b><span>${x[1]}</span></div>`).join('')}</div><div class="project-body"><div><h4>The challenge</h4><p>${c.c}</p><h4 style="margin-top:20px">Stack</h4><div class="chips">${c.k.map(x=>`<span class="chip">${x}</span>`).join('')}</div></div><div><h4>What I built</h4><ul>${c.w.map(x=>`<li>${x}</li>`).join('')}</ul></div></div>${c.r?`<div class="production"><h4>Running it in production</h4><ul>${c.r.map(x=>`<li>${x}</li>`).join('')}</ul></div>`:''}<div class="shots">${c.p.map((u,j)=>`<div class="shot ${c.wide?'wide':''}" onclick="openLightbox('${u}')"><img src="${u}" alt="${c.t} screen ${j+1}" loading="lazy"></div>`).join('')}</div></article>`}
+$('#cases').innerHTML=CASES.map(projectHTML).join('');
+$('#more').innerHTML=more.map(x=>`<article class="more-card reveal"><h3>${x[0]}</h3><p>${x[1]}</p>${x[3]?`<a href="${x[3]}" target="_blank" rel="noopener">${x[2]}</a>`:''}<small>${x[4]}</small></article>`).join('');
+const observer=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('show')),{threshold:.08});document.querySelectorAll('.reveal').forEach(x=>observer.observe(x));
+addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-innerHeight;$('#progress').style.width=(scrollY/h*100)+'%';$('#nav').classList.toggle('scrolled',scrollY>20)},{passive:true});
+const glow=$('#cursorGlow');addEventListener('pointermove',e=>{glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px'});
+const stage=$('#portraitStage'),portrait=$('#portrait');stage.addEventListener('pointermove',e=>{const r=stage.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;portrait.style.transform=`rotateY(${x*-12}deg) rotateX(${y*7}deg) translate(${x*5}px,${y*4}px)`});stage.addEventListener('pointerleave',()=>portrait.style.transform='rotateY(-7deg) rotateX(2deg)');
+function openLightbox(src){$('#lightboxImg').src=src;$('#lightbox').classList.add('on')}function closeLightbox(){$('#lightbox').classList.remove('on')}$('#lightbox').addEventListener('click',e=>{if(e.target.id==='lightbox')closeLightbox()});addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox()});
+</script></body></html>
